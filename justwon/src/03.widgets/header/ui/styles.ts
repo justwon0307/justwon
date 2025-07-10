@@ -2,6 +2,8 @@
 
 import styled from "styled-components";
 
+import { VerticalDivider } from "@shared/ui/Dividers";
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -27,4 +29,8 @@ export const Tabs = styled.div`
     font-size: 1rem;
     font-weight: 600;
   }
+`;
+
+export const Divider = styled(VerticalDivider)`
+  background-color: ${({ theme }) => theme.colors.divider};
 `;
