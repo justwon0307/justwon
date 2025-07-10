@@ -2,20 +2,20 @@ import { ThemeColorType } from "./types";
 
 export const lightTheme: ThemeColorType = {
   // Semantic
-  primary: "#1E3A8A", // Indigo 700
-  primaryLight: "#3B82F6", // Indigo 500
-  primaryDark: "#1E40AF", // Indigo 800
-  onPrimary: "#FFFFFF", // Contrast ≥ 8.5:1
-  onPrimaryDisabled: "rgba(255,255,255,0.5)", // Disabled state
+  primary: "#1E3A8A",
+  primaryLight: "#3B82F6",
+  primaryDark: "#1E40AF",
+  onPrimary: "#FFFFFF",
+  onPrimaryDisabled: "rgba(255,255,255,0.5)",
 
-  secondary: "#F59E0B", // Amber 500
-  onSecondary: "#000000", // Contrast ≥ 7:1
+  secondary: "#F59E0B",
+  onSecondary: "#000000",
 
-  success: "#22C55E", // Emerald 500
+  success: "#22C55E",
   onSuccess: "#FFFFFF",
-  warning: "#FBBF24", // Amber 400
+  warning: "#FBBF24",
   onWarning: "#000000",
-  error: "#EF4444", // Red 500
+  error: "#EF4444",
   onError: "#FFFFFF",
 
   gray100: "#F3F4F6",
@@ -29,36 +29,36 @@ export const lightTheme: ThemeColorType = {
   gray900: "#111827",
 
   // Background / Surface
-  backgroundDefault: "#F9FAFB", // 전체 페이지 백그라운드
-  backgroundPaper: "#FFFFFF", // 카드·패널 등
-  surfaceElevated: "#FFFFFF", // 약한 섀도우 적용 시
+  backgroundDefault: "#F9FAFB",
+  backgroundPaper: "#FFFFFF",
+  surfaceElevated: "#FFFFFF",
 
   // Text
-  textPrimary: "#111827", // 본문
-  textSecondary: "#374151", // 보조 텍스트
-  textDisabled: "#6B7280", // 비활성 텍스트
+  textPrimary: "#111827",
+  textSecondary: "#374151",
+  textDisabled: "#6B7280",
 
   // State Indicators
-  focusOutline: "#3B82F6", // 포커스 링
-  divider: "#D1D5DB", // 구분선
+  focusOutline: "#3B82F6",
+  divider: "#D1D5DB",
 };
 
 export const darkTheme: ThemeColorType = {
   // Semantic
-  primary: "#818CF8", // Indigo 300
-  primaryLight: "#A5B4FC", // Indigo 200
-  primaryDark: "#5B21B6", // Indigo 800 (강조용)
-  onPrimary: "#000000", // Contrast ≥ 7:1
-  onPrimaryDisabled: "rgba(0,0,0,0.5)", // Disabled state
+  primary: "#818CF8",
+  primaryLight: "#A5B4FC",
+  primaryDark: "#5B21B6",
+  onPrimary: "#000000",
+  onPrimaryDisabled: "rgba(0,0,0,0.5)",
 
-  secondary: "#FCD34D", // Amber 300
-  onSecondary: "#000000", // Contrast ≥ 7:1
+  secondary: "#FCD34D",
+  onSecondary: "#000000",
 
-  success: "#4ADE80", // Emerald 400
+  success: "#4ADE80",
   onSuccess: "#000000",
-  warning: "#FBBF24", // Amber 400
+  warning: "#FBBF24",
   onWarning: "#000000",
-  error: "#F87171", // Red 400
+  error: "#F87171",
   onError: "#000000",
 
   // Neutral (10-step Gray Scale, Dark→Light)
@@ -73,16 +73,16 @@ export const darkTheme: ThemeColorType = {
   gray900: "#FFFFFF",
 
   // Background / Surface
-  backgroundDefault: "#121212", // 전체 페이지 배경
-  backgroundPaper: "#1E1E1E", // 카드·패널 등
-  surfaceElevated: "#2A2A2A", // 약한 섀도우 적용 시
+  backgroundDefault: "#121212",
+  backgroundPaper: "#1E1E1E",
+  surfaceElevated: "#2A2A2A",
 
   // Text
-  textPrimary: "#E4E4E7", // 본문
-  textSecondary: "#A1A1AA", // 보조 텍스트
-  textDisabled: "#71717A", // 비활성 텍스트
+  textPrimary: "#E4E4E7",
+  textSecondary: "#A1A1AA",
+  textDisabled: "#71717A",
 
   // State Indicators
-  focusOutline: "#A5B4FC", // 포커스 링
-  divider: "#3F3F46", // 구분선
+  focusOutline: "#A5B4FC",
+  divider: "#3F3F46",
 };
