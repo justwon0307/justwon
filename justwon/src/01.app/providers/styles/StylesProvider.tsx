@@ -1,33 +1,30 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { useServerInsertedHTML } from "next/navigation";
-import {
-  ServerStyleSheet,
-  StyleSheetManager,
-  ThemeProvider,
-} from "styled-components";
+import { ThemeProvider } from "styled-components";
 
+import { StyledComponentsRegistry } from "./_registry";
 import { GlobalStyles } from "./global.styles";
-import { ColorContext, darkTheme, lightTheme } from "@shared/lib/colors";
+import {
+  ColorContext,
+  type ColorContextType,
+  darkTheme,
+  lightTheme,
+} from "@shared/lib/colors";
 
 interface Props {
   children: React.ReactNode;
 }
 
+/**
+ * styled-components를 SSR에서 사용하기 위한 레지스트리 컴포넌트를 감싸고 있으며,
+ * 커스텀 테마를 적용하는 프로바이더.
+ */
+
 export function StylesProvider({
   children,
 }: Readonly<Props>): React.JSX.Element {
-  // Only create stylesheet once with lazy initial state
-  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
-
-  useServerInsertedHTML(() => {
-    const styles = styledComponentsStyleSheet.getStyleElement();
-    styledComponentsStyleSheet.instance.clearTag();
-    return <>{styles}</>;
-  });
 
   const toggleTheme = useCallback(() => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -37,21 +34,21 @@ export function StylesProvider({
     return isDarkMode ? darkTheme : lightTheme;
   }, [isDarkMode]);
 
-  const value = useMemo(
+  const value = useMemo<ColorContextType>(
     () => ({ colors, isDarkMode, toggleTheme }),
     [colors, isDarkMode, toggleTheme]
   );
 
-  if (typeof window !== "undefined") return <>{children}</>;
-
+  // 클라이언트에서는 테마만 적용
   return (
-    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      <ThemeProvider theme={{ colors: colors }}>
+    <StyledComponentsRegistry>
+      <ThemeProvider theme={{ colors }}>
         <ColorContext.Provider value={value}>
           <GlobalStyles />
+
           {children}
         </ColorContext.Provider>
       </ThemeProvider>
-    </StyleSheetManager>
+    </StyledComponentsRegistry>
   );
 }
