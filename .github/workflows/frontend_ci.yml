@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 22
           cache: 'yarn'
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: "yarn.lock"
 
       - name: Install dependencies
         run: yarn install --dev
@@ -70,7 +70,7 @@ jobs:
         with:
           node-version: 22
           cache: 'yarn'
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: "justwon/yarn.lock"
 
       - name: Install dependencies
         run: yarn install --dev
