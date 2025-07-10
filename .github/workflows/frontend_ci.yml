@@ -101,7 +101,7 @@ jobs:
         with:
           node-version: 22
           cache: 'yarn'
-          cache-dependency-path: yarn.lock
+          cache-dependency-path: "justwon/yarn.lock"
 
       - name: Download coverage artifact
         uses: actions/download-artifact@v4
