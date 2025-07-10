@@ -36,6 +36,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Freesentation', 'SCDream', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
+      background-color: ${({ theme }) => theme.colors.backgroundDefault};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
