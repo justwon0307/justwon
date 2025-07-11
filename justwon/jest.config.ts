@@ -31,6 +31,7 @@ const config: Config = {
     "^@features/(.*)$": "<rootDir>/src/04.features/$1",
     "^@entities/(.*)$": "<rootDir>/src/05.entities/$1",
     "^@shared/(.*)$": "<rootDir>/src/06.shared/$1",
+    "^@test-utils/(.*)$": "<rootDir>/src/test-utils/$1",
   },
 };
 
