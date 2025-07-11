@@ -2,6 +2,8 @@ import { render } from "@testing-library/react";
 
 import { VerticalDivider } from "@shared/ui/Dividers";
 
+jest.unmock("@shared/ui/Dividers");
+
 describe("VerticalDivider", () => {
   it("should render default divider", () => {
     render(<VerticalDivider />);

@@ -3,6 +3,8 @@ import { render } from "@testing-library/react";
 
 import { ColorContext, lightTheme, useColors } from "@shared/lib/colors";
 
+jest.unmock("@shared/lib/colors");
+
 const MockComponent = () => {
   const { colors } = useColors();
 
