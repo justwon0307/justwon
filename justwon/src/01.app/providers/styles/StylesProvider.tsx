@@ -45,7 +45,6 @@ export function StylesProvider({
       <ThemeProvider theme={{ colors }}>
         <ColorContext.Provider value={value}>
           <GlobalStyles />
-
           {children}
         </ColorContext.Provider>
       </ThemeProvider>

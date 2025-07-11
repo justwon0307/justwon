@@ -24,7 +24,8 @@
       "@widgets/*": ["./src/03.widgets/*"],
       "@features/*": ["./src/04.features/*"],
       "@entities/*": ["./src/05.entities/*"],
-      "@shared/*": ["./src/06.shared/*"]
+      "@shared/*": ["./src/06.shared/*"],
+      "@test-utils/*": ["./src/test-utils/*"],
     }
   },
   "include": ["svgr.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

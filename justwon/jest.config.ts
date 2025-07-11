@@ -16,6 +16,7 @@ const config: Config = {
     "!src/app/**/*.{js,jsx,ts,tsx}",
     "!src/**/*/contexts.ts",
     "!src/**/*/index.ts",
+    "!src/**/*/metadata.ts",
     "!src/**/*/styles.ts",
     "!src/**/*/testdata.ts",
     "!src/**/*/types.ts",
