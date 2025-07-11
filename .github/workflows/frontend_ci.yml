@@ -45,7 +45,7 @@ jobs:
         run: yarn install --dev
 
       - name: Run tests and collect coverage
-        run: yarn test --coverage
+        run: yarn test --coverage --watchAll=false
 
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
