@@ -61,17 +61,6 @@ export const darkTheme: ThemeColorType = {
   error: "#F87171",
   onError: "#000000",
 
-  // Neutral (10-step Gray Scale, Dark→Light)
-  gray100: "#27272A",
-  gray200: "#3F3F46",
-  gray300: "#52525B",
-  gray400: "#71717A",
-  gray500: "#A1A1AA",
-  gray600: "#D4D4D8",
-  gray700: "#E4E4E7",
-  gray800: "#F4F4F5",
-  gray900: "#FFFFFF",
-
   // Background / Surface
   backgroundDefault: "#121212",
   backgroundPaper: "#1E1E1E",
@@ -85,4 +74,15 @@ export const darkTheme: ThemeColorType = {
   // State Indicators
   focusOutline: "#A5B4FC",
   divider: "#3F3F46",
+
+  // Neutral (10-step Gray Scale, Dark→Light)
+  gray100: "#27272A",
+  gray200: "#3F3F46",
+  gray300: "#52525B",
+  gray400: "#71717A",
+  gray500: "#A1A1AA",
+  gray600: "#D4D4D8",
+  gray700: "#E4E4E7",
+  gray800: "#F4F4F5",
+  gray900: "#FFFFFF",
 };
