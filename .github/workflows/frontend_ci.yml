@@ -107,7 +107,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage-report
-          path: ./
+          path: justwon/coverage
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
@@ -118,4 +118,4 @@ jobs:
         uses: coverallsapp/github-action@v2.2.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./lcov.info
+          path-to-lcov: ./justwon/coverage/lcov.info
