@@ -1,7 +1,7 @@
-import About from "./files/about.svg";
-import Blog from "./files/blog.svg";
-import Project from "./files/project.svg";
-import Study from "./files/study.svg";
+import About from "../files/about.svg";
+import Blog from "../files/blog.svg";
+import Project from "../files/project.svg";
+import Study from "../files/study.svg";
 
 interface Props {
   icon: string;
