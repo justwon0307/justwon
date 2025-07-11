@@ -8,6 +8,6 @@ describe("VerticalDivider", () => {
   });
 
   it("should render bold divider", () => {
-    render(<VerticalDivider bold />);
+    render(<VerticalDivider $bold />);
   });
 });
