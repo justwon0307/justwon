@@ -22,4 +22,5 @@ jest.mock("@shared/ui/Dividers", () => ({
 }));
 jest.mock("@shared/ui/Icons", () => ({
   AppIcon: ({ icon }: { icon: string }) => <span>{icon}-icon</span>,
+  Logo: ({ name }: { name: string }) => <span>{name}-logo</span>,
 }));

@@ -1,5 +1,7 @@
 import About from "../files/about.svg";
+import Admin from "../files/admin.svg";
 import Blog from "../files/blog.svg";
+import Login from "../files/login.svg";
 import Project from "../files/project.svg";
 import Study from "../files/study.svg";
 
@@ -11,7 +13,9 @@ interface Props {
 
 const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   about: About,
+  admin: Admin,
   blog: Blog,
+  login: Login,
   project: Project,
   study: Study,
 };
