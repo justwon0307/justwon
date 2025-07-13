@@ -10,6 +10,6 @@ describe("Divider", () => {
   });
 
   it("should render bold divider", () => {
-    render(<Divider bold />);
+    render(<Divider $bold />);
   });
 });
