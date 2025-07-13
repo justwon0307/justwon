@@ -18,6 +18,7 @@ jest.mock("@shared/lib/colors", () => {
   };
 });
 jest.mock("@shared/ui/Dividers", () => ({
+  Divider: () => <div>Divider</div>,
   VerticalDivider: () => <div>VerticalDivider</div>,
 }));
 jest.mock("@shared/ui/Icons", () => ({
