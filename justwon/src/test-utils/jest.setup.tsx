@@ -1,5 +1,22 @@
 import "@testing-library/jest-dom";
 
+jest.mock("@shared/lib/auth", () => {
+  const { AuthContext, AuthContextType, UserType, sampleUser } =
+    jest.requireActual("@shared/lib/auth");
+
+  return {
+    AuthContext,
+    AuthContextType,
+    UserType,
+    sampleUser,
+    useAuth: jest.fn(() => ({
+      user: null,
+      isAuthenticated: false,
+      login: jest.fn(),
+      logout: jest.fn(),
+    })),
+  };
+});
 jest.mock("@shared/lib/colors", () => {
   const { ColorContext, ColorContextType, ThemeColorType, lightTheme } =
     jest.requireActual("@shared/lib/colors");
@@ -17,6 +34,12 @@ jest.mock("@shared/lib/colors", () => {
     darkTheme: lightTheme,
   };
 });
+jest.mock("@shared/lib/supabase", () => ({
+  createBrowserClient: jest.fn(),
+  createServerClient: jest.fn(),
+  updateSession: jest.fn(),
+}));
+
 jest.mock("@shared/ui/Dividers", () => ({
   Divider: () => <div>Divider</div>,
   VerticalDivider: () => <div>VerticalDivider</div>,
