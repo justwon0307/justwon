@@ -6,6 +6,9 @@ const devOrigins = ["localhost", TAILSCALE_IP || ""].filter(Boolean);
 
 const nextConfig: NextConfig = {
   /* config options here */
+  compiler: {
+    styledComponents: true,
+  },
   allowedDevOrigins: devOrigins,
   turbopack: {
     rules: {

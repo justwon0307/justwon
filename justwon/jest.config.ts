@@ -13,7 +13,6 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/src/test-utils/jest.setup.tsx"],
   collectCoverageFrom: [
     "src/**/*.{js,jsx,ts,tsx}",
-    "!src/app/**/*.{js,jsx,ts,tsx}",
     "!src/**/*/contexts.ts",
     "!src/**/*/index.ts",
     "!src/**/*/metadata.ts",
@@ -25,7 +24,6 @@ const config: Config = {
     "!src/test-utils/renderer.tsx",
   ],
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
     "^@app/(.*)$": "<rootDir>/src/01.app/$1",
     "^@pages/(.*)$": "<rootDir>/src/02.pages/$1",
     "^@widgets/(.*)$": "<rootDir>/src/03.widgets/$1",
