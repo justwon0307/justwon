@@ -19,6 +19,14 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 4px;
 
+  h1 {
+    margin: 16px 0 8px 0;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
+
   label {
     margin-top: 12px;
     font-weight: bold;
@@ -30,19 +38,13 @@ export const Form = styled.form`
     border-radius: 4px;
   }
 
-  button {
-    padding: 8px 16px;
-    color: white;
-    border: none;
-    border-radius: 4px;
+  button.back {
+    align-self: flex-start;
     cursor: pointer;
   }
 
-  button:first-child {
-    background-color: ${({ theme }) => theme.colors.gray400};
-  }
-
-  button:last-child {
+  button.submit {
+    cursor: pointer;
     background-color: ${({ theme }) => theme.colors.primary};
   }
 
@@ -58,11 +60,15 @@ export const Form = styled.form`
     margin-top: 16px;
 
     button {
-      width: 48%;
+      flex: 1;
+      padding: 8px 16px;
+      color: white;
+      border: none;
+      border-radius: 4px;
     }
 
     button:disabled {
-      flex: 1;
+      background-color: ${({ theme }) => theme.colors.gray300};
     }
   }
 `;
@@ -74,7 +80,7 @@ export const Wrapper = styled.div`
 
   h1 {
     font-family: sans-serif;
-    font-size: 24px;
+    font-size: 1.25rem;
     font-weight: 600;
     color: ${({ theme }) => theme.colors.textPrimary};
   }

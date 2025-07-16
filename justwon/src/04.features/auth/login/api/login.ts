@@ -1,15 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
-import { LoginErrorType } from "../models/types";
+import { LoginErrorType, LoginSuccessType } from "../models/types";
 import { createServerClient } from "@shared/lib/supabase";
 
 export async function login(
   formData: FormData,
   { returnTo }: { returnTo: string }
-): Promise<LoginErrorType | void> {
+): Promise<LoginErrorType | LoginSuccessType> {
   const supabase = await createServerClient();
 
   const data = {
@@ -26,6 +25,10 @@ export async function login(
     };
   } else {
     revalidatePath("/");
-    redirect(returnTo);
+    revalidatePath(returnTo);
+
+    return {
+      success: true,
+    };
   }
 }

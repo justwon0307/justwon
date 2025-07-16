@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 
 import { login } from "../api/login";
 import { Form } from "./styles";
+import { AppIcon } from "@shared/ui/Icons";
 
 interface Props {
   toggleMode: () => void;
@@ -16,19 +18,32 @@ export function AdminLoginForm({ toggleMode, returnTo }: Readonly<Props>) {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
+  const router = useRouter();
+
   const submitForm = (formData: FormData) => {
     startTransition(async () => {
       setError(null);
       const result = await login(formData, { returnTo });
 
-      if (result && "message" in result) {
+      if (!result.success) {
         setError(result.message);
+      } else {
+        router.refresh();
+        router.replace(returnTo);
       }
     });
   };
 
   return (
     <Form action={submitForm}>
+      <button
+        className="back"
+        type="button"
+        onClick={toggleMode}
+        data-testid="back"
+      >
+        <AppIcon icon="arrow-left" size={20} />
+      </button>
       <h1>관리자 로그인</h1>
       <label htmlFor="email">이메일:</label>
       <input
@@ -53,16 +68,13 @@ export function AdminLoginForm({ toggleMode, returnTo }: Readonly<Props>) {
       {error && <p className="error">{error}</p>}
       <div>
         {isPending ? (
-          <button disabled>로그인 중...</button>
+          <button className="disabled" disabled>
+            로그인 중...
+          </button>
         ) : (
-          <>
-            <button type="button" onClick={toggleMode} data-testid="back">
-              뒤로
-            </button>
-            <button type="submit" data-testid="submit">
-              로그인
-            </button>
-          </>
+          <button className="submit" type="submit" data-testid="submit">
+            로그인
+          </button>
         )}
       </div>
     </Form>
