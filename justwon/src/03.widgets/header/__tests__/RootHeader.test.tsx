@@ -1,10 +1,15 @@
+import * as Navigation from "next/navigation";
+
 import { RootHeader } from "@widgets/header";
 import * as AuthAPI from "@shared/lib/auth";
 import { renderWithProviders } from "@test-utils/renderer";
 
+const mockUseSearchParams = Navigation.useSearchParams as jest.Mock;
+
 describe("RootHeader", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockUseSearchParams.mockReturnValue(new URLSearchParams());
     jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
       user: null,
       loading: false,
@@ -22,6 +27,14 @@ describe("RootHeader", () => {
     expect(getByText("About")).toBeInTheDocument();
 
     expect(getByText("login-icon")).toBeInTheDocument(); // mocked icon
+  });
+
+  it("handles login link path correctly", () => {
+    mockUseSearchParams.mockReturnValue(
+      new URLSearchParams({ search: "query" })
+    );
+
+    renderWithProviders(<RootHeader />);
   });
 
   it("should render user profile when authenticated", () => {
