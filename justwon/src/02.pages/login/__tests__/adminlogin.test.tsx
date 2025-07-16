@@ -12,11 +12,10 @@ const mockCreateServerClient = Supabase.createServerClient as jest.Mock;
 describe("LoginPage: admin login", () => {
   beforeEach(() => {
     mockUseRouter.mockReturnValue({
-      push: jest.fn(),
+      refresh: jest.fn(),
       replace: jest.fn(),
     });
     mockUseSearchParams.mockReturnValue(new URLSearchParams({ mode: "admin" }));
-
     mockCreateServerClient.mockResolvedValue({
       auth: {
         signInWithPassword: jest.fn().mockResolvedValue({ error: null }),
@@ -63,7 +62,8 @@ describe("LoginPage: admin login", () => {
     fireEvent.click(getByTestId("submit"));
 
     await waitFor(() => {
-      expect(Navigation.redirect).toHaveBeenCalledWith("/");
+      expect(mockUseRouter().refresh).toHaveBeenCalledTimes(1);
+      expect(mockUseRouter().replace).toHaveBeenCalledWith("/");
     });
   });
 
@@ -89,7 +89,8 @@ describe("LoginPage: admin login", () => {
     fireEvent.click(getByTestId("submit"));
 
     await waitFor(() => {
-      expect(Navigation.redirect).toHaveBeenCalledWith("/blog");
+      expect(mockUseRouter().refresh).toHaveBeenCalledTimes(1);
+      expect(mockUseRouter().replace).toHaveBeenCalledWith("/blog");
     });
   });
 });

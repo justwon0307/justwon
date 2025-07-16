@@ -19,11 +19,10 @@ export function LoginPage() {
   const router = useRouter();
 
   const [dir, setDir] = useState(0);
-  const prevRef = useRef(isAdminMode);
+  const hasMountedRef = useRef(false);
 
   useEffect(() => {
-    const to = searchParams.get("returnTo") || document.referrer || "/";
-    setReturnTo(to);
+    setReturnTo(searchParams.get("returnTo") || document.referrer || "/");
   }, [searchParams]);
 
   useEffect(() => {
@@ -33,21 +32,12 @@ export function LoginPage() {
   }, [user, returnTo, router]);
 
   useEffect(() => {
-    setDir((prevDir) => {
-      // 1) 다음 dir을 미리 계산
-      let nextDir = prevDir;
-
-      if (isAdminMode && !prevRef.current) {
-        nextDir = 1;
-      } else if (!isAdminMode && prevRef.current) {
-        nextDir = -1;
-      }
-
-      // 2) prevRef 업데이트
-      prevRef.current = isAdminMode;
-
-      return nextDir;
-    });
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
+    // admin 모드면 앞으로(+1), 기본 모드면 뒤로(-1)
+    setDir(isAdminMode ? 1 : -1);
   }, [isAdminMode]);
 
   const switchToAdmin = () => {
@@ -60,6 +50,7 @@ export function LoginPage() {
   const switchToDefault = () => {
     setIsAdminMode(false);
     const p = new URLSearchParams({ returnTo });
+    p.delete("mode");
     router.replace(`/login?${p}`);
   };
 
