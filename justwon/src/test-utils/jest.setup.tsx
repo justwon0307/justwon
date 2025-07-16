@@ -1,5 +1,18 @@
 import "@testing-library/jest-dom";
 
+jest.mock("next/cache", () => ({
+  revalidatePath: jest.fn(),
+}));
+jest.mock("next/navigation", () => ({
+  redirect: jest.fn(),
+  usePathname: jest.fn(() => "/"),
+  useRouter: jest.fn(() => ({
+    replace: jest.fn(),
+  })),
+  useSearchParams: jest.fn(() => new URLSearchParams()),
+  useServerInsertedHTML: jest.fn(),
+}));
+
 jest.mock("@shared/lib/auth", () => {
   const { AuthContext, AuthContextType, UserType, sampleUser } =
     jest.requireActual("@shared/lib/auth");
