@@ -7,6 +7,7 @@ jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
   usePathname: jest.fn(() => "/"),
   useRouter: jest.fn(() => ({
+    refresh: jest.fn(),
     replace: jest.fn(),
   })),
   useSearchParams: jest.fn(() => new URLSearchParams()),
