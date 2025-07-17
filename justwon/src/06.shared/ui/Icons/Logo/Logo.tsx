@@ -1,3 +1,4 @@
+import Admin from "../files/admin-logo.svg";
 import Github from "../files/github.svg";
 import Google from "../files/google.svg";
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const logoMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
+  admin: Admin,
   github: Github,
   google: Google,
 };

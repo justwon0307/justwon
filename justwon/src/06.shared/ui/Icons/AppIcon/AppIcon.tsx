@@ -4,6 +4,8 @@ import ArrowLeft from "../files/arrow-left.svg";
 import ArrowRight from "../files/arrow-right.svg";
 import Blog from "../files/blog.svg";
 import Login from "../files/login.svg";
+import Logout from "../files/logout.svg";
+import Profile from "../files/profile.svg";
 import Project from "../files/project.svg";
 import Study from "../files/study.svg";
 
@@ -20,6 +22,8 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   "arrow-right": ArrowRight,
   blog: Blog,
   login: Login,
+  logout: Logout,
+  profile: Profile,
   project: Project,
   study: Study,
 };
