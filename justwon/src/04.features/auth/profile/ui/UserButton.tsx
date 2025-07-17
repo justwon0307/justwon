@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 import { UserProfile } from "@entities/profile";
 import { useAuth, UserType } from "@shared/lib/auth";
-import { AppIcon } from "@shared/ui/Icons";
 import { useColors } from "@shared/lib/colors";
-import { useRouter } from "next/navigation";
+import { AppIcon } from "@shared/ui/Icons";
 
 interface Props {
   user: UserType;

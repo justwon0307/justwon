@@ -4,7 +4,7 @@ import "client-only";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
-import { UserProfile } from "@entities/profile";
+import { UserButton } from "@features/auth/profile";
 import { useAuth } from "@shared/lib/auth";
 import { AppIcon } from "@shared/ui/Icons";
 
@@ -29,5 +29,5 @@ export function AuthTab() {
     );
   }
 
-  return <UserProfile user={user} />;
+  return <UserButton user={user} />;
 }

@@ -1,3 +1,4 @@
+import { fireEvent, waitFor } from "@testing-library/react";
 import * as Navigation from "next/navigation";
 
 import { RootHeader } from "@widgets/header";
@@ -14,6 +15,7 @@ describe("RootHeader", () => {
       user: null,
       loading: false,
       logout: jest.fn(),
+      refresh: jest.fn(),
     });
   });
 
@@ -38,37 +40,45 @@ describe("RootHeader", () => {
   });
 
   it("should render user profile when authenticated", () => {
-    const mockUser = {
-      id: "user123",
-      user_metadata: { avatar_url: "/avatar.png" },
-    };
     jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
       user: AuthAPI.sampleUser,
       loading: false,
       logout: jest.fn(),
+      refresh: jest.fn(),
     });
 
-    const { getByText, getByAltText } = renderWithProviders(<RootHeader />);
+    const { getByAltText, getByTestId } = renderWithProviders(<RootHeader />);
 
-    expect(getByText(mockUser.id)).toBeInTheDocument();
-    expect(getByAltText("User Avatar")).toHaveAttribute(
-      "src",
-      mockUser.user_metadata.avatar_url
-    );
+    expect(getByTestId("user-button")).toBeInTheDocument();
+    expect(getByAltText("User Avatar")).toHaveAttribute("src", "/avatar.png");
   });
 
-  it("should show default avatar if user metadata is missing", () => {
+  it("should show default avatar if user metadata is missing", async () => {
     jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
       user: { ...AuthAPI.sampleUser, user_metadata: {} },
       loading: false,
       logout: jest.fn(),
+      refresh: jest.fn(),
     });
 
-    const { getByAltText } = renderWithProviders(<RootHeader />);
+    const { getByTestId, getByText } = renderWithProviders(<RootHeader />);
 
-    expect(getByAltText("User Avatar")).toHaveAttribute(
-      "src",
-      "/default-avatar.png"
-    );
+    expect(getByText("profile-icon")).toBeInTheDocument();
+
+    fireEvent.click(getByTestId("user-button"));
+    expect(getByText("Log out")).toBeInTheDocument();
+
+    // 1차 시도: 로그아웃 취소
+    jest.spyOn(window, "confirm").mockReturnValueOnce(false);
+    fireEvent.click(getByText("Log out"));
+
+    // 2차 시도: 로그아웃 확인
+    fireEvent.click(getByTestId("user-button"));
+    jest.spyOn(window, "confirm").mockReturnValueOnce(true);
+    fireEvent.click(getByText("Log out"));
+
+    await waitFor(() => {
+      expect(AuthAPI.useAuth().logout).toHaveBeenCalled();
+    });
   });
 });
