@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { login } from "../api/login";
 import { Form } from "./styles";
+import { useAuth } from "@shared/lib/auth";
 import { AppIcon } from "@shared/ui/Icons";
 
 interface Props {
@@ -18,6 +19,7 @@ export function AdminLoginForm({ toggleMode, returnTo }: Readonly<Props>) {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
+  const { refresh } = useAuth();
   const router = useRouter();
 
   const submitForm = (formData: FormData) => {
@@ -28,8 +30,8 @@ export function AdminLoginForm({ toggleMode, returnTo }: Readonly<Props>) {
       if (!result.success) {
         setError(result.message);
       } else {
-        router.refresh();
         router.replace(returnTo);
+        refresh();
       }
     });
   };
