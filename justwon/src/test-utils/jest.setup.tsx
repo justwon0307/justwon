@@ -1,5 +1,37 @@
 import "@testing-library/jest-dom";
 
+jest.mock("next/cache", () => ({
+  revalidatePath: jest.fn(),
+}));
+jest.mock("next/navigation", () => ({
+  redirect: jest.fn(),
+  usePathname: jest.fn(() => "/"),
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    refresh: jest.fn(),
+    replace: jest.fn(),
+  })),
+  useSearchParams: jest.fn(() => new URLSearchParams()),
+  useServerInsertedHTML: jest.fn(),
+}));
+
+jest.mock("@shared/lib/auth", () => {
+  const { AuthContext, AuthContextType, UserType, sampleUser } =
+    jest.requireActual("@shared/lib/auth");
+
+  return {
+    AuthContext,
+    AuthContextType,
+    UserType,
+    sampleUser,
+    useAuth: jest.fn(() => ({
+      user: null,
+      loading: false,
+      refresh: jest.fn(),
+      logout: jest.fn(),
+    })),
+  };
+});
 jest.mock("@shared/lib/colors", () => {
   const { ColorContext, ColorContextType, ThemeColorType, lightTheme } =
     jest.requireActual("@shared/lib/colors");
@@ -17,9 +49,17 @@ jest.mock("@shared/lib/colors", () => {
     darkTheme: lightTheme,
   };
 });
+jest.mock("@shared/lib/supabase", () => ({
+  createBrowserClient: jest.fn(),
+  createServerClient: jest.fn(),
+  updateSession: jest.fn(),
+}));
+
 jest.mock("@shared/ui/Dividers", () => ({
+  Divider: () => <div>Divider</div>,
   VerticalDivider: () => <div>VerticalDivider</div>,
 }));
 jest.mock("@shared/ui/Icons", () => ({
   AppIcon: ({ icon }: { icon: string }) => <span>{icon}-icon</span>,
+  Logo: ({ name }: { name: string }) => <span>{name}-logo</span>,
 }));

@@ -11,6 +11,8 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 16px 36px;
 
+  border-bottom: 0.5px solid ${({ theme }) => theme.colors.divider};
+
   > a {
     font-size: 24px;
     font-weight: 600;

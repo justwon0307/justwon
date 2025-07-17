@@ -1,5 +1,11 @@
 import About from "../files/about.svg";
+import Admin from "../files/admin.svg";
+import ArrowLeft from "../files/arrow-left.svg";
+import ArrowRight from "../files/arrow-right.svg";
 import Blog from "../files/blog.svg";
+import Login from "../files/login.svg";
+import Logout from "../files/logout.svg";
+import Profile from "../files/profile.svg";
 import Project from "../files/project.svg";
 import Study from "../files/study.svg";
 
@@ -11,7 +17,13 @@ interface Props {
 
 const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   about: About,
+  admin: Admin,
+  "arrow-left": ArrowLeft,
+  "arrow-right": ArrowRight,
   blog: Blog,
+  login: Login,
+  logout: Logout,
+  profile: Profile,
   project: Project,
   study: Study,
 };

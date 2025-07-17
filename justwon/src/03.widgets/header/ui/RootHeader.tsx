@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AuthTab } from "./_auth";
 import { Container, Divider, Tabs } from "./styles";
 import { AppIcon } from "@shared/ui/Icons";
 
@@ -20,11 +21,12 @@ export function RootHeader() {
           <AppIcon icon="study" size={18} color="#123456" />
           Study
         </Link>
-        <Divider />
         <Link href="/about">
           <AppIcon icon="about" size={18} color="#123456" />
           About
         </Link>
+        <Divider />
+        <AuthTab />
       </Tabs>
     </Container>
   );
