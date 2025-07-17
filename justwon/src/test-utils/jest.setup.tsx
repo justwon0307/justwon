@@ -7,6 +7,7 @@ jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
   usePathname: jest.fn(() => "/"),
   useRouter: jest.fn(() => ({
+    push: jest.fn(),
     refresh: jest.fn(),
     replace: jest.fn(),
   })),
@@ -25,8 +26,8 @@ jest.mock("@shared/lib/auth", () => {
     sampleUser,
     useAuth: jest.fn(() => ({
       user: null,
-      isAuthenticated: false,
-      login: jest.fn(),
+      loading: false,
+      refresh: jest.fn(),
       logout: jest.fn(),
     })),
   };

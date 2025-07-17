@@ -22,7 +22,7 @@ export function LoginPage() {
   const hasMountedRef = useRef(false);
 
   useEffect(() => {
-    setReturnTo(searchParams.get("returnTo") || document.referrer || "/");
+    setReturnTo(searchParams.get("returnTo") ?? "/");
   }, [searchParams]);
 
   useEffect(() => {

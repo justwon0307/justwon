@@ -62,7 +62,6 @@ describe("LoginPage: admin login", () => {
     fireEvent.click(getByTestId("submit"));
 
     await waitFor(() => {
-      expect(mockUseRouter().refresh).toHaveBeenCalledTimes(1);
       expect(mockUseRouter().replace).toHaveBeenCalledWith("/");
     });
   });
@@ -89,7 +88,6 @@ describe("LoginPage: admin login", () => {
     fireEvent.click(getByTestId("submit"));
 
     await waitFor(() => {
-      expect(mockUseRouter().refresh).toHaveBeenCalledTimes(1);
       expect(mockUseRouter().replace).toHaveBeenCalledWith("/blog");
     });
   });
