@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { metadata } from "@app/metadata";
-import { AuthProvider, StylesProvider } from "@app/providers";
+import { AuthProvider, ClerkProvider, StylesProvider } from "@app/providers";
 import { RootHeader } from "@widgets/header";
 
 const geistSans = Geist({
@@ -16,8 +16,6 @@ const geistMono = Geist_Mono({
 
 export { metadata };
 
-export const dynamic = "auto";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,12 +26,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <StylesProvider>
-            <RootHeader />
-            {children}
-          </StylesProvider>
-        </AuthProvider>
+        <ClerkProvider>
+          <AuthProvider>
+            <StylesProvider>
+              <RootHeader />
+              {children}
+            </StylesProvider>
+          </AuthProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

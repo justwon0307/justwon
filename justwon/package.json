@@ -7,17 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cy": "cypress open",
     "test": "jest --watchAll"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.50.5",
+    "@clerk/nextjs": "^6.25.4",
     "client-only": "^0.0.1",
-    "motion": "^12.23.3",
-    "next": "15.3.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "15.4.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "server-only": "^0.0.1",
     "styled-components": "^6.1.19"
   },
@@ -32,11 +29,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "cypress": "^14.5.1",
     "eslint": "^9",
-    "eslint-config-next": "15.3.5",
-    "jest": "^30.0.4",
-    "jest-environment-jsdom": "^30.0.4",
+    "eslint-config-next": "15.4.3",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }
