@@ -1,12 +1,8 @@
-import { UserType } from "./types";
+import { UserProfileType } from "./types";
 
-export const sampleUser: UserType = {
+export const sampleUser: UserProfileType = {
   id: "user123",
-  user_metadata: {
-    avatar_url: "/avatar.png",
-    full_name: "John Doe",
-  },
-  app_metadata: {},
-  aud: "authenticated",
-  created_at: "2025-01-01T00:00:00Z",
+  username: "john_doe",
+  role: "member",
+  avatar_url: "https://example.com/avatar.jpg",
 };

@@ -2,10 +2,10 @@
 
 import { createContext, useContext } from "react";
 
-import { UserType } from "../models/types";
+import { UserProfileType } from "../models/types";
 
 export interface AuthContextType {
-  user: UserType | null;
+  user: UserProfileType | null;
   loading: boolean;
   logout: () => Promise<void>;
   refresh: () => void;
