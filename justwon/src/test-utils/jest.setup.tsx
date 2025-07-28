@@ -49,11 +49,6 @@ jest.mock("@shared/lib/colors", () => {
     darkTheme: lightTheme,
   };
 });
-jest.mock("@shared/lib/supabase", () => ({
-  createBrowserClient: jest.fn(),
-  createServerClient: jest.fn(),
-  updateSession: jest.fn(),
-}));
 
 jest.mock("@shared/ui/Dividers", () => ({
   Divider: () => <div>Divider</div>,
