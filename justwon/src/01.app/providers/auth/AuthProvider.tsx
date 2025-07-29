@@ -1,51 +1,37 @@
 "use client";
 
 import "client-only";
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
+import { useUser } from "@clerk/nextjs";
 
 import { AuthContext, AuthContextType, UserType } from "@shared/lib/auth";
-import { createBrowserClient } from "@shared/lib/supabase";
+
+/**
+ * Clerk에서 제공하는 User 중, 해당 앱에 필요한 정보만 추출하여 제공하는 Wrapper Provider.
+ */
 
 export function AuthProvider({ children }: Readonly<{ children: ReactNode }>) {
   const [user, setUser] = useState<UserType | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [refreshCount, setRefreshCount] = useState<number>(0);
+
+  const { user: clerkUser } = useUser();
 
   useEffect(() => {
-    setLoading(true);
-    const supabase = createBrowserClient();
-
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
-      setLoading(false);
-    });
-
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
-    return () => listener.subscription.unsubscribe();
-  }, [refreshCount]);
-
-  const logout = useCallback(async () => {
-    const supabase = createBrowserClient();
-    await supabase.auth.signOut();
-    setUser(null);
-  }, []);
-
-  const refreshState = useCallback(() => {
-    setRefreshCount((prev) => prev + 1);
-  }, []);
+    if (clerkUser) {
+      setUser({
+        id: clerkUser.id,
+        username: clerkUser.username || "",
+        is_admin: clerkUser.publicMetadata?.role === "admin" || false,
+      });
+    } else {
+      setUser(null);
+    }
+  }, [clerkUser]);
 
   const value = useMemo<AuthContextType>(
     () => ({
       user,
-      loading,
-      logout,
-      refresh: refreshState,
     }),
-    [user, loading, logout, refreshState]
+    [user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

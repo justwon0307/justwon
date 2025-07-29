@@ -1,82 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fireEvent, waitFor } from "@testing-library/react";
-import { Session } from "@supabase/supabase-js";
+import * as Clerk from "@clerk/nextjs";
 
 import { AuthProvider } from "@app/providers";
 import { sampleUser, useAuth } from "@shared/lib/auth";
-import * as Supabase from "@shared/lib/supabase";
 import { renderWithProviders } from "@test-utils/renderer";
 
 jest.unmock("@shared/lib/auth");
 
 const MockComponent = () => {
-  const { user, logout, refresh } = useAuth();
+  const { user } = useAuth();
 
-  return (
-    <div>
-      {user ? `User: ${user.id}` : "No user logged in"}
-      <button onClick={logout}>Logout</button>
-      <button onClick={refresh}>Refresh</button>
-    </div>
-  );
+  return <div>{user ? `User: ${user.id}` : "No user logged in"}</div>;
 };
 
 describe("AuthProvider", () => {
-  let stateChangeHandler: (
-    event: string,
-    session: Session | null
-  ) => void = () => {};
-
-  it("handles no initial auth session and login", async () => {
-    jest.spyOn(Supabase, "createBrowserClient").mockReturnValue({
-      auth: {
-        getUser: jest.fn().mockResolvedValue({ data: { user: null } }),
-        onAuthStateChange: jest.fn((handler) => {
-          stateChangeHandler = handler;
-          return { data: { subscription: { unsubscribe: jest.fn() } } };
-        }),
-      },
-    } as any);
+  it("handles no user correctly", () => {
+    jest
+      .spyOn(Clerk, "useUser")
+      .mockReturnValue({ user: null, isLoaded: true, isSignedIn: false });
 
     const { getByText } = renderWithProviders(
       <AuthProvider>
         <MockComponent />
       </AuthProvider>
     );
-
-    await waitFor(() => {
-      expect(getByText("No user logged in")).toBeInTheDocument();
-    });
-
-    waitFor(() => {
-      stateChangeHandler("SIGNED_IN", { user: sampleUser } as Session);
-    });
-
-    await waitFor(() => {
-      expect(getByText(`User: ${sampleUser.id}`)).toBeInTheDocument();
-    });
-
-    fireEvent.click(getByText("Refresh"));
-
-    waitFor(() => {
-      stateChangeHandler("SIGNED_IN", { user: sampleUser } as Session);
-    });
+    expect(getByText("No user logged in")).toBeInTheDocument();
   });
 
-  it("handles initial auth session and logout", async () => {
-    const mockUser = {
-      id: "user123",
-      user_metadata: { avatar_url: "/avatar.png" },
-    };
-
-    jest.spyOn(Supabase, "createBrowserClient").mockReturnValue({
-      auth: {
-        getUser: jest.fn().mockResolvedValue({ data: { user: mockUser } }),
-        onAuthStateChange: jest.fn().mockReturnValue({
-          data: { subscription: { unsubscribe: jest.fn() } },
-        }),
-        signOut: jest.fn().mockResolvedValue({ error: null }),
-      },
+  it("handles authenticated user (admin) correctly", () => {
+    jest.spyOn(Clerk, "useUser").mockReturnValue({
+      user: { id: sampleUser.id, publicMetadata: { role: "admin" } },
     } as any);
 
     const { getByText } = renderWithProviders(
@@ -84,20 +37,19 @@ describe("AuthProvider", () => {
         <MockComponent />
       </AuthProvider>
     );
+    expect(getByText(`User: ${sampleUser.id}`)).toBeInTheDocument();
+  });
 
-    await waitFor(() => {
-      expect(getByText(`User: ${mockUser.id}`)).toBeInTheDocument();
-    });
+  it("handles authenticated user (non-admin) correctly", () => {
+    jest.spyOn(Clerk, "useUser").mockReturnValue({
+      user: { id: sampleUser.id, publicMetadata: { role: "member" } },
+    } as any);
 
-    const logoutButton = getByText("Logout");
-    logoutButton.click();
-
-    waitFor(() => {
-      stateChangeHandler("SIGNED_OUT", null);
-    });
-
-    await waitFor(() => {
-      expect(getByText("No user logged in")).toBeInTheDocument();
-    });
+    const { getByText } = renderWithProviders(
+      <AuthProvider>
+        <MockComponent />
+      </AuthProvider>
+    );
+    expect(getByText(`User: ${sampleUser.id}`)).toBeInTheDocument();
   });
 });
