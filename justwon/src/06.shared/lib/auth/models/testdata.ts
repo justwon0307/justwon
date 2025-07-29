@@ -1,8 +1,7 @@
-import { UserProfileType } from "./types";
+import { UserType } from "./types";
 
-export const sampleUser: UserProfileType = {
+export const sampleUser: UserType = {
   id: "user123",
   username: "john_doe",
-  role: "member",
-  avatar_url: "https://example.com/avatar.jpg",
+  is_admin: false,
 };

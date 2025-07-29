@@ -1,6 +1,5 @@
-export type UserProfileType = {
+export type UserType = {
   id: string;
   username: string;
-  role: "admin" | "member";
-  avatar_url?: string;
+  is_admin: boolean;
 };
