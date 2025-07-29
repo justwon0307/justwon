@@ -53,13 +53,15 @@ jobs:
         run: yarn install --dev
 
       - name: Run tests and collect coverage
-        run: yarn test --coverage --watchAll=false
+        run: |
+          yarn test --coverage --watchAll=false
+          cp coverage/lcov.info coverage.lcov
 
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report-nextjs
-          path: justwon/coverage/lcov.info
+          path: justwon/coverage.lcov
 
       - name: Run linter
         run: yarn lint --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif
@@ -133,13 +135,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage-report-nextjs
-          path: justwon/coverage
+          path: ./justwon
 
       - name: Download coverage artifact (Django)
         uses: actions/download-artifact@v4
         with:
           name: coverage-report-django
-          path: justwon_server/coverage
+          path: ./justwon_server
 
       - name: Merge coverage reports
         run: |
