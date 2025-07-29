@@ -34,6 +34,12 @@ jobs:
     defaults:
       run:
         working-directory: justwon_server
+    env:
+      SECRET_KEY: "test"
+      TAILSCALE_IP: "test"
+      CLERK_SECRET_KEY: "test"
+      CLERK_ISSUER: "test"
+      CLERK_JWKS_URL: "test"
 
     steps:
       - name: Checkout code
