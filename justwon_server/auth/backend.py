@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import BaseBackend
 from rest_framework.authentication import BaseAuthentication
 
-AUTHROZED_PARTIES = settings.CORS_ALLOWED_ORIGINS
+AUTHORIZED_PARTIES = settings.CORS_ALLOWED_ORIGINS
 
 UserModel = get_user_model()
 
@@ -24,7 +24,7 @@ class JWTAuthBackend(BaseBackend):
                 request,
                 AuthenticateRequestOptions(
                     secret_key=settings.CLERK_SECRET_KEY,
-                    authorized_parties=AUTHROZED_PARTIES,
+                    authorized_parties=AUTHORIZED_PARTIES,
                 ),
             )
 
@@ -32,21 +32,17 @@ class JWTAuthBackend(BaseBackend):
                 request.error_message = request_state.message
                 return None
 
-            print(request_state.payload)
-
-            user = UserModel.objects.get_or_create(
+            (user, _) = UserModel.objects.get_or_create(
                 username=request_state.payload["sub"],
                 defaults={
                     "email": request_state.payload.get("email", ""),
                     "first_name": request_state.payload.get("firstName", ""),
                     "last_name": request_state.payload.get("lastName", ""),
                 },
-            )[0]
-
-            print(user)
+            )
 
             return user
-        except Exception as e:
+        except Exception as e:  ## pylint: disable=W0718
             request.error_message = str(e)
             return None
 
@@ -57,7 +53,7 @@ class JWTAuthBackend(BaseBackend):
             return None
 
 
-class JWTAuthenticationMiddleware(BaseAuthentication):
+class JWTAuthentication(BaseAuthentication):
     """
     JWT 인증을 위한 커스텀 인증 미들웨어.
     이 미들웨어는 요청 헤더에서 JWT 토큰을 추출하고, 이를 사용하여 사용자를 인증합니다.
