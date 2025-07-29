@@ -14,6 +14,12 @@ jest.mock("next/navigation", () => ({
   useSearchParams: jest.fn(() => new URLSearchParams()),
   useServerInsertedHTML: jest.fn(),
 }));
+jest.mock("@clerk/nextjs", () => ({
+  ClerkProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  SignIn: ({ path }: { path: string }) => <div>SignIn at {path}</div>,
+  SignUp: ({ path }: { path: string }) => <div>SignUp at {path}</div>,
+  UserButton: () => <div data-testid="user-button">User Button</div>,
+}));
 
 jest.mock("@shared/lib/auth", () => {
   const { AuthContext, AuthContextType, UserType, sampleUser } =
@@ -26,9 +32,6 @@ jest.mock("@shared/lib/auth", () => {
     sampleUser,
     useAuth: jest.fn(() => ({
       user: null,
-      loading: false,
-      refresh: jest.fn(),
-      logout: jest.fn(),
     })),
   };
 });
