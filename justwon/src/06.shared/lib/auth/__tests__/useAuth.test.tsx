@@ -15,8 +15,6 @@ const MockProvider = ({ children }: { children: React.ReactNode }) => {
   const contextValue = useMemo(
     () => ({
       user: null,
-      loading: false,
-      logout: jest.fn(),
     }),
     []
   );

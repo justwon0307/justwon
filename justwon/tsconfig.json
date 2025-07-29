@@ -26,8 +26,8 @@
       "@entities/*": ["./src/05.entities/*"],
       "@shared/*": ["./src/06.shared/*"],
       "@test-utils/*": ["./src/test-utils/*"],
-    },
+    }
   },
   "include": ["svgr.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "cypress.config.ts", "cypress"],
+  "exclude": ["node_modules"]
 }

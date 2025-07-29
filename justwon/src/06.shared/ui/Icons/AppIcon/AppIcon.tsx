@@ -6,7 +6,7 @@ import Blog from "../files/blog.svg";
 import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
 import Profile from "../files/profile.svg";
-import Project from "../files/project.svg";
+import Projects from "../files/projects.svg";
 import Study from "../files/study.svg";
 
 interface Props {
@@ -24,7 +24,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   login: Login,
   logout: Logout,
   profile: Profile,
-  project: Project,
+  projects: Projects,
   study: Study,
 };
 
@@ -39,5 +39,5 @@ export function AppIcon({
     return null;
   }
 
-  return <IconComponent width={size} height={size} fill={color} />;
+  return <IconComponent width={size} height={size} color={color} />;
 }

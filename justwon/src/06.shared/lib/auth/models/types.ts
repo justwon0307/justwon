@@ -1,1 +1,5 @@
-export type { User as UserType } from "@supabase/supabase-js";
+export type UserType = {
+  id: string;
+  username: string;
+  is_admin: boolean;
+};
