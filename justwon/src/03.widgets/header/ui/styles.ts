@@ -9,11 +9,11 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 36px;
+  padding: 12px 36px;
 
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.divider};
 
-  > a {
+  .title {
     font-size: 24px;
     font-weight: 600;
   }
@@ -22,14 +22,29 @@ export const Container = styled.div`
 export const Tabs = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 16px;
 
   > a {
     display: flex;
     align-items: center;
+    padding: 8px 12px;
     gap: 4px;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
+    color: ${({ theme }) => theme.colors.gray700};
+  }
+
+  > a.active {
+    background-color: ${({ theme }) => theme.colors.gray200};
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
+  .user-button {
+    display: flex;
+    align-items: center;
+    padding: 0 4px 0 12px;
+    cursor: pointer;
   }
 `;
 
