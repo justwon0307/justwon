@@ -58,7 +58,7 @@ jobs:
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-report
+          name: coverage-report-nextjs
           path: justwon/coverage/lcov.info
 
       - name: Run linter
@@ -109,7 +109,7 @@ jobs:
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-report
+          name: coverage-report-django
           path: justwon_server/coverage.lcov
 
       - name: Run linters
@@ -132,13 +132,13 @@ jobs:
       - name: Download coverage artifact (Next.js)
         uses: actions/download-artifact@v4
         with:
-          name: coverage-report
+          name: coverage-report-nextjs
           path: justwon/coverage
 
       - name: Download coverage artifact (Django)
         uses: actions/download-artifact@v4
         with:
-          name: coverage-report
+          name: coverage-report-django
           path: justwon_server/coverage
 
       - name: Merge coverage reports
