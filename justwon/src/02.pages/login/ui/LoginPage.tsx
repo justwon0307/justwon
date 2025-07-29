@@ -1,7 +1,13 @@
+"use client";
+
+import { SignIn } from "@clerk/nextjs";
+
+import { Container } from "./styles";
+
 export function LoginPage() {
   return (
-    <div>
-      <div />
-    </div>
+    <Container>
+      <SignIn path="/login" />
+    </Container>
   );
 }
