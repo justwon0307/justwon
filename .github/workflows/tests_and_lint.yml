@@ -108,11 +108,17 @@ jobs:
           pipenv run coverage xml
           sed -i "s|<source></source>|<source>sweepserver</source>|g" coverage.xml
 
-      - name: Upload coverage artifact
+      - name: Upload coverage artifact (lcov)
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report-django
           path: justwon_server/coverage.lcov
+
+      - name: Upload coverage artifact (xml)
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-django-xml
+          path: justwon_server/coverage.xml
 
       - name: Run linters
         run: pipenv run sh -c 'DJANGO_SETTINGS_MODULE=justwon.settings.dev pylint --load-plugins pylint_django --rcfile=.pylintrc .'
@@ -137,10 +143,16 @@ jobs:
           name: coverage-report-nextjs
           path: ./justwon
 
-      - name: Download coverage artifact (Django)
+      - name: Download coverage artifact (Django-lcov)
         uses: actions/download-artifact@v4
         with:
           name: coverage-report-django
+          path: ./justwon_server
+
+      - name: Download coverage artifact (Django-xml)
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-report-django-xml
           path: ./justwon_server
 
       - name: Merge coverage reports
