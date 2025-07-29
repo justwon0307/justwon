@@ -158,7 +158,7 @@ jobs:
       - name: Merge coverage reports
         run: |
           npx lcov-result-merger "*/coverage.lcov" coverage.lcov \
-          --prepend-source-files --prepent-path-fix "."
+          --prepend-source-files --prepend-path-fix "."
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
