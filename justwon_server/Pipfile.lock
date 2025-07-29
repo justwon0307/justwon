@@ -124,12 +124,12 @@
         },
         "clerk-backend-api": {
             "hashes": [
-                "sha256:12b7c068b70c9718c33f296740c63731fd468ba6424327387fda9b34aa783597",
-                "sha256:97048b15e8f00a09f17203d4500df0e09c325cb3c86a337089a313c9e3f9cd0a"
+                "sha256:d6ab0e7fe4613b3f8a6a64d6008822438d89a8b52416afa6a27f40c4f65d36da",
+                "sha256:fac4fb830b2ed9994d942e1cd622fb9e1ce2753601bebac0b137f2e11f5aeda7"
             ],
             "index": "pypi",
             "markers": "python_full_version >= '3.9.2'",
-            "version": "==3.1.1"
+            "version": "==3.1.5"
         },
         "cryptography": {
             "hashes": [

@@ -99,11 +99,17 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-## Authentication settings
-AUTHENTICATION_BACKENDS = [
-    "auth.backend.JWTAuthBackend",
-    "django.contrib.auth.backends.ModelBackend",
-]
+## Rest Framework settings
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "auth.backend.JWTAuthenticationMiddleware",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+}
+
 
 ## Clerk settings
 CLERK_SECRET_KEY = config("CLERK_SECRET_KEY")
+CLERK_ISSUER = config("CLERK_ISSUER")
+CLERK_JWKS_URL = config("CLERK_JWKS_URL")
