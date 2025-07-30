@@ -8,7 +8,7 @@ import { useColors } from "@shared/lib/colors";
 import { AppIcon } from "@shared/ui/Icons";
 
 interface Props {
-  tab: "projects" | "blog" | "study" | "about";
+  tab: "projects" | "blog" | "learning" | "about";
 }
 
 export function Tab({ tab }: Readonly<Props>) {

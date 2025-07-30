@@ -3,11 +3,11 @@ import Admin from "../files/admin.svg";
 import ArrowLeft from "../files/arrow-left.svg";
 import ArrowRight from "../files/arrow-right.svg";
 import Blog from "../files/blog.svg";
+import Learning from "../files/learning.svg";
 import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
 import Profile from "../files/profile.svg";
 import Projects from "../files/projects.svg";
-import Study from "../files/study.svg";
 
 interface Props {
   icon: string;
@@ -25,7 +25,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   logout: Logout,
   profile: Profile,
   projects: Projects,
-  study: Study,
+  learning: Learning,
 };
 
 export function AppIcon({
