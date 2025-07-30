@@ -9,7 +9,7 @@ export function RootHeader() {
   return (
     <Container>
       <Link href="/" className="title">
-      <LogoHorizontal size={32} />
+      <LogoHorizontal size={36} />
       </Link>
       <Tabs>
         <Tab tab="projects" />
