@@ -1,19 +1,20 @@
 import Link from "next/link";
 
 import { AuthTab } from "./_auth";
-import { Container, Divider, Tabs } from "./styles";
 import { Tab } from "./_tab";
+import { Container, Divider, Tabs } from "./styles";
+import { LogoHorizontal } from "@shared/ui/Icons";
 
 export function RootHeader() {
   return (
     <Container>
       <Link href="/" className="title">
-        JustWon
+      <LogoHorizontal size={32} />
       </Link>
       <Tabs>
         <Tab tab="projects" />
         <Tab tab="blog" />
-        <Tab tab="study" />
+        <Tab tab="learning" />
         <Tab tab="about" />
         <Divider />
         <AuthTab />

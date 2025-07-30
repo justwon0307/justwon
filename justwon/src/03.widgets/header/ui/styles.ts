@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 36px;
+  padding: 0 48px 0 64px;
 
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.divider};
 
@@ -22,6 +22,7 @@ export const Container = styled.div`
 export const Tabs = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 12px 0;
   gap: 16px;
 
   > a {
