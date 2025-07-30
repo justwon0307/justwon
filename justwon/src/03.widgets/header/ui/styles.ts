@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 48px 0 64px;
+  padding: 0 48px 0 72px;
 
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.divider};
 
