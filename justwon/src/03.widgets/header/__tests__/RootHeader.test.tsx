@@ -1,46 +1,44 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Navigation from "next/navigation";
+import * as ClerkServer from "@clerk/nextjs/server";
 
 import { RootHeader } from "@widgets/header";
-import * as AuthAPI from "@shared/lib/auth";
-import { renderWithProviders } from "@test-utils/renderer";
+import { renderWithProvidersAsync } from "@test-utils/renderer";
 
+jest.mock("@clerk/nextjs/server", () => ({
+  auth: jest.fn(() => Promise.resolve({ userId: null })),
+}));
 const mockUseSearchParams = Navigation.useSearchParams as jest.Mock;
+const mockAuthAPI = ClerkServer.auth as jest.MockedFunction<
+  typeof ClerkServer.auth
+>;
 
 describe("RootHeader", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockUseSearchParams.mockReturnValue(new URLSearchParams());
-    jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
-      user: null,
-    });
   });
 
-  it("should render the header with links (unauthorized)", () => {
-    const { getByText } = renderWithProviders(<RootHeader />);
+  it("should render the header with links (unauthorized)", async () => {
+    const mockUsePathname = Navigation.usePathname as jest.Mock;
+    mockUsePathname.mockReturnValue("/projects");
 
-    expect(getByText("JustWon")).toBeInTheDocument();
+    const { getByText } = await renderWithProvidersAsync(() => RootHeader());
+
+    expect(getByText("main-logo-horizontal")).toBeInTheDocument();
     expect(getByText("Projects")).toBeInTheDocument();
     expect(getByText("Blog")).toBeInTheDocument();
-    expect(getByText("Study")).toBeInTheDocument();
+    expect(getByText("Learning")).toBeInTheDocument();
     expect(getByText("About")).toBeInTheDocument();
 
     expect(getByText("login-icon")).toBeInTheDocument(); // mocked icon
   });
 
-  it("should render user profile when authenticated", () => {
-    jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
-      user: AuthAPI.sampleUser,
-    });
+  it("should render user profile when authenticated", async () => {
+    mockAuthAPI.mockResolvedValue({ userId: "test-user-id" } as any);
 
-    const { getByTestId } = renderWithProviders(<RootHeader />);
+    const { getByTestId } = await renderWithProvidersAsync(() => RootHeader());
 
     expect(getByTestId("user-button")).toBeInTheDocument();
-  });
-
-  it("should render active tab correctly", () => {
-    const mockUsePathname = Navigation.usePathname as jest.Mock;
-    mockUsePathname.mockReturnValue("/projects");
-
-    renderWithProviders(<RootHeader />);
   });
 });
