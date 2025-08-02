@@ -65,3 +65,13 @@ jest.mock("@shared/ui/Icons", () => ({
   Logo: () => <span>main-logo</span>,
   LogoHorizontal: () => <span>main-logo-horizontal</span>,
 }));
+jest.mock("@shared/ui/Icons", () => ({
+  AppIcon: ({ icon }: { icon: string }) => <span>{icon}-icon</span>,
+  Logo: () => <span>main-logo</span>,
+  LogoHorizontal: () => <span>main-logo-horizontal</span>,
+}));
+jest.mock("@shared/ui/Sidebar", () => ({
+  ExpandableSidebarItem: jest.fn(({ children }) => <div>{children}</div>),
+  SidebarContainer: jest.fn(({ children }) => <div>{children}</div>),
+  SidebarTitle: jest.fn(({ children }) => <h2>{children}</h2>),
+}));
