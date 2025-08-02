@@ -3,6 +3,10 @@ import Admin from "../files/admin.svg";
 import ArrowLeft from "../files/arrow-left.svg";
 import ArrowRight from "../files/arrow-right.svg";
 import Blog from "../files/blog.svg";
+import ChevronDown from "../files/chevron-down.svg";
+import ChevronLeft from "../files/chevron-left.svg";
+import ChevronRight from "../files/chevron-right.svg";
+import ChevronUp from "../files/chevron-up.svg";
 import Learning from "../files/learning.svg";
 import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
@@ -21,6 +25,10 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
   blog: Blog,
+  "chevron-down": ChevronDown,
+  "chevron-left": ChevronLeft,
+  "chevron-right": ChevronRight,
+  "chevron-up": ChevronUp,
   login: Login,
   logout: Logout,
   profile: Profile,
