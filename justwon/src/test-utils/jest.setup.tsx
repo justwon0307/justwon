@@ -19,25 +19,8 @@ jest.mock("@clerk/nextjs", () => ({
   SignIn: ({ path }: { path: string }) => <div>SignIn at {path}</div>,
   SignUp: ({ path }: { path: string }) => <div>SignUp at {path}</div>,
   UserButton: () => <div data-testid="user-button">User Button</div>,
-  useUser: jest.fn(() => ({
-    user: null,
-  })),
 }));
 
-jest.mock("@shared/lib/auth", () => {
-  const { AuthContext, AuthContextType, UserType, sampleUser } =
-    jest.requireActual("@shared/lib/auth");
-
-  return {
-    AuthContext,
-    AuthContextType,
-    UserType,
-    sampleUser,
-    useAuth: jest.fn(() => ({
-      user: null,
-    })),
-  };
-});
 jest.mock("@shared/lib/colors", () => {
   const { ColorContext, ColorContextType, ThemeColorType, lightTheme } =
     jest.requireActual("@shared/lib/colors");
