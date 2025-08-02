@@ -1,6 +1,6 @@
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { metadata } from "@app/metadata";
 import { ClerkProvider, StylesProvider } from "@app/providers";
 import { RootHeader } from "@widgets/header";
 
@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export { metadata };
+export const metadata: Metadata = {
+  title: "JustWon",
+  description: "",
+};
 
 export default function RootLayout({
   children,
