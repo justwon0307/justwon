@@ -1,3 +1,5 @@
+import { Container } from "./styles";
+
 /**
  * 랜딩페이지.
  * - 간단한 인삿말
@@ -5,8 +7,6 @@
  * - Hot Posts
  * - Ads (수익 창출용)
  */
-
-import { Container } from "./styles";
 
 export function HomePage() {
   return (
