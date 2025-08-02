@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { metadata } from "@app/metadata";
-import { AuthProvider, ClerkProvider, StylesProvider } from "@app/providers";
+import { ClerkProvider, StylesProvider } from "@app/providers";
 import { RootHeader } from "@widgets/header";
 
 const geistSans = Geist({
@@ -27,12 +27,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClerkProvider>
-          <AuthProvider>
-            <StylesProvider>
-              <RootHeader />
-              {children}
-            </StylesProvider>
-          </AuthProvider>
+          <StylesProvider>
+            <RootHeader />
+            {children}
+          </StylesProvider>
         </ClerkProvider>
       </body>
     </html>
