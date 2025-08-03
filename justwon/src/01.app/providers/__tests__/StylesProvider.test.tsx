@@ -11,11 +11,12 @@ jest.mock("next/navigation", () => ({
 }));
 
 const MockComponent = () => {
-  const { toggleTheme } = useColors();
+  const { isDarkMode, toggleTheme } = useColors();
 
   return (
     <div>
       <button onClick={toggleTheme}>Toggle Theme</button>
+      <p>Current mode: {isDarkMode ? "Dark" : "Light"}</p>
     </div>
   );
 };
@@ -37,8 +38,12 @@ describe("StylesProvider", () => {
       </StylesProvider>
     );
 
+    expect(getByText("Current mode: Light")).toBeInTheDocument();
+
     const button = getByText("Toggle Theme");
 
     fireEvent.click(button);
+
+    expect(getByText("Current mode: Dark")).toBeInTheDocument();
   });
 });
