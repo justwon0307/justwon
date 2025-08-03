@@ -20,17 +20,17 @@ interface Props {
 export function ExpandableSidebarItem({
   title,
   children,
-  isActive,
+  isActive = false,
   icon,
 }: Readonly<Props>) {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(isActive);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <SidebarItemContainer className={isActive ? "active" : ""}>
+    <SidebarItemContainer>
       <ItemMenuWrapper onClick={toggleExpand} data-testid="toggle">
         <span>
           {icon && <AppIcon icon={icon} size={16} />}
@@ -109,11 +109,10 @@ const slideUp = keyframes`
 `;
 
 const SidebarItemContent = styled.div`
-  display: flex;
   flex-direction: column;
   margin: 8px;
-  padding: 12px 0 12px 12px;
-  gap: 12px;
+  padding: 4px 0 0 4px;
+  gap: 4px;
 
   color: ${({ theme }) => theme.colors.textSecondary};
   font-size: 0.925rem;
@@ -124,10 +123,12 @@ const SidebarItemContent = styled.div`
   overflow: hidden;
 
   &.expanded {
+    display: flex;
     animation: ${slideDown} 0.5s ease forwards;
   }
 
   &:not(.expanded) {
-    animation: ${slideUp} 0.25s ease forwards;
+    display: none;
+    animation: ${slideUp} 0.2s ease forwards;
   }
 `;

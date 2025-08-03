@@ -1,2 +1,6 @@
 export { ExpandableSidebarItem } from "./ui/ExpandableSidebarItem";
-export { SidebarContainer, SidebarTitle } from "./ui/styles";
+export {
+  SidebarContainer,
+  SidebarErrorWrapper,
+  SidebarTitle,
+} from "./ui/styles";
