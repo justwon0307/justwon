@@ -1,3 +1,7 @@
+"use client";
+
+import { useColors } from "@shared/lib/colors";
+
 import About from "../files/about.svg";
 import Admin from "../files/admin.svg";
 import ArrowLeft from "../files/arrow-left.svg";
@@ -36,16 +40,16 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   learning: Learning,
 };
 
-export function AppIcon({
-  icon,
-  size = 24,
-  color = "currentColor",
-}: Readonly<Props>) {
+export function AppIcon({ icon, size = 24, color }: Readonly<Props>) {
+  const { colors } = useColors();
+
   const IconComponent = iconMap[icon];
 
   if (!IconComponent) {
     return null;
   }
 
-  return <IconComponent width={size} height={size} color={color} />;
+  const iconColor = color ?? colors.gray700;
+
+  return <IconComponent width={size} height={size} color={iconColor} />;
 }
