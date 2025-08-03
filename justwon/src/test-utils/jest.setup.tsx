@@ -1,5 +1,7 @@
 import "@testing-library/jest-dom";
 
+global.fetch = jest.fn();
+
 jest.mock("next/cache", () => ({
   revalidatePath: jest.fn(),
 }));
@@ -15,7 +17,9 @@ jest.mock("next/navigation", () => ({
   useServerInsertedHTML: jest.fn(),
 }));
 jest.mock("@clerk/nextjs", () => ({
-  ClerkProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  ClerkProvider: ({ children }: { children: React.ReactNode }) => (
+    <div>{children}</div>
+  ),
   SignIn: ({ path }: { path: string }) => <div>SignIn at {path}</div>,
   SignUp: ({ path }: { path: string }) => <div>SignUp at {path}</div>,
   UserButton: () => <div data-testid="user-button">User Button</div>,
@@ -54,7 +58,16 @@ jest.mock("@shared/ui/Icons", () => ({
   LogoHorizontal: () => <span>main-logo-horizontal</span>,
 }));
 jest.mock("@shared/ui/Sidebar", () => ({
-  ExpandableSidebarItem: jest.fn(({ children }) => <div>{children}</div>),
-  SidebarContainer: jest.fn(({ children }) => <div>{children}</div>),
-  SidebarTitle: jest.fn(({ children }) => <h2>{children}</h2>),
+  ExpandableSidebarItem: ({ children }: { children: React.ReactNode }) => (
+    <div>{children}</div>
+  ),
+  SidebarContainer: ({ children }: { children: React.ReactNode }) => (
+    <div>{children}</div>
+  ),
+  SidebarErrorWrapper: ({ children }: { children: React.ReactNode }) => (
+    <div className="sidebar-error">{children}</div>
+  ),
+  SidebarTitle: ({ children }: { children: React.ReactNode }) => (
+    <h2>{children}</h2>
+  ),
 }));
