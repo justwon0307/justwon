@@ -1,7 +1,7 @@
 from django.db import models
 
-from .categories import Category
 from core.models import BasePost
+from .categories import Category
 
 
 class Post(BasePost):
