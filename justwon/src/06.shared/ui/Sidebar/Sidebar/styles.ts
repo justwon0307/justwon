@@ -8,7 +8,12 @@ import styled from "styled-components";
 
 export const SidebarContainer = styled.div`
   width: 240px;
+  padding: 0 16px 0 2.5%;
   overflow-y: auto;
+
+  @media (min-width: 1720px) {
+    width: 280px;
+  }
 `;
 
 /**

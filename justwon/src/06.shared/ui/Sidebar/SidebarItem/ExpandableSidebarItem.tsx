@@ -30,7 +30,7 @@ export function ExpandableSidebarItem({
   };
 
   return (
-    <SidebarItemContainer>
+    <div>
       <ItemMenuWrapper onClick={toggleExpand} data-testid="toggle">
         <span>
           {icon && <AppIcon icon={icon} size={16} />}
@@ -43,13 +43,9 @@ export function ExpandableSidebarItem({
       <SidebarItemContent className={isExpanded ? "expanded" : ""}>
         {children}
       </SidebarItemContent>
-    </SidebarItemContainer>
+    </div>
   );
 }
-
-const SidebarItemContainer = styled.div`
-  padding: 8px 16px 8px 0;
-`;
 
 const ItemMenuWrapper = styled.div`
   display: flex;

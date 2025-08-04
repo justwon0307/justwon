@@ -64,6 +64,9 @@ jest.mock("@shared/ui/Sidebar", () => ({
   ExpandableSidebarItem: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
+  SidebarItemContainer: ({ children }: { children: React.ReactNode }) => (
+    <div className="sidebar-item-container">{children}</div>
+  ),
   SidebarContainer: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
