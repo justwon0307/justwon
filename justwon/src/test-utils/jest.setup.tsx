@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "@testing-library/jest-dom";
 
 global.fetch = jest.fn();
@@ -43,6 +44,20 @@ jest.mock("@shared/lib/colors", () => {
   };
 });
 
+jest.mock("@shared/ui/Breadcrumb", () => {
+  const { BreadcrumbItemType } = jest.requireActual("@shared/ui/Breadcrumb");
+
+  return {
+    Breadcrumb: ({ items }: { items: any[] }) => (
+      <div>
+        {items.map((item) => (
+          <span key={item.key}>{item.label}</span>
+        ))}
+      </div>
+    ),
+    BreadcrumbItemType: BreadcrumbItemType,
+  };
+});
 jest.mock("@shared/ui/Dividers", () => ({
   Divider: () => <div>Divider</div>,
   VerticalDivider: () => <div>VerticalDivider</div>,
