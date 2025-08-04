@@ -2,7 +2,10 @@ import {
   LearningCategoryButton,
   LearningCategoryGroupType,
 } from "@entities/learning";
-import { ExpandableSidebarItem } from "@shared/ui/Sidebar";
+import {
+  ExpandableSidebarItem,
+  SidebarItemContainer,
+} from "@shared/ui/Sidebar";
 
 interface Props {
   groups: LearningCategoryGroupType[];
@@ -10,7 +13,7 @@ interface Props {
 
 export function CategoryGroupSidebar({ groups }: Readonly<Props>) {
   return (
-    <>
+    <SidebarItemContainer>
       {groups.map((group) => (
         <ExpandableSidebarItem title={group.name} key={group.id}>
           {group.categories.map((category) => (
@@ -18,6 +21,6 @@ export function CategoryGroupSidebar({ groups }: Readonly<Props>) {
           ))}
         </ExpandableSidebarItem>
       ))}
-    </>
+    </SidebarItemContainer>
   );
 }
