@@ -16,6 +16,7 @@ import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
 import Profile from "../files/profile.svg";
 import Projects from "../files/projects.svg";
+import Search from "../files/search.svg";
 
 interface Props {
   icon: string;
@@ -38,6 +39,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   profile: Profile,
   projects: Projects,
   learning: Learning,
+  search: Search,
 };
 
 export function AppIcon({ icon, size = 24, color }: Readonly<Props>) {

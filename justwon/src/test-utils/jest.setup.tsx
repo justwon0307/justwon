@@ -57,6 +57,9 @@ jest.mock("@shared/ui/Icons", () => ({
   Logo: () => <span>main-logo</span>,
   LogoHorizontal: () => <span>main-logo-horizontal</span>,
 }));
+jest.mock("@shared/ui/Searchbar", () => ({
+  SearchButton: () => <button>Search</button>,
+}));
 jest.mock("@shared/ui/Sidebar", () => ({
   ExpandableSidebarItem: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
