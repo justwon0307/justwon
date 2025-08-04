@@ -8,7 +8,6 @@ export const DefaultLayout = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 90vh;
-  padding: 0 2.5%;
 `;
 
 export const ContentWrapper = styled.div`
