@@ -8,7 +8,7 @@ jest.mock("next/cache", () => ({
 }));
 jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
-  usePathname: jest.fn(() => "/"),
+  usePathname: jest.fn().mockReturnValue("/"),
   useRouter: jest.fn(() => ({
     push: jest.fn(),
     refresh: jest.fn(),
@@ -24,6 +24,9 @@ jest.mock("@clerk/nextjs", () => ({
   SignIn: ({ path }: { path: string }) => <div>SignIn at {path}</div>,
   SignUp: ({ path }: { path: string }) => <div>SignUp at {path}</div>,
   UserButton: () => <div data-testid="user-button">User Button</div>,
+  useUser: jest.fn(() => ({
+    user: null,
+  })),
 }));
 
 jest.mock("@shared/lib/colors", () => {
@@ -79,14 +82,14 @@ jest.mock("@shared/ui/Sidebar", () => ({
   ExpandableSidebarItem: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
-  SidebarItemContainer: ({ children }: { children: React.ReactNode }) => (
-    <div className="sidebar-item-container">{children}</div>
-  ),
   SidebarContainer: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
   SidebarErrorWrapper: ({ children }: { children: React.ReactNode }) => (
     <div className="sidebar-error">{children}</div>
+  ),
+  SidebarItemContainer: ({ children }: { children: React.ReactNode }) => (
+    <div className="sidebar-item-container">{children}</div>
   ),
   SidebarTitle: ({ children }: { children: React.ReactNode }) => (
     <h2>{children}</h2>

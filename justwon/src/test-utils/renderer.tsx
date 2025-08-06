@@ -15,11 +15,9 @@ export function renderWithProviders(ui: ReactElement): RenderResult {
   return { ...render(ui, { wrapper: Wrapper }) };
 }
 
-export async function renderWithProvidersAsync<P>(
+export async function getElementFromAsyncServerComponent<P>(
   componentFn: (props: P) => Promise<ReactElement>,
   props: P
-): Promise<RenderResult> {
-  const element = await componentFn(props);
-
-  return renderWithProviders(element);
+): Promise<ReactElement> {
+  return await componentFn(props);
 }
