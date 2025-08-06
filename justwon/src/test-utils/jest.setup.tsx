@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import "@testing-library/jest-dom";
 
 global.fetch = jest.fn();
@@ -51,12 +50,11 @@ jest.mock("@shared/ui/Breadcrumb", () => {
   const { BreadcrumbItemType } = jest.requireActual("@shared/ui/Breadcrumb");
 
   return {
-    Breadcrumb: ({ items }: { items: any[] }) => (
-      <div>
-        {items.map((item) => (
-          <span key={item.key}>{item.label}</span>
-        ))}
-      </div>
+    BreadcrumbContainer: ({ children }: { children: React.ReactNode }) => (
+      <div className="breadcrumb-container">{children}</div>
+    ),
+    BreadcrumbItem: ({ item }: { item: { label: string } }) => (
+      <div className="breadcrumb-item">{item.label}</div>
     ),
     BreadcrumbItemType: BreadcrumbItemType,
   };
@@ -85,9 +83,7 @@ jest.mock("@shared/ui/Sidebar", () => ({
   SidebarContainer: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
-  SidebarErrorWrapper: ({ children }: { children: React.ReactNode }) => (
-    <div className="sidebar-error">{children}</div>
-  ),
+  SidebarDivider: () => <div className="sidebar-divider">Sidebar Divider</div>,
   SidebarItemContainer: ({ children }: { children: React.ReactNode }) => (
     <div className="sidebar-item-container">{children}</div>
   ),
