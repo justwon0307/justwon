@@ -14,6 +14,7 @@ import ChevronUp from "../files/chevron-up.svg";
 import Learning from "../files/learning.svg";
 import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
+import Pencil from "../files/pencil.svg";
 import Profile from "../files/profile.svg";
 import Projects from "../files/projects.svg";
 import Search from "../files/search.svg";
@@ -36,6 +37,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   "chevron-up": ChevronUp,
   login: Login,
   logout: Logout,
+  pencil: Pencil,
   profile: Profile,
   projects: Projects,
   learning: Learning,
