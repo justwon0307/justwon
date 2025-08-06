@@ -3,7 +3,10 @@ import * as Navigation from "next/navigation";
 import * as ClerkServer from "@clerk/nextjs/server";
 
 import { RootHeader } from "@widgets/header";
-import { renderWithProvidersAsync } from "@test-utils/renderer";
+import {
+  getElementFromAsyncServerComponent,
+  renderWithProviders,
+} from "@test-utils/renderer";
 
 jest.mock("@clerk/nextjs/server", () => ({
   auth: jest.fn(() => Promise.resolve({ userId: null })),
@@ -19,11 +22,17 @@ describe("RootHeader", () => {
     mockUseSearchParams.mockReturnValue(new URLSearchParams());
   });
 
+  const render = async () => {
+    const element = await getElementFromAsyncServerComponent(RootHeader, {});
+
+    return renderWithProviders(element);
+  };
+
   it("should render the header with links (unauthorized)", async () => {
     const mockUsePathname = Navigation.usePathname as jest.Mock;
     mockUsePathname.mockReturnValue("/projects");
 
-    const { getByText } = await renderWithProvidersAsync(() => RootHeader());
+    const { getByText } = await render();
 
     expect(getByText("main-logo-horizontal")).toBeInTheDocument();
     expect(getByText("Projects")).toBeInTheDocument();
@@ -37,7 +46,7 @@ describe("RootHeader", () => {
   it("should render user profile when authenticated", async () => {
     mockAuthAPI.mockResolvedValue({ userId: "test-user-id" } as any);
 
-    const { getByTestId } = await renderWithProvidersAsync(() => RootHeader());
+    const { getByTestId } = await render();
 
     expect(getByTestId("user-button")).toBeInTheDocument();
   });
