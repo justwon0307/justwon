@@ -1,3 +1,5 @@
+export { getAllCategories } from "./api/getAllCategories";
+
 export { LearningProvider } from "./contexts/LearningProvider";
 export {
   type LearningContextType,
@@ -9,4 +11,4 @@ export { sampleCategories, sampleCategoryGroups } from "./data/testCategories";
 
 export { type LearningCategoryGroupType } from "./models/categories";
 
-export { LearningCategoryButton } from "./ui/LearningCategoryButton";
+export { LearningCategoryGroupMenu } from "./ui/LearningCategoryGroupMenu";

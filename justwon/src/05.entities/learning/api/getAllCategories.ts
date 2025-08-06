@@ -1,13 +1,13 @@
 import { LearningCategoryGroupType } from "@entities/learning";
 import { BASE_URL } from "@shared/api/config";
-import { APIResponseType } from "@shared/api/models";
+import { APIError, APIResponseType } from "@shared/api/models";
 
 /**
- * Learning 페이지 초기화 함수
+ * Learning 페이지 초기화 함수 (Server에서 실행)
  *   - 카테고리, 태그 등을 불러온다
  */
 
-export async function initializeLearning(): Promise<
+async function fetchCategories(): Promise<
   APIResponseType<LearningCategoryGroupType[]>
 > {
   // 서버에 캐시를 사용한다
@@ -55,4 +55,14 @@ export async function initializeLearning(): Promise<
       status: "ERROR",
     };
   }
+}
+
+export async function getAllCategories() {
+  const result = await fetchCategories();
+
+  if (result.status === "ERROR") {
+    throw new APIError(result.message);
+  }
+
+  return result.data;
 }
