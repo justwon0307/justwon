@@ -1,20 +1,16 @@
-import { Breadcrumb } from "@shared/ui/Breadcrumb";
+import { BreadcrumbItem } from "@shared/ui/Breadcrumb";
 import { renderWithProviders } from "@test-utils/renderer";
 
 jest.unmock("@shared/ui/Breadcrumb");
 
 describe("Breadcrumb", () => {
-  it("renders without crashing", () => {
-    const items = [
-      { label: "Home", href: "/", key: "home" },
-      { label: "Products", href: "/products", key: "products" },
-      {
-        label: "Electronics",
-        href: "/products/electronics",
-        key: "electronics",
-      },
-    ];
+  const item = { label: "Home", href: "/" };
 
-    renderWithProviders(<Breadcrumb items={items} />);
+  it("renders normal item correctly", () => {
+    renderWithProviders(<BreadcrumbItem item={item} />);
+  });
+
+  it("renders last item correctly", () => {
+    renderWithProviders(<BreadcrumbItem item={item} isLastItem />);
   });
 });
