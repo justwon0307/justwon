@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 import { LearningCategoryType } from "../models/categories";
@@ -10,15 +10,21 @@ interface Props {
 }
 
 export function LearningCategoryButton({ category }: Readonly<Props>) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/learning/${category.category_group_slug}/${category.slug}/`);
+  };
+
   return (
-    <Button href={`/learning/?catId=${category.id}`}>
+    <Button onClick={handleClick}>
       <span>{category.name}</span>
       <span className="count">{category.num_posts}</span>
     </Button>
   );
 }
 
-const Button = styled(Link)`
+const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
