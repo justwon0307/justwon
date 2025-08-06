@@ -26,17 +26,22 @@ export function SearchButton() {
 
 const Container = styled.button`
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
-  padding: 0 8px;
+  max-width: 280px;
+  padding: 6px 8px;
   gap: 8px;
 
   border: 1px solid ${({ theme }) => theme.colors.gray300};
-  border-radius: 8px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.gray200};
+  }
 
   > span {
-    width: 100px;
-    padding: 8px 0;
+    flex: 1;
     color: ${({ theme }) => theme.colors.gray600};
     text-align: left;
     font-size: 0.875rem;
