@@ -9,6 +9,6 @@ import styled from "styled-components";
 export const SidebarItemContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
-  gap: 12px;
+  margin-top: 1rem;
+  gap: 16px;
 `;

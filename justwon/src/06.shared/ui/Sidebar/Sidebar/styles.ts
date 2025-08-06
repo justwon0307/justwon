@@ -2,18 +2,49 @@
 
 import styled from "styled-components";
 
+import { Divider } from "@shared/ui/Dividers";
+
 /**
  * 사이드바 메인 컨테이너
  */
 
 export const SidebarContainer = styled.div`
-  width: 240px;
-  padding: 0 16px 0 2.5%;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100vh;
 
-  @media (min-width: 1720px) {
-    width: 280px;
+  .padding {
+    padding-left: 24px;
+    padding-right: 16px;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+      padding-left: 16px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      padding-left: 32px;
+    }
   }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+  }
+`;
+
+export const SidebarDivider = styled(Divider)`
+  background-color: ${({ theme }) => theme.colors.divider};
 `;
 
 /**

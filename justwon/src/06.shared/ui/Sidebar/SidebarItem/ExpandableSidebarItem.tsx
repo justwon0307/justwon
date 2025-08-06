@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styled, { keyframes } from "styled-components";
 
 import { AppIcon } from "@shared/ui/Icons";
@@ -26,8 +26,14 @@ export function ExpandableSidebarItem({
 }: Readonly<Props>) {
   const [isExpanded, setIsExpanded] = useState<boolean>(isActive);
 
+  const router = useRouter();
+
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const handleLinkClick = () => {
+    router.push(href);
   };
 
   useEffect(() => {
@@ -39,13 +45,13 @@ export function ExpandableSidebarItem({
   return (
     <div>
       <ItemMenuWrapper>
-        <Link href={href}>
+        <button className="link" onClick={handleLinkClick} data-testid="sidebar-link">
           <SidebarItemTitle>{title}</SidebarItemTitle>
-        </Link>
+        </button>
         <IconWrapper
           className={isExpanded ? "expanded" : ""}
           onClick={toggleExpand}
-          data-testid="toggle"
+          data-testid="sidebar-toggle"
         >
           <AppIcon icon="chevron-right" size={16} />
         </IconWrapper>
@@ -64,7 +70,7 @@ const ItemMenuWrapper = styled.div`
   width: 100%;
   cursor: pointer;
 
-  > a {
+  .link {
     flex: 1;
     text-align: left;
   }
@@ -117,7 +123,7 @@ const slideUp = keyframes`
 const SidebarItemContent = styled.div`
   flex-direction: column;
   margin: 8px;
-  padding: 4px 0 0 4px;
+  padding: 4px 0 0 12px;
   gap: 4px;
 
   color: ${({ theme }) => theme.colors.textSecondary};
