@@ -1,3 +1,3 @@
-import { LearningLayout } from "@app/layouts/learning";
+import { LearningRootLayout } from "@app/layouts/learning";
 
-export default LearningLayout;
+export default LearningRootLayout;

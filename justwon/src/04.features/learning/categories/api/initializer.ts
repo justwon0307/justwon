@@ -25,7 +25,7 @@ export async function initializeLearning(): Promise<
     if (!response.ok) {
       return {
         message: "데이터를 불러오는 중 오류가 발생했습니다. 다시 시도해주세요.",
-        status: response.status,
+        status: "ERROR",
       };
     }
 
@@ -34,14 +34,14 @@ export async function initializeLearning(): Promise<
     if (!Array.isArray(data)) {
       return {
         message: "데이터 형식이 올바르지 않습니다.",
-        status: 500,
+        status: "ERROR",
       };
     }
 
     if (data.length === 0) {
       return {
         message: "카테고리 데이터가 없습니다.",
-        status: 404,
+        status: "ERROR",
       };
     }
 
@@ -52,7 +52,7 @@ export async function initializeLearning(): Promise<
   } catch {
     return {
       message: "서버와의 연결에 실패했습니다. 나중에 다시 시도해주세요.",
-      status: 500,
+      status: "ERROR",
     };
   }
 }
