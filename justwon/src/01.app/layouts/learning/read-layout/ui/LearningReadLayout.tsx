@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
 import { ContentWrapper, DefaultLayout, Divider } from "@widgets/layouts";
-import {
-  getAllCategories,
-  LearningCategoryGroupMenu,
-} from "@entities/learning";
 import { LearningNewPostButton } from "@features/learning/create-post";
+import {
+  LearningCategoryGroupMenu,
+  getAllCategories,
+} from "@entities/learning";
 import { SearchButton } from "@shared/ui/Searchbar";
 import {
   SidebarContainer,
