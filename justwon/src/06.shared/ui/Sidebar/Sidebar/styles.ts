@@ -36,7 +36,7 @@ export const SidebarErrorWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: 70vh;
   padding: 1rem;
   color: ${({ theme }) => theme.colors.error};
   font-size: 0.875rem;

@@ -1,6 +1,6 @@
 type ErrorResponseType = {
   message: string;
-  status: number;
+  status: "ERROR";
 };
 
 type SuccessResponseType<T> = {
