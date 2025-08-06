@@ -8,7 +8,7 @@ jest.unmock("@shared/ui/Sidebar");
 describe("ExpandableSidebarItem", () => {
   it("should render correctly", () => {
     const { getByTestId } = renderWithProviders(
-      <ExpandableSidebarItem title="Test Item" icon="test-icon">
+      <ExpandableSidebarItem title="Test Item" href="/test">
         <div>Child Content</div>
       </ExpandableSidebarItem>
     );
@@ -18,7 +18,7 @@ describe("ExpandableSidebarItem", () => {
 
   it("should render active sidebar item", () => {
     renderWithProviders(
-      <ExpandableSidebarItem title="Active Item" isActive icon="active-icon">
+      <ExpandableSidebarItem title="Active Item" href="/test" isActive>
         <div>Active Content</div>
       </ExpandableSidebarItem>
     );

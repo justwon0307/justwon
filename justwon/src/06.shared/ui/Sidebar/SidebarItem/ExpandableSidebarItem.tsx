@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 
 import { AppIcon } from "@shared/ui/Icons";
@@ -13,15 +14,15 @@ import { AppIcon } from "@shared/ui/Icons";
 interface Props {
   title: string;
   children: React.ReactNode;
+  href: string;
   isActive?: boolean;
-  icon?: string;
 }
 
 export function ExpandableSidebarItem({
   title,
   children,
+  href,
   isActive = false,
-  icon,
 }: Readonly<Props>) {
   const [isExpanded, setIsExpanded] = useState<boolean>(isActive);
 
@@ -29,14 +30,23 @@ export function ExpandableSidebarItem({
     setIsExpanded(!isExpanded);
   };
 
+  useEffect(() => {
+    if (isActive) {
+      setIsExpanded(true);
+    }
+  }, [isActive]);
+
   return (
     <div>
-      <ItemMenuWrapper onClick={toggleExpand} data-testid="toggle">
-        <span>
-          {icon && <AppIcon icon={icon} size={16} />}
+      <ItemMenuWrapper>
+        <Link href={href}>
           <SidebarItemTitle>{title}</SidebarItemTitle>
-        </span>
-        <IconWrapper className={isExpanded ? "expanded" : ""}>
+        </Link>
+        <IconWrapper
+          className={isExpanded ? "expanded" : ""}
+          onClick={toggleExpand}
+          data-testid="toggle"
+        >
           <AppIcon icon="chevron-right" size={16} />
         </IconWrapper>
       </ItemMenuWrapper>
@@ -51,12 +61,12 @@ const ItemMenuWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   cursor: pointer;
 
-  > span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  > a {
+    flex: 1;
+    text-align: left;
   }
 `;
 
@@ -68,7 +78,7 @@ const SidebarItemTitle = styled.h3`
   font-weight: 500;
 `;
 
-const IconWrapper = styled.span`
+const IconWrapper = styled.button`
   transition: transform 0.2s;
   transform: rotate(0deg);
 
