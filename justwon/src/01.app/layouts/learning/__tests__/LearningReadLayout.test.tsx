@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { waitFor } from "@testing-library/react";
 import * as NextJSNavigationAPI from "next/navigation";
+import * as ClerkAPI from "@clerk/nextjs";
 
 import { LearningReadLayout } from "@app/layouts/learning";
 import { LearningProvider, sampleCategoryGroups } from "@entities/learning";
@@ -33,9 +36,31 @@ describe("LearningReadLayout", () => {
     });
   });
 
-  it("renders without crashing", async () => {
-    const { getByText } = await render();
+  it("renders in guest mode correctly", async () => {
+    jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
+      isSignedIn: false,
+      isLoaded: true,
+      user: null,
+    });
+
+    const { getByText, queryByText } = await render();
     expect(getByText("Learning")).toBeInTheDocument();
     expect(getByText("Test Content")).toBeInTheDocument();
+
+    expect(queryByText("포스트 작성")).not.toBeInTheDocument();
+  });
+
+  it("renders admin mode and handles create click correctly", async () => {
+    jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
+      user: {
+        publicMetadata: { role: "admin" },
+      },
+    } as any);
+
+    const { getByText } = await render();
+
+    await waitFor(() => {
+      expect(getByText("포스트 작성")).toBeInTheDocument();
+    });
   });
 });

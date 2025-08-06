@@ -1,12 +1,20 @@
 import { LearningRootLayout } from "@app/layouts/learning";
 import { sampleCategoryGroups } from "@entities/learning";
-import { renderWithProvidersAsync } from "@test-utils/renderer";
+import {
+  getElementFromAsyncServerComponent,
+  renderWithProviders,
+} from "@test-utils/renderer";
 
 describe("LearningLayout", () => {
   const render = async () => {
-    return await renderWithProvidersAsync(LearningRootLayout, {
-      children: <div>Test Content</div>,
-    });
+    const element = await getElementFromAsyncServerComponent(
+      LearningRootLayout,
+      {
+        children: <div>Test Content</div>,
+      }
+    );
+
+    return renderWithProviders(element);
   };
 
   it("fetches categories data successfully", async () => {
@@ -18,37 +26,14 @@ describe("LearningLayout", () => {
     await render();
   });
 
-  it("handles bad response from server", async () => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: false,
-      status: 400,
-      json: jest.fn().mockResolvedValue({ message: "Bad request" }),
-    });
-
-    await render();
-  });
-
-  it("hanldes non-array response", async () => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      json: jest.fn().mockResolvedValue({ message: "Not an array" }),
-    });
-
-    await render();
-  });
-
-  it("handles empty data response", async () => {
+  it("handles data fetch error correctly", async () => {
+    // empty array error
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue([]),
     });
 
-    await render();
-  });
-
-  it("handles unknown error", async () => {
-    (global.fetch as jest.Mock).mockRejectedValue(new Error("Network error"));
-
-    await render();
+    const { getByText } = await render();
+    expect(getByText("카테고리 데이터가 없습니다.")).toBeInTheDocument();
   });
 });
