@@ -41,10 +41,8 @@ export function StylesProvider({
 
   const breakpoints = useMemo(() => {
     return {
-      mobile: "480px",
-      tablet: "768px",
-      desktop: "1024px",
-      desktopLarge: "1200px",
+      mobile: "768px",
+      tablet: "1440px",
     };
   }, []);
 

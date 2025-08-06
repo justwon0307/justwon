@@ -8,8 +8,6 @@ declare module "styled-components" {
     breakpoints: {
       mobile: string;
       tablet: string;
-      desktop: string;
-      desktopLarge: string;
     };
   }
 }
