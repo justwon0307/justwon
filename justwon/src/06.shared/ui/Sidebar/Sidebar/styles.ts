@@ -58,18 +58,3 @@ export const SidebarTitle = styled.h2`
   font-weight: 500;
   font-family: "Geist", sans-serif;
 `;
-
-/**
- * 사이드바 오류 메시지 Wrapper
- */
-
-export const SidebarErrorWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 70vh;
-  padding: 1rem;
-  color: ${({ theme }) => theme.colors.error};
-  font-size: 0.875rem;
-  text-align: center;
-`;
