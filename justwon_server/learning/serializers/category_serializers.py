@@ -5,10 +5,11 @@ from ..models import CategoryGroup, Category
 
 class CategorySerializer(serializers.ModelSerializer):
     num_posts = serializers.SerializerMethodField()
+    category_group_id = serializers.IntegerField(source='group.id', read_only=True)
 
     class Meta:
         model = Category
-        fields = ["id", "name", "num_posts"]
+        fields = ["id", "name", "slug", "num_posts", "category_group_id"]
         read_only_fields = ["id", "num_posts"]
 
     def get_num_posts(self, obj):
@@ -20,5 +21,5 @@ class CategoryGroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CategoryGroup
-        fields = ["id", "name", "kor_name", "categories"]
+        fields = ["id", "name", "kor_name", "slug", "categories"]
         read_only_fields = ["id", "categories"]

@@ -8,7 +8,7 @@ class BasePost(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, allow_unicode=True)
 
     content = models.TextField()
     admin_only = models.BooleanField(default=False)
