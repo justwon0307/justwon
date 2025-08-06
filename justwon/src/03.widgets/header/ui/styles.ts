@@ -9,9 +9,19 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5%;
+  padding: 0 24px; // 태블릿 설정
 
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.divider};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    // 모바일 설정
+    padding: 0 16px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    // 데스크탑 설정
+    padding: 0 32px;
+  }
 
   .title {
     font-size: 24px;
