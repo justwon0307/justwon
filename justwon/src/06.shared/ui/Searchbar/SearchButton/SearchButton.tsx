@@ -18,7 +18,7 @@ export function SearchButton() {
 
   return (
     <Container>
-      <AppIcon icon="search" size={18} color={colors.gray500} />
+      <AppIcon icon="search" size={18} color={colors.gray700} />
       <span>Search</span>
     </Container>
   );
@@ -42,7 +42,7 @@ const Container = styled.button`
 
   > span {
     flex: 1;
-    color: ${({ theme }) => theme.colors.gray600};
+    color: ${({ theme }) => theme.colors.gray800};
     text-align: left;
     font-size: 0.875rem;
   }

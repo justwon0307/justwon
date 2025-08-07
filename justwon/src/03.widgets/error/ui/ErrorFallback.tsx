@@ -38,7 +38,7 @@ const Container = styled.div`
 
   h2 {
     margin-bottom: 10px;
-    color: ${({ theme }) => theme.colors.gray500};
+    color: ${({ theme }) => theme.colors.gray700};
   }
 
   button {
