@@ -42,8 +42,8 @@ export async function LearningCategoryGroupPage({ params }: Readonly<Props>) {
         <BreadcrumbItem item={learningLandingBreadcrumbItem} />
         <BreadcrumbItem item={categoryGroupBreadcrumbItem} isLastItem />
       </BreadcrumbContainer>
-      <h1>Category Group: {catGrpSlug}</h1>
       <PageContents>
+        <h1>Category Group: {catGrpSlug}</h1>
         대시보드: 카테고리 그룹 ID만 있을 때는 해당 카테고리 그룹의 설명과
         카테고리 목록을 보여주는 대시보드를 렌더링
       </PageContents>
