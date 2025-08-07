@@ -19,14 +19,14 @@ export const lightTheme: ThemeColorType = {
   onError: "#FFFFFF",
 
   gray100: "#F3F4F6",
-  gray200: "#E5E7EB",
-  gray300: "#D1D5DB",
-  gray400: "#9CA3AF",
-  gray500: "#6B7280",
-  gray600: "#4B5563",
-  gray700: "#374151",
-  gray800: "#1F2937",
-  gray900: "#111827",
+  gray200: "#ECEEF0",
+  gray300: "#E5E7EB",
+  gray400: "#CCD1D8",
+  gray500: "#A6ACB8",
+  gray600: "#848B98",
+  gray700: "#6B7280",
+  gray800: "#4B5563",
+  gray900: "#374151",
 
   // Background / Surface
   backgroundDefault: "#F9FAFB",

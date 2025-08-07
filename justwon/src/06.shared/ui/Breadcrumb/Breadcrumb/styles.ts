@@ -5,8 +5,11 @@ import styled from "styled-components";
 export const BreadcrumbContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  margin: 4px 0;
+  padding: 8px;
   gap: 4px;
+
+  background-color: ${({ theme }) => theme.colors.gray200};
   border-radius: 4px;
 `;
 

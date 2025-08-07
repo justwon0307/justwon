@@ -61,7 +61,7 @@ const CategoryButton = styled.button`
 
   &.active {
     color: ${({ theme }) => theme.colors.primary};
-    background-color: ${({ theme }) => theme.colors.gray300};
+    background-color: ${({ theme }) => theme.colors.gray400};
 
     .count {
       background-color: ${({ theme }) => theme.colors.backgroundDefault};
@@ -70,7 +70,7 @@ const CategoryButton = styled.button`
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
-    background-color: ${({ theme }) => theme.colors.gray200};
+    background-color: ${({ theme }) => theme.colors.gray300};
 
     .count {
       background-color: ${({ theme }) => theme.colors.backgroundDefault};
@@ -85,6 +85,6 @@ const CategoryButton = styled.button`
     font-size: 0.825rem;
     line-height: 20px;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.colors.gray300};
+    background-color: ${({ theme }) => theme.colors.gray400};
   }
 `;

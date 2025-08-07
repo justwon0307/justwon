@@ -33,7 +33,7 @@ const Container = styled.button`
   padding: 6px 8px;
   gap: 8px;
 
-  border: 1px solid ${({ theme }) => theme.colors.gray300};
+  border: 1px solid ${({ theme }) => theme.colors.gray400};
   border-radius: 6px;
 
   &:hover {
