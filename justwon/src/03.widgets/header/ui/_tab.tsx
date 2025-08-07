@@ -21,7 +21,7 @@ export function Tab({ tab }: Readonly<Props>) {
       <AppIcon
         icon={tab}
         size={18}
-        color={isActive ? colors.primary : colors.gray700}
+        color={isActive ? colors.primary : colors.gray900}
       />
       {tab.charAt(0).toUpperCase() + tab.slice(1)}
     </Link>

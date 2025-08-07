@@ -53,7 +53,7 @@ export function AppIcon({ icon, size = 24, color }: Readonly<Props>) {
     return null;
   }
 
-  const iconColor = color ?? colors.gray700;
+  const iconColor = color ?? colors.gray900;
 
   return <IconComponent width={size} height={size} color={iconColor} />;
 }

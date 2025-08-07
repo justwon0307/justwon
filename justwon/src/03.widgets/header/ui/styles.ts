@@ -43,7 +43,7 @@ export const Tabs = styled.div`
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.gray700};
+    color: ${({ theme }) => theme.colors.gray900};
   }
 
   > a.active {
