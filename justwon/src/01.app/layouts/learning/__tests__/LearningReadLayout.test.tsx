@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { waitFor } from "@testing-library/react";
+import { fireEvent, waitFor } from "@testing-library/react";
 import * as NextJSNavigationAPI from "next/navigation";
 import * as ClerkAPI from "@clerk/nextjs";
 
@@ -30,6 +30,9 @@ describe("LearningReadLayout", () => {
 
   beforeEach(() => {
     jest.spyOn(NextJSNavigationAPI, "usePathname").mockReturnValue("/learning");
+    jest.spyOn(NextJSNavigationAPI, "useRouter").mockReturnValue({
+      push: jest.fn(),
+    } as any);
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
       json: jest.fn().mockResolvedValue(sampleCategoryGroups),
@@ -43,14 +46,25 @@ describe("LearningReadLayout", () => {
       user: null,
     });
 
-    const { getByText, queryByText } = await render();
+    const { getByTestId, getByText, queryByText } = await render();
     expect(getByText("Learning")).toBeInTheDocument();
     expect(getByText("Test Content")).toBeInTheDocument();
 
     expect(queryByText("포스트 작성")).not.toBeInTheDocument();
+
+    fireEvent.click(getByTestId("category-frontend"));
+
+    await waitFor(() => {
+      expect(NextJSNavigationAPI.useRouter().push).toHaveBeenCalledWith(
+        "/learning/web-development/frontend/"
+      );
+    });
   });
 
   it("renders admin mode and handles create click correctly", async () => {
+    jest
+      .spyOn(NextJSNavigationAPI, "usePathname")
+      .mockReturnValue("/learning/web-development/frontend");
     jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
       user: {
         publicMetadata: { role: "admin" },
@@ -62,5 +76,7 @@ describe("LearningReadLayout", () => {
     await waitFor(() => {
       expect(getByText("포스트 작성")).toBeInTheDocument();
     });
+
+    fireEvent.click(getByText("포스트 작성"));
   });
 });

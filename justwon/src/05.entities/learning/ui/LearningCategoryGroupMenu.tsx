@@ -41,6 +41,7 @@ export function LearningCategoryGroupMenu({ group }: Readonly<Props>) {
           key={category.id}
           onClick={() => handleCategoryClick(category)}
           className={category.id === selectedCategory?.id ? "active" : ""}
+          data-testid={`category-${category.slug}`}
         >
           <span>{category.name}</span>
           <span className="count">{category.num_posts}</span>
