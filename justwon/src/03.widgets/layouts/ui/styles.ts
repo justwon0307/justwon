@@ -17,3 +17,18 @@ export const ContentWrapper = styled.div`
 export const Divider = styled(VerticalDivider)`
   background-color: ${({ theme }) => theme.colors.divider};
 `;
+
+const Vertical = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PageWrapper = styled(Vertical)`
+  flex: 1;
+  padding: 8px 16px;
+`;
+
+export const PageContents = styled(Vertical)`
+  flex: 1;
+  gap: 8px;
+`;

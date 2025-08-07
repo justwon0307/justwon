@@ -1,1 +1,7 @@
-export { DefaultLayout, ContentWrapper, Divider } from "./ui/styles";
+export {
+  DefaultLayout,
+  ContentWrapper,
+  Divider,
+  PageWrapper,
+  PageContents,
+} from "./ui/styles";
