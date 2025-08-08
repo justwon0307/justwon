@@ -3,7 +3,7 @@ interface Props {
   reset: () => void;
 }
 
-export function LearningErrorPage({ error, reset }: Readonly<Props>) {
+export function BlogErrorPage({ error, reset }: Readonly<Props>) {
   return (
     <div>
       <p>{error.message}</p>
