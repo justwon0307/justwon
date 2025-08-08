@@ -4,44 +4,40 @@ import "client-only";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
-import { useLearning } from "../contexts/useLearning";
-import {
-  LearningCategoryGroupType,
-  LearningCategoryType,
-} from "../models/categories";
+import { useBlog } from "../../contexts/useBlog";
+import { CategoryGroupType, CategoryType } from "../../models/categories";
 import { ExpandableSidebarItem } from "@shared/ui/Sidebar";
 
 interface Props {
-  group: LearningCategoryGroupType;
+  group: CategoryGroupType;
 }
 
 /**
- * 학습 카테고리 그룹 메뉴 컴포넌트
+ * 블로그 카테고리 그룹 메뉴 컴포넌트
  *   - Interactive하기 때문에, 클라이언트 컴포넌트
  */
 
-export function LearningCategoryGroupMenu({ group }: Readonly<Props>) {
-  const { selectedCategoryGroup, selectedCategory } = useLearning();
+export function CategoryGroupMenu({ group }: Readonly<Props>) {
+  const { selectedCategoryGroup, selectedCategory } = useBlog();
 
   const router = useRouter();
 
-  const handleCategoryClick = (category: LearningCategoryType) => {
-    router.push(`/learning/${category.category_group_slug}/${category.slug}/`);
+  const handleCategoryClick = (category: CategoryType) => {
+    router.push(`/blog/${category.group.slug}/${category.slug}/`);
   };
 
   return (
     <ExpandableSidebarItem
       title={group.name}
-      href={`/learning/${group.slug}/`}
+      href={`/blog/${group.slug}/`}
       isActive={group.id === selectedCategoryGroup?.id}
       key={group.id}
     >
       {group.categories.map((category) => (
         <CategoryButton
           key={category.id}
-          onClick={() => handleCategoryClick(category)}
           className={category.id === selectedCategory?.id ? "active" : ""}
-          data-testid={`category-${category.slug}`}
+          onClick={() => handleCategoryClick(category)}
         >
           <span>{category.name}</span>
           <span className="count">{category.num_posts}</span>

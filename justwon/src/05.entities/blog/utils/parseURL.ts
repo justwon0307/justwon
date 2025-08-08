@@ -1,18 +1,15 @@
-import {
-  LearningCategoryGroupType,
-  LearningCategoryType,
-} from "../models/categories";
+import { CategoryGroupType, CategoryType } from "../models/categories";
 
 type LearningURLParserReturnType = {
-  selectedCategoryGroup: LearningCategoryGroupType | null;
-  selectedCategory: LearningCategoryType | null;
+  selectedCategoryGroup: CategoryGroupType | null;
+  selectedCategory: CategoryType | null;
 };
 
-export function parseLearningURL(
-  categoryGroups: LearningCategoryGroupType[],
+export function parseBlogURL(
+  categoryGroups: CategoryGroupType[],
   pathname: string
 ): LearningURLParserReturnType {
-  if (!pathname.startsWith("/learning/")) {
+  if (!pathname.startsWith("/blog/")) {
     return {
       selectedCategoryGroup: null,
       selectedCategory: null,
@@ -22,8 +19,8 @@ export function parseLearningURL(
   const catGrpSlug = pathname.split("/")[2];
   const catSlug = pathname.split("/")[3];
 
-  let selectedCategoryGroup: LearningCategoryGroupType | null = null;
-  let selectedCategory: LearningCategoryType | null = null;
+  let selectedCategoryGroup: CategoryGroupType | null = null;
+  let selectedCategory: CategoryType | null = null;
 
   if (catGrpSlug) {
     selectedCategoryGroup =

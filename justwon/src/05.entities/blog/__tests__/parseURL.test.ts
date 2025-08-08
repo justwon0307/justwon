@@ -5,8 +5,10 @@ describe("parseLearningURL", () => {
   it("should parse a valid learning URL", () => {
     const url = "/learning/web-development/frontend";
     const result = parseLearningURL(sampleCategoryGroups, url);
-    expect(result.selectedCategoryGroup?.id).toBe(1);
-    expect(result.selectedCategory?.category_group_id).toBe(1);
+    expect(result.selectedCategoryGroup?.slug).toBe("web-development");
+    expect(result.selectedCategory?.category_group_slug).toBe(
+      "web-development"
+    );
   });
 
   it("should return null for an invalid category group URL", () => {
@@ -19,7 +21,7 @@ describe("parseLearningURL", () => {
   it("should return null for an invalid category URL", () => {
     const url = "/learning/web-development/invalid";
     const result = parseLearningURL(sampleCategoryGroups, url);
-    expect(result.selectedCategoryGroup?.id).toBe(1);
+    expect(result.selectedCategoryGroup?.slug).toBe("web-development");
     expect(result.selectedCategory).toBeNull();
   });
 
