@@ -1,16 +1,16 @@
 import {
-  LearningCategoryGroupPage,
+  BlogCategoryGroupPage,
   generateMetadata,
-} from "@pages/learning/category-group";
+} from "@pages/blog/category-group";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-describe("LearningCategoryGroupPage", () => {
+describe("BlogCategoryGroupPage", () => {
   const render = async (slug: string) => {
     const elements = await getElementFromAsyncServerComponent(
-      LearningCategoryGroupPage,
+      BlogCategoryGroupPage,
       { params: Promise.resolve({ catGrpSlug: slug }) }
     );
 
@@ -20,9 +20,7 @@ describe("LearningCategoryGroupPage", () => {
   it("renders the page with correct title and breadcrumb", async () => {
     const { getByText } = await render("test-category-group");
 
-    expect(
-      getByText("Category Group: test-category-group")
-    ).toBeInTheDocument();
+    expect(getByText("Blog Category Group")).toBeInTheDocument();
   });
 });
 

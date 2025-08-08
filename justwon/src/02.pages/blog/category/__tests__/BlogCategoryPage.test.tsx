@@ -1,16 +1,13 @@
-import {
-  LearningCategoryPage,
-  generateMetadata,
-} from "@pages/learning/category";
+import { BlogCategoryPage, generateMetadata } from "@pages/blog/category";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-describe("LearningCategoryPage", () => {
+describe("BlogCategoryPage", () => {
   const render = async (slug: string) => {
     const elements = await getElementFromAsyncServerComponent(
-      LearningCategoryPage,
+      BlogCategoryPage,
       {
         params: Promise.resolve({
           catSlug: slug,
@@ -27,7 +24,7 @@ describe("LearningCategoryPage", () => {
 
     expect(getByText("Category: test-category")).toBeInTheDocument();
     expect(
-      getByText("해당 카테고리의 글 목록을 보여주는 페이지로 렌더링")
+      getByText("카테고리 이름 & 아이콘 & 핵심 개념 및 학습 포인트")
     ).toBeInTheDocument();
   });
 });

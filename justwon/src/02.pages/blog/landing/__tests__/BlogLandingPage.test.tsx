@@ -1,13 +1,13 @@
-import { LearningLandingPage } from "@pages/learning/landing";
+import { BlogLandingPage } from "@pages/blog/landing";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-describe("LearningLandingPage", () => {
+describe("BlogLandingPage", () => {
   const render = async () => {
     const element = await getElementFromAsyncServerComponent(
-      LearningLandingPage,
+      BlogLandingPage,
       {}
     );
 
