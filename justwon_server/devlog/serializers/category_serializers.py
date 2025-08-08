@@ -3,7 +3,7 @@ from rest_framework import serializers
 from ..models import CategoryGroup, Category
 
 
-class CategoryGroupMinimalSerializer(serializers.ModelSerializer):
+class CategoryGroupRelatedSerializer(serializers.ModelSerializer):
     class Meta:
         model = CategoryGroup
         fields = ["id", "name", "slug"]
@@ -12,7 +12,7 @@ class CategoryGroupMinimalSerializer(serializers.ModelSerializer):
 
 class CategorySimpleSerializer(serializers.ModelSerializer):
     num_posts = serializers.SerializerMethodField()
-    group = CategoryGroupMinimalSerializer(read_only=True)
+    group = CategoryGroupRelatedSerializer(read_only=True)
 
     class Meta:
         model = Category
