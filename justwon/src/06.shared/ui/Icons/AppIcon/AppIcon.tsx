@@ -21,11 +21,11 @@ import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
 import Network from "../files/network.svg";
 import Pencil from "../files/pencil.svg";
-import Practice from "../files/practice.svg";
 import Profile from "../files/profile.svg";
 import Projects from "../files/projects.svg";
 import Search from "../files/search.svg";
 import System from "../files/system.svg";
+import Workout from "../files/workout.svg";
 
 interface Props {
   icon: string;
@@ -53,11 +53,11 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   logout: Logout,
   network: Network,
   pencil: Pencil,
-  practice: Practice,
   profile: Profile,
   projects: Projects,
   search: Search,
   system: System,
+  workout: Workout,
 };
 
 export function AppIcon({ icon, size = 24, color }: Readonly<Props>) {
