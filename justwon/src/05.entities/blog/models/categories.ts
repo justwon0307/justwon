@@ -11,7 +11,7 @@ type CommonFields = {
 
 export type CategoryGroupType = Pick<
   CommonFields,
-  "id" | "name" | "kor_name" | "slug"
+  "id" | "name" | "kor_name" | "slug" | "icon"
 > & {
   categories: CategoryType[];
 };

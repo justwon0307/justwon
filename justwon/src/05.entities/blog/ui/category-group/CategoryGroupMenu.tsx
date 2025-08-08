@@ -29,6 +29,7 @@ export function CategoryGroupMenu({ group }: Readonly<Props>) {
   return (
     <ExpandableSidebarItem
       title={group.name}
+      icon={group.icon}
       href={`/blog/${group.slug}/`}
       isActive={group.id === selectedCategoryGroup?.id}
       key={group.id}

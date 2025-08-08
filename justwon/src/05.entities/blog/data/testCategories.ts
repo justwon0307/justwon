@@ -39,6 +39,7 @@ const sampleCategoryGroup: CategoryGroupType = {
   name: "Web Development",
   kor_name: "웹 개발",
   slug: "web-development",
+  icon: "web",
   categories: sampleCategories,
 };
 
@@ -49,6 +50,7 @@ export const sampleCategoryGroups: CategoryGroupType[] = [
     name: "Data Science",
     kor_name: "데이터 과학",
     slug: "data-science",
+    icon: "data-science",
     categories: [
       {
         id: 201,

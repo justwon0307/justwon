@@ -35,5 +35,5 @@ class CategoryGroupSimpleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CategoryGroup
-        fields = ["id", "name", "kor_name", "slug", "categories"]
+        fields = ["id", "name", "kor_name", "slug", "icon", "categories"]
         read_only_fields = ["id", "categories"]
