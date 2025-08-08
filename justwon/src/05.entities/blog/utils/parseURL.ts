@@ -1,6 +1,6 @@
 import { CategoryGroupType, CategoryType } from "../models/categories";
 
-type LearningURLParserReturnType = {
+type BlogURLParserReturnType = {
   selectedCategoryGroup: CategoryGroupType | null;
   selectedCategory: CategoryType | null;
 };
@@ -8,7 +8,7 @@ type LearningURLParserReturnType = {
 export function parseBlogURL(
   categoryGroups: CategoryGroupType[],
   pathname: string
-): LearningURLParserReturnType {
+): BlogURLParserReturnType {
   if (!pathname.startsWith("/blog/")) {
     return {
       selectedCategoryGroup: null,
