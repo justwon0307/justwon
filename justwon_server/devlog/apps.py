@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class LearningConfig(AppConfig):
+class DevlogConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "learning"
-    label = "학습"
+    name = "devlog"
+    label = "devlog"

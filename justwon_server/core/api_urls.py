@@ -1,13 +1,10 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from learning.views import LearningInitializerView
+from devlog.views import CategoryGroupViewSet
 
 router = DefaultRouter()
+router.register("v1/groups", CategoryGroupViewSet, basename="category-groups")
 
-
-urlpatterns = [
-    path("v1/learning/", LearningInitializerView.as_view(), name="learning-initialize"),
-]
-
+urlpatterns = []
 urlpatterns += router.urls

@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     ## Local apps
-    "learning.apps.LearningConfig",
+    "devlog.apps.DevlogConfig",
 ]
 
 MIDDLEWARE = [

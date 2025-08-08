@@ -1,10 +1,10 @@
 from rest_framework.test import APITestCase
 
 
-class LearningInitializerViewTests(APITestCase):
+class BlogInitializerViewTests(APITestCase):
     fixtures = ["data/initial/learning.json"]
 
-    def test_learning_initializer_view(self):
+    def test_blog_initializer_view(self):
         response = self.client.get("/api/v1/learning/")
 
         self.assertEqual(response.status_code, 200)

@@ -1,0 +1,144 @@
+[
+  {
+    "model": "devlog.categorygroup",
+    "pk": 1,
+    "fields": {
+      "name": "Computer Science",
+      "kor_name": "컴퓨터 공학",
+      "slug": "computer-science",
+      "icon": "computer",
+      "cover_image": "https://cdn.justwon.dev/images/computer.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%B2%AD%EC%83%89-%ED%9A%8C%EB%A1%9C-%EA%B8%B0%ED%8C%90-jXd2FSvcRr8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@umby?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Umberto</a>",
+      "description": "CS 기본 개념과 이론",
+      "order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.categorygroup",
+    "pk": 2,
+    "fields": {
+      "name": "Practices",
+      "kor_name": "실습",
+      "slug": "practices",
+      "icon": "workout",
+      "cover_image": "https://cdn.justwon.dev/images/practice.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%ED%9D%B0-%ED%94%84%EB%A6%B0%ED%84%B0-%EC%A2%85%EC%9D%B4%EC%99%80-%EA%B2%80%EC%9D%80-%EB%B3%BC%ED%8E%9C-%EC%98%86%EC%97%90-%EC%8C%93%EC%9D%B8-%EC%B1%85-%EB%8D%94%EB%AF%B8-asviIGR3CPE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@hudsoncrafted?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Debby Hudson</a>",
+      "description": "문제풀이, 코딩 연습",
+      "order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 1,
+    "fields": {
+      "name": "네트워크",
+      "kor_name": "",
+      "slug": "network",
+      "group": 1,
+      "icon": "network",
+      "cover_image": "https://cdn.justwon.dev/images/network.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%9A%B0%EC%A3%BC-%EA%B3%B5%EA%B0%84-%EC%82%AC%EC%A7%84-Q1p7bh3SHj8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@nasa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">NASA</a>",
+      "description": "웹, 인터넷, HTTP 등 네트워크 기초",
+      "order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 2,
+    "fields": {
+      "name": "데이터베이스",
+      "kor_name": "",
+      "slug": "database",
+      "group": 1,
+      "icon": "database",
+      "cover_image": "https://cdn.justwon.dev/images/database.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%B0%94%EB%8B%A5%EC%97%90-%EB%B0%98%EC%82%AC%EB%90%9C-%EA%B3%B5%ED%95%AD%EC%9D%98-%EC%97%AC%EB%9F%AC-%EA%B0%80%EC%A7%80-%EB%B9%9B%EA%B9%94%EC%9D%98-%EB%B2%BD-gnbg9B5jas0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@liansspace?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Desmond Lian</a>",
+      "description": "",
+      "order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 3,
+    "fields": {
+      "name": "머신러닝",
+      "kor_name": "",
+      "slug": "machine-learning",
+      "group": 1,
+      "icon": "brain",
+      "cover_image": "https://cdn.justwon.dev/images/machine-learning.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%AC%B8%EC%9E%90-a%EA%B0%80-%EC%9C%84%EC%97%90-%EC%9E%88%EB%8A%94-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%B9%A9-eGGFZ5X2LnA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@omilaev?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Igor Omilaev</a>",
+      "description": "",
+      "order": 7,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 4,
+    "fields": {
+      "name": "자료구조",
+      "kor_name": "",
+      "slug": "data-structure",
+      "group": 1,
+      "icon": "data-structure",
+      "cover_image": "https://cdn.justwon.dev/images/data-structure.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%ED%81%90%EB%B8%8C-%EB%AC%B6%EC%9D%8C%EC%9D%98-%EC%B6%94%EC%83%81-%EC%9D%B4%EB%AF%B8%EC%A7%80-e068LyLWNfM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@spexypants?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Ayush Kumar</a>",
+      "description": "",
+      "order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 5,
+    "fields": {
+      "name": "알고리즘",
+      "kor_name": "",
+      "slug": "algorithms",
+      "group": 1,
+      "icon": "algorithms",
+      "cover_image": "https://cdn.justwon.dev/images/algorithms.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8%EC%9D%B4%EC%9E%88%EB%8A%94-%EC%B1%85-nuz3rK5iiKg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@alpridephoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Андрей Сизов</a>",
+      "description": "",
+      "order": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 6,
+    "fields": {
+      "name": "컴퓨터구조",
+      "kor_name": "",
+      "slug": "computer-architecture",
+      "group": 1,
+      "icon": "chip",
+      "cover_image": "https://cdn.justwon.dev/images/computer-architecture.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%88%AB%EC%9E%90%EA%B0%80-%EA%B7%B8%EB%A0%A4%EC%A7%84-%EC%BB%B4%ED%93%A8%ED%84%B0-%ED%99%94%EB%A9%B4-%ED%81%B4%EB%A1%9C%EC%A6%88%EC%97%85-YYUM2sNvnvU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@swimstaralex?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Alexander Sinn</a>",
+      "description": "",
+      "order": 5,
+      "is_active": true
+    }
+  },
+  {
+    "model": "devlog.category",
+    "pk": 7,
+    "fields": {
+      "name": "운영체제",
+      "kor_name": "",
+      "slug": "operating-system",
+      "group": 1,
+      "icon": "system",
+      "cover_image": "https://cdn.justwon.dev/images/operating-system.jpg",
+      "image_credit_html": "<a href=\"https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%EC%9D%BC%EC%B6%9C%EC%9D%98-%EB%85%B9%EC%83%89-%EB%A8%B8%EB%A6%BF%EB%8B%A8-A4RpsslKhGQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>의<a href=\"https://unsplash.com/ko/@robertbye?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Robert Bye</a>",
+      "description": "",
+      "order": 6,
+      "is_active": true
+    }
+  }
+]
