@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styled, { keyframes } from "styled-components";
 
+import { useColors } from "@shared/lib/colors";
 import { AppIcon } from "@shared/ui/Icons";
 
 /**
@@ -13,6 +14,7 @@ import { AppIcon } from "@shared/ui/Icons";
 
 interface Props {
   title: string;
+  icon: string;
   children: React.ReactNode;
   href: string;
   isActive?: boolean;
@@ -20,6 +22,7 @@ interface Props {
 
 export function ExpandableSidebarItem({
   title,
+  icon,
   children,
   href,
   isActive = false,
@@ -27,6 +30,7 @@ export function ExpandableSidebarItem({
   const [isExpanded, setIsExpanded] = useState<boolean>(isActive);
 
   const router = useRouter();
+  const { colors } = useColors();
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -34,6 +38,7 @@ export function ExpandableSidebarItem({
 
   const handleLinkClick = () => {
     router.push(href);
+    setIsExpanded(true);
   };
 
   useEffect(() => {
@@ -45,8 +50,19 @@ export function ExpandableSidebarItem({
   return (
     <div>
       <ItemMenuWrapper>
-        <button className="link" onClick={handleLinkClick} data-testid="sidebar-link">
-          <SidebarItemTitle>{title}</SidebarItemTitle>
+        <button
+          className="link"
+          onClick={handleLinkClick}
+          data-testid="sidebar-link"
+        >
+          <AppIcon
+            icon={icon}
+            size={20}
+            color={isActive ? colors.primary : colors.gray500}
+          />
+          <SidebarItemTitle className={isActive ? "active" : ""}>
+            {title}
+          </SidebarItemTitle>
         </button>
         <IconWrapper
           className={isExpanded ? "expanded" : ""}
@@ -71,8 +87,11 @@ const ItemMenuWrapper = styled.div`
   cursor: pointer;
 
   .link {
+    display: flex;
     flex: 1;
+    align-items: center;
     text-align: left;
+    gap: 8px;
   }
 `;
 
@@ -82,6 +101,11 @@ const SidebarItemTitle = styled.h3`
   font-size: 1rem;
   font-family: "Geist", sans-serif;
   font-weight: 500;
+
+  &.active {
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: 600;
+  }
 `;
 
 const IconWrapper = styled.button`
