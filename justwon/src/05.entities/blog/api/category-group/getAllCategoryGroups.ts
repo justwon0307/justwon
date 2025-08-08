@@ -12,7 +12,7 @@ async function fetchData(): Promise<APIResponseType<CategoryGroupType[]>> {
   // 해당 정보가 변경될 일이 많이 없으니, 캐시 만료 시간을 길게 설정한다
 
   try {
-    const response = await fetch(`${BASE_URL}api/v1/learning/`, {
+    const response = await fetch(`${BASE_URL}api/v1/blog/groups/`, {
       cache: "force-cache",
       next: {
         revalidate: 60 * 60 * 3, // 3시간
