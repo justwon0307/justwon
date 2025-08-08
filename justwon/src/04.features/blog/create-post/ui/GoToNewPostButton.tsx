@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { useColors } from "@shared/lib/colors";
 import { AppIcon } from "@shared/ui/Icons";
 
-export function LearningNewPostButton() {
+export function GoToNewPostButton() {
   const { user } = useUser();
   const { colors } = useColors();
 
@@ -17,7 +17,7 @@ export function LearningNewPostButton() {
   }
 
   return (
-    <WriteButton href="/learning/new">
+    <WriteButton href="/blog/new">
       <AppIcon icon="pencil" size={16} color={colors.onPrimary} />
       포스트 작성
     </WriteButton>
