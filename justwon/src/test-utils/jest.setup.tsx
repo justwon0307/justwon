@@ -91,3 +91,11 @@ jest.mock("@shared/ui/Sidebar", () => ({
     <h2>{children}</h2>
   ),
 }));
+jest.mock("@shared/ui/Texts", () => ({
+  Title: ({ title, icon }: { title: string; icon: string }) => (
+    <h1>
+      <span>{icon}-icon</span>
+      {title}
+    </h1>
+  ),
+}));
