@@ -43,18 +43,36 @@ describe("BlogReadLayout", () => {
       user: null,
     });
 
-    const { getByTestId, getByText, queryByText } = await render();
+    const { getByText, queryByText } = await render();
     expect(getByText("Blog")).toBeInTheDocument();
     expect(getByText("Test Content")).toBeInTheDocument();
 
     expect(queryByText("포스트 작성")).not.toBeInTheDocument();
 
-    fireEvent.click(getByTestId("category-frontend"));
+    fireEvent.click(getByText("Frontend"));
 
     await waitFor(() => {
       expect(NextJSNavigationAPI.useRouter().push).toHaveBeenCalledWith(
         "/blog/web-development/frontend/"
       );
     });
+  });
+
+  it("renders admin mode and handles create click correctly", async () => {
+    jest
+      .spyOn(NextJSNavigationAPI, "usePathname")
+      .mockReturnValue("/blog/web-development/frontend");
+    jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
+      user: {
+        publicMetadata: { role: "admin" },
+      },
+    } as any);
+
+    const { getByText } = await render();
+    expect(getByText("Blog")).toBeInTheDocument();
+    expect(getByText("Test Content")).toBeInTheDocument();
+    expect(getByText("포스트 작성")).toBeInTheDocument();
+
+    fireEvent.click(getByText("포스트 작성"));
   });
 });
