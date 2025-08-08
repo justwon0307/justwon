@@ -1,23 +1,21 @@
 import { ErrorFallback } from "@widgets/error";
-import { LearningProvider, getAllCategories } from "@entities/learning";
+import { BlogProvider, getAllCategoryGroups } from "@entities/blog";
 import { APIError } from "@shared/api/models";
 
 /**
- * 학습 섹션 전역에서 필요한 기본 데이터를 가져오는 레이아웃 컴포넌트
+ * 블로그 섹션 전역에서 필요한 기본 데이터를 가져오는 레이아웃 컴포넌트
  */
 
-export async function LearningRootLayout({
+export async function BlogLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   try {
-    const result = await getAllCategories();
+    const result = await getAllCategoryGroups();
 
     return (
-      <LearningProvider initialCategoryGroups={result}>
-        {children}
-      </LearningProvider>
+      <BlogProvider initialCategoryGroups={result}>{children}</BlogProvider>
     );
   } catch (error: unknown) {
     return (

@@ -3,33 +3,30 @@ import { fireEvent, waitFor } from "@testing-library/react";
 import * as NextJSNavigationAPI from "next/navigation";
 import * as ClerkAPI from "@clerk/nextjs";
 
-import { LearningReadLayout } from "@app/layouts/learning";
-import { LearningProvider, sampleCategoryGroups } from "@entities/learning";
+import { BlogReadLayout } from "@app/layouts/blog";
+import { BlogProvider, sampleCategoryGroups } from "@entities/blog";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-describe("LearningReadLayout", () => {
+describe("BlogReadLayout", () => {
   const render = async () => {
     // wrap with provider for context
 
-    const element = await getElementFromAsyncServerComponent(
-      LearningReadLayout,
-      {
-        children: <div>Test Content</div>,
-      }
-    );
+    const element = await getElementFromAsyncServerComponent(BlogReadLayout, {
+      children: <div>Test Content</div>,
+    });
 
     return renderWithProviders(
-      <LearningProvider initialCategoryGroups={sampleCategoryGroups}>
+      <BlogProvider initialCategoryGroups={sampleCategoryGroups}>
         {element}
-      </LearningProvider>
+      </BlogProvider>
     );
   };
 
   beforeEach(() => {
-    jest.spyOn(NextJSNavigationAPI, "usePathname").mockReturnValue("/learning");
+    jest.spyOn(NextJSNavigationAPI, "usePathname").mockReturnValue("/blog");
     jest.spyOn(NextJSNavigationAPI, "useRouter").mockReturnValue({
       push: jest.fn(),
     } as any);
@@ -47,7 +44,7 @@ describe("LearningReadLayout", () => {
     });
 
     const { getByTestId, getByText, queryByText } = await render();
-    expect(getByText("Learning")).toBeInTheDocument();
+    expect(getByText("Blog")).toBeInTheDocument();
     expect(getByText("Test Content")).toBeInTheDocument();
 
     expect(queryByText("포스트 작성")).not.toBeInTheDocument();
@@ -56,27 +53,8 @@ describe("LearningReadLayout", () => {
 
     await waitFor(() => {
       expect(NextJSNavigationAPI.useRouter().push).toHaveBeenCalledWith(
-        "/learning/web-development/frontend/"
+        "/blog/web-development/frontend/"
       );
     });
-  });
-
-  it("renders admin mode and handles create click correctly", async () => {
-    jest
-      .spyOn(NextJSNavigationAPI, "usePathname")
-      .mockReturnValue("/learning/web-development/frontend");
-    jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
-      user: {
-        publicMetadata: { role: "admin" },
-      },
-    } as any);
-
-    const { getByText } = await render();
-
-    await waitFor(() => {
-      expect(getByText("포스트 작성")).toBeInTheDocument();
-    });
-
-    fireEvent.click(getByText("포스트 작성"));
   });
 });

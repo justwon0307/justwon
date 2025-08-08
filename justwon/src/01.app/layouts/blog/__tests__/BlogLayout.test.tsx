@@ -1,18 +1,15 @@
-import { LearningRootLayout } from "@app/layouts/learning";
-import { sampleCategoryGroups } from "@entities/learning";
+import { BlogLayout } from "@app/layouts/blog";
+import { sampleCategoryGroups } from "@entities/blog";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-describe("LearningLayout", () => {
+describe("BlogLayout", () => {
   const render = async () => {
-    const element = await getElementFromAsyncServerComponent(
-      LearningRootLayout,
-      {
-        children: <div>Test Content</div>,
-      }
-    );
+    const element = await getElementFromAsyncServerComponent(BlogLayout, {
+      children: <div>Test Content</div>,
+    });
 
     return renderWithProviders(element);
   };
