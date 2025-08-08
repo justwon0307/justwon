@@ -37,7 +37,6 @@ describe("RootHeader", () => {
     expect(getByText("main-logo-horizontal")).toBeInTheDocument();
     expect(getByText("Projects")).toBeInTheDocument();
     expect(getByText("Blog")).toBeInTheDocument();
-    expect(getByText("Learning")).toBeInTheDocument();
     expect(getByText("About")).toBeInTheDocument();
 
     expect(getByText("login-icon")).toBeInTheDocument(); // mocked icon

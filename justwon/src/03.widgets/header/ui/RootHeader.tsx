@@ -24,7 +24,6 @@ export async function RootHeader() {
       <Tabs>
         <Tab tab="projects" />
         <Tab tab="blog" />
-        <Tab tab="learning" />
         <Tab tab="about" />
         <Divider />
         {userId ? (
