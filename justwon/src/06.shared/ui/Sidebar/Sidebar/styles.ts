@@ -2,8 +2,6 @@
 
 import styled from "styled-components";
 
-import { Divider } from "@shared/ui/Dividers";
-
 /**
  * 사이드바 메인 컨테이너
  */
@@ -32,7 +30,7 @@ export const SidebarContainer = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 0.75rem 1rem;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   .main {
@@ -41,10 +39,12 @@ export const SidebarContainer = styled.div`
     flex: 1;
     overflow-y: auto;
   }
-`;
 
-export const SidebarDivider = styled(Divider)`
-  background-color: ${({ theme }) => theme.colors.divider};
+  .sidebar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.divider};
+  }
 `;
 
 /**

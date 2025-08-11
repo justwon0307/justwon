@@ -25,7 +25,8 @@ export function Title({ title, icon }: Readonly<Props>) {
 const Text = styled.h1`
   display: flex;
   align-items: center;
-  gap: 8px;
+  margin: 8px 16px;
+  gap: 12px;
   color: ${({ theme }) => theme.colors.textPrimary};
   font-size: 1.75rem;
   font-weight: 600;

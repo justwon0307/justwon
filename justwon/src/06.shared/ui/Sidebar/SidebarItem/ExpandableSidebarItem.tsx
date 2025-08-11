@@ -58,7 +58,7 @@ export function ExpandableSidebarItem({
           <AppIcon
             icon={icon}
             size={20}
-            color={isActive ? colors.primary : colors.gray500}
+            color={isActive ? colors.primary : colors.textPrimary}
           />
           <SidebarItemTitle className={isActive ? "active" : ""}>
             {title}

@@ -30,6 +30,7 @@ const Container = styled.button`
   flex-direction: row;
   align-items: center;
   max-width: 280px;
+  margin-bottom: 8px;
   padding: 6px 8px;
   gap: 8px;
 

@@ -8,9 +8,6 @@ export const BreadcrumbContainer = styled.div`
   margin: 4px 0;
   padding: 8px;
   gap: 4px;
-
-  background-color: ${({ theme }) => theme.colors.gray200};
-  border-radius: 4px;
 `;
 
 export const Item = styled.div`
