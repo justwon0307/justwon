@@ -4,13 +4,13 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from ..models import CategoryGroup
-from ..serializers import CategoryGroupSimpleSerializer, CategoryGroupDetailSerializer
+from ..models import Category
+from ..serializers import CategoryDetailSerializer
 
 
-class CategoryGroupViewSet(ModelViewSet):
-    queryset = None  #  `get_queryset` 메소드에서 정의
-    serializer_class = CategoryGroupSimpleSerializer
+class CategoryViewSet(ModelViewSet):
+    queryset = None  # `get_queryset` 메소드에서 정의
+    serializer_class = CategoryDetailSerializer
     lookup_field = "slug"
 
     def get_queryset(self):
@@ -19,7 +19,7 @@ class CategoryGroupViewSet(ModelViewSet):
         로그인한 유저가 관리자일 경우, 전부 반환,
         그렇지 않을 경우, is_active가 True인 것만 반환
         """
-        return CategoryGroup.objects.all()
+        return Category.objects.all()
 
     def get_permissions(self):
         """
@@ -29,19 +29,17 @@ class CategoryGroupViewSet(ModelViewSet):
         """
         return [AllowAny()]
 
-    @extend_schema(
-        summary="카테고리 그룹 목록 조회",
-        responses={status.HTTP_200_OK: CategoryGroupSimpleSerializer(many=True)},
-        tags=["카테고리 그룹"],
-    )
+    @extend_schema(exclude=True)
     def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
+        """
+        카테고리 목록 조회는 CategoryGroupViewSet에서 처리하므로 이 메소드는 제외합니다.
+        """
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     @extend_schema(
-        summary="카테고리 그룹 상세 조회",
-        responses={status.HTTP_200_OK: CategoryGroupSimpleSerializer},
-        tags=["카테고리 그룹"],
+        summary="카테고리 상세 조회",
+        responses={status.HTTP_200_OK: CategoryDetailSerializer},
+        tags=["카테고리"],
     )
     def retrieve(self, request, *args, **kwargs):
-        self.serializer_class = CategoryGroupDetailSerializer
         return super().retrieve(request, *args, **kwargs)
