@@ -59,6 +59,15 @@ jest.mock("@shared/ui/Breadcrumb", () => {
     BreadcrumbItemType: BreadcrumbItemType,
   };
 });
+jest.mock("@shared/ui/Buttons", () => ({
+  LinkButton: ({
+    children,
+    href,
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => <a href={href}>{children}</a>,
+}));
 jest.mock("@shared/ui/Icons", () => ({
   AppIcon: ({ icon }: { icon: string }) => <span>{icon}-icon</span>,
   Logo: () => <span>main-logo</span>,
