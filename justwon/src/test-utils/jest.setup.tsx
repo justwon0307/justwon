@@ -97,6 +97,9 @@ jest.mock("@shared/ui/Sidebar", () => ({
   ),
 }));
 jest.mock("@shared/ui/Texts", () => ({
+  Callout: ({ text }: { text: string }) => (
+    <div className="callout">{text}</div>
+  ),
   Title: ({ title, icon }: { title: string; icon: string }) => (
     <h1>
       <span>{icon}-icon</span>
