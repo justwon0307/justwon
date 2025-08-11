@@ -1,0 +1,62 @@
+[
+  {
+    "model": "devlog.posttype",
+    "pk": 1,
+    "fields": {
+      "name": "학습 📚",
+      "slug": "study",
+      "description": "개념/이론/학습 정리",
+      "order": 1
+    }
+  },
+  {
+    "model": "devlog.posttype",
+    "pk": 2,
+    "fields": {
+      "name": "가이드 📍",
+      "slug": "guide",
+      "description": "따라하는 튜토리얼/설치/설정",
+      "order": 2
+    }
+  },
+  {
+    "model": "devlog.posttype",
+    "pk": 3,
+    "fields": {
+      "name": "문제해결 🐞",
+      "slug": "troubleshooting",
+      "description": "문제 상황과 해결 과정 공유",
+      "order": 3
+    }
+  },
+  {
+    "model": "devlog.posttype",
+    "pk": 4,
+    "fields": {
+      "name": "리뷰 ⭐️",
+      "slug": "review",
+      "description": "도구/서비스/책/자료 등 평가",
+      "order": 4
+    }
+  },
+  {
+    "model": "devlog.posttype",
+    "pk": 5,
+    "fields": {
+      "name": "팁 💡",
+      "slug": "tips",
+      "description": "유용한 정보/팁/노하우",
+      "order": 5
+    }
+  },
+  {
+    "model": "devlog.posttype",
+    "pk": 6,
+    "fields": {
+      "name": "이야기 📝",
+      "slug": "story",
+      "description": "경험담/회고/생각 정리",
+      "order": 6
+    }
+  }
+]
