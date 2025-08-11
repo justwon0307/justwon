@@ -20,14 +20,24 @@ class CategorySimpleSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "slug",
+            "icon",
+            "cover_image",
             "num_posts",
             "group",
         ]
-        read_only_fields = ["id", "num_posts", "group"]
+        read_only_fields = [
+            "id",
+            "name",
+            "slug",
+            "icon",
+            "cover_image",
+            "num_posts",
+            "group",
+        ]
 
     def get_num_posts(self, obj):
-        ## admin_only가 아닌 게시글의 수를 반환
-        return obj.posts.filter(admin_only=False).count()
+        ## is_published가 True인 게시글의 수를 반환
+        return obj.posts.filter(is_published=True).count()
 
 
 class CategoryGroupSimpleSerializer(serializers.ModelSerializer):
@@ -37,3 +47,38 @@ class CategoryGroupSimpleSerializer(serializers.ModelSerializer):
         model = CategoryGroup
         fields = ["id", "name", "kor_name", "slug", "icon", "categories"]
         read_only_fields = ["id", "categories"]
+
+
+class CategoryGroupDetailSerializer(serializers.ModelSerializer):
+    categories = CategorySimpleSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CategoryGroup
+        fields = [
+            "id",
+            "name",
+            "kor_name",
+            "icon",
+            "description",
+            "categories",
+        ]
+        read_only_fields = ["id", "categories"]
+
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
+    ### TODO: Posts 필드 추가
+    group = CategoryGroupRelatedSerializer(read_only=True)
+
+    class Meta:
+        model = Category
+        fields = [
+            "id",
+            "name",
+            "kor_name",
+            "icon",
+            "cover_image",
+            "image_credit_html",
+            "description",
+            "group",
+        ]
+        read_only_fields = ["id"]
