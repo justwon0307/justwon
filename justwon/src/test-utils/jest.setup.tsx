@@ -59,10 +59,6 @@ jest.mock("@shared/ui/Breadcrumb", () => {
     BreadcrumbItemType: BreadcrumbItemType,
   };
 });
-jest.mock("@shared/ui/Dividers", () => ({
-  Divider: () => <div>Divider</div>,
-  VerticalDivider: () => <div>VerticalDivider</div>,
-}));
 jest.mock("@shared/ui/Icons", () => ({
   AppIcon: ({ icon }: { icon: string }) => <span>{icon}-icon</span>,
   Logo: () => <span>main-logo</span>,
