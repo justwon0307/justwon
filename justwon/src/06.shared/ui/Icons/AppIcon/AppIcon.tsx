@@ -17,14 +17,18 @@ import Chip from "../files/chip.svg";
 import Computer from "../files/computer.svg";
 import DataStructure from "../files/data-structure.svg";
 import Database from "../files/database.svg";
+import Lightbulb from "../files/lightbulb.svg";
 import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
 import Network from "../files/network.svg";
+import Resources from "../files/resources.svg";
 import Pencil from "../files/pencil.svg";
 import Profile from "../files/profile.svg";
 import Projects from "../files/projects.svg";
 import Search from "../files/search.svg";
 import System from "../files/system.svg";
+import Tools from "../files/tools.svg";
+import Web from "../files/web.svg";
 import Workout from "../files/workout.svg";
 
 interface Props {
@@ -49,14 +53,18 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   computer: Computer,
   "data-structure": DataStructure,
   database: Database,
+  lightbulb: Lightbulb,
   login: Login,
   logout: Logout,
   network: Network,
   pencil: Pencil,
   profile: Profile,
   projects: Projects,
+  resources: Resources,
   search: Search,
   system: System,
+  tools: Tools,
+  web: Web,
   workout: Workout,
 };
 
