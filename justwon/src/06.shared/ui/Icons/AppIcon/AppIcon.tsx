@@ -7,8 +7,11 @@ import Admin from "../files/admin.svg";
 import Algorithms from "../files/algorithms.svg";
 import ArrowLeft from "../files/arrow-left.svg";
 import ArrowRight from "../files/arrow-right.svg";
+import Article from "../files/article.svg";
 import Baekjoon from "../files/baekjoon.svg";
 import Blog from "../files/blog.svg";
+import Blogs from "../files/blogs.svg";
+import Book from "../files/book.svg";
 import Brain from "../files/brain.svg";
 import ChevronDown from "../files/chevron-down.svg";
 import ChevronLeft from "../files/chevron-left.svg";
@@ -29,6 +32,7 @@ import Notion from "../files/notion.svg";
 import Operation from "../files/operation.svg";
 import Others from "../files/others.svg";
 import Resources from "../files/resources.svg";
+import Paper from "../files/paper.svg";
 import Pencil from "../files/pencil.svg";
 import Profile from "../files/profile.svg";
 import Projects from "../files/projects.svg";
@@ -36,6 +40,8 @@ import Search from "../files/search.svg";
 import Server from "../files/server.svg";
 import System from "../files/system.svg";
 import Tools from "../files/tools.svg";
+import Utilities from "../files/utilities.svg";
+import Video from "../files/video.svg";
 import VSCode from "../files/vscode.svg";
 import Web from "../files/web.svg";
 import Workout from "../files/workout.svg";
@@ -52,8 +58,11 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   algorithms: Algorithms,
   "arrow-left": ArrowLeft,
   "arrow-right": ArrowRight,
+  article: Article,
   baekjoon: Baekjoon,
   blog: Blog,
+  blogs: Blogs,
+  book: Book,
   brain: Brain,
   "chevron-down": ChevronDown,
   "chevron-left": ChevronLeft,
@@ -73,6 +82,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   notion: Notion,
   operation: Operation,
   others: Others,
+  paper: Paper,
   pencil: Pencil,
   profile: Profile,
   projects: Projects,
@@ -81,6 +91,8 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   server: Server,
   system: System,
   tools: Tools,
+  utilities: Utilities,
+  video: Video,
   vscode: VSCode,
   web: Web,
   workout: Workout,
