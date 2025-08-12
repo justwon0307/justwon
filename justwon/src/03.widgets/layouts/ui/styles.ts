@@ -2,20 +2,20 @@
 
 import styled from "styled-components";
 
-import { VerticalDivider } from "@shared/ui/Dividers";
-
 export const DefaultLayout = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 90vh;
+
+  .vertical-divider {
+    align-self: stretch;
+    width: 1px;
+    background-color: ${({ theme }) => theme.colors.divider};
+  }
 `;
 
 export const ContentWrapper = styled.div`
   flex: 1;
-`;
-
-export const Divider = styled(VerticalDivider)`
-  background-color: ${({ theme }) => theme.colors.divider};
 `;
 
 const Vertical = styled.div`
@@ -31,4 +31,24 @@ export const PageWrapper = styled(Vertical)`
 export const PageContents = styled(Vertical)`
   flex: 1;
   gap: 8px;
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .subtitle {
+    margin: 8px 24px;
+    font-size: 1.2rem;
+    color: ${({ theme }) => theme.colors.textPrimary};
+  }
+
+  .content-divider {
+    margin: 4px 0;
+    width: 100%;
+    height: 2px;
+    background-color: ${({ theme }) => theme.colors.divider};
+  }
 `;
