@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 import { PageContents, PageWrapper } from "@widgets/layouts";
+import { CategoryCard, getCategoryGroupDetails } from "@entities/blog";
 import { BreadcrumbContainer, BreadcrumbItem } from "@shared/ui/Breadcrumb";
-import { Title } from "@shared/ui/Texts";
+import { Callout, Title } from "@shared/ui/Texts";
 
 interface Props {
   params: Promise<{ catGrpSlug: string }>;
@@ -14,9 +14,11 @@ export async function generateMetadata({
 }: Readonly<Props>): Promise<Metadata> {
   const { catGrpSlug } = await params;
 
+  const data = await getCategoryGroupDetails(catGrpSlug);
+
   return {
-    title: `${catGrpSlug} | JustWon`,
-    description: "",
+    title: `${data.name} | JustWon`,
+    description: data.description,
   };
 }
 
@@ -28,13 +30,15 @@ export async function generateMetadata({
 export async function BlogCategoryGroupPage({ params }: Readonly<Props>) {
   const { catGrpSlug } = await params;
 
+  const data = await getCategoryGroupDetails(catGrpSlug);
+
   const blogLandingBreadcrumbItem = {
     label: "Blog",
     href: "/blog",
   };
 
   const categoryGroupBreadcrumbItem = {
-    label: catGrpSlug,
+    label: data.name,
     href: `/blog/${catGrpSlug}`,
   };
 
@@ -47,16 +51,15 @@ export async function BlogCategoryGroupPage({ params }: Readonly<Props>) {
         </BreadcrumbContainer>
       </div>
       <PageContents>
-        <Title title="Blog Category Group" icon="start" />
-        <Image
-          src="https://cdn.justwon.dev/images/blog-category-group.jpg"
-          alt="Blog Category Group"
-          width={600}
-          height={400}
-        />
-        <span>타이틀 & 설명 (주제 범위, 학습 목표)</span>
-        <span>대표 이미지 / 아이콘 (개념 맵, 다이어그램 등)</span>
-        <span>하위 카테고리 카드 디자인 (이름, 아이콘, 간략 설명)</span>
+        <Title title={data.name} icon={data.icon} />
+        <Callout text={data.description} />
+        <div className="content-divider" />
+        <h3 className="subtitle">분류</h3>
+        <div className="list">
+          {data.categories.map((category) => (
+            <CategoryCard key={category.id} category={category} />
+          ))}
+        </div>
       </PageContents>
     </PageWrapper>
   );

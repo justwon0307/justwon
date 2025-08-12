@@ -1,8 +1,18 @@
 import { BlogCategoryPage, generateMetadata } from "@pages/blog/category";
 import {
+  BlogProvider,
+  sampleCategoryDetails,
+  sampleCategoryGroups,
+} from "@entities/blog";
+import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
+
+(global.fetch as jest.Mock).mockResolvedValue({
+  ok: true,
+  json: jest.fn().mockResolvedValue(sampleCategoryDetails),
+});
 
 describe("BlogCategoryPage", () => {
   const render = async (slug: string) => {
@@ -16,15 +26,18 @@ describe("BlogCategoryPage", () => {
       }
     );
 
-    return renderWithProviders(elements);
+    return renderWithProviders(
+      <BlogProvider initialCategoryGroups={sampleCategoryGroups}>
+        {elements}
+      </BlogProvider>
+    );
   };
 
   it("renders the category page with the correct title", async () => {
     const { getByText } = await render("test-category");
 
-    expect(getByText("Category: test-category")).toBeInTheDocument();
     expect(
-      getByText("카테고리 이름 & 아이콘 & 핵심 개념 및 학습 포인트")
+      getByText(`${sampleCategoryDetails.description}`)
     ).toBeInTheDocument();
   });
 });
@@ -38,7 +51,7 @@ describe("generateMetadata", () => {
       }),
     });
 
-    expect(metadata.title).toBe("test-category | JustWon");
-    expect(metadata.description).toBe("");
+    expect(metadata.title).toBe(`${sampleCategoryDetails.name} | JustWon`);
+    expect(metadata.description).toBe(sampleCategoryDetails.description);
   });
 });

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 import { PageContents, PageWrapper } from "@widgets/layouts";
+import { getCategoryDetails } from "@entities/blog";
 import { BreadcrumbContainer, BreadcrumbItem } from "@shared/ui/Breadcrumb";
+import { Callout, Title } from "@shared/ui/Texts";
 
 interface Props {
   params: Promise<{
@@ -15,9 +17,11 @@ export async function generateMetadata({
 }: Readonly<Props>): Promise<Metadata> {
   const { catSlug } = await params;
 
+  const data = await getCategoryDetails(catSlug);
+
   return {
-    title: `${catSlug} | JustWon`,
-    description: "",
+    title: `${data.name} | JustWon`,
+    description: data.description,
   };
 }
 
@@ -29,18 +33,20 @@ export async function generateMetadata({
 export async function BlogCategoryPage({ params }: Readonly<Props>) {
   const { catSlug, catGrpSlug } = await params;
 
+  const data = await getCategoryDetails(catSlug);
+
   const blogLandingBreadcrumbItem = {
     label: "Blog",
     href: "/blog",
   };
 
   const categoryGroupBreadcrumbItem = {
-    label: catGrpSlug,
+    label: data.group.name,
     href: `/blog/${catGrpSlug}`,
   };
 
   const categoryBreadcrumbItem = {
-    label: catSlug,
+    label: data.name,
     href: `/blog/${catGrpSlug}/${catSlug}`,
   };
 
@@ -52,12 +58,11 @@ export async function BlogCategoryPage({ params }: Readonly<Props>) {
         <BreadcrumbItem item={categoryBreadcrumbItem} isLastItem />
       </BreadcrumbContainer>
       <PageContents>
-        <h1>Category: {catSlug}</h1>
-        <span>카테고리 이름 & 아이콘 & 핵심 개념 및 학습 포인트</span>
-        <span>진도 표시 / 퍼센트 바 (쿠키 / 로컬 스토리지 기반)</span>
-        <span>이런 글도 추천 섹션</span>
-        <span>퀴즈 / 자가 진단</span>
-        <span></span>
+        <Title title={data.name} icon={data.icon} />
+        <Callout text={data.description} />
+        <div className="content-divider" />
+        <h3 className="subtitle">게시글 목록</h3>
+        <div className="list">{/* 게시글 목록 렌더링 */}</div>
       </PageContents>
     </PageWrapper>
   );
