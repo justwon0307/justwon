@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
 
-import { Tab } from "./_tab";
-import { Container, Tabs } from "./styles";
+import { HeaderTab } from "@widgets/tab";
+import { HeaderContainer, Tabs } from "./styles";
+import { isLoggedIn } from "@shared/lib/auth";
 import { AppIcon, LogoHorizontal } from "@shared/ui/Icons";
 
 /**
@@ -14,19 +14,19 @@ import { AppIcon, LogoHorizontal } from "@shared/ui/Icons";
  */
 
 export async function RootHeader() {
-  const { userId } = await auth();
+  const authenticated = await isLoggedIn();
 
   return (
-    <Container>
+    <HeaderContainer>
       <Link href="/" className="title">
         <LogoHorizontal size={32} />
       </Link>
       <Tabs>
-        <Tab tab="projects" />
-        <Tab tab="blog" />
-        <Tab tab="about" />
+        <HeaderTab tab="projects" />
+        <HeaderTab tab="blog" />
+        <HeaderTab tab="about" />
         <div className="divider" />
-        {userId ? (
+        {authenticated ? (
           <div className="user-button">
             <UserButton />
           </div>
@@ -40,6 +40,6 @@ export async function RootHeader() {
           </Link>
         )}
       </Tabs>
-    </Container>
+    </HeaderContainer>
   );
 }

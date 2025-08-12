@@ -11,7 +11,7 @@ interface Props {
   tab: "projects" | "blog" | "about";
 }
 
-export function Tab({ tab }: Readonly<Props>) {
+export function HeaderTab({ tab }: Readonly<Props>) {
   const { colors } = useColors();
   const pathname = usePathname();
   const isActive = pathname.startsWith(`/${tab}`);

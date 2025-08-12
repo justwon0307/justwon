@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,7 +45,7 @@ export const Tabs = styled.div`
   }
 
   > a.active {
-    background-color: ${({ theme }) => theme.colors.gray200};
+    background-color: ${({ theme }) => theme.colors.gray300};
     color: ${({ theme }) => theme.colors.primary};
   }
 
