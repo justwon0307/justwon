@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 
-import { HeaderTab } from "@widgets/tab";
+import { HeaderTab } from "./_tab";
 import { HeaderContainer, Tabs } from "./styles";
 import { isLoggedIn } from "@shared/lib/auth";
 import { AppIcon, LogoHorizontal } from "@shared/ui/Icons";
