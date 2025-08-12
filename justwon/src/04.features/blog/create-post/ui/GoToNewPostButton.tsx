@@ -1,11 +1,11 @@
 "use client";
 
 import "client-only";
-import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
 import styled from "styled-components";
 
 import { useColors } from "@shared/lib/colors";
+import { LinkButton } from "@shared/ui/Buttons";
 import { AppIcon } from "@shared/ui/Icons";
 
 export function GoToNewPostButton() {
@@ -24,20 +24,6 @@ export function GoToNewPostButton() {
   );
 }
 
-const WriteButton = styled(Link)`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 0;
-  gap: 8px;
-
-  color: ${({ theme }) => theme.colors.onPrimary};
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-family: "Geist", sans-serif;
-  text-decoration: none;
-
+const WriteButton = styled(LinkButton)`
   background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: 8px;
 `;
