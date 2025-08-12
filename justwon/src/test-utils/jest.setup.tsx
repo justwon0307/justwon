@@ -5,6 +5,10 @@ global.fetch = jest.fn();
 jest.mock("next/cache", () => ({
   revalidatePath: jest.fn(),
 }));
+jest.mock("next/image", () => ({
+  __esModule: true,
+  default: ({ src }: { src: string }) => <div>{src}</div>,
+}));
 jest.mock("next/navigation", () => ({
   redirect: jest.fn(),
   usePathname: jest.fn().mockReturnValue("/"),
@@ -78,23 +82,11 @@ jest.mock("@shared/ui/Icons", () => ({
   Logo: () => <span>main-logo</span>,
   LogoHorizontal: () => <span>main-logo-horizontal</span>,
 }));
+jest.mock("@shared/ui/Menus", () => ({
+  Menu: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}));
 jest.mock("@shared/ui/Searchbar", () => ({
   SearchButton: () => <button>Search</button>,
-}));
-jest.mock("@shared/ui/Sidebar", () => ({
-  ExpandableSidebarItem: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-  SidebarContainer: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-  SidebarDivider: () => <div className="sidebar-divider">Sidebar Divider</div>,
-  SidebarItemContainer: ({ children }: { children: React.ReactNode }) => (
-    <div className="sidebar-item-container">{children}</div>
-  ),
-  SidebarTitle: ({ children }: { children: React.ReactNode }) => (
-    <h2>{children}</h2>
-  ),
 }));
 jest.mock("@shared/ui/Texts", () => ({
   Callout: ({ text }: { text: string }) => (
