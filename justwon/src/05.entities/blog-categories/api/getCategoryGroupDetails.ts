@@ -1,4 +1,4 @@
-import { CategoryGroupDetailsType } from "../../models/categories";
+import { CategoryGroupDetailsType } from "../models/categories";
 import { BASE_URL } from "@shared/api/config";
 import { APIError, APIResponseType } from "@shared/api/models";
 

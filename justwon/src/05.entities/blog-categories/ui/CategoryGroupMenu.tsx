@@ -4,21 +4,23 @@ import "client-only";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
-import { useBlog } from "../../contexts/useBlog";
-import { CategoryGroupType, CategoryType } from "../../models/categories";
-import { ExpandableSidebarItem } from "@shared/ui/Sidebar";
+import { useBlogCategory } from "../hooks/useCategory";
+import { useBlogCategoryGroup } from "../hooks/useCategoryGroup";
+import { CategoryGroupType, CategoryType } from "../models/categories";
+import { ExpandableMenu } from "@shared/ui/Menus";
 
 interface Props {
   group: CategoryGroupType;
 }
 
 /**
- * 블로그 카테고리 그룹 메뉴 컴포넌트
+ * 블로그 카테고리 그룹 메뉴 컴포넌트 (사이드바에서 사용)
  *   - Interactive하기 때문에, 클라이언트 컴포넌트
  */
 
 export function CategoryGroupMenu({ group }: Readonly<Props>) {
-  const { selectedCategoryGroup, selectedCategory } = useBlog();
+  const { selectedCategoryGroup } = useBlogCategoryGroup();
+  const { selectedCategory } = useBlogCategory();
 
   const router = useRouter();
 
@@ -26,11 +28,15 @@ export function CategoryGroupMenu({ group }: Readonly<Props>) {
     router.push(`/blog/${category.group.slug}/${category.slug}/`);
   };
 
+  const handleMenuClick = () => {
+    router.push(`/blog/${group.slug}/`);
+  };
+
   return (
-    <ExpandableSidebarItem
+    <ExpandableMenu
       title={group.name}
       icon={group.icon}
-      href={`/blog/${group.slug}/`}
+      onMenuClick={handleMenuClick}
       isActive={group.id === selectedCategoryGroup?.id}
       key={group.id}
     >
@@ -44,7 +50,7 @@ export function CategoryGroupMenu({ group }: Readonly<Props>) {
           <span className="count">{category.num_posts}</span>
         </CategoryButton>
       ))}
-    </ExpandableSidebarItem>
+    </ExpandableMenu>
   );
 }
 

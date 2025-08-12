@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { CategoryType } from "../../models/categories";
+import { CategoryType } from "../models/categories";
 import { useColors } from "@shared/lib/colors";
 import { AppIcon } from "@shared/ui/Icons";
 
