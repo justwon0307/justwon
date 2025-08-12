@@ -1,6 +1,6 @@
 import { SeriesType } from "../models/series";
 
-export const testSeries: SeriesType[] = [
+export const sampleSeries: SeriesType[] = [
   {
     id: 1,
     title: "JavaScript Basics",

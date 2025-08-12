@@ -1,7 +1,7 @@
 import {
   getCategoryGroupDetails,
   sampleCategoryGroupDetails,
-} from "@entities/blog-categories";
+} from "@entities/blog/categories";
 
 describe("getCategoryGroupDetails", () => {
   it("should fetch category group details correctly", async () => {

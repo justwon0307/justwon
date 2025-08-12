@@ -1,6 +1,6 @@
 import { TagType } from "../models/tags";
 
-export const testTags: TagType[] = [
+export const sampleTags: TagType[] = [
   {
     id: 1,
     name: "JavaScript",

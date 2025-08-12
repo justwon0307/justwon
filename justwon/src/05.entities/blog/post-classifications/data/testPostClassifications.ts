@@ -1,6 +1,6 @@
 import { PostClassificationType } from "../models/post-classifications";
 
-export const testPostClassifications: PostClassificationType[] = [
+export const samplePostClassifications: PostClassificationType[] = [
   {
     id: 1,
     name: "study",
