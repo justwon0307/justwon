@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
 
-import { ContentWrapper, DefaultLayout, Divider } from "@widgets/layouts";
-import { GoToNewPostButton } from "@features/blog/create-post";
-import { CategoryGroupMenu, getAllCategoryGroups } from "@entities/blog";
-import { SearchButton } from "@shared/ui/Searchbar";
+import { ContentWrapper, DefaultLayout } from "@widgets/layouts";
 import {
   SidebarContainer,
-  SidebarDivider,
   SidebarItemContainer,
   SidebarTitle,
-} from "@shared/ui/Sidebar";
+} from "@widgets/sidebar";
+import { OpenAdminMenuButton } from "@features/blog/admin-menu";
+import { GoToNewPostButton } from "@features/blog/create-post";
+import { CategoryGroupMenu, initializeBlog } from "@entities/blog";
+import { SearchButton } from "@shared/ui/Searchbar";
 
 interface Props {
   children: ReactNode;
@@ -22,7 +22,7 @@ interface Props {
  */
 
 export async function BlogReadLayout({ children }: Readonly<Props>) {
-  const categoryGroups = await getAllCategoryGroups();
+  const data = await initializeBlog();
 
   return (
     <DefaultLayout>
@@ -30,18 +30,19 @@ export async function BlogReadLayout({ children }: Readonly<Props>) {
         <div className="header padding">
           <SearchButton />
           <GoToNewPostButton />
+          <OpenAdminMenuButton />
         </div>
-        <SidebarDivider />
+        <div className="sidebar-divider" />
         <div className="main padding">
           <SidebarTitle>Blog</SidebarTitle>
           <SidebarItemContainer>
-            {categoryGroups.map((group) => (
+            {data.category_groups.map((group) => (
               <CategoryGroupMenu key={group.id} group={group} />
             ))}
           </SidebarItemContainer>
         </div>
       </SidebarContainer>
-      <Divider />
+      <div className="vertical-divider" />
       <ContentWrapper>{children}</ContentWrapper>
     </DefaultLayout>
   );

@@ -58,3 +58,14 @@ export const SidebarTitle = styled.h2`
   font-weight: 500;
   font-family: "Geist", sans-serif;
 `;
+
+/**
+ * 사이드바 아이템 컨테이너
+ */
+
+export const SidebarItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 24px;
+`;

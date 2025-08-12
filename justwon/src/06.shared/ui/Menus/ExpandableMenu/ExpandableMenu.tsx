@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import styled, { keyframes } from "styled-components";
 
 import { useColors } from "@shared/lib/colors";
 import { AppIcon } from "@shared/ui/Icons";
 
 /**
- * 사이드바 메뉴
+ * 메뉴 컴포넌트
  *   - expand/collapse할 수 있는 메뉴
  */
 
@@ -16,20 +15,19 @@ interface Props {
   title: string;
   icon: string;
   children: React.ReactNode;
-  href: string;
+  onMenuClick: () => void;
   isActive?: boolean;
 }
 
-export function ExpandableSidebarItem({
+export function ExpandableMenu({
   title,
   icon,
   children,
-  href,
+  onMenuClick,
   isActive = false,
 }: Readonly<Props>) {
   const [isExpanded, setIsExpanded] = useState<boolean>(isActive);
 
-  const router = useRouter();
   const { colors } = useColors();
 
   const toggleExpand = () => {
@@ -37,7 +35,9 @@ export function ExpandableSidebarItem({
   };
 
   const handleLinkClick = () => {
-    router.push(href);
+    if (isActive) return;
+
+    onMenuClick();
     setIsExpanded(true);
   };
 
@@ -53,28 +53,28 @@ export function ExpandableSidebarItem({
         <button
           className="link"
           onClick={handleLinkClick}
-          data-testid="sidebar-link"
+          data-testid="menu-link"
         >
           <AppIcon
             icon={icon}
             size={20}
             color={isActive ? colors.primary : colors.textPrimary}
           />
-          <SidebarItemTitle className={isActive ? "active" : ""}>
+          <MenuItemTitle className={isActive ? "active" : ""}>
             {title}
-          </SidebarItemTitle>
+          </MenuItemTitle>
         </button>
         <IconWrapper
           className={isExpanded ? "expanded" : ""}
           onClick={toggleExpand}
-          data-testid="sidebar-toggle"
+          data-testid="menu-toggle"
         >
           <AppIcon icon="chevron-right" size={16} />
         </IconWrapper>
       </ItemMenuWrapper>
-      <SidebarItemContent className={isExpanded ? "expanded" : ""}>
+      <MenuItemContent className={isExpanded ? "expanded" : ""}>
         {children}
-      </SidebarItemContent>
+      </MenuItemContent>
     </div>
   );
 }
@@ -95,7 +95,7 @@ const ItemMenuWrapper = styled.div`
   }
 `;
 
-const SidebarItemTitle = styled.h3`
+const MenuItemTitle = styled.h3`
   margin: 0;
   color: ${({ theme }) => theme.colors.textPrimary};
   font-size: 1rem;
@@ -144,7 +144,7 @@ const slideUp = keyframes`
   }
 `;
 
-const SidebarItemContent = styled.div`
+const MenuItemContent = styled.div`
   flex-direction: column;
   margin: 8px;
   padding: 4px 0 0 12px;
