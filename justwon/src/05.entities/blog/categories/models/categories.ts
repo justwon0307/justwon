@@ -29,16 +29,16 @@ export type CategoryGroupType = Pick<
   categories: CategoryType[];
 };
 
+export type AdminCategoryGroupType = CategoryGroupType & {
+  is_active: boolean;
+}
+
 /**
  * 카테고리 그룹 상세 조회 시 사용될 타입
  */
 
-export type CategoryGroupDetailsType = Pick<
-  CategoryGroupFields,
-  "id" | "name" | "kor_name" | "slug" | "icon" | "description"
-> & {
-  categories: CategoryType[];
-};
+export type CategoryGroupDetailsType = CategoryGroupType &
+  Pick<CategoryGroupFields, "kor_name" | "description">;
 
 // 2. 카테고리 그룹 하위의 카테고리
 
@@ -64,14 +64,17 @@ export type CategoryType = Pick<
   group: CategoryGroupRelatedType;
 };
 
+export type AdminCategoryType = CategoryType & {
+  is_active: boolean;
+}
+
 /**
  * 카테고리 상세 조회 시 사용될 타입
  */
 
-export type CategoryDetailsType = Pick<
+export type CategoryDetailsType = CategoryType & Pick<
   CategoryFields,
-  "id" | "name" | "kor_name" | "slug" | "icon" | "description"
+  "kor_name" | "description"
 > & {
-  group: CategoryGroupRelatedType;
   // posts: PostType[]; // 카테고리 하위의 포스트들
 };

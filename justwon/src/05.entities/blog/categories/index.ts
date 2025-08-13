@@ -19,7 +19,12 @@ export {
   useBlogCategoryGroup,
 } from "./hooks/useCategoryGroup";
 
-export type { CategoryGroupType, CategoryType } from "./models/categories";
+export type {
+  AdminCategoryGroupType,
+  AdminCategoryType,
+  CategoryGroupType,
+  CategoryType,
+} from "./models/categories";
 
 export { CategoryCard } from "./ui/CategoryCard";
 export { CategoryGroupMenu } from "./ui/CategoryGroupMenu";
