@@ -32,6 +32,10 @@ jest.mock("@clerk/nextjs", () => ({
   })),
 }));
 
+jest.mock("@shared/lib/auth", () => ({
+  getToken: jest.fn().mockReturnValue("mocked-token"),
+  isLoggedIn: jest.fn().mockReturnValue(true),
+}));
 jest.mock("@shared/lib/colors", () => {
   const { ColorContext, ColorContextType, ThemeColorType, lightTheme } =
     jest.requireActual("@shared/lib/colors");
@@ -77,13 +81,10 @@ jest.mock("@shared/ui/Icons", () => ({
   Logo: () => <span>main-logo</span>,
   LogoHorizontal: () => <span>main-logo-horizontal</span>,
 }));
-jest.mock("@shared/ui/Icons", () => ({
-  AppIcon: ({ icon }: { icon: string }) => <span>{icon}-icon</span>,
-  Logo: () => <span>main-logo</span>,
-  LogoHorizontal: () => <span>main-logo-horizontal</span>,
-}));
 jest.mock("@shared/ui/Menus", () => ({
-  Menu: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  ExpandableMenu: ({ children }: { children: React.ReactNode }) => (
+    <div>{children}</div>
+  ),
 }));
 jest.mock("@shared/ui/Searchbar", () => ({
   SearchButton: () => <button>Search</button>,
