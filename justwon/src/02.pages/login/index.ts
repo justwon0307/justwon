@@ -1,3 +1,1 @@
-export { metadata } from "./metadata";
-
-export { LoginPage } from "./ui/LoginPage";
+export { LoginPage, metadata } from "./ui/LoginPage";
