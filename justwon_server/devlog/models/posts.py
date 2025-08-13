@@ -16,7 +16,7 @@ class Post(models.Model):
     summary = models.CharField(max_length=300, blank=True)
     content = models.TextField()
 
-    cover_image = models.URLField(blank=True)
+    cover_image_url = models.URLField(blank=True)
     image_credit_html = models.TextField(blank=True)
 
     category = models.ForeignKey(

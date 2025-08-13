@@ -11,7 +11,7 @@ class CategoryGroup(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=80, unique=True)
     kor_name = models.CharField(max_length=80, unique=True)
-    slug = models.SlugField(max_length=80, unique=True, allow_unicode=True)
+    slug = models.SlugField(max_length=80, unique=True)
 
     icon = models.CharField(max_length=80)
     description = models.TextField(blank=True, default="")
@@ -37,13 +37,13 @@ class Category(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=80, unique=True)
     kor_name = models.CharField(max_length=80, blank=True)
-    slug = models.SlugField(max_length=80, unique=True, allow_unicode=True)
+    slug = models.SlugField(max_length=80, unique=True)
     group = models.ForeignKey(
         CategoryGroup, on_delete=models.CASCADE, related_name="categories"
     )
 
     icon = models.CharField(max_length=80)
-    cover_image = models.URLField()
+    cover_image_url = models.URLField()
     image_credit_html = models.TextField(blank=True, default="")
     description = models.TextField(blank=True, default="")
 

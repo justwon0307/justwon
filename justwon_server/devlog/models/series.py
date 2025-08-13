@@ -6,10 +6,11 @@ class Series(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     description = models.TextField(blank=True, default="")
 
+    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
