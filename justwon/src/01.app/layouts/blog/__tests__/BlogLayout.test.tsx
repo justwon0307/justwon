@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { fireEvent, waitFor } from "@testing-library/react";
+import * as NextJSNavigationAPI from "next/navigation";
+import * as ClerkAPI from "@clerk/nextjs";
+
 import { BlogLayout } from "@app/layouts/blog";
 import {
   initializeBlog,
@@ -21,17 +26,59 @@ describe("BlogLayout", () => {
   const render = async () => {
     const element = await getElementFromAsyncServerComponent(BlogLayout, {
       children: <div>Test Content</div>,
+      modal: <div>Test Modal</div>,
     });
 
     return renderWithProviders(element);
   };
 
-  it("fetches categories data successfully", async () => {
+  beforeEach(() => {
+    jest
+      .spyOn(NextJSNavigationAPI, "usePathname")
+      .mockReturnValue("/blog/web-development/frontend");
+    jest.spyOn(NextJSNavigationAPI, "useRouter").mockReturnValue({
+      push: jest.fn(),
+    } as any);
+  });
+  it("fetches categories data successfully (not logged in)", async () => {
     (initializeBlog as jest.Mock).mockResolvedValue(
       sampleBlogInitializerResponse
     );
+    jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
+      isSignedIn: false,
+      isLoaded: true,
+      user: null,
+    });
 
-    await render();
+    const { getByText, getByTestId, queryByText } = await render();
+
+    expect(queryByText("포스트 작성")).not.toBeInTheDocument();
+    expect(queryByText("관리자 메뉴")).not.toBeInTheDocument();
+
+    fireEvent.click(getByText("Frontend"));
+    fireEvent.click(getByTestId("Web Development-menu"));
+
+    await waitFor(() => {
+      expect(NextJSNavigationAPI.useRouter().push).toHaveBeenCalledWith(
+        "/blog/web-development/frontend/"
+      );
+    });
+  });
+
+  it("fetches categories data successfully (logged in)", async () => {
+    (initializeBlog as jest.Mock).mockResolvedValue(
+      sampleBlogInitializerResponse
+    );
+    jest.spyOn(ClerkAPI, "useUser").mockReturnValue({
+      user: {
+        publicMetadata: { role: "admin" },
+      },
+    } as any);
+
+    const { getByText } = await render();
+
+    expect(getByText("포스트 작성")).toBeInTheDocument();
+    expect(getByText("관리자 메뉴")).toBeInTheDocument();
   });
 
   it("handles data fetch error correctly", async () => {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import axios from "axios";
 
-import { ClerkProvider, StylesProvider } from "@app/providers";
+import { ClerkProvider, QueryProvider, StylesProvider } from "@app/providers";
 import { RootHeader } from "@widgets/header";
 import { getToken } from "@shared/lib/auth";
 
@@ -54,10 +54,12 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClerkProvider>
-          <StylesProvider>
-            <RootHeader />
-            {children}
-          </StylesProvider>
+          <QueryProvider>
+            <StylesProvider>
+              <RootHeader />
+              {children}
+            </StylesProvider>
+          </QueryProvider>
         </ClerkProvider>
       </body>
     </html>
