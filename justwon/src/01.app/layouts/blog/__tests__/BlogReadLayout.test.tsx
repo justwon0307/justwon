@@ -4,7 +4,7 @@ import * as NextJSNavigationAPI from "next/navigation";
 import * as ClerkAPI from "@clerk/nextjs";
 
 import { BlogReadLayout } from "@app/layouts/blog";
-import { BlogProvider, sampleCategoryGroups } from "@entities/blog";
+import { BlogProvider, sampleBlogInitializerResponse } from "@features/blog/initialize-blog";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
@@ -19,7 +19,7 @@ describe("BlogReadLayout", () => {
     });
 
     return renderWithProviders(
-      <BlogProvider initialCategoryGroups={sampleCategoryGroups}>
+      <BlogProvider data={sampleBlogInitializerResponse}>
         {element}
       </BlogProvider>
     );
@@ -32,7 +32,7 @@ describe("BlogReadLayout", () => {
     } as any);
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
-      json: jest.fn().mockResolvedValue(sampleCategoryGroups),
+      json: jest.fn().mockResolvedValue(sampleBlogInitializerResponse),
     });
   });
 
@@ -43,13 +43,14 @@ describe("BlogReadLayout", () => {
       user: null,
     });
 
-    const { getByText, queryByText } = await render();
+    const { getByTestId, getByText, queryByText } = await render();
     expect(getByText("Blog")).toBeInTheDocument();
     expect(getByText("Test Content")).toBeInTheDocument();
 
     expect(queryByText("포스트 작성")).not.toBeInTheDocument();
 
     fireEvent.click(getByText("Frontend"));
+    fireEvent.click(getByTestId("Web Development-menu"));
 
     await waitFor(() => {
       expect(NextJSNavigationAPI.useRouter().push).toHaveBeenCalledWith(

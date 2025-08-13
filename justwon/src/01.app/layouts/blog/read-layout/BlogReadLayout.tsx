@@ -8,7 +8,8 @@ import {
 } from "@widgets/sidebar";
 import { OpenAdminMenuButton } from "@features/blog/admin-menu";
 import { GoToNewPostButton } from "@features/blog/create-post";
-import { CategoryGroupMenu, initializeBlog } from "@entities/blog";
+import { initializeBlog } from "@features/blog/initialize-blog";
+import { CategoryGroupMenu } from "@entities/blog/categories";
 import { SearchButton } from "@shared/ui/Searchbar";
 
 interface Props {
