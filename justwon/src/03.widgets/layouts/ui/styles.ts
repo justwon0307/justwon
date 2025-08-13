@@ -60,4 +60,20 @@ export const ErrorWrapper = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 70vh;
+
+  > a {
+    margin-top: 16px;
+    padding: 8px 16px;
+
+    color: ${({ theme }) => theme.colors.primary};
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.colors.gray300};
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
