@@ -31,7 +31,7 @@ export type CategoryGroupType = Pick<
 
 export type AdminCategoryGroupType = CategoryGroupType & {
   is_active: boolean;
-}
+};
 
 /**
  * 카테고리 그룹 상세 조회 시 사용될 타입
@@ -66,15 +66,13 @@ export type CategoryType = Pick<
 
 export type AdminCategoryType = CategoryType & {
   is_active: boolean;
-}
+};
 
 /**
  * 카테고리 상세 조회 시 사용될 타입
  */
 
-export type CategoryDetailsType = CategoryType & Pick<
-  CategoryFields,
-  "kor_name" | "description"
-> & {
-  // posts: PostType[]; // 카테고리 하위의 포스트들
-};
+export type CategoryDetailsType = CategoryType &
+  Pick<CategoryFields, "kor_name" | "description">; // & {
+// posts: PostType[]; // 카테고리 하위의 포스트들
+//};
