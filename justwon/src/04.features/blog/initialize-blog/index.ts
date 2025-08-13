@@ -1,5 +1,4 @@
 export { initializeBlog } from "./api/initializeBlog";
-export { initializeBlogForAdmin } from "./api/initializeBlogForAdmin";
 
 export { BlogProvider } from "./providers/BlogProvider";
 
