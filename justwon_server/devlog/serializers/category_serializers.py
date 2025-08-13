@@ -21,7 +21,7 @@ class CategorySimpleSerializer(serializers.ModelSerializer):
             "name",
             "slug",
             "icon",
-            "cover_image",
+            "cover_image_url",
             "num_posts",
             "group",
         ]
@@ -30,7 +30,7 @@ class CategorySimpleSerializer(serializers.ModelSerializer):
             "name",
             "slug",
             "icon",
-            "cover_image",
+            "cover_image_url",
             "num_posts",
             "group",
         ]
@@ -45,7 +45,7 @@ class CategoryGroupSimpleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CategoryGroup
-        fields = ["id", "name", "kor_name", "slug", "icon", "categories"]
+        fields = ["id", "name", "slug", "icon", "categories"]
         read_only_fields = ["id", "categories"]
 
 
@@ -76,8 +76,6 @@ class CategoryDetailSerializer(serializers.ModelSerializer):
             "name",
             "kor_name",
             "icon",
-            "cover_image",
-            "image_credit_html",
             "description",
             "group",
         ]
