@@ -1,0 +1,14 @@
+[
+  {
+    "model": "devlog.series",
+    "pk": 1,
+    "fields": {
+      "title": "개발자 맥 초기 세팅",
+      "slug": "mac-setup-for-development",
+      "description": "개발 환경을 맥에 처음 세팅할 때 필요한 모든 것들을 정리한 시리즈입니다. 필수 개발 도구 설치부터 터미널 설정, 생산성 향상 팁까지, 새로운 맥을 개발자용으로 빠르게 세팅할 수 있는 방법을 다룹니다.",
+      "is_active": false,
+      "created_at": "2025-08-11T05:45:55.480Z",
+      "updated_at": "2025-08-11T05:45:55.480Z"
+    }
+  }
+]
