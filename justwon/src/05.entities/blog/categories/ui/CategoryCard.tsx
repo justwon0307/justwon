@@ -20,7 +20,7 @@ export function CategoryCard({ category }: Readonly<Props>) {
     <Link href={`/blog/${category.group.slug}/${category.slug}`}>
       <Container>
         <Image
-          src={category.cover_image}
+          src={category.cover_image_url}
           alt={category.name}
           width={240}
           height={135}

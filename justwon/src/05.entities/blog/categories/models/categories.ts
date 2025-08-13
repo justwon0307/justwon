@@ -48,7 +48,7 @@ type CategoryFields = {
   kor_name: string;
   slug: string;
   icon: string;
-  cover_image: string;
+  cover_image_url: string;
   description: string;
 };
 
@@ -58,7 +58,7 @@ type CategoryFields = {
 
 export type CategoryType = Pick<
   CategoryFields,
-  "id" | "name" | "icon" | "slug" | "cover_image"
+  "id" | "name" | "icon" | "slug" | "cover_image_url"
 > & {
   num_posts: number;
   group: CategoryGroupRelatedType;

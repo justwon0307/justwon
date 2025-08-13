@@ -19,6 +19,6 @@ describe("useBlogCategoryGroup", () => {
   it("should raise an error when used outside of BlogProvider", () => {
     expect(() => {
       renderWithProviders(<TestComponent />);
-    }).toThrow("useBlog must be used within a BlogProvider");
+    }).toThrow("useBlogCategoryGroup must be used within a BlogProvider");
   });
 });
