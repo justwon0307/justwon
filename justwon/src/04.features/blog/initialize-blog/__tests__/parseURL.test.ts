@@ -23,6 +23,13 @@ describe("parseBlogURL", () => {
     expect(result.selectedCategory).toBeNull();
   });
 
+  it("should return null for blog landing URL", () => {
+    const url = "/blog/";
+    const result = parseBlogURL(sampleCategoryGroups, url);
+    expect(result.selectedCategoryGroup).toBeNull();
+    expect(result.selectedCategory).toBeNull();
+  });
+
   it("should return null for a non-blog URL", () => {
     const url = "/not-blog/category-group/category";
     const result = parseBlogURL(sampleCategoryGroups, url);
