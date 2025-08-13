@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework.test import APITestCase
 
 
@@ -12,7 +12,8 @@ class BlogInitializerAPITestCase(APITestCase):
     ]
 
     def setUp(self):
-        self.admin = User.objects.get(username="admin")
+        user_model = get_user_model()
+        self.admin = user_model.objects.get(username="admin")
 
     def test_initializer(self):
         response = self.client.get("/api/v1/blog/initialize/")
