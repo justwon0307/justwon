@@ -1,7 +1,7 @@
 export {
   DefaultLayout,
   ContentWrapper,
-  Divider,
   PageWrapper,
   PageContents,
+  ErrorWrapper,
 } from "./ui/styles";

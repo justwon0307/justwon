@@ -52,3 +52,12 @@ export const PageContents = styled(Vertical)`
     background-color: ${({ theme }) => theme.colors.divider};
   }
 `;
+
+export const ErrorWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+`;
