@@ -2,6 +2,10 @@ from django.test import TestCase
 
 from ..models import CategoryGroup, Category, PostType, Post, Series, Tag
 
+exmple_html = """
+<p>Image credit: <a href='https://example.com'>Example<script>ShouldBeDeleted</script></a></p>
+"""
+
 
 class BlogModelsTests(TestCase):
     def test_models_str(self):
@@ -37,7 +41,7 @@ class BlogModelsTests(TestCase):
             group=CategoryGroup.objects.create(
                 name="Test Group", kor_name="테스트 그룹"
             ),
-            image_credit_html="<p>Image credit: <a href='https://example.com'>Example<script>ShouldBeDeleted</script></a></p>",
+            image_credit_html=exmple_html,
         )
         cleaned_html = category.image_credit_html
         self.assertIn("Image credit:", cleaned_html)

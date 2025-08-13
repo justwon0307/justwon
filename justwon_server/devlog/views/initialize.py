@@ -4,6 +4,7 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+from auth.permissions import AdminOnly
 from ..models import CategoryGroup, PostType, Series, Tag
 from ..serializers import (
     CategoryGroupSimpleSerializer,
@@ -11,7 +12,6 @@ from ..serializers import (
     SeriesSerializer,
     TagSerializer,
 )
-from auth.permissions import AdminOnly
 
 
 class BlogInitializerView(GenericAPIView):
