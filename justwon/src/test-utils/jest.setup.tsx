@@ -82,8 +82,21 @@ jest.mock("@shared/ui/Icons", () => ({
   LogoHorizontal: () => <span>main-logo-horizontal</span>,
 }));
 jest.mock("@shared/ui/Menus", () => ({
-  ExpandableMenu: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
+  ExpandableMenu: ({
+    title,
+    onMenuClick,
+    children,
+  }: {
+    title: string;
+    onMenuClick: () => void;
+    children: React.ReactNode;
+  }) => (
+    <div>
+      <button onClick={onMenuClick} data-testid={`${title}-menu`}>
+        {title}
+      </button>
+      {children}
+    </div>
   ),
 }));
 jest.mock("@shared/ui/Searchbar", () => ({
