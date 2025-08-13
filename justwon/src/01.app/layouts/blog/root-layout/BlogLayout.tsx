@@ -1,5 +1,5 @@
 import { ErrorFallback } from "@widgets/error";
-import { BlogProvider, getAllCategoryGroups } from "@entities/blog";
+import { BlogProvider, initializeBlog } from "@features/blog/initialize-blog";
 import { APIError } from "@shared/api/models";
 
 /**
@@ -12,11 +12,9 @@ export async function BlogLayout({
   children: React.ReactNode;
 }>) {
   try {
-    const result = await getAllCategoryGroups();
+    const data = await initializeBlog();
 
-    return (
-      <BlogProvider initialCategoryGroups={result}>{children}</BlogProvider>
-    );
+    return <BlogProvider data={data}>{children}</BlogProvider>;
   } catch (error: unknown) {
     return (
       <ErrorFallback
