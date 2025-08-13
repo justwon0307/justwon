@@ -1,5 +1,6 @@
-import { auth } from "@clerk/nextjs/server";
 import axios from "axios";
+
+import { getToken } from "@shared/lib/auth";
 
 /**
  * 해당 App에서는 axios를 개인화된 요청이 필요할 때만 사용한다.
@@ -7,18 +8,13 @@ import axios from "axios";
  *   - 이외의 경우는 fetch를 사용한다.
  */
 
-const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-  timeout: 2000, // 2 seconds
-  headers: {
-    "Content-Type": "application/json",
-    "X-JustWon-Client": "justwon-web",
-  },
-  withCredentials: true,
-});
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+axios.defaults.timeout = 2000; // 2 seconds
+axios.defaults.headers.common["Content-Type"] = "application/json";
+axios.defaults.headers.common["X-JustWon-Client"] = "justwon-web";
+axios.defaults.withCredentials = true;
 
-instance.interceptors.request.use(async (request) => {
-  const { getToken } = await auth();
+axios.interceptors.request.use(async (request) => {
   const token = await getToken();
 
   if (token) {
@@ -27,5 +23,3 @@ instance.interceptors.request.use(async (request) => {
 
   return request;
 });
-
-export { instance as axiosInstance };
