@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { PageContents, PageWrapper } from "@widgets/layouts";
-import { getCategoryDetails } from "@entities/blog";
+import { getCategoryDetails } from "@entities/blog/categories";
 import { BreadcrumbContainer, BreadcrumbItem } from "@shared/ui/Breadcrumb";
 import { Callout, Title } from "@shared/ui/Texts";
 

@@ -1,17 +1,17 @@
 import { BlogCategoryPage, generateMetadata } from "@pages/blog/category";
-import {
-  BlogProvider,
-  sampleCategoryDetails,
-  sampleCategoryGroups,
-} from "@entities/blog";
+import { sampleCategoryDetails } from "@entities/blog/categories";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-(global.fetch as jest.Mock).mockResolvedValue({
-  ok: true,
-  json: jest.fn().mockResolvedValue(sampleCategoryDetails),
+jest.mock("@entities/blog/categories", () => {
+  const originalModule = jest.requireActual("@entities/blog/categories");
+  return {
+    ...originalModule,
+    useBlogCategory: jest.fn(),
+    useBlogCategoryGroup: jest.fn(),
+  };
 });
 
 describe("BlogCategoryPage", () => {
@@ -26,12 +26,15 @@ describe("BlogCategoryPage", () => {
       }
     );
 
-    return renderWithProviders(
-      <BlogProvider initialCategoryGroups={sampleCategoryGroups}>
-        {elements}
-      </BlogProvider>
-    );
+    return renderWithProviders(elements);
   };
+
+  beforeEach(() => {
+    (global.fetch as jest.Mock).mockResolvedValue({
+      ok: true,
+      json: jest.fn().mockResolvedValue(sampleCategoryDetails),
+    });
+  });
 
   it("renders the category page with the correct title", async () => {
     const { getByText } = await render("test-category");

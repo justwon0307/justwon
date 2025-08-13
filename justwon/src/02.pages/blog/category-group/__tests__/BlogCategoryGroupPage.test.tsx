@@ -2,19 +2,19 @@ import {
   BlogCategoryGroupPage,
   generateMetadata,
 } from "@pages/blog/category-group";
-import {
-  BlogProvider,
-  sampleCategoryGroupDetails,
-  sampleCategoryGroups,
-} from "@entities/blog";
+import { sampleCategoryGroupDetails } from "@entities/blog/categories";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
 
-(global.fetch as jest.Mock).mockResolvedValue({
-  ok: true,
-  json: jest.fn().mockResolvedValue(sampleCategoryGroupDetails),
+jest.mock("@entities/blog/categories", () => {
+  const originalModule = jest.requireActual("@entities/blog/categories");
+  return {
+    ...originalModule,
+    useBlogCategory: jest.fn(),
+    useBlogCategoryGroup: jest.fn(),
+  };
 });
 
 describe("BlogCategoryGroupPage", () => {
@@ -24,12 +24,15 @@ describe("BlogCategoryGroupPage", () => {
       { params: Promise.resolve({ catGrpSlug: slug }) }
     );
 
-    return renderWithProviders(
-      <BlogProvider initialCategoryGroups={sampleCategoryGroups}>
-        {elements}
-      </BlogProvider>
-    );
+    return renderWithProviders(elements);
   };
+
+  beforeEach(() => {
+    (global.fetch as jest.Mock).mockResolvedValue({
+      ok: true,
+      json: jest.fn().mockResolvedValue(sampleCategoryGroupDetails),
+    });
+  });
 
   it("renders the page with correct title and breadcrumb", async () => {
     const { getByText } = await render("test-category-group");
