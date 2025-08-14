@@ -54,19 +54,6 @@ jest.mock("@shared/lib/colors", () => {
   };
 });
 
-jest.mock("@shared/ui/Breadcrumb", () => {
-  const { BreadcrumbItemType } = jest.requireActual("@shared/ui/Breadcrumb");
-
-  return {
-    BreadcrumbContainer: ({ children }: { children: React.ReactNode }) => (
-      <div className="breadcrumb-container">{children}</div>
-    ),
-    BreadcrumbItem: ({ item }: { item: { label: string } }) => (
-      <div className="breadcrumb-item">{item.label}</div>
-    ),
-    BreadcrumbItemType: BreadcrumbItemType,
-  };
-});
 jest.mock("@shared/ui/Buttons", () => ({
   LinkButton: ({
     children,

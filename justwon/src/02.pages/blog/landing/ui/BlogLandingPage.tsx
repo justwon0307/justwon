@@ -5,7 +5,7 @@ import {
   BreadcrumbContainer,
   BreadcrumbItem,
   BreadcrumbItemType,
-} from "@shared/ui/Breadcrumb";
+} from "@widgets/breadcrumb";
 
 export const metadata: Metadata = {
   title: "블로그 | JustWon",

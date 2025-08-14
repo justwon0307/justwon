@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
+import { BreadcrumbContainer, BreadcrumbItem } from "@widgets/breadcrumb";
 import { PageContents, PageWrapper } from "@widgets/layouts";
 import {
   CategoryCard,
   getCategoryGroupDetails,
 } from "@entities/blog/categories";
-import { BreadcrumbContainer, BreadcrumbItem } from "@shared/ui/Breadcrumb";
 import { Callout, Title } from "@shared/ui/Texts";
 
 interface Props {
