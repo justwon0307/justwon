@@ -54,6 +54,9 @@ jest.mock("@shared/lib/colors", () => {
   };
 });
 
+jest.mock("@shared/ui/Badge", () => ({
+  Badge: ({ label }: { label: string }) => <span>{label}</span>,
+}));
 jest.mock("@shared/ui/Buttons", () => ({
   LinkButton: ({
     children,
