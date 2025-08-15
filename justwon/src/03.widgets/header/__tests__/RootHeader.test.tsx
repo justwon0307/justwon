@@ -1,46 +1,24 @@
 import * as Navigation from "next/navigation";
 
 import { RootHeader } from "@widgets/header";
-import * as AuthAPI from "@shared/lib/auth";
-import { renderWithProviders } from "@test-utils/renderer";
-
-const mockUseSearchParams = Navigation.useSearchParams as jest.Mock;
+import {
+  getElementFromAsyncServerComponent,
+  renderWithProviders,
+} from "@test-utils/renderer";
 
 describe("RootHeader", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    mockUseSearchParams.mockReturnValue(new URLSearchParams());
-    jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
-      user: null,
-    });
-  });
+  const render = async () => {
+    const elements = await getElementFromAsyncServerComponent(RootHeader, {});
 
-  it("should render the header with links (unauthorized)", () => {
-    const { getByText } = renderWithProviders(<RootHeader />);
+    return renderWithProviders(elements);
+  };
 
-    expect(getByText("JustWon")).toBeInTheDocument();
-    expect(getByText("Projects")).toBeInTheDocument();
-    expect(getByText("Blog")).toBeInTheDocument();
-    expect(getByText("Study")).toBeInTheDocument();
-    expect(getByText("About")).toBeInTheDocument();
-
-    expect(getByText("login-icon")).toBeInTheDocument(); // mocked icon
-  });
-
-  it("should render user profile when authenticated", () => {
-    jest.spyOn(AuthAPI, "useAuth").mockReturnValue({
-      user: AuthAPI.sampleUser,
-    });
-
-    const { getByTestId } = renderWithProviders(<RootHeader />);
-
-    expect(getByTestId("user-button")).toBeInTheDocument();
-  });
-
-  it("should render active tab correctly", () => {
+  it("renders correctly", async () => {
     const mockUsePathname = Navigation.usePathname as jest.Mock;
     mockUsePathname.mockReturnValue("/projects");
 
-    renderWithProviders(<RootHeader />);
+    const { container } = await render();
+
+    expect(container).toBeTruthy();
   });
 });

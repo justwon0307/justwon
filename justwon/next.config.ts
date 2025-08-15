@@ -25,6 +25,9 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  images: {
+    remotePatterns: [new URL("https://cdn.justwon.dev/images/**")],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,

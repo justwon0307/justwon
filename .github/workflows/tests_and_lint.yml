@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: read
+  security-events: write
         
 jobs:
   prep:
@@ -106,7 +107,7 @@ jobs:
           pipenv run coverage run manage.py test
           pipenv run coverage lcov
           pipenv run coverage xml
-          sed -i "s|<source></source>|<source>sweepserver</source>|g" coverage.xml
+          sed -i "s|<source></source>|<source>justwon_server</source>|g" coverage.xml
 
       - name: Upload coverage artifact (lcov)
         uses: actions/upload-artifact@v4

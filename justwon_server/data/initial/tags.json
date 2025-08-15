@@ -1,0 +1,35 @@
+[
+  {
+    "model": "devlog.tag",
+    "pk": 1,
+    "fields": {
+      "name": "Django",
+      "slug": "django",
+      "color": "#0C4B33",
+      "description": "",
+      "created_at": "2025-08-13T13:29:49.953Z"
+    }
+  },
+  {
+    "model": "devlog.tag",
+    "pk": 2,
+    "fields": {
+      "name": "React",
+      "slug": "react",
+      "color": "#58c4dc",
+      "description": "",
+      "created_at": "2025-08-13T13:30:25.589Z"
+    }
+  },
+  {
+    "model": "devlog.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Next.js",
+      "slug": "nextjs",
+      "color": "#1f1f1f",
+      "description": "",
+      "created_at": "2025-08-13T13:31:32.076Z"
+    }
+  }
+]

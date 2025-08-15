@@ -1,23 +1,45 @@
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 
-import { AuthTab } from "./_auth";
-import { Container, Divider, Tabs } from "./styles";
-import { Tab } from "./_tab";
+import { HeaderTab } from "./_tab";
+import { HeaderContainer, Tabs } from "./styles";
+import { isLoggedIn } from "@shared/lib/auth";
+import { AppIcon, LogoHorizontal } from "@shared/ui/Icons";
 
-export function RootHeader() {
+/**
+ * 앱의 가장 상단에 위치하는 헤더 컴포넌트로,
+ * 로고와 여러 탭, 그리고 사용자 프로필 버튼을 포함한다.
+ *
+ * 사용자 인증 상태에 따라 로그인 버튼 또는 사용자 프로필 버튼을 표시한다.
+ */
+
+export async function RootHeader() {
+  const authenticated = await isLoggedIn();
+
   return (
-    <Container>
+    <HeaderContainer>
       <Link href="/" className="title">
-        JustWon
+        <LogoHorizontal size={32} />
       </Link>
       <Tabs>
-        <Tab tab="projects" />
-        <Tab tab="blog" />
-        <Tab tab="study" />
-        <Tab tab="about" />
-        <Divider />
-        <AuthTab />
+        <HeaderTab tab="projects" />
+        <HeaderTab tab="blog" />
+        <HeaderTab tab="about" />
+        <div className="divider" />
+        {authenticated ? (
+          <div className="user-button">
+            <UserButton />
+          </div>
+        ) : (
+          <Link
+            href={{
+              pathname: "/login",
+            }}
+          >
+            <AppIcon icon="login" size={18} />
+          </Link>
+        )}
       </Tabs>
-    </Container>
+    </HeaderContainer>
   );
 }

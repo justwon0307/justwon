@@ -9,6 +9,8 @@ python-decouple = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 clerk-backend-api = "*"
+drf-spectacular = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
 coverage = "*"

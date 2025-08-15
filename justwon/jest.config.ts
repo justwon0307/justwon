@@ -12,20 +12,18 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
-  clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
-  coverageProvider: "v8",
+  coverageProvider: "babel",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/test-utils/jest.setup.tsx"],
   collectCoverageFrom: [
     "src/**/*.{js,jsx,ts,tsx}",
-    "!src/**/*/contexts.ts",
     "!src/**/*/index.ts",
-    "!src/**/*/metadata.ts",
+    "!src/**/*.styles.ts",
     "!src/**/*/styles.ts",
-    "!src/**/*/testdata.ts",
-    "!src/**/*/types.ts",
+    "!src/**/data/**",
+    "!src/**/models/**",
     "!src/**/*.d.ts",
     "!src/**/@x/*",
     "!src/test-utils/renderer.tsx",

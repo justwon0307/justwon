@@ -1,2 +1,2 @@
 export { AppIcon } from "./AppIcon/AppIcon";
-export { Logo } from "./Logo/Logo";
+export { Logo, LogoHorizontal } from "./Logo/Logo";

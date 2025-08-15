@@ -39,10 +39,17 @@ export function StylesProvider({
     [colors, isDarkMode, toggleTheme]
   );
 
+  const breakpoints = useMemo(() => {
+    return {
+      mobile: "768px",
+      tablet: "1440px",
+    };
+  }, []);
+
   // 클라이언트에서는 테마만 적용
   return (
     <StyledComponentsRegistry>
-      <ThemeProvider theme={{ colors }}>
+      <ThemeProvider theme={{ colors, breakpoints }}>
         <ColorContext.Provider value={value}>
           <GlobalStyles />
           {children}

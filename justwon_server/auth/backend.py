@@ -32,12 +32,15 @@ class JWTAuthBackend(BaseBackend):
                 request.error_message = request_state.message
                 return None
 
+            is_admin = request_state.payload.get("metadata")["role"] == "admin"
+
             (user, _) = UserModel.objects.get_or_create(
                 username=request_state.payload["sub"],
                 defaults={
                     "email": request_state.payload.get("email", ""),
                     "first_name": request_state.payload.get("firstName", ""),
                     "last_name": request_state.payload.get("lastName", ""),
+                    "is_staff": is_admin,
                 },
             )
 

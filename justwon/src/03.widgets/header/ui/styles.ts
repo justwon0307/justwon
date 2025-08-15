@@ -2,16 +2,24 @@
 
 import styled from "styled-components";
 
-import { VerticalDivider } from "@shared/ui/Dividers";
-
-export const Container = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 36px;
+  padding: 0 24px; // 태블릿 설정
 
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.divider};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    // 모바일 설정
+    padding: 0 16px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    // 데스크탑 설정
+    padding: 0 32px;
+  }
 
   .title {
     font-size: 24px;
@@ -22,6 +30,7 @@ export const Container = styled.div`
 export const Tabs = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 12px 0;
   gap: 16px;
 
   > a {
@@ -32,11 +41,11 @@ export const Tabs = styled.div`
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.gray700};
+    color: ${({ theme }) => theme.colors.gray900};
   }
 
   > a.active {
-    background-color: ${({ theme }) => theme.colors.gray200};
+    background-color: ${({ theme }) => theme.colors.gray300};
     color: ${({ theme }) => theme.colors.primary};
   }
 
@@ -46,8 +55,10 @@ export const Tabs = styled.div`
     padding: 0 4px 0 12px;
     cursor: pointer;
   }
-`;
 
-export const Divider = styled(VerticalDivider)`
-  background-color: ${({ theme }) => theme.colors.divider};
+  .divider {
+    align-self: stretch;
+    width: 1px;
+    background-color: ${({ theme }) => theme.colors.divider};
+  }
 `;

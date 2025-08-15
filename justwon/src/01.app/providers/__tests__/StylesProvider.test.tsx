@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 
 import { StylesProvider } from "@app/providers";
 import { useColors } from "@shared/lib/colors";
@@ -11,11 +11,13 @@ jest.mock("next/navigation", () => ({
 }));
 
 const MockComponent = () => {
-  const { toggleTheme } = useColors();
+  const { colors, isDarkMode, toggleTheme } = useColors();
 
   return (
     <div>
       <button onClick={toggleTheme}>Toggle Theme</button>
+      <p>Current mode: {isDarkMode ? "Dark" : "Light"}</p>
+      <p>Primary color: {colors.primary}</p>
     </div>
   );
 };
@@ -30,15 +32,25 @@ describe("StylesProvider", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it("toggles theme correctly", () => {
+  it("toggles theme correctly", async () => {
     const { getByText } = render(
       <StylesProvider>
         <MockComponent />
       </StylesProvider>
     );
 
+    await waitFor(() => {
+      expect(getByText("Current mode: Light")).toBeInTheDocument();
+      expect(getByText("Primary color: #1E3A8A")).toBeInTheDocument();
+    });
+
     const button = getByText("Toggle Theme");
 
     fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(getByText("Current mode: Dark")).toBeInTheDocument();
+      expect(getByText("Primary color: #818CF8")).toBeInTheDocument();
+    });
   });
 });
