@@ -6,7 +6,7 @@ from ..models import Tag
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ["id", "name", "slug", "color", "description"]
+        fields = ["id", "name", "slug", "color", "icon"]
         read_only_fields = ["id"]
 
     def validate_slug(self, value):

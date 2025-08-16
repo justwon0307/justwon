@@ -8,8 +8,8 @@ class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     color = models.CharField(max_length=7, blank=True)
+    icon = models.CharField(max_length=100, blank=True, default="")
 
-    description = models.TextField(blank=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
