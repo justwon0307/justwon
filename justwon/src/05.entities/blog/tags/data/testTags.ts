@@ -6,20 +6,20 @@ export const sampleTags: TagType[] = [
     name: "JavaScript",
     slug: "javascript",
     color: "#F7DF1E",
-    description: "All about JavaScript programming language.",
+    icon: "js",
   },
   {
     id: 2,
     name: "React",
     slug: "react",
     color: "#61DAFB",
-    description: "Topics related to React library and its ecosystem.",
+    icon: "react",
   },
   {
     id: 3,
     name: "Web Development",
     slug: "web-development",
     color: "#4CAF50",
-    description: "General web development topics and technologies.",
+    icon: "web",
   },
 ];

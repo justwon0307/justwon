@@ -3,5 +3,5 @@ export type TagType = {
   name: string;
   slug: string;
   color: string;
-  description: string;
+  icon: string;
 };
