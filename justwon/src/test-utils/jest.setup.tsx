@@ -92,9 +92,15 @@ jest.mock("@shared/ui/Menus", () => ({
 jest.mock("@shared/ui/Searchbar", () => ({
   SearchButton: () => <button>Search</button>,
 }));
+jest.mock("@shared/ui/Skeleton", () => ({
+  Skeleton: () => <div data-testid="loading" />,
+}));
 jest.mock("@shared/ui/Texts", () => ({
   Callout: ({ text }: { text: string }) => (
     <div className="callout">{text}</div>
+  ),
+  Subtitle: ({ title }: { title: string }) => (
+    <h2 className="subtitle">{title}</h2>
   ),
   Title: ({ title, icon }: { title: string; icon: string }) => (
     <h1>

@@ -8,7 +8,7 @@ import { AppIcon } from "@shared/ui/Icons";
 
 interface Props {
   title: string;
-  icon: string;
+  icon?: string;
 }
 
 export function Title({ title, icon }: Readonly<Props>) {
@@ -16,7 +16,7 @@ export function Title({ title, icon }: Readonly<Props>) {
 
   return (
     <Text>
-      <AppIcon icon={icon} size={24} color={colors.textPrimary} />
+      {icon && <AppIcon icon={icon} size={24} color={colors.textPrimary} />}
       {title}
     </Text>
   );

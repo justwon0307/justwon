@@ -21,6 +21,7 @@ import Chip from "../files/chip.svg";
 import Computer from "../files/computer.svg";
 import DataStructure from "../files/data-structure.svg";
 import Database from "../files/database.svg";
+import Django from "../files/django.svg";
 import Docker from "../files/docker.svg";
 import Git from "../files/git.svg";
 import Lightbulb from "../files/lightbulb.svg";
@@ -28,9 +29,11 @@ import Login from "../files/login.svg";
 import Logout from "../files/logout.svg";
 import Monitor from "../files/monitor.svg";
 import Network from "../files/network.svg";
+import NextJS from "../files/nextjs.svg";
 import Notion from "../files/notion.svg";
 import Operation from "../files/operation.svg";
 import Others from "../files/others.svg";
+import ReactIcon from "../files/react.svg";
 import Resources from "../files/resources.svg";
 import Paper from "../files/paper.svg";
 import Pencil from "../files/pencil.svg";
@@ -72,6 +75,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   computer: Computer,
   "data-structure": DataStructure,
   database: Database,
+  django: Django,
   docker: Docker,
   git: Git,
   lightbulb: Lightbulb,
@@ -79,6 +83,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   logout: Logout,
   monitor: Monitor,
   network: Network,
+  nextjs: NextJS,
   notion: Notion,
   operation: Operation,
   others: Others,
@@ -86,6 +91,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   pencil: Pencil,
   profile: Profile,
   projects: Projects,
+  react: ReactIcon,
   resources: Resources,
   search: Search,
   server: Server,
