@@ -3,7 +3,7 @@
 import "client-only";
 import { createContext, useContext } from "react";
 
-import { CategoryGroupType } from "../models/categories";
+import { CategoryGroupType } from "../models/category-group";
 
 export interface BlogCategoryGroupContextType {
   selectedCategoryGroup: CategoryGroupType | null;
