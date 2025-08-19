@@ -1,5 +1,6 @@
 "use client";
 
+import "client-only";
 import { createContext, useContext } from "react";
 
 import type { ThemeColorType } from "../models/types";
