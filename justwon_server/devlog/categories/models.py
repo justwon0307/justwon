@@ -1,6 +1,6 @@
 from django.db import models
 
-from ..utils import clean_html
+from .utils import clean_html
 
 
 class CategoryGroup(models.Model):

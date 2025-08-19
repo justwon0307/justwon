@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class DevlogConfig(AppConfig):
+class CategoriesConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "devlog"
-    label = "devlog"
+    name = "devlog.categories"
+    label = "categories"
