@@ -46,26 +46,3 @@ export const SidebarContainer = styled.div`
     background-color: ${({ theme }) => theme.colors.divider};
   }
 `;
-
-/**
- * 사이드바 제목
- */
-
-export const SidebarTitle = styled.h2`
-  margin: 0.75rem 0;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-family: "Geist", sans-serif;
-`;
-
-/**
- * 사이드바 아이템 컨테이너
- */
-
-export const SidebarItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  gap: 24px;
-`;
