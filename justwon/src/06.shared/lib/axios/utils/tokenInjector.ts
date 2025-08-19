@@ -1,12 +1,15 @@
+import "server-only";
 import { InternalAxiosRequestConfig } from "axios";
+
+import { getAuthState } from "@shared/lib/auth";
 
 export async function injectToken(
   request: InternalAxiosRequestConfig
 ): Promise<InternalAxiosRequestConfig> {
-  const token = await getToken();
+  const { accessToken } = await getAuthState();
 
-  if (token) {
-    request.headers.Authorization = `Bearer ${token}`;
+  if (accessToken) {
+    request.headers.Authorization = `Bearer ${accessToken}`;
   }
 
   return request;
