@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import { StylesProvider } from "./providers";
@@ -21,7 +22,7 @@ export async function RootLayout({
       >
         <StylesProvider>
           <RootHeader />
-          {children}
+          <Suspense>{children}</Suspense>
         </StylesProvider>
       </body>
     </html>
