@@ -14,5 +14,6 @@ export async function getAuthState(): Promise<AuthStateType> {
   return {
     isAuthenticated: false,
     user: null,
+    accessToken: null,
   };
 }

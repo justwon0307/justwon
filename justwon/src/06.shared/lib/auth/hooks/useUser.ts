@@ -1,3 +1,6 @@
+"use client";
+
+import "client-only";
 import { createContext, useContext } from "react";
 
 import { UserType } from "../models/user";
