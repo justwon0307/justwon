@@ -1,6 +1,13 @@
 import { UserType } from "./user";
 
-export type AuthStateType = {
-  isAuthenticated: boolean;
-  user: UserType | null;
+type ActiveAuthState = {
+  isAuthenticated: true;
+  user: UserType;
 };
+
+type InactiveAuthState = {
+  isAuthenticated: false;
+  user: null;
+};
+
+export type AuthStateType = ActiveAuthState | InactiveAuthState;

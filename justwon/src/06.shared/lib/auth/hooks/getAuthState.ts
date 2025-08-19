@@ -12,7 +12,7 @@ export async function getAuthState(): Promise<AuthStateType> {
 
   // 현재는 더미 데이터를 반환합니다.
   return {
-    isAuthenticated: true,
+    isAuthenticated: false,
     user: null,
   };
 }
