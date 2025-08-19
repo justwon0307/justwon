@@ -1,6 +1,7 @@
-import { Container } from "./styles";
+import { DefaultLayout } from "@widgets/containers";
 
 /**
+ * url: /
  * 랜딩페이지.
  * - 간단한 인삿말
  * - Recent Posts
@@ -8,11 +9,11 @@ import { Container } from "./styles";
  * - Ads (수익 창출용)
  */
 
-export function HomePage() {
+export function LandingPage() {
   return (
-    <Container>
+    <DefaultLayout>
       <h1>Welcome to JustWon</h1>
       <p>Your journey starts here.</p>
-    </Container>
+    </DefaultLayout>
   );
 }
