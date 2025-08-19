@@ -3,14 +3,17 @@
 import { useCallback, useMemo, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { StyledComponentsRegistry } from "./_registry";
-import { GlobalStyles } from "./global.styles";
 import {
   ColorContext,
   type ColorContextType,
   darkTheme,
   lightTheme,
 } from "@shared/lib/colors";
+import {
+  GlobalStyles,
+  StyledComponentsRegistry,
+  breakpoints,
+} from "@shared/lib/styled-components";
 
 interface Props {
   children: React.ReactNode;
@@ -38,13 +41,6 @@ export function StylesProvider({
     () => ({ colors, isDarkMode, toggleTheme }),
     [colors, isDarkMode, toggleTheme]
   );
-
-  const breakpoints = useMemo(() => {
-    return {
-      mobile: "768px",
-      tablet: "1440px",
-    };
-  }, []);
 
   // 클라이언트에서는 테마만 적용
   return (
