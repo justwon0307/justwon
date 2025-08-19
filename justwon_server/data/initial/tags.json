@@ -1,6 +1,6 @@
 [
   {
-    "model": "devlog.tag",
+    "model": "tags.tag",
     "pk": 1,
     "fields": {
       "name": "Django",
@@ -11,7 +11,7 @@
     }
   },
   {
-    "model": "devlog.tag",
+    "model": "tags.tag",
     "pk": 2,
     "fields": {
       "name": "React",
@@ -22,7 +22,7 @@
     }
   },
   {
-    "model": "devlog.tag",
+    "model": "tags.tag",
     "pk": 3,
     "fields": {
       "name": "Next.js",

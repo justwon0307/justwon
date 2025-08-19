@@ -1,6 +1,6 @@
 [
   {
-    "model": "devlog.categorygroup",
+    "model": "categories.categorygroup",
     "pk": 1,
     "fields": {
       "name": "Computer Science",
@@ -13,7 +13,7 @@
     }
   },
   {
-    "model": "devlog.categorygroup",
+    "model": "categories.categorygroup",
     "pk": 2,
     "fields": {
       "name": "Practices",
@@ -26,7 +26,7 @@
     }
   },
   {
-    "model": "devlog.categorygroup",
+    "model": "categories.categorygroup",
     "pk": 3,
     "fields": {
       "name": "Web Development",
@@ -39,7 +39,7 @@
     }
   },
   {
-    "model": "devlog.categorygroup",
+    "model": "categories.categorygroup",
     "pk": 4,
     "fields": {
       "name": "Tools",
@@ -52,7 +52,7 @@
     }
   },
   {
-    "model": "devlog.categorygroup",
+    "model": "categories.categorygroup",
     "pk": 5,
     "fields": {
       "name": "Resources",
@@ -65,7 +65,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 1,
     "fields": {
       "name": "네트워크",
@@ -81,7 +81,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 2,
     "fields": {
       "name": "데이터베이스",
@@ -97,7 +97,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 3,
     "fields": {
       "name": "머신러닝",
@@ -113,7 +113,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 4,
     "fields": {
       "name": "자료구조",
@@ -129,7 +129,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 5,
     "fields": {
       "name": "알고리즘",
@@ -145,7 +145,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 6,
     "fields": {
       "name": "컴퓨터구조",
@@ -161,7 +161,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 7,
     "fields": {
       "name": "운영체제",
@@ -177,7 +177,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 8,
     "fields": {
       "name": "Frontend",
@@ -193,7 +193,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 9,
     "fields": {
       "name": "Backend",
@@ -209,7 +209,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 10,
     "fields": {
       "name": "DevOps",
@@ -225,7 +225,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 11,
     "fields": {
       "name": "백준 문제풀이",
@@ -241,7 +241,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 12,
     "fields": {
       "name": "Git",
@@ -257,7 +257,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 13,
     "fields": {
       "name": "Docker",
@@ -273,7 +273,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 14,
     "fields": {
       "name": "VSCode",
@@ -289,7 +289,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 15,
     "fields": {
       "name": "Notion",
@@ -305,7 +305,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 16,
     "fields": {
       "name": "기타 도구",
@@ -321,7 +321,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 17,
     "fields": {
       "name": "Blogs",
@@ -337,7 +337,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 18,
     "fields": {
       "name": "Video",
@@ -353,7 +353,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 19,
     "fields": {
       "name": "Articles",
@@ -369,7 +369,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 20,
     "fields": {
       "name": "Papers",
@@ -385,7 +385,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 21,
     "fields": {
       "name": "Books",
@@ -401,7 +401,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 22,
     "fields": {
       "name": "Others",
@@ -417,7 +417,7 @@
     }
   },
   {
-    "model": "devlog.category",
+    "model": "categories.category",
     "pk": 23,
     "fields": {
       "name": "Utilities",
