@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 
-import { StylesProvider } from "@app/providers";
+import { StylesProvider } from "@app/root/providers";
 import { useColors } from "@shared/lib/colors";
 
 jest.unmock("@shared/lib/colors");
