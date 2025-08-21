@@ -6,6 +6,7 @@ import { createContext, useContext } from "react";
 import { CategoryGroupType } from "../models/category-group";
 
 export interface BlogCategoryGroupContextType {
+  setCategoryGroups: (groups: CategoryGroupType[]) => void;
   selectedCategoryGroup: CategoryGroupType | null;
 }
 
