@@ -25,9 +25,9 @@ export const PageContents = styled(Vertical)`
   }
 
   .content-divider {
-    margin: 12px 0 4px 0;
-    width: 100%;
-    height: 2px;
+    margin: 12px -16px 4px -16px;
+    align-self: stretch;
+    height: 1.5px;
     background-color: ${({ theme }) => theme.colors.divider};
   }
 `;
