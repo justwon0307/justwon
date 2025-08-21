@@ -1,4 +1,6 @@
+import { fireEvent } from "@testing-library/react";
 import { useMemo } from "react";
+import * as NextJSNavigationAPI from "next/navigation";
 
 import { BlogCategoryList } from "../ui/BlogCategoryList";
 import {
@@ -19,14 +21,14 @@ const TestProvider = ({ children }: { children: React.ReactNode }) => {
   const value = useMemo(
     () => ({
       setCategoryGroups: jest.fn(),
-      selectedCategoryGroup: null,
+      selectedCategoryGroup: sampleCategoryGroups[0],
     }),
     []
   );
 
   const categoryValue = useMemo(
     () => ({
-      selectedCategory: null,
+      selectedCategory: sampleCategoryGroups[0].categories[0],
     }),
     []
   );
@@ -49,9 +51,15 @@ describe("BlogCategoryList", () => {
     return renderWithProviders(<TestProvider>{element}</TestProvider>);
   };
 
-  it("renders the BlogCategoryList component", async () => {
-    const { container } = await render();
+  it("handles clicks", async () => {
+    jest
+      .spyOn(NextJSNavigationAPI, "usePathname")
+      .mockReturnValue("/blog/web-development/frontend");
 
-    expect(container).toBeInTheDocument();
+    const { getByText } = await render();
+
+    fireEvent.click(getByText("Web Development")); // 카테고리 그룹 클릭
+    fireEvent.click(getByText("Frontend")); // 카테고리 클릭
+    fireEvent.click(getByText("Backend")); // 다른 카테고리 클릭
   });
 });

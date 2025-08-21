@@ -1,5 +1,3 @@
-import * as NextJSNavigationAPI from "next/navigation";
-
 import { BlogLayout } from "@app/blog";
 import { renderWithProviders } from "@test-utils/renderer";
 
@@ -8,7 +6,6 @@ jest.mock("react", () => ({
   Suspense: jest.fn(({ children, fallback }) => (
     <div>
       {children}
-
       {fallback}
     </div>
   )),
@@ -20,9 +17,6 @@ jest.mock("../ui/BlogCategoryList", () => ({
 
 describe("BlogLayout", () => {
   beforeEach(() => {
-    jest
-      .spyOn(NextJSNavigationAPI, "usePathname")
-      .mockReturnValue("/blog/web-development/frontend");
   });
 
   it("renders the BlogLayout with children and modal", async () => {
