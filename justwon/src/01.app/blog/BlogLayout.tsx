@@ -2,7 +2,7 @@ import { ReactNode, Suspense } from "react";
 
 import { BlogProvider } from "./providers/BlogProvider";
 import { BlogCategoryList, BlogCategoryLoading } from "./ui/BlogCategoryList";
-import { ContentWrapper, DefaultLayout } from "@widgets/containers";
+import { DefaultLayout } from "@widgets/containers";
 import { SidebarContainer, SidebarTitle } from "@widgets/sidebars";
 
 interface Props {
@@ -21,7 +21,7 @@ export function BlogLayout({ children, modal }: Readonly<Props>) {
     <BlogProvider>
       <DefaultLayout>
         <SidebarContainer>
-          <div className="main padding">
+          <div className="sidebar-main sidebar-padding">
             <SidebarTitle>Blog</SidebarTitle>
             <Suspense fallback={<BlogCategoryLoading />}>
               <BlogCategoryList />
@@ -29,7 +29,7 @@ export function BlogLayout({ children, modal }: Readonly<Props>) {
           </div>
         </SidebarContainer>
         <div className="vertical-divider" />
-        <ContentWrapper>{children}</ContentWrapper>
+        <div className="layout-children">{children}</div>
         {modal}
       </DefaultLayout>
     </BlogProvider>

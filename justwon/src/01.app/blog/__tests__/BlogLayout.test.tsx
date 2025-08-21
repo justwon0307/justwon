@@ -38,7 +38,7 @@ describe("BlogLayout", () => {
     );
 
     expect(container).toBeInTheDocument();
-    expect(container.querySelector(".main")).toHaveTextContent("Blog");
+    expect(container.querySelector(".sidebar-main")).toHaveTextContent("Blog");
     expect(container.querySelector(".content-wrapper")).toHaveTextContent(
       "Main Content"
     );
