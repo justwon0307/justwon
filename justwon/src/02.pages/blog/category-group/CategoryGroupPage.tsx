@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { BreadcrumbContainer, BreadcrumbItem } from "@widgets/breadcrumb";
-import { PageContents, PageWrapper } from "@widgets/containers";
+import { PageContents } from "@widgets/containers";
 import { CategoryCard } from "@entities/blog/categories";
 import { getCategoryGroupDetails } from "@entities/blog/categories/server";
 import { Callout, Title } from "@shared/ui/Texts";
@@ -44,24 +44,20 @@ export async function CategoryGroupPage({ params }: Readonly<Props>) {
   };
 
   return (
-    <PageWrapper>
-      <div className="page-header">
-        <BreadcrumbContainer>
-          <BreadcrumbItem item={blogLandingBreadcrumbItem} />
-          <BreadcrumbItem item={categoryGroupBreadcrumbItem} isLastItem />
-        </BreadcrumbContainer>
+    <PageContents>
+      <BreadcrumbContainer>
+        <BreadcrumbItem item={blogLandingBreadcrumbItem} />
+        <BreadcrumbItem item={categoryGroupBreadcrumbItem} isLastItem />
+      </BreadcrumbContainer>
+      <Title title={data.name} icon={data.icon} />
+      <Callout text={data.description} />
+      <div className="content-divider" />
+      <h3 className="subtitle">분류</h3>
+      <div className="page-list">
+        {data.categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))}
       </div>
-      <PageContents>
-        <Title title={data.name} icon={data.icon} />
-        <Callout text={data.description} />
-        <div className="content-divider" />
-        <h3 className="subtitle">분류</h3>
-        <div className="page-list">
-          {data.categories.map((category) => (
-            <CategoryCard key={category.id} category={category} />
-          ))}
-        </div>
-      </PageContents>
-    </PageWrapper>
+    </PageContents>
   );
 }

@@ -7,14 +7,6 @@ const Vertical = styled.div`
   flex-direction: column;
 `;
 
-export const PageWrapper = styled(Vertical)`
-  flex: 1;
-
-  .page-header {
-    padding: 8px 16px;
-  }
-`;
-
 export const PageContents = styled(Vertical)`
   flex: 1;
   padding: 0 16px;
