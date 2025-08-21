@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
-import { useColors } from "@shared/lib/colors";
-import { AppIcon } from "@shared/ui/Icons";
+import { AppIcon, MediaIcon } from "@shared/ui/Icons";
 
 /**
  * 메뉴 컴포넌트
@@ -27,8 +26,6 @@ export function ExpandableMenu({
   isActive = false,
 }: Readonly<Props>) {
   const [isExpanded, setIsExpanded] = useState<boolean>(isActive);
-
-  const { colors } = useColors();
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -55,11 +52,7 @@ export function ExpandableMenu({
           onClick={handleLinkClick}
           data-testid="menu-link"
         >
-          <AppIcon
-            icon={icon}
-            size={20}
-            color={isActive ? colors.primary : colors.textPrimary}
-          />
+          <MediaIcon name={icon} size={20} isActive={isActive} />
           <MenuItemTitle className={isActive ? "active" : ""}>
             {title}
           </MenuItemTitle>

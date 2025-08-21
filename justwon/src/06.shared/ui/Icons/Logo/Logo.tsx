@@ -1,5 +1,5 @@
-import Justwon from "../files/justwon.svg";
-import JustwonHorizontal from "../files/justwon-horizontal.svg";
+import Justwon from "./files/justwon.svg";
+import JustwonHorizontal from "./files/justwon-horizontal.svg";
 
 interface Props {
   size?: number;
