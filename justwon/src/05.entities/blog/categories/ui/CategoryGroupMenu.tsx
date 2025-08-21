@@ -4,9 +4,10 @@ import "client-only";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
+import { CategoryType } from "../models/category";
+import { CategoryGroupType } from "../models/category-group";
 import { useBlogCategory } from "../hooks/useCategory";
 import { useBlogCategoryGroup } from "../hooks/useCategoryGroup";
-import { CategoryGroupType, CategoryType } from "../models/categories";
 import { ExpandableMenu } from "@shared/ui/Menus";
 
 interface Props {
