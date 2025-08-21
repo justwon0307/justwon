@@ -12,4 +12,8 @@ export const DefaultLayout = styled.div`
     width: 1px;
     background-color: ${({ theme }) => theme.colors.divider};
   }
+
+  .layout-children {
+    flex: 1;
+  }
 `;
