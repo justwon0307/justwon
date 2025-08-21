@@ -1,9 +1,12 @@
 import { CategoryPage, generateMetadata } from "@pages/blog/category";
 import { sampleCategoryDetails } from "@entities/blog/categories";
+import { getCategoryDetails } from "@entities/blog/categories/server";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
+
+jest.mock("@entities/blog/categories/server");
 
 describe("CategoryPage", () => {
   const render = async (slug: string) => {
@@ -17,10 +20,7 @@ describe("CategoryPage", () => {
   };
 
   beforeEach(() => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      json: jest.fn().mockResolvedValue(sampleCategoryDetails),
-    });
+    (getCategoryDetails as jest.Mock).mockResolvedValue(sampleCategoryDetails);
   });
 
   it("renders the category page with the correct title", async () => {

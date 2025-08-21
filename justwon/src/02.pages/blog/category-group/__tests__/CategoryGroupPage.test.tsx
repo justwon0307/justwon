@@ -3,10 +3,13 @@ import {
   generateMetadata,
 } from "@pages/blog/category-group";
 import { sampleCategoryGroupDetails } from "@entities/blog/categories";
+import { getCategoryGroupDetails } from "@entities/blog/categories/server";
 import {
   getElementFromAsyncServerComponent,
   renderWithProviders,
 } from "@test-utils/renderer";
+
+jest.mock("@entities/blog/categories/server");
 
 describe("CategoryGroupPage", () => {
   const render = async (slug: string) => {
@@ -19,10 +22,9 @@ describe("CategoryGroupPage", () => {
   };
 
   beforeEach(() => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      json: jest.fn().mockResolvedValue(sampleCategoryGroupDetails),
-    });
+    (getCategoryGroupDetails as jest.Mock).mockResolvedValue(
+      sampleCategoryGroupDetails
+    );
   });
 
   it("renders the page with correct title and breadcrumb", async () => {
