@@ -1,12 +1,9 @@
-export { getCategoryGroupDetails } from "./api/getCategoryGroupDetails";
-export { getCategoryDetails } from "./api/getCategoryDetails";
-
 export {
   sampleCategories,
   sampleCategoryDetails,
   sampleCategoryGroups,
   sampleCategoryGroupDetails,
-} from "./data/testCategories";
+} from "./data/testdata";
 
 export {
   BlogCategoryContext,
@@ -19,12 +16,13 @@ export {
   useBlogCategoryGroup,
 } from "./hooks/useCategoryGroup";
 
+export type { AdminCategoryType, CategoryType } from "./models/category";
 export type {
   AdminCategoryGroupType,
-  AdminCategoryType,
   CategoryGroupType,
-  CategoryType,
-} from "./models/categories";
+} from "./models/category-group";
 
 export { CategoryCard } from "./ui/CategoryCard";
 export { CategoryGroupMenu } from "./ui/CategoryGroupMenu";
+
+export { CategoriesInitializer } from "./utils/CategoriesInitializer";
