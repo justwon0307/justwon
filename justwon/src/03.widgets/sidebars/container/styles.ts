@@ -9,10 +9,11 @@ import styled from "styled-components";
 export const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
   height: 100vh;
 
-  .padding {
+  .sidebar-padding {
     padding-left: 24px;
     padding-right: 16px;
 
@@ -25,7 +26,7 @@ export const SidebarContainer = styled.div`
     }
   }
 
-  .header {
+  .sidebar-header {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -33,7 +34,7 @@ export const SidebarContainer = styled.div`
     gap: 0.5rem;
   }
 
-  .main {
+  .sidebar-main {
     display: flex;
     flex-direction: column;
     flex: 1;
