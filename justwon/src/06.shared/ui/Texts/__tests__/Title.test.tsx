@@ -10,6 +10,6 @@ describe("Title", () => {
     );
 
     expect(getByText("Test Title")).toBeInTheDocument();
-    expect(getByText("sample-icon")).toBeInTheDocument();
+    expect(getByText("sample-media-icon")).toBeInTheDocument();
   });
 });

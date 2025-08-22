@@ -1,5 +1,8 @@
-import { BlogLandingPage, metadata } from "@pages/blog/landing";
-
-export { metadata };
-
-export default BlogLandingPage;
+export default function Page() {
+  return (
+    <div>
+      <h1>Blog Page</h1>
+      <p>Welcome to the blog!</p>
+    </div>
+  );
+}

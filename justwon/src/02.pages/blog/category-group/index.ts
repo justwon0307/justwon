@@ -1,4 +1,1 @@
-export {
-  BlogCategoryGroupPage,
-  generateMetadata,
-} from "./ui/BlogCategoryGroupPage";
+export { CategoryGroupPage, generateMetadata } from "./CategoryGroupPage";

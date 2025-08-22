@@ -1,5 +1,5 @@
-import { BlogCategoryPage, generateMetadata } from "@pages/blog/category";
+import { CategoryPage, generateMetadata } from "@pages/blog/category";
 
 export { generateMetadata };
 
-export default BlogCategoryPage;
+export default CategoryPage;

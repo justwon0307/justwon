@@ -5,17 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { CategoryType } from "../models/categories";
-import { useColors } from "@shared/lib/colors";
-import { AppIcon } from "@shared/ui/Icons";
+import { CategoryType } from "../models/category";
+import { MediaIcon } from "@shared/ui/Icons";
 
 interface Props {
   category: CategoryType;
 }
 
 export function CategoryCard({ category }: Readonly<Props>) {
-  const { colors } = useColors();
-
   return (
     <Link href={`/blog/${category.group.slug}/${category.slug}`}>
       <Container>
@@ -26,7 +23,7 @@ export function CategoryCard({ category }: Readonly<Props>) {
           height={135}
         />
         <h3>
-          <AppIcon icon={category.icon} color={colors.gray900} size={16} />
+          <MediaIcon name={category.icon} size={16} />
           {category.name}
         </h3>
       </Container>

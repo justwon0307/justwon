@@ -1,6 +1,6 @@
 [
   {
-    "model": "devlog.series",
+    "model": "series.series",
     "pk": 1,
     "fields": {
       "title": "개발자 맥 초기 세팅",

@@ -1,8 +1,8 @@
 import {
-  BlogCategoryGroupPage,
+  CategoryGroupPage,
   generateMetadata,
 } from "@pages/blog/category-group";
 
 export { generateMetadata };
 
-export default BlogCategoryGroupPage;
+export default CategoryGroupPage;

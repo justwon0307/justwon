@@ -1,2 +1,2 @@
-export { BreadcrumbContainer } from "./ui/styles";
-export { BreadcrumbItem, type BreadcrumbItemType } from "./ui/BreadcrumbItem";
+export { BreadcrumbItem } from "./Breadcrumb/BreadcrumbItem";
+export { BreadcrumbContainer } from "./Breadcrumb/styles";

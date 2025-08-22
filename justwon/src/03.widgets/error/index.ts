@@ -1,1 +1,1 @@
-export { ErrorFallback } from "./ui/ErrorFallback";
+export { ErrorPage } from "./ErrorPage/ErrorPage";

@@ -1,3 +1,3 @@
-import { BlogLayout } from "@app/layouts/blog";
+import { BlogLayout } from "@app/blog";
 
 export default BlogLayout;

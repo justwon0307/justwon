@@ -35,7 +35,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     ## Local apps
-    "devlog.apps.DevlogConfig",
+    "devlog.categories.apps.CategoriesConfig",
+    "devlog.post_types.apps.PostTypesConfig",
+    "devlog.series.apps.SeriesConfig",
+    "devlog.tags.apps.TagsConfig",
 ]
 
 MIDDLEWARE = [
@@ -104,14 +107,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ## Rest Framework settings
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "auth.backend.JWTAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
 }
-
-
-## Clerk settings
-CLERK_SECRET_KEY = config("CLERK_SECRET_KEY")
-CLERK_ISSUER = config("CLERK_ISSUER")
-CLERK_JWKS_URL = config("CLERK_JWKS_URL")

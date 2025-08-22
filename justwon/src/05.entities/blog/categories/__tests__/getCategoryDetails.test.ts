@@ -1,36 +1,36 @@
-import {
-  getCategoryDetails,
-  sampleCategoryDetails,
-} from "@entities/blog/categories";
+import { sampleCategoryDetails } from "@entities/blog/categories";
+import { getCategoryDetails } from "@entities/blog/categories/server";
+import * as FetchAPI from "@shared/lib/fetch";
 
 describe("getCategoryDetails", () => {
-  it("should fetch category details correctly", async () => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: true,
-      json: jest.fn().mockResolvedValue(sampleCategoryDetails),
+  it("should return category details", async () => {
+    jest.spyOn(FetchAPI, "fetchWithCache").mockResolvedValue({
+      status: "SUCCESS",
+      data: sampleCategoryDetails,
     });
 
-    const details = await getCategoryDetails("test-category");
-    expect(details).toEqual(sampleCategoryDetails);
+    const categoryDetails = await getCategoryDetails("sample-slug");
+
+    expect(categoryDetails).toEqual(sampleCategoryDetails);
   });
 
-  it("should handle fetch error", async () => {
-    (global.fetch as jest.Mock).mockResolvedValue({
-      ok: false,
-      status: 400,
-      json: jest.fn().mockResolvedValue({ message: "Bad request" }),
+  it("should throw an error if the fetch fails", async () => {
+    const mockFetch = jest.spyOn(FetchAPI, "fetchWithCache").mockResolvedValue({
+      status: "ERROR",
+      message: "Fetch failed",
     });
 
-    await expect(getCategoryDetails("test-category")).rejects.toThrow(
-      "데이터를 불러오는 중 오류가 발생했습니다. 다시 시도해주세요."
-    );
+    await expect(getCategoryDetails("sample-slug")).rejects.toThrow("Fetch failed");
+    expect(mockFetch).toHaveBeenCalled();
   });
 
-  it("should handle unknown error", async () => {
-    (global.fetch as jest.Mock).mockRejectedValue(new Error("Network error"));
+  it("should call notFound if the category is not found", async () => {
+    const mockFetch = jest.spyOn(FetchAPI, "fetchWithCache").mockResolvedValue({
+      status: "NOT_FOUND",
+      message: "Category not found",
+    });
 
-    await expect(getCategoryDetails("test-category")).rejects.toThrow(
-      "서버와의 연결에 실패했습니다. 나중에 다시 시도해주세요."
-    );
+    await expect(getCategoryDetails("non-existent-slug")).rejects.toThrow();
+    expect(mockFetch).toHaveBeenCalled();
   });
 });
