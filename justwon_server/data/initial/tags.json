@@ -31,5 +31,49 @@
       "icon": "nextjs",
       "created_at": "2025-08-13T13:31:32.076Z"
     }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 4,
+    "fields": {
+      "name": "Git",
+      "slug": "git",
+      "color": "#f05032",
+      "icon": "git",
+      "created_at": "2025-08-13T13:31:32.076Z"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 5,
+    "fields": {
+      "name": "Docker",
+      "slug": "docker",
+      "color": "#2496ed",
+      "icon": "docker",
+      "created_at": "2025-08-13T13:31:32.076Z"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 6,
+    "fields": {
+      "name": "VSCode",
+      "slug": "vscode",
+      "color": "#007acc",
+      "icon": "vscode",
+      "created_at": "2025-08-13T13:31:32.076Z"
+    }
+  },
+  {
+    "model": "tags.tag",
+    "pk": 7,
+    "fields": {
+      "name": "Notion",
+      "slug": "notion",
+      "color": "#000000",
+      "icon": "notion",
+      "created_at": "2025-08-13T13:31:32.076Z"
+    }
   }
 ]
