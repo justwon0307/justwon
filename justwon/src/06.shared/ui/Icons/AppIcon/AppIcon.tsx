@@ -3,17 +3,17 @@
 import { useColors } from "@shared/lib/colors";
 
 import About from "./files/about.svg";
-import Admin from "./files/admin.svg";
+//import Admin from "./files/admin.svg";
 import Blog from "./files/blog.svg";
-import ChevronDown from "./files/chevron-down.svg";
-import ChevronLeft from "./files/chevron-left.svg";
+//import ChevronDown from "./files/chevron-down.svg";
+//import ChevronLeft from "./files/chevron-left.svg";
 import ChevronRight from "./files/chevron-right.svg";
-import ChevronUp from "./files/chevron-up.svg";
+//import ChevronUp from "./files/chevron-up.svg";
 import Lightbulb from "./files/lightbulb.svg";
 import Login from "./files/login.svg";
-import Logout from "./files/logout.svg";
+//import Logout from "./files/logout.svg";
 import Projects from "./files/projects.svg";
-import Search from "./files/search.svg";
+//import Search from "./files/search.svg";
 
 interface Props {
   icon: string;
