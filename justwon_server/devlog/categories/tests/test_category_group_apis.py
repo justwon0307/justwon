@@ -8,7 +8,7 @@ class BlogCategoryGroupAPITestCase(APITestCase):
         response = self.client.get("/api/v1/blog/groups/")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.data), 5) ## 테스트 데이터에는 5개의 그룹이 있다
+        self.assertEqual(len(response.data), 4) ## 테스트 데이터에는 4개의 그룹이 있다
 
     def test_retrieve(self):
         response = self.client.get("/api/v1/blog/groups/computer-science/")
