@@ -4,6 +4,8 @@ type MockDataType = {
   id: number;
 };
 
+jest.unmock("@shared/lib/fetch");
+
 describe("fetchWithCache", () => {
   beforeEach(() => {
     global.fetch = jest.fn();
