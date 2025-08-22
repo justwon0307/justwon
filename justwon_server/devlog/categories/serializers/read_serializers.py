@@ -37,7 +37,7 @@ class CategorySimpleSerializer(serializers.ModelSerializer):
 
     def get_num_posts(self, obj):
         ## TODO: is_published가 True인 게시글의 수를 반환
-        return 0
+        return obj.order
 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
