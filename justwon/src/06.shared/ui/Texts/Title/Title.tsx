@@ -13,7 +13,7 @@ interface Props {
 export function Title({ title, icon }: Readonly<Props>) {
   return (
     <Text>
-      {icon && <MediaIcon name={icon} size={24} isActive />}
+      {icon && <MediaIcon name={icon} size={24} />}
       {title}
     </Text>
   );
