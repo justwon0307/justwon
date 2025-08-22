@@ -2,7 +2,7 @@ export const BACKEND_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 type ErrorResponseType = {
   message: string;
-  status: "ERROR";
+  status: "ERROR" | "NOT_FOUND" | "UNAUTHORIZED";
 };
 
 type SuccessResponseType<T> = {
