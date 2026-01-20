@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "LICENSE"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "LICENSE"
+
+permissions:
+  contents: read
+  packages: read
+  pull-requests: read
+  security-events: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect-changes:
+    name: Detect Changes
+    uses: ./.github/workflows/_detect-changes.yml
+
+  # Frontend - Node.js/TypeScript
+  frontend-ci:
+    name: Frontend
+    needs: [detect-changes]
+    if: needs.detect-changes.outputs.frontend == 'true'
+    uses: ./.github/workflows/_ci-node.yml
+    with:
+      working-directory: ./frontend
+      app-name: frontend
+    secrets: inherit
+
+  backend-python-ci:
+    name: Backend
+    needs: [detect-changes]
+    if: needs.detect-changes.outputs.backend-python == 'true'
+    uses: ./.github/workflows/_ci-python.yml
+    with:
+      working-directory: ./backend/python
+      app-name: backend-python
+    secrets: inherit
+
+  sonar-scan:
+    ## Sonar Scan은 최소 하나의 CI가 실행이 되고,
+    ## 실행이 된 모든 CI가 성공한 경우에만 실행.
+    ## 필요에 따라 needs 항목에 다른 CI job들을 추가하면 된다.
+    ## 모든 CI가 스킵되면, Sonar Scan도 스킵됨.
+    name: Sonar Scan
+    needs: [frontend-ci, backend-python-ci]
+    if: |
+      always() &&
+      contains(needs.*.result, 'success') &&
+      !contains(needs.*.result, 'failure') &&
+      !contains(needs.*.result, 'cancelled')
+    uses: ./.github/workflows/_sonar-scan.yml
+    secrets: inherit

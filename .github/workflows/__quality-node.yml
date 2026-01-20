@@ -1,0 +1,65 @@
+name: Quality Checks (Node.js)
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: "Working directory for the Node.js app"
+        required: true
+        type: string
+      app-name:
+        description: "Friendly name for the app (e.g., Frontend, Backend API)"
+        required: true
+        type: string
+
+jobs:
+  quality:
+    name: Quality Checks - ${{ inputs.app-name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    permissions:
+      contents: read
+      packages: read
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Project
+        uses: ./.github/actions/setup-node
+        with:
+          working-directory: ${{ inputs.working-directory }}
+          github-token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Security Audit
+        run: |
+            pnpm audit --prod --audit-level=high || \
+            echo "- ❌ Security vulnerabilities found" >> error_report.txt
+
+      - name: Check Formatting
+        run: |
+            pnpm exec prettier --check . || \
+            echo "- ❌ Formatting issues found" >> error_report.txt
+
+      - name: Lint
+        run: |
+            pnpm lint || \
+            echo "- ❌ Lint Check Failed" >> error_report.txt
+
+      - name: Check Quality Results
+        if: always()
+        run: |
+            if [ -f error_report.txt ]; then
+            echo "### Quality Check Failures:" >> $GITHUB_STEP_SUMMARY
+            cat error_report.txt >> $GITHUB_STEP_SUMMARY
+
+            echo "::error::Some checks failed. See the summary for details."
+            exit 1
+            else
+            echo "🎉 All checks passed!" >> $GITHUB_STEP_SUMMARY
+            fi

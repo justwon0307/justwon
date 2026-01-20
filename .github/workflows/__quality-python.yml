@@ -1,0 +1,67 @@
+name: Quality Checks (Python)
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: "Working directory for the Python app"
+        required: true
+        type: string
+      app-name:
+        description: "Friendly name for the app"
+        required: true
+        type: string
+
+jobs:
+  quality:
+    name: Quality Checks - ${{ inputs.app-name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    permissions:
+      contents: read
+      packages: read
+      security-events: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ${{ inputs.working-directory }}/.python-version
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.9.24"
+
+      - name: Install Dependencies
+        run: uv sync --locked --all-packages --dev
+
+      - name: Run Linter
+        run: |
+          uv run ruff check --output-format=github . || \
+          echo "- ❌ Lint Check Failed" >> error_report.txt
+
+      - name: Check Formatting
+        run: |
+          uv run ruff format --check . || \
+          echo "- ❌ Format Check Failed" >> error_report.txt
+
+      - name: Check Quality Results
+        if: always()
+        run: |
+          if [ -f error_report.txt ]; then
+            echo "### Quality Check Failures:" >> $GITHUB_STEP_SUMMARY
+            cat error_report.txt >> $GITHUB_STEP_SUMMARY
+
+            echo "::error::Some checks failed. See the summary for details."
+            exit 1
+          else
+            echo "🎉 All checks passed!" >> $GITHUB_STEP_SUMMARY
+          fi
