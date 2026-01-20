@@ -1,0 +1,24 @@
+{
+  "name": "justwon",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.28.1+sha512.7d7dbbca9e99447b7c3bf7a73286afaaf6be99251eb9498baefa7d406892f67b879adb3a1d7e687fc4ccc1a388c7175fbaae567a26ab44d1067b54fcb0d6a316",
+  "author": "JustWon",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "prepare": "cd .. && husky frontend/.husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.0",
+    "turbo": "^2.7.5"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check"
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+coverage/
+
+/dist
+/build
+/out
+/.next/
+/coverage
+
+npm-debug.log*
+pnpm-debug.log*
+
+.turbo
+
+*.tsbuildinfo
