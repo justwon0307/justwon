@@ -5,8 +5,14 @@ packages:
   - packages/*
 
 catalog:
+  '@vitest/coverage-v8': 4.0.17
   eslint: ^9.39.2
+  jsdom: ^27.4.0
+  vitest: ^4.0.17
 
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+
+onlyBuiltDependencies:
+  - esbuild

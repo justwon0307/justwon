@@ -1,7 +1,15 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
-    "lint": {},
-    "typecheck": {}
+    "test": {
+      "inputs": [
+        "src/**",
+        "tests/**",
+        "**/*.test.ts",
+        "vitest.config.ts",
+        "package.json"
+      ]
+    },
+    "lint": {}
   }
 }
