@@ -10,6 +10,8 @@
         "package.json"
       ]
     },
-    "lint": {}
+    "lint": {},
+    "build": {},
+    "typecheck": {}
   }
 }
