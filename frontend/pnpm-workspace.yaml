@@ -4,6 +4,9 @@ packages:
   - designs/*
   - packages/*
 
+catalog:
+  eslint: ^9.39.2
+
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
