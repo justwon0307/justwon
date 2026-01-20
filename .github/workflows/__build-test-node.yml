@@ -1,0 +1,53 @@
+name: Build & Test (Node.js)
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: "Working directory for the Node.js app"
+        required: true
+        type: string
+      app-name:
+        description: "Friendly name for the app (e.g., Frontend, Backend API)"
+        required: true
+        type: string
+
+jobs:
+  build-and-test:
+    name: Build & Test - ${{ inputs.app-name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Project
+        uses: ./.github/actions/setup-node
+        with:
+          working-directory: ${{ inputs.working-directory }}
+          github-token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Build
+        run: pnpm build
+
+      - name: Type Check
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test -- --coverage
+
+      - name: Upload Coverage
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ inputs.working-directory }}/**/coverage/clover.xml
+          fail_ci_if_error: true
+          flags: ${{ inputs.app-name }}

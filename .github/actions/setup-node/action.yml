@@ -1,0 +1,45 @@
+name: Setup Project
+description: Setup Node.js and pnpm, install dependencies
+
+inputs:
+  node-version:
+    description: Node.js version to setup
+    required: false
+    default: 22.14.0
+  working-directory:
+    description: "Directory where pnpm-lock.yaml is located"
+    required: false
+    default: "."
+  github-token:
+    description: "GitHub token for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        package_json_file: ${{ inputs.working-directory }}/package.json
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+        cache-dependency-path: ${{ inputs.working-directory }}/pnpm-lock.yaml
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        NPM_TOKEN: ${{ inputs.github-token }}
+
+    - name: Cache Turbo
+      uses: actions/cache@v4
+      with:
+        path: ${{ inputs.working-directory }}/.turbo
+        key: ${{ runner.os }}-turbo-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-turbo-

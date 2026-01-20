@@ -1,0 +1,6 @@
+# .git이 프로젝트 루트에 있고, frontend/ 내부를 검사해야하니,
+# 경로로 일단 이동해야 한다
+cd frontend
+
+pnpm lint-staged
+

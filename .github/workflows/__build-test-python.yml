@@ -1,0 +1,48 @@
+name: Build & Test (Python)
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: "Working directory for the Python app"
+        required: true
+        type: string
+      app-name:
+        description: "Friendly name for the app"
+        required: true
+        type: string
+
+jobs:
+  test:
+    name: Test - ${{ inputs.app-name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ${{ inputs.working-directory }}/.python-version
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.9.24"
+
+      - name: Install Dependencies
+        run: uv sync --locked --all-packages --dev
+
+      - name: Run Tests
+        run: uv run pytest --cov --cov-report xml
+
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          files: ${{ inputs.working-directory }}/coverage.xml
+          flags: ${{ inputs.app-name }}

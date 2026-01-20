@@ -1,0 +1,11 @@
+node_modules/*
+dist/*
+build/*
+coverage/*
+**/.next/*
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+*.html
+**/routeTree.gen.tsx

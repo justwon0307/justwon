@@ -1,0 +1,35 @@
+name: CI - Node.js
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: "Working directory for the Node.js app"
+        required: true
+        type: string
+      app-name:
+        description: "Friendly name for the app (e.g., Frontend, Backend API)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: read
+  security-events: write
+
+jobs:
+  quality:
+    name: Quality Checks
+    uses: ./.github/workflows/__quality-node.yml
+    with:
+      working-directory: ${{ inputs.working-directory }}
+      app-name: ${{ inputs.app-name }}
+    secrets: inherit
+
+  build-test:
+    name: Build & Test
+    uses: ./.github/workflows/__build-test-node.yml
+    with:
+      working-directory: ${{ inputs.working-directory }}
+      app-name: ${{ inputs.app-name }}
+    secrets: inherit

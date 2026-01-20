@@ -1,0 +1,34 @@
+name: Detect Changes
+
+on:
+  workflow_call:
+    outputs:
+      frontend:
+        description: "Changes detected in frontend"
+        value: ${{ jobs.changes.outputs.frontend }}
+      backend-python:
+        description: "Changes detected in backend - python"
+        value: ${{ jobs.changes.outputs.backend-python }}
+
+jobs:
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+      backend-python: ${{ steps.filter.outputs.backend-python }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Path Filters
+        id: filter
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+              - '.github/**'
+            backend-python:
+              - 'backend/python/**'
+              - '.github/**'
