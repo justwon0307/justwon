@@ -3,11 +3,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "generate": "svg2tsx generate && prettier --write src"
+    "generate": "svg2tsx generate && prettier --write src",
+    "test": "vitest run",
+    "test:dev": "vitest --watch"
   },
   "devDependencies": {
     "@justkits/svg2tsx": "^1.0.3",
     "@justwon/tsconfig": "workspace:*",
-    "@types/react": "^19.2.8"
+    "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
+    "@types/react": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "react": "19.2.3",
+    "vitest": "catalog:"
   }
 }
