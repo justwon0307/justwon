@@ -1,9 +1,17 @@
 {
   "name": "@justwon/assets",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "generate": "svg2tsx generate && prettier --write src",
+    "build": "tsc --project tsconfig.build.json",
     "test": "vitest run",
     "test:dev": "vitest --watch"
   },

@@ -5,10 +5,10 @@ export default defineConfig({
   suffix: "Logo",
   index: true,
   options: {
+    expandProps: "end",
     svgProps: {
       width: "{size}",
       height: "{size}",
-      color: "{color}",
     },
     svgoConfig: {
       plugins: [
@@ -16,20 +16,15 @@ export default defineConfig({
           name: "preset-default",
           params: { overrides: { removeViewBox: false } },
         },
-        {
-          name: "convertColors",
-          params: { currentColor: true },
-        },
         "prefixIds",
         "removeDimensions",
       ],
     },
     template: (variables, { tpl }) => {
       return tpl`
-        ${variables.imports}
         import type { IconProps } from '@/types';
 
-        export function ${variables.componentName}({ size = 24, color = "currentColor" }: Readonly<IconProps>) {
+        export function ${variables.componentName}({ size = 24, ...props }: Readonly<IconProps>) {
           return (${variables.jsx});
         }
       `;
