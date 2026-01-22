@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./nextjs": "./nextjs.js"
+    "./nextjs": "./nextjs.js",
+    "./react": "./react.js"
   },
   "peerDependencies": {
     "@vitest/coverage-v8": "catalog:",

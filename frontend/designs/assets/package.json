@@ -1,0 +1,28 @@
+{
+  "name": "@justwon/assets",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "generate": "svg2tsx generate && prettier --write src",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "vitest run",
+    "test:dev": "vitest --watch"
+  },
+  "devDependencies": {
+    "@justkits/svg2tsx": "^1.0.3",
+    "@justwon/tsconfig": "workspace:*",
+    "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
+    "@types/react": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "react": "19.2.3",
+    "vitest": "catalog:"
+  }
+}
