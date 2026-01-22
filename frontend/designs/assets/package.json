@@ -1,0 +1,13 @@
+{
+  "name": "@justwon/assets",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "generate": "svg2tsx generate && prettier --write src"
+  },
+  "devDependencies": {
+    "@justkits/svg2tsx": "^1.0.3",
+    "@justwon/tsconfig": "workspace:*",
+    "@types/react": "^19.2.8"
+  }
+}
