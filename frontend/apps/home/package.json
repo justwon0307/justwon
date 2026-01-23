@@ -11,6 +11,8 @@
     "test:dev": "vitest --watch --coverage"
   },
   "dependencies": {
+    "@justwon/assets": "workspace:*",
+    "@justwon/styles": "workspace:*",
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -18,14 +20,12 @@
   "devDependencies": {
     "@justwon/eslint-config": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "jsdom": "catalog:",
-    "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "catalog:"
   }
