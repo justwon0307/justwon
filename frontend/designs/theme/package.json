@@ -1,0 +1,27 @@
+{
+  "name": "@justwon/theme",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc && tsc-alias",
+    "dev": "tsc && tsc-alias --watch"
+  },
+  "devDependencies": {
+    "@justwon/tsconfig": "workspace:*",
+    "@types/react": "catalog:",
+    "rimraf": "catalog:",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "react": "19.2.3"
+  }
+}
