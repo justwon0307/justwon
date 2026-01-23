@@ -12,7 +12,9 @@
         "**/*.test.ts",
         "vitest.config.ts",
         "package.json"
-      ]
+      ],
+      "outputs": ["coverage/**"],
+      "dependsOn": ["^build"]
     },
     "build": {
       "dependsOn": ["^build"],
