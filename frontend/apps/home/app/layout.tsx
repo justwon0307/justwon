@@ -1,13 +1,21 @@
+import { ReactNode } from "react";
+
+import { ThemeProvider, ThemeScript } from "@justwon/theme";
 import "@justwon/styles/index.css";
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
+      <head>
+        <ThemeScript />
+      </head>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
