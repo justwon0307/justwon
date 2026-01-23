@@ -23,5 +23,12 @@
   },
   "dependencies": {
     "react": "19.2.3"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint .",
+      "prettier --check"
+    ]
   }
 }

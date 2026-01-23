@@ -24,5 +24,12 @@
     "@vitest/coverage-v8": "catalog:",
     "react": "19.2.3",
     "vitest": "catalog:"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint .",
+      "prettier --check"
+    ]
   }
 }

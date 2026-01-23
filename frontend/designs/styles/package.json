@@ -27,5 +27,12 @@
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.18.0"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint .",
+      "prettier --check"
+    ]
   }
 }
