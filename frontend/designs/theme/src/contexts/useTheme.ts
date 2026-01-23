@@ -14,7 +14,7 @@ export const ThemeContext = createContext<ThemeContextValue | null>(null);
 /**
  * 테마 컨텍스트 훅
  * 현재 테마 모드 (system/light/dark)와 설정 변경 함수를 사용할 수 있음
- * @returns 
+ * @returns
  */
 export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext);
