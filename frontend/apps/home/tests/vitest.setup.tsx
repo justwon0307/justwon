@@ -1,5 +1,10 @@
 import { vi } from "vitest";
 
+vi.mock("next/font/google", () => ({
+  Google_Sans: () => ({
+    className: "google-sans-class",
+  }),
+}));
 vi.mock("next/link", () => ({
   __esModule: true,
   default: ({
