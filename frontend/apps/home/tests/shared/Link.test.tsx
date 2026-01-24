@@ -1,7 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render } from "@testing-library/react";
 
 import { Link } from "@shared/ui/Link";
+
+vi.unmock("next/link");
 
 describe("Link", () => {
   it("should render a link with default styles", () => {
