@@ -5,9 +5,9 @@ export const colorVariables = {
   warning: "color-warning",
   error: "color-error",
   background: {
-    light: "color-background-light",
-    dark: "color-background-dark",
-    default: "color-background-default",
+    base: "color-background-base",
+    surface: "color-background-surface",
+    overlay: "color-background-overlay",
   },
   text: {
     default: "color-text-default",
