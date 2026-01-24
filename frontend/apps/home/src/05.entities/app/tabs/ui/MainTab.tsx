@@ -11,7 +11,7 @@ interface Props {
   tab: TabOptions;
 }
 
-export function HeaderTab({ tab }: Readonly<Props>) {
+export function MainTab({ tab }: Readonly<Props>) {
   const pathname = usePathname();
   const isActive = pathname.startsWith(`/${tab}`);
 
