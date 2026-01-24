@@ -7,21 +7,33 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./globals.css": {
+      "types": "./dist/globals.css.d.ts",
+      "default": "./dist/globals.css.js"
     }
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc && tsc-alias",
-    "dev": "tsc && tsc-alias --watch"
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:dev": "vitest --watch --coverage"
   },
   "devDependencies": {
+    "@justwon/eslint-config": "workspace:*",
     "@justwon/tsconfig": "workspace:*",
     "@types/react": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "eslint": "catalog:",
     "rimraf": "catalog:",
     "tsc-alias": "^1.8.16",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "catalog:"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@vanilla-extract/css": "^1.18.0",
     "react": "19.2.3"
   },
   "lint-staged": {

@@ -2,10 +2,10 @@
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 
+import { loadStoredMode, saveStoredMode } from "./lib/storage";
+import { getSystemTheme, subscribeToSystemTheme } from "./lib/system";
 import { ThemeContext } from "./useTheme";
-import { loadStoredMode, saveStoredMode } from "@/lib/storage";
-import { getSystemTheme, subscribeToSystemTheme } from "@/lib/system";
-import { ResolvedTheme, ThemeMode } from "@/types/theme";
+import { ResolvedTheme, ThemeMode } from "./types";
 
 interface Props {
   children: ReactNode;

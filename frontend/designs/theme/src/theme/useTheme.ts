@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from "react";
 
-import { ThemeMode } from "@/types/theme";
+import { ThemeMode } from "./types";
 
 interface ThemeContextValue {
   mode: ThemeMode;

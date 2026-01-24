@@ -1,4 +1,4 @@
-import { ResolvedTheme } from "@/types/theme";
+import { ResolvedTheme } from "../types";
 
 /**
  * 시스템 모드일 시 사용하는, 시스템 테마 조회 함수

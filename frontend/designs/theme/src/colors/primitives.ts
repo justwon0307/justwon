@@ -1,4 +1,4 @@
-export const BaseColors = {
+export const baseColors = {
   WHITE: {
     light: "#F9FAFB",
     medium: "#E3E5E8",

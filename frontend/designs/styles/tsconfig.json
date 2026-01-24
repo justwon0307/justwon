@@ -1,4 +1,0 @@
-{
-  "extends": "@justwon/tsconfig/base.json",
-  "include": ["src"]
-}

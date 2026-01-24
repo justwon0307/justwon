@@ -1,3 +1,10 @@
-export { ThemeScript } from "./components/ThemeScript";
-export { useTheme } from "./contexts/useTheme";
-export { ThemeProvider } from "./contexts/ThemeProvider";
+export { media } from "./breakpoints/variables";
+
+export { baseColors } from "./colors/primitives";
+export { colorVariables } from "./colors/variables";
+
+export { ThemeScript } from "./theme/ThemeScript";
+export { useTheme } from "./theme/useTheme";
+export { ThemeProvider } from "./theme/ThemeProvider";
+
+export { variables } from "./globals.css";

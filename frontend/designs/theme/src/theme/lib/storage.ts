@@ -1,4 +1,4 @@
-import { ThemeMode } from "@/types/theme";
+import { ThemeMode } from "../types";
 
 const STORAGE_KEY = "theme-mode";
 
