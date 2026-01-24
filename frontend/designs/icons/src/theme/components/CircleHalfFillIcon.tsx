@@ -1,4 +1,4 @@
-import type { IconProps } from "@/types";
+import type { IconProps } from "../../types";
 export function CircleHalfFillIcon({
   size = 24,
   color = "currentColor",

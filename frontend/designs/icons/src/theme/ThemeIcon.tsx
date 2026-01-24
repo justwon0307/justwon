@@ -1,7 +1,7 @@
 import { CircleHalfFillIcon } from "./components/CircleHalfFillIcon";
 import { MoonIcon } from "./components/MoonIcon";
 import { SunIcon } from "./components/SunIcon";
-import { IconProps } from "@/types";
+import { IconProps } from "../types";
 
 interface Props extends IconProps {
   theme: "light" | "dark" | "system";

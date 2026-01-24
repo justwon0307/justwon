@@ -2,7 +2,7 @@ import { AboutIcon } from "./components/AboutIcon";
 import { BlogIcon } from "./components/BlogIcon";
 import { NonDevIcon } from "./components/NonDevIcon";
 import { ProjectsIcon } from "./components/ProjectsIcon";
-import { IconProps } from "@/types";
+import { IconProps } from "../types";
 
 interface Props extends IconProps {
   tab: "about" | "devlog" | "non-dev" | "projects";

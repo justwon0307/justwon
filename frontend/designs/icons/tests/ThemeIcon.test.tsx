@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 
-import { ThemeIcon } from "@/theme/ThemeIcon";
+import { ThemeIcon } from "../src/theme/ThemeIcon";
 
 describe("ThemeIcon", () => {
   it("should render all icons correctly (default props)", () => {

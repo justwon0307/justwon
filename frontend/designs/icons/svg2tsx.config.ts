@@ -27,7 +27,7 @@ export default defineConfig({
     template: (variables, { tpl }) => {
       return tpl`
         ${variables.imports}
-        import type { IconProps } from '@/types';
+        import type { IconProps } from '../../types';
 
         export function ${variables.componentName}({ size = 24, color = "currentColor" }: Readonly<IconProps>) {
           return (${variables.jsx});

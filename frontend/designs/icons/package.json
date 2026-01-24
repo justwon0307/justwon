@@ -26,7 +26,6 @@
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "rimraf": "catalog:",
-    "tsc-alias": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },
