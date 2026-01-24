@@ -6,6 +6,7 @@ import {
 
 import { baseColors } from "./colors/primitives";
 import { colorVariables } from "./colors/variables";
+import { resetLayer } from "./layers.css";
 
 export const variables = createGlobalThemeContract({
   colors: colorVariables,
@@ -19,9 +20,9 @@ createGlobalTheme(":root", variables, {
     warning: baseColors.YELLOW,
     error: baseColors.RED,
     background: {
-      light: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.light})`,
-      dark: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.dark})`,
-      default: `light-dark(${baseColors.WHITE.medium}, ${baseColors.BLACK.medium})`,
+      base: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.dark})`,
+      surface: `light-dark(${baseColors.WHITE.medium}, ${baseColors.BLACK.medium})`,
+      overlay: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
     },
     text: {
       default: `light-dark(${baseColors.BLACK.dark}, ${baseColors.WHITE.light})`,
@@ -48,14 +49,22 @@ globalStyle("html[data-theme='light']", {
 });
 
 globalStyle("html, body", {
-  margin: 0,
-  padding: 0,
-  background: variables.colors.background.default,
-  color: variables.colors.text.default,
-  transition: "background 0.3s ease, color 0.3s ease",
+  "@layer": {
+    [resetLayer]: {
+      margin: 0,
+      padding: 0,
+      background: variables.colors.background.base,
+      color: variables.colors.text.default,
+      transition: "background 0.3s ease, color 0.3s ease",
+    },
+  },
 });
 
 globalStyle("html, body, a", {
-  color: "inherit",
-  textDecoration: "none",
+  "@layer": {
+    [resetLayer]: {
+      color: "inherit",
+      textDecoration: "none",
+    },
+  },
 });
