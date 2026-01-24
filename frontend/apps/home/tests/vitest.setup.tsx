@@ -23,8 +23,8 @@ vi.mock("next/navigation", () => ({
 }));
 
 vi.mock("@justwon/assets", () => ({
-  JustWonLogo: () => <div>JustWonLogo</div>,
-  JustWonHorizontalLogo: () => <div>JustWonHorizontalLogo</div>,
+  JustwonLogo: () => <div>JustwonLogo</div>,
+  JustwonHorizontalLogo: () => <div>JustwonHorizontalLogo</div>,
 }));
 vi.mock("@justwon/icons", () => ({
   TabIcon: () => <div>TabIcon</div>,
