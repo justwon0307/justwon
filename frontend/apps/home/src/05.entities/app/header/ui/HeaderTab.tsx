@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { TabIcon } from "@justwon/icons";
 
 import { TabOptions } from "../models/tabs";
-import { activeIconStyles, inactiveIconStyles } from "./styles.css";
+import { tabStyles } from "./styles.css";
 
 interface Props {
   tab: TabOptions;
@@ -18,7 +18,7 @@ export function HeaderTab({ tab }: Readonly<Props>) {
   return (
     <Link
       href={`/${tab}`}
-      className={isActive ? activeIconStyles : inactiveIconStyles}
+      className={isActive ? tabStyles.active : tabStyles.inactive}
     >
       <TabIcon tab={tab} />
       {tab.charAt(0).toUpperCase() + tab.slice(1)}

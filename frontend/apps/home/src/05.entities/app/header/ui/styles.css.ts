@@ -1,7 +1,7 @@
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 import { variables } from "@justwon/theme";
 
-const tabStyles = style({
+const common = style({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
@@ -10,19 +10,28 @@ const tabStyles = style({
   borderRadius: "8px",
   fontSize: "1rem",
   fontWeight: 600,
+  selectors: {
+    "&:hover": {
+      backgroundColor: variables.colors.background.overlay,
+    },
+  },
 });
 
-export const inactiveIconStyles = style([
-  tabStyles,
-  {
-    color: variables.colors.border.muted,
-  },
-]);
-
-export const activeIconStyles = style([
-  tabStyles,
-  {
-    backgroundColor: variables.colors.background.surface,
-    color: variables.colors.primary,
-  },
-]);
+export const tabStyles = styleVariants({
+  inactive: [
+    common,
+    {
+      backgroundColor: variables.colors.background.surface,
+      color: variables.colors.primary,
+      cursor: "pointer",
+    },
+  ],
+  active: [
+    common,
+    {
+      backgroundColor: variables.colors.primary,
+      color: variables.colors.background.surface,
+      cursor: "default",
+    },
+  ],
+});
