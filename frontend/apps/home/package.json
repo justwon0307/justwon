@@ -22,6 +22,7 @@
   "devDependencies": {
     "@justwon/eslint-config": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "^19",

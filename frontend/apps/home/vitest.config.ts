@@ -1,1 +1,1 @@
-export { vitestConfig as default } from "@justwon/vitest-config/nextjs";
+export { nextjsConfig as default } from "@justwon/vitest-config/nextjs";
