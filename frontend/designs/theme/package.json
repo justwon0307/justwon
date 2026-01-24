@@ -15,8 +15,8 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --watch --project tsconfig.build.json",
     "lint": "eslint .",
     "test": "vitest run",
     "test:dev": "vitest --watch --coverage"
@@ -24,11 +24,12 @@
   "devDependencies": {
     "@justwon/eslint-config": "workspace:*",
     "@justwon/tsconfig": "workspace:*",
+    "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
     "@types/react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "rimraf": "catalog:",
-    "tsc-alias": "^1.8.16",
     "typescript": "^5.9.3",
     "vitest": "catalog:"
   },

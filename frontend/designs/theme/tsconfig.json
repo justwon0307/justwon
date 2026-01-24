@@ -1,9 +1,4 @@
 {
   "extends": "@justwon/tsconfig/base.json",
-  "include": ["src"],
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "tsBuildInfoFile": "./dist/.tsbuildinfo"
-  }
+  "include": ["src", "tests", "eslint.config.ts", "vitest.config.ts"]
 }
