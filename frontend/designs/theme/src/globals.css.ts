@@ -14,8 +14,8 @@ export const variables = createGlobalThemeContract({
 
 createGlobalTheme(":root", variables, {
   colors: {
-    primary: `light-dark(${baseColors.BLUE.dark}, ${baseColors.BLUE.light})`,
-    secondary: baseColors.GOLD,
+    primary: `light-dark(${baseColors.BLUE.dark}, ${baseColors.GOLD})`,
+    secondary: `light-dark(${baseColors.GOLD}, ${baseColors.BLUE.light})`,
     success: baseColors.GREEN,
     warning: baseColors.YELLOW,
     error: baseColors.RED,

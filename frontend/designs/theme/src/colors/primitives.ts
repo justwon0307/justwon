@@ -13,7 +13,7 @@ export const baseColors = {
     light: "#3656AC",
     dark: "#1E3A8A",
   },
-  GOLD: "#CEA716",
+  GOLD: "#A78C29",
   SILVER: "#6B7280",
   RED: "#B91C1C",
   YELLOW: "#EBCC6F",
