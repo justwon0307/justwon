@@ -16,14 +16,17 @@
     "test:dev": "vitest --watch"
   },
   "devDependencies": {
-    "@justkits/svg2tsx": "^1.0.3",
+    "@justkits/svg2tsx": "catalog:",
     "@justwon/tsconfig": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
     "@testing-library/react": "catalog:",
     "@types/react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "react": "19.2.3",
+    "typescript": "catalog:",
     "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
   },
   "lint-staged": {
     "*.{json,md,yml,yaml}": "prettier --check",
