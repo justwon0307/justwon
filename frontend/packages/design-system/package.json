@@ -1,0 +1,40 @@
+{
+  "name": "@justwon/designs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "icons": "svg2tsx generate && prettier --write ./icons",
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --watch --project tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:dev": "vitest --watch --coverage"
+  },
+  "devDependencies": {
+    "@justkits/svg2tsx": "catalog:",
+    "@justwon/eslint-config": "workspace:*",
+    "@justwon/tsconfig": "workspace:*",
+    "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
+    "@types/react": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-import": "^2.32.0",
+    "rimraf": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@vanilla-extract/css": "catalog:",
+    "react": "catalog:"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint",
+      "prettier --check"
+    ]
+  }
+}
