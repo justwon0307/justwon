@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Google_Sans } from "next/font/google";
-import { ThemeProvider, ThemeScript } from "@justwon/theme";
-import "@justwon/theme/globals.css";
+import { ThemeProvider, ThemeScript } from "@justwon/designs/theme";
+import "@justwon/designs/globals.css";
 
 import { RootHeader } from "@widgets/header";
 

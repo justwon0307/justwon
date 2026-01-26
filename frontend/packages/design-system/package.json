@@ -1,0 +1,64 @@
+{
+  "name": "@justwon/designs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./brand": {
+      "types": "./dist/brand/index.d.ts",
+      "import": "./dist/brand/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.js"
+    },
+    "./globals.css": {
+      "types": "./dist/globals.css.d.ts",
+      "default": "./dist/globals.css.js"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "icons": "svg2tsx generate && prettier --write ./src/icons",
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --watch --project tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:dev": "vitest --watch --coverage"
+  },
+  "devDependencies": {
+    "@justkits/svg2tsx": "catalog:",
+    "@justwon/eslint-config": "workspace:*",
+    "@justwon/tsconfig": "workspace:*",
+    "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
+    "@types/react": "catalog:",
+    "@vanilla-extract/vite-plugin": "^5.1.4",
+    "@vitest/coverage-v8": "catalog:",
+    "eslint": "catalog:",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "rimraf": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "@vanilla-extract/css": "catalog:",
+    "react": "catalog:"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint",
+      "prettier --check"
+    ]
+  }
+}

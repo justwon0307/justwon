@@ -1,14 +1,14 @@
 "use client";
 
+import { Text } from "@justwon/designs/components";
+
 import {
   containerStyle,
   titleStyle,
   infoBoxStyle,
-  messageStyle,
   linkStyle,
 } from "./styles.css";
 import { Link } from "@shared/ui/Link";
-import { Text } from "@shared/ui/Text";
 
 interface Props {
   message?: string;
@@ -33,7 +33,7 @@ export function NotFound({
         404
       </Text>
       <div className={infoBoxStyle}>
-        <p className={messageStyle}>{message}</p>
+        <Text variant="bodySmall">{message}</Text>
         <Link href={href} passHref className={linkStyle}>
           {reloadText}
         </Link>

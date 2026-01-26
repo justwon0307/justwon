@@ -1,4 +1,0 @@
-{
-  "extends": "@justwon/tsconfig/base.json",
-  "include": ["src", "tests", "eslint.config.ts", "vitest.config.ts"]
-}

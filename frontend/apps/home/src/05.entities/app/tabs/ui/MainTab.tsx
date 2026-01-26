@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { TabIcon } from "@justwon/icons";
+import { TabIcon } from "@justwon/designs/icons";
 
 import { TabOptions } from "../models/tabs";
 import { tabStyles } from "./styles.css";
+import { Link } from "@shared/ui/Link";
 
 interface Props {
   tab: TabOptions;

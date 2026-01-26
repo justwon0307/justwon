@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { media, variables } from "@justwon/theme";
+import { media, theme } from "@justwon/designs/theme";
 
 export const headerContainerStyles = style({
   display: "flex",
@@ -7,13 +7,14 @@ export const headerContainerStyles = style({
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 32px", // 데스크탑 설정
-  borderBottom: `0.5px solid ${variables.colors.border.default}`,
+  color: theme.colors.primary,
+  borderBottom: `0.5px solid ${theme.colors.border.default}`,
 
   "@media": {
-    [media.mobile]: {
+    [media.breakpoints.mobile]: {
       padding: "0 16px",
     },
-    [media.tablet]: {
+    [media.breakpoints.tablet]: {
       padding: "0 24px",
     },
   },
@@ -22,10 +23,34 @@ export const headerContainerStyles = style({
 export const headerTabsStyles = style({
   display: "flex",
   flexDirection: "row",
+  alignItems: "center",
   padding: "12px 0",
   gap: "16px",
 });
 
 export const linkStyles = style({
-  color: variables.colors.primary,
+  color: theme.colors.primary,
+  backgroundColor: "transparent",
+});
+
+export const dividerStyles = style({
+  alignSelf: "stretch",
+  width: "2px",
+  backgroundColor: theme.colors.background.surface,
+});
+
+export const buttonStyles = style({
+  padding: 0,
+  border: "none",
+  color: theme.colors.text.muted,
+  backgroundColor: "transparent",
+  cursor: "pointer",
+  selectors: {
+    "&:hover": {
+      boxShadow: "none",
+    },
+    "&:active": {
+      boxShadow: "none",
+    },
+  },
 });

@@ -11,9 +11,7 @@
     "test:dev": "vitest --watch --coverage"
   },
   "dependencies": {
-    "@justwon/assets": "workspace:*",
-    "@justwon/icons": "workspace:*",
-    "@justwon/theme": "workspace:*",
+    "@justwon/designs": "workspace:*",
     "@vanilla-extract/css": "catalog:",
     "next": "16.1.4",
     "react": "catalog:",

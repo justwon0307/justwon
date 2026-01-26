@@ -1,5 +1,5 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { variables } from "@justwon/theme";
+import { theme } from "@justwon/designs/theme";
 
 const common = style({
   display: "flex",
@@ -12,7 +12,7 @@ const common = style({
   fontWeight: 600,
   selectors: {
     "&:hover": {
-      backgroundColor: variables.colors.background.overlay,
+      backgroundColor: theme.colors.background.surface,
     },
   },
 });
@@ -21,16 +21,15 @@ export const tabStyles = styleVariants({
   inactive: [
     common,
     {
-      backgroundColor: variables.colors.background.surface,
-      color: variables.colors.primary,
+      color: theme.colors.text.muted,
       cursor: "pointer",
     },
   ],
   active: [
     common,
     {
-      backgroundColor: variables.colors.primary,
-      color: variables.colors.background.surface,
+      backgroundColor: theme.colors.background.surface,
+      color: theme.colors.primary,
       cursor: "default",
     },
   ],

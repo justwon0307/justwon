@@ -1,17 +1,18 @@
 import { style } from "@vanilla-extract/css";
-import { baseLayer, theme } from "@justwon/designs/theme";
 
-export const linkDefaultStyle = style({
+import { baseLayer, theme } from "../../../theme";
+
+export const buttonDefaultStyle = style({
   "@layer": {
     [baseLayer]: {
-      display: "inline-block",
+      display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
       padding: "8px 16px",
       fontWeight: 600,
       borderRadius: "8px",
-      color: theme.colors.primary,
-      backgroundColor: "transparent",
+      color: theme.colors.text.inverted,
+      backgroundColor: theme.colors.primary,
 
       transition: "box-shadow 0.2s ease",
       selectors: {
