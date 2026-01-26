@@ -27,16 +27,17 @@ vi.mock("next/navigation", () => ({
   usePathname: vi.fn().mockReturnValue("/"),
 }));
 
-vi.mock("@justwon/assets", () => ({
+vi.mock("@justwon/designs/brand", () => ({
   JustwonLogo: () => <div>JustwonLogo</div>,
   JustwonHorizontalLogo: () => <div>JustwonHorizontalLogo</div>,
 }));
-vi.mock("@justwon/icons", () => ({
+vi.mock("@justwon/designs/icons", () => ({
+  AppIcon: () => <div>AppIcon</div>,
   TabIcon: () => <div>TabIcon</div>,
   ThemeIcon: () => <div>ThemeIcon</div>,
 }));
-vi.mock("@justwon/theme", async () => {
-  const actual = await vi.importActual("@justwon/theme");
+vi.mock("@justwon/designs/theme", async () => {
+  const actual = await vi.importActual("@justwon/designs/theme");
   return {
     ...actual,
     ThemeScript: () => <div>ThemeScript</div>,
