@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { baseLayer, variables } from "@justwon/theme";
+import { baseLayer, theme } from "@justwon/designs/theme";
 
 export const linkDefaultStyle = style({
   "@layer": {
@@ -10,8 +10,8 @@ export const linkDefaultStyle = style({
       padding: "8px 16px",
       fontWeight: 600,
       borderRadius: "8px",
-      color: variables.colors.text.inverted,
-      backgroundColor: variables.colors.primary,
+      color: theme.colors.primary,
+      backgroundColor: "transparent",
 
       transition: "box-shadow 0.2s ease",
       selectors: {

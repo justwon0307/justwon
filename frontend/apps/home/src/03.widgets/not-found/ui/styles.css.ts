@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { variables } from "@justwon/theme";
+import { theme } from "@justwon/designs/theme";
 
 export const containerStyle = style({
   display: "flex",
@@ -13,7 +13,7 @@ export const containerStyle = style({
 
 export const titleStyle = style({
   fontSize: "3rem",
-  color: variables.colors.primary,
+  color: theme.colors.primary,
 });
 
 export const infoBoxStyle = style({
@@ -21,15 +21,16 @@ export const infoBoxStyle = style({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  padding: "8px 0 8px 24px",
-  borderLeft: `2px solid ${variables.colors.background.overlay}`,
+  padding: "16px 0 16px 24px",
+  gap: "16px",
+  borderLeft: `2px solid ${theme.colors.background.overlay}`,
 });
 
 export const messageStyle = style({
-  color: variables.colors.text.default,
+  color: theme.colors.text.default,
 });
 
 export const linkStyle = style({
-  color: variables.colors.primary,
-  backgroundColor: variables.colors.background.surface,
+  color: theme.colors.primary,
+  backgroundColor: theme.colors.background.surface,
 });
