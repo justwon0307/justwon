@@ -7,21 +7,41 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./globals.css": {
+      "types": "./dist/globals.css.d.ts",
+      "default": "./dist/globals.css.js"
     }
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "tsc && tsc-alias",
-    "dev": "tsc && tsc-alias --watch"
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --watch --project tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:dev": "vitest --watch --coverage"
   },
   "devDependencies": {
+    "@justwon/eslint-config": "workspace:*",
     "@justwon/tsconfig": "workspace:*",
+    "@justwon/vitest-config": "workspace:*",
+    "@testing-library/react": "catalog:",
     "@types/react": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "eslint": "catalog:",
     "rimraf": "catalog:",
-    "tsc-alias": "^1.8.16",
-    "typescript": "^5.9.3"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
-  "dependencies": {
-    "react": "19.2.3"
+  "peerDependencies": {
+    "@vanilla-extract/css": "catalog:",
+    "react": "catalog:"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint .",
+      "prettier --check"
+    ]
   }
 }

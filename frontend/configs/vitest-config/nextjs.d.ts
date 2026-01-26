@@ -1,2 +1,2 @@
 import type { UserWorkspaceConfig } from "vitest/config";
-export const vitestConfig: UserWorkspaceConfig;
+export const nextjsConfig: UserWorkspaceConfig;

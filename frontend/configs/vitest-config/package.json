@@ -13,6 +13,7 @@
     "vitest": "catalog:"
   },
   "devDependencies": {
+    "@vanilla-extract/vite-plugin": "^5.1.4",
     "@vitejs/plugin-react": "^5.1.2",
     "vite-tsconfig-paths": "^6.0.4"
   }

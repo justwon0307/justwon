@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
@@ -12,22 +12,32 @@
   },
   "dependencies": {
     "@justwon/assets": "workspace:*",
-    "@justwon/styles": "workspace:*",
+    "@justwon/icons": "workspace:*",
     "@justwon/theme": "workspace:*",
+    "@vanilla-extract/css": "catalog:",
     "next": "16.1.4",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@justwon/eslint-config": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
-    "@types/node": "^20",
-    "@types/react": "^19",
+    "@testing-library/react": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
     "@types/react-dom": "^19",
+    "@vanilla-extract/next-plugin": "^2.4.17",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "jsdom": "catalog:",
-    "typescript": "^5",
+    "typescript": "catalog:",
     "vitest": "catalog:"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint .",
+      "prettier --check"
+    ]
   }
 }
