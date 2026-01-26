@@ -41,6 +41,7 @@
     "@justwon/vitest-config": "workspace:*",
     "@testing-library/react": "catalog:",
     "@types/react": "catalog:",
+    "@vanilla-extract/vite-plugin": "^5.1.4",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "eslint-import-resolver-typescript": "^4.4.4",
