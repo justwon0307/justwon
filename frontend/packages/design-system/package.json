@@ -17,8 +17,14 @@
       "import": "./dist/icons/index.js"
     },
     "./theme": {
-      "types": "./dist/theme/index.d.ts",
-      "import": "./dist/theme/index.js"
+      "react-server": {
+        "types": "./dist/theme/server.d.ts",
+        "import": "./dist/theme/server.js"
+      },
+      "default": {
+        "types": "./dist/theme/index.d.ts",
+        "import": "./dist/theme/index.js"
+      }
     },
     "./globals.css": {
       "types": "./dist/globals.css.d.ts",
@@ -40,7 +46,9 @@
     "@justwon/tsconfig": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
     "@testing-library/react": "catalog:",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
+    "@types/react-dom": "^19.2.3",
     "@vanilla-extract/vite-plugin": "^5.1.4",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
@@ -52,7 +60,8 @@
   },
   "peerDependencies": {
     "@vanilla-extract/css": "catalog:",
-    "react": "catalog:"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "lint-staged": {
     "*.{json,md,yml,yaml}": "prettier --check",
@@ -60,5 +69,9 @@
       "eslint",
       "prettier --check"
     ]
+  },
+  "dependencies": {
+    "@vanilla-extract/dynamic": "^2.1.5",
+    "@vanilla-extract/recipes": "^0.5.7"
   }
 }
