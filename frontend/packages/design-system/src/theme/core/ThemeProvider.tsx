@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { loadStoredMode, saveStoredMode } from "./lib/storage";
@@ -12,7 +10,7 @@ interface Props {
 }
 
 /**
- * light-dart()로 선언해놓은 CSS 변수가 제대로 동작하도록 설정
+ * light-dark()로 선언해놓은 CSS 변수가 제대로 동작하도록 설정
  * @param targetResolved 적용할 테마 모드
  */
 function applyTheme(targetResolved: ResolvedTheme) {
