@@ -25,12 +25,17 @@ export const themeVariables = createGlobalThemeContract({
     border: {
       default: "color-border-default",
       muted: "color-border-muted",
+      shadow: "color-border-shadow",
     },
   },
   zIndices: {
+    hide: "z-index-hide",
+    sticky: "z-index-sticky",
     dropdown: "z-index-dropdown",
     modal: "z-index-modal",
     popover: "z-index-popover",
+    overlay: "z-index-overlay",
     tooltip: "z-index-tooltip",
+    toast: "z-index-toast",
   },
 });
