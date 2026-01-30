@@ -2,7 +2,7 @@ import { styleVariants } from "@vanilla-extract/css";
 
 import { baseLayer, theme } from "../../../theme";
 
-export const textStyles = styleVariants(
+const text = styleVariants(
   {
     titleLarge: {
       fontSize: "2rem",
@@ -33,3 +33,5 @@ export const textStyles = styleVariants(
     "@layer": { [baseLayer]: styleRule },
   }),
 );
+
+export const styles = { text };
