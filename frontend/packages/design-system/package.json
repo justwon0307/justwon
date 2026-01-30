@@ -17,14 +17,8 @@
       "import": "./dist/icons/index.js"
     },
     "./theme": {
-      "react-server": {
-        "types": "./dist/theme/server.d.ts",
-        "import": "./dist/theme/server.js"
-      },
-      "default": {
-        "types": "./dist/theme/index.d.ts",
-        "import": "./dist/theme/index.js"
-      }
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.js"
     },
     "./globals.css": {
       "types": "./dist/globals.css.d.ts",
@@ -60,6 +54,9 @@
   },
   "peerDependencies": {
     "@vanilla-extract/css": "catalog:",
+    "@vanilla-extract/dynamic": "^2.1.5",
+    "@vanilla-extract/recipes": "^0.5.7",
+    "clsx": "^2.1.1",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
@@ -69,9 +66,5 @@
       "eslint",
       "prettier --check"
     ]
-  },
-  "dependencies": {
-    "@vanilla-extract/dynamic": "^2.1.5",
-    "@vanilla-extract/recipes": "^0.5.7"
   }
 }
