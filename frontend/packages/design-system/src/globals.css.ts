@@ -33,24 +33,29 @@ createGlobalTheme(":root", themeVariables, {
     error: baseColors.RED,
     background: {
       base: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.dark})`,
-      surface: `light-dark(${baseColors.WHITE.medium}, ${baseColors.BLACK.medium})`,
-      overlay: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
+      surface: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
+      overlay: `light-dark(${baseColors.WHITE.medium}80, ${baseColors.BLACK.medium}80)`,
     },
     text: {
       default: `light-dark(${baseColors.BLACK.dark}, ${baseColors.WHITE.light})`,
       muted: `light-dark(${baseColors.BLACK.medium}, ${baseColors.WHITE.medium})`,
-      inverted: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.dark})`,
+      inverted: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
     },
     border: {
-      default: `light-dark(${baseColors.BLACK.light}, ${baseColors.WHITE.light})`,
+      default: `light-dark(${baseColors.BLACK.light}80, ${baseColors.WHITE.light}80)`,
       muted: baseColors.SILVER,
+      shadow: `light-dark(${baseColors.BLACK.dark}20, ${baseColors.WHITE.dark}20)`,
     },
   },
   zIndices: {
-    dropdown: "10",
-    modal: "11",
-    popover: "12",
-    tooltip: "13",
+    hide: "-1",
+    sticky: "100",
+    dropdown: "200",
+    popover: "300",
+    overlay: "400",
+    modal: "500",
+    tooltip: "600",
+    toast: "700",
   },
 });
 
@@ -74,6 +79,7 @@ globalStyle("html, body", {
       background: themeVariables.colors.background.base,
       color: themeVariables.colors.text.default,
       transition: "background 0.3s ease, color 0.3s ease",
+      scrollbarGutter: "stable",
     },
   },
 });
@@ -97,6 +103,14 @@ globalStyle("button", {
       font: "inherit",
       color: "inherit",
       cursor: "pointer",
+    },
+  },
+});
+
+globalStyle("dialog", {
+  "@layer": {
+    [resetLayer]: {
+      border: "none",
     },
   },
 });
