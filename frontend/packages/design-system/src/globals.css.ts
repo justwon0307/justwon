@@ -1,28 +1,7 @@
 import { createGlobalTheme, globalStyle } from "@vanilla-extract/css";
 
+import { baseColors } from "./theme/tokens/colors";
 import { resetLayer, themeVariables } from "./theme/tokens/contracts.css";
-
-const baseColors = {
-  WHITE: {
-    light: "#F9FAFB",
-    medium: "#E3E5E8",
-    dark: "#CBD0D6",
-  },
-  BLACK: {
-    light: "#3F4146",
-    medium: "#1F2124",
-    dark: "#0A0A0A",
-  },
-  BLUE: {
-    light: "#3656AC",
-    dark: "#1E3A8A",
-  },
-  GOLD: "#A78C29",
-  SILVER: "#6B7280",
-  RED: "#B91C1C",
-  YELLOW: "#EBCC6F",
-  GREEN: "#007200",
-} as const;
 
 createGlobalTheme(":root", themeVariables, {
   colors: {
@@ -33,8 +12,8 @@ createGlobalTheme(":root", themeVariables, {
     error: baseColors.RED,
     background: {
       base: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.dark})`,
-      surface: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
-      overlay: `light-dark(${baseColors.WHITE.medium}80, ${baseColors.BLACK.medium}80)`,
+      surface: `light-dark(${baseColors.WHITE.medium}, ${baseColors.BLACK.medium})`,
+      overlay: `${baseColors.BLACK.medium}80`,
     },
     text: {
       default: `light-dark(${baseColors.BLACK.dark}, ${baseColors.WHITE.light})`,
@@ -44,8 +23,8 @@ createGlobalTheme(":root", themeVariables, {
     border: {
       default: `light-dark(${baseColors.BLACK.light}80, ${baseColors.WHITE.light}80)`,
       muted: baseColors.SILVER,
-      shadow: `light-dark(${baseColors.BLACK.dark}20, ${baseColors.WHITE.dark}20)`,
     },
+    shadow: `light-dark(${baseColors.BLACK.dark}20, ${baseColors.WHITE.dark}20)`,
   },
   zIndices: {
     hide: "-1",
@@ -76,6 +55,7 @@ globalStyle("html, body", {
     [resetLayer]: {
       margin: 0,
       padding: 0,
+      lineHeight: 1.5,
       background: themeVariables.colors.background.base,
       color: themeVariables.colors.text.default,
       transition: "background 0.3s ease, color 0.3s ease",
@@ -110,6 +90,8 @@ globalStyle("button", {
 globalStyle("dialog", {
   "@layer": {
     [resetLayer]: {
+      padding: 0,
+      gap: 0,
       border: "none",
     },
   },
