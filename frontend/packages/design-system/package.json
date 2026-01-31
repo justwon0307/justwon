@@ -54,9 +54,9 @@
   },
   "peerDependencies": {
     "@vanilla-extract/css": "catalog:",
-    "@vanilla-extract/dynamic": "^2.1.5",
-    "@vanilla-extract/recipes": "^0.5.7",
-    "clsx": "^2.1.1",
+    "@vanilla-extract/dynamic": "catalog:",
+    "@vanilla-extract/recipes": "catalog:",
+    "clsx": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
