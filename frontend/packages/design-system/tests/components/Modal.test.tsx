@@ -50,11 +50,11 @@ describe("Modal", () => {
     );
 
     // should NOT close when any other key is pressed
-    fireEvent.keyDown(window, { key: "A" }); // NOSONAR
+    fireEvent.keyDown(globalThis.window, { key: "A" });
     await waitFor(() => expect(onClose).not.toHaveBeenCalled());
 
     // should close when Escape key is pressed
-    fireEvent.keyDown(window, { key: "Escape" }); // NOSONAR
+    fireEvent.keyDown(globalThis.window, { key: "Escape" });
     await waitFor(() => expect(onClose).toHaveBeenCalled());
   });
 
