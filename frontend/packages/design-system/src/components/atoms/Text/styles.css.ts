@@ -5,27 +5,27 @@ import { baseLayer, theme } from "../../../theme";
 const text = styleVariants(
   {
     titleLarge: {
-      fontSize: "2rem",
+      fontSize: "1.5rem",
       fontWeight: 700,
-      lineHeight: "2.5rem",
+      lineHeight: "2rem",
       color: theme.colors.text.default,
     },
     titleSmall: {
-      fontSize: "1.5rem",
+      fontSize: "1.25rem",
       fontWeight: 600,
-      lineHeight: "2rem",
+      lineHeight: "1.75rem",
       color: theme.colors.text.default,
     },
     bodyLarge: {
       fontSize: "1rem",
       fontWeight: 400,
-      lineHeight: "1.5rem",
+      lineHeight: "1.25rem",
       color: theme.colors.text.default,
     },
     bodySmall: {
       fontSize: "0.875rem",
       fontWeight: 400,
-      lineHeight: "1.25rem",
+      lineHeight: "1.125rem",
       color: theme.colors.text.default,
     },
   },
