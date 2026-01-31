@@ -18,7 +18,7 @@ const tab = recipe({
         selectors: {
           "&:hover": {
             backgroundColor: theme.colors.background.surface,
-            boxShadow: `0 2px 8px ${theme.colors.border.shadow}`,
+            boxShadow: `0 2px 8px ${theme.colors.shadow}`,
             transform: "scale(1.02)",
           },
         },

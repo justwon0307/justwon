@@ -4,8 +4,8 @@ import { usePathname } from "next/navigation";
 import { TabIcon } from "@justwon/designs/icons";
 
 import { TabOptions } from "../models/tabs";
-import { styles } from "./styles.css";
 import { Link } from "@shared/ui/Link";
+import { styles } from "./styles.css";
 
 interface Props {
   tab: TabOptions;
