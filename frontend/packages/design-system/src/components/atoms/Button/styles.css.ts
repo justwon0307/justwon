@@ -8,11 +8,10 @@ const button = style({
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
-      padding: "8px 16px",
+      padding: "8px 12px",
       fontWeight: 600,
       borderRadius: "8px",
-      color: theme.colors.text.inverted,
-      backgroundColor: theme.colors.primary,
+      color: theme.colors.primary,
     },
   },
 });
