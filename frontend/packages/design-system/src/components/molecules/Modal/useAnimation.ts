@@ -4,8 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useAnimation(
   onClose: () => void,
-  isOpen: boolean = true,
-  duration: number = 200,
+  isOpen: boolean,
+  duration: number,
 ) {
   const [mounted, setMounted] = useState<boolean>(isOpen);
   const [exiting, setExiting] = useState<boolean>(false);
@@ -79,5 +79,5 @@ export function useAnimation(
     };
   }, [mounted]);
 
-  return { mounted, exiting, startCloseAnimation, duration };
+  return { mounted, exiting, closeModal: startCloseAnimation, duration };
 }

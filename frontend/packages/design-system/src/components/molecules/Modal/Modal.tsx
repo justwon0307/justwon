@@ -8,20 +8,23 @@ import { styles, vars } from "./styles.css";
 interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   isOpen: boolean;
   onClose: () => void;
+  animationDuration?: number;
   placement?: "center" | "top";
 }
 
 export function Modal({
   isOpen,
   onClose,
+  animationDuration = 200,
   placement = "center",
   className,
   children,
   ...rest
 }: Props) {
-  const { mounted, exiting, startCloseAnimation, duration } = useAnimation(
+  const { mounted, exiting, closeModal, duration } = useAnimation(
     onClose,
     isOpen,
+    animationDuration,
   );
 
   if (!mounted) return null;
@@ -35,7 +38,7 @@ export function Modal({
           [vars.animationDuration]: `${duration}ms`,
         }),
       }}
-      onMouseDown={startCloseAnimation}
+      onMouseDown={closeModal}
       data-testid="modal-overlay"
     >
       <dialog
