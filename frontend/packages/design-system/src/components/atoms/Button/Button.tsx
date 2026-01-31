@@ -1,4 +1,6 @@
-import { buttonDefaultStyle } from "./styles.css";
+import { clsx } from "clsx";
+
+import { styles } from "./styles.css";
 
 /**
  * 기본 스타일이 적용된 버튼 컴포넌트.
@@ -9,12 +11,5 @@ export function Button({
   className,
   ...props
 }: React.ComponentProps<"button">) {
-  return (
-    <button
-      className={
-        className ? `${buttonDefaultStyle} ${className}` : buttonDefaultStyle
-      }
-      {...props}
-    />
-  );
+  return <button className={clsx(styles.button, className)} {...props} />;
 }

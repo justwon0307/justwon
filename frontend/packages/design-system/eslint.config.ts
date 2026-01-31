@@ -24,16 +24,33 @@ export default defineConfig([
           basePath: import.meta.dirname,
           zones: [
             {
-              target: "./src/foundations",
+              target: "./src/theme",
               from: ["./src/components", "./src/icons"],
             },
             {
               target: "./src/icons",
-              from: ["./src/components", "./src/foundations"],
+              from: ["./src/components", "./src/theme"],
             },
             {
               target: "./src",
               from: ["./tests"],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["src/**/*"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["@/*"],
+              message:
+                "Use relative imports within src/. The @/* alias is only for tests.",
             },
           ],
         },

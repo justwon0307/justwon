@@ -6,12 +6,10 @@ const breakpoints = {
 export const mediaQueries = {
   breakpoints: {
     mobile: `screen and (max-width: ${breakpoints.mobile})`,
-    tablet: `screen and (max-width: ${breakpoints.tablet})`,
-  },
-  colorScheme: {
-    dark: "(prefers-color-scheme: dark)",
-    light: "(prefers-color-scheme: light)",
-    // system은 별도의 미디어 쿼리가 없으므로 빈 문자열.
+    tablet: `screen and (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet})`,
+    desktop: `screen and (min-width: ${breakpoints.tablet})`,
+    mobile_tablet: `screen and (max-width: ${breakpoints.tablet})`,
+    tablet_desktop: `screen and (min-width: ${breakpoints.mobile})`,
   },
   motion: {
     reduce: "(prefers-reduced-motion: reduce)", // 애니메이션을 끄거나 단순화할 때

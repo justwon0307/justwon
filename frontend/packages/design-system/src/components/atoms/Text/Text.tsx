@@ -1,6 +1,7 @@
 import { HTMLAttributes } from "react";
+import { clsx } from "clsx";
 
-import { textStyles } from "./styles.css";
+import { styles } from "./styles.css";
 import { TagOptions, TypographyVariant } from "./types";
 
 const defaultTagMap: Record<TypographyVariant, keyof TagOptions> = {
@@ -30,12 +31,9 @@ export function Text({
   ...rest
 }: Readonly<Props>) {
   const Component = as ?? defaultTagMap[variant];
-  const mergedClassName = className
-    ? `${textStyles[variant]} ${className}`
-    : textStyles[variant];
 
   return (
-    <Component className={mergedClassName} {...rest}>
+    <Component className={clsx(styles.text[variant], className)} {...rest}>
       {children}
     </Component>
   );

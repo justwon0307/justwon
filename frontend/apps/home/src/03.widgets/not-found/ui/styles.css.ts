@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { theme } from "@justwon/designs/theme";
 
-export const containerStyle = style({
+const container = style({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
@@ -11,12 +11,12 @@ export const containerStyle = style({
   textAlign: "center",
 });
 
-export const titleStyle = style({
+const title = style({
   fontSize: "3rem",
   color: theme.colors.primary,
 });
 
-export const infoBoxStyle = style({
+const infoBox = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -26,11 +26,9 @@ export const infoBoxStyle = style({
   borderLeft: `2px solid ${theme.colors.background.overlay}`,
 });
 
-export const messageStyle = style({
-  color: theme.colors.text.default,
-});
-
-export const linkStyle = style({
+const link = style({
   color: theme.colors.primary,
   backgroundColor: theme.colors.background.surface,
 });
+
+export const styles = { container, title, infoBox, link };
