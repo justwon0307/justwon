@@ -31,7 +31,7 @@ describe("core lib cornercases", () => {
 
   it("subscribeToSystemTheme should return a cleanup function when window is undefined", () => {
     const cleanup = subscribeToSystemTheme(() => {});
-    expect(cleanup).toBe(null);
+    expect(cleanup).toBe(undefined);
   });
 
   it("loadStoredMode should return 'system' when window is undefined", () => {

@@ -20,9 +20,9 @@ export function getSystemTheme(): ResolvedTheme {
  */
 export function subscribeToSystemTheme(
   callback: (theme: ResolvedTheme) => void,
-): (() => void) | null {
+): (() => void) | undefined {
   if (globalThis.window === undefined) {
-    return null;
+    return undefined;
   }
 
   const mediaQuery = globalThis.window.matchMedia(
