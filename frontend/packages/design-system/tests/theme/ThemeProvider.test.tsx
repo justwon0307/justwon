@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 
 import { ThemeProvider, useTheme } from "@/theme";
@@ -108,6 +108,15 @@ describe("ThemeProvider", () => {
         "light",
       );
     });
+
+    // Simulate changing back to dark mode
+    simulateChange(true);
+
+    await waitFor(() => {
+      expect(container.ownerDocument.documentElement.dataset.theme).toBe(
+        "dark",
+      );
+    });
   });
 
   it("should do nothing when mode is not system, and system-preference changes", async () => {
@@ -130,5 +139,19 @@ describe("ThemeProvider", () => {
         "light",
       );
     });
+  });
+});
+
+describe("useTheme hook outside ThemeProvider", () => {
+  it("should throw an error when used outside ThemeProvider", () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+
+    expect(() => render(<TestComponent />)).toThrow(
+      "useTheme must be used within a ThemeProvider",
+    );
+
+    consoleErrorSpy.mockRestore();
   });
 });
