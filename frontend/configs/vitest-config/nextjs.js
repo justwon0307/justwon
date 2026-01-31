@@ -10,7 +10,7 @@ export const nextjsConfig = defineConfig({
     environment: "jsdom",
     include: ["tests/**/*.test.{ts,tsx}"],
     coverage: {
-      include: ["src/**/*.tsx"],
+      include: ["src/**/*.{ts,tsx}"],
       exclude: ["tests/*"],
       provider: "v8",
       reporter: [["text", { skipFull: true }], "clover", "lcov"],
