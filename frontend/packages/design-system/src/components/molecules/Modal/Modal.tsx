@@ -1,15 +1,24 @@
 import { createPortal } from "react-dom";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { clsx } from "clsx";
 
-import { styles, vars } from "./styles.css";
 import { useAnimation } from "./useAnimation";
+import { styles, vars } from "./styles.css";
 
 interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   isOpen: boolean;
   onClose: () => void;
+  placement?: "center" | "top";
 }
 
-export function Modal({ isOpen, onClose, children, ...rest }: Props) {
+export function Modal({
+  isOpen,
+  onClose,
+  placement = "center",
+  className,
+  children,
+  ...rest
+}: Props) {
   const { mounted, exiting, startCloseAnimation, duration } = useAnimation(
     onClose,
     isOpen,
@@ -20,7 +29,7 @@ export function Modal({ isOpen, onClose, children, ...rest }: Props) {
   return createPortal(
     <div
       aria-hidden="true"
-      className={styles.overlay({ exiting })}
+      className={styles.overlay({ exiting, placement })}
       style={{
         ...assignInlineVars({
           [vars.animationDuration]: `${duration}ms`,
@@ -31,7 +40,8 @@ export function Modal({ isOpen, onClose, children, ...rest }: Props) {
     >
       <dialog
         open={mounted}
-        className={styles.dialog({ exiting })}
+        onMouseDown={(e) => e.stopPropagation()}
+        className={clsx(styles.dialog({ exiting, placement }), className)}
         style={{
           ...assignInlineVars({
             [vars.animationDuration]: `${duration}ms`,

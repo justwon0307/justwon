@@ -28,7 +28,6 @@ const popOut = keyframes({
 const overlay = recipe({
   base: {
     display: "grid",
-    placeItems: "center",
     width: "100vw",
     height: "100vh",
     "@supports": {
@@ -57,11 +56,20 @@ const overlay = recipe({
         animationDuration: animationDuration,
       },
     },
+    placement: {
+      center: {
+        placeItems: "center",
+      },
+      top: {
+        placeItems: "start",
+      },
+    },
   },
 });
 
 const dialog = recipe({
   base: {
+    borderRadius: "12px",
     backgroundColor: theme.colors.background.surface,
   },
   variants: {
@@ -78,6 +86,12 @@ const dialog = recipe({
         animationTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
         animationFillMode: "forwards",
       },
+    },
+    placement: {
+      top: {
+        marginTop: "120px",
+      },
+      center: {},
     },
   },
 });
