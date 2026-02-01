@@ -4,6 +4,7 @@ import { ThemeProvider, ThemeScript } from "@justwon/designs/theme";
 import "@justwon/designs/globals.css";
 
 import { RootHeader } from "@widgets/header";
+import { styles } from "./styles.css";
 
 const googleSans = Google_Sans({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export function RootLayout({
       <body className={`${googleSans.className}`}>
         <ThemeProvider>
           <RootHeader />
-          {children}
+          <div className={styles.content}>{children}</div>
         </ThemeProvider>
       </body>
     </html>
