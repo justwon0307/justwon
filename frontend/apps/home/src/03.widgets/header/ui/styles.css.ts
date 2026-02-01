@@ -6,7 +6,7 @@ const container = style({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
-  boxShadow: `0 0.25px 4px ${theme.colors.border.muted}`,
+  boxShadow: `0 0.25px 4px ${theme.colors.shadow}`,
 });
 
 const tabs = style({

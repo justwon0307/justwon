@@ -29,7 +29,7 @@ export function NotFound({
       </Text>
       <div className={styles.infoBox}>
         <Text variant="bodySmall">{message}</Text>
-        <Link href={href} passHref className={styles.link}>
+        <Link href={href} className={styles.link}>
           {reloadText}
         </Link>
       </div>

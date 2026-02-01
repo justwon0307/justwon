@@ -19,6 +19,7 @@ export function Settings() {
         className={styles.button}
         aria-label="Settings"
         onClick={openModal}
+        data-testid="settings-button"
       >
         <AppIcon icon="settings" size={28} />
       </Button>
