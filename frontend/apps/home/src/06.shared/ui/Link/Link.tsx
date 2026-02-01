@@ -1,6 +1,7 @@
 import NextLink from "next/link";
+import { clsx } from "clsx";
 
-import { linkDefaultStyle } from "./styles.css";
+import { styles } from "./styles.css";
 
 /**
  * 기본 스타일이 적용된 Next.js Link 컴포넌트 래퍼.
@@ -11,12 +12,5 @@ export function Link({
   className,
   ...props
 }: React.ComponentProps<typeof NextLink>) {
-  return (
-    <NextLink
-      className={
-        className ? `${linkDefaultStyle} ${className}` : linkDefaultStyle
-      }
-      {...props}
-    />
-  );
+  return <NextLink className={clsx(styles.link, className)} {...props} />;
 }

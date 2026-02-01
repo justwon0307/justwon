@@ -2,13 +2,8 @@
 
 import { Text } from "@justwon/designs/components";
 
-import {
-  containerStyle,
-  titleStyle,
-  infoBoxStyle,
-  linkStyle,
-} from "./styles.css";
 import { Link } from "@shared/ui/Link";
+import { styles } from "./styles.css";
 
 interface Props {
   message?: string;
@@ -28,13 +23,13 @@ export function NotFound({
   href = "/",
 }: Readonly<Props>) {
   return (
-    <div className={containerStyle}>
-      <Text variant="titleLarge" className={titleStyle}>
+    <div className={styles.container}>
+      <Text variant="titleLarge" className={styles.title}>
         404
       </Text>
-      <div className={infoBoxStyle}>
+      <div className={styles.infoBox}>
         <Text variant="bodySmall">{message}</Text>
-        <Link href={href} passHref className={linkStyle}>
+        <Link href={href} className={styles.link}>
           {reloadText}
         </Link>
       </div>

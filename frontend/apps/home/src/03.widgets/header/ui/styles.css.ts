@@ -1,14 +1,27 @@
 import { style } from "@vanilla-extract/css";
 import { media, theme } from "@justwon/designs/theme";
 
-export const headerContainerStyles = style({
+const container = style({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "0 32px", // 데스크탑 설정
-  color: theme.colors.primary,
-  borderBottom: `0.5px solid ${theme.colors.border.default}`,
+  boxShadow: `0 0.25px 4px ${theme.colors.shadow}`,
+});
+
+const tabs = style({
+  display: "flex",
+  flex: 1,
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  padding: "8px",
+  gap: "16px",
+});
+
+const link = style({
+  padding: "0 36px", // 데스크톱 설정
+  backgroundColor: "transparent",
 
   "@media": {
     [media.breakpoints.mobile]: {
@@ -20,37 +33,16 @@ export const headerContainerStyles = style({
   },
 });
 
-export const headerTabsStyles = style({
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  padding: "12px 0",
-  gap: "16px",
-});
-
-export const linkStyles = style({
-  color: theme.colors.primary,
-  backgroundColor: "transparent",
-});
-
-export const dividerStyles = style({
+const divider = style({
+  margin: "8px 0",
   alignSelf: "stretch",
   width: "2px",
   backgroundColor: theme.colors.background.surface,
 });
 
-export const buttonStyles = style({
-  padding: 0,
-  border: "none",
-  color: theme.colors.text.muted,
-  backgroundColor: "transparent",
-  cursor: "pointer",
-  selectors: {
-    "&:hover": {
-      boxShadow: "none",
-    },
-    "&:active": {
-      boxShadow: "none",
-    },
-  },
-});
+export const styles = {
+  container,
+  tabs,
+  link,
+  divider,
+};
