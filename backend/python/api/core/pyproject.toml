@@ -10,3 +10,9 @@ dependencies = [
 
 [dependency-groups]
 dev = []
+
+[tool.ruff]
+extend = "../../pyproject.toml"
+
+[tool.ruff.lint.isort]
+known-first-party = ["apps", "core", "config"]
