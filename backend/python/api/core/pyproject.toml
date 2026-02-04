@@ -13,6 +13,7 @@ dev = []
 
 [tool.ruff]
 extend = "../../pyproject.toml"
+exclude = ["migrations", "venv", "__pycache__"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["apps", "core", "config"]
