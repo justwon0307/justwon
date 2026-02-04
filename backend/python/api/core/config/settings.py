@@ -33,7 +33,8 @@ INSTALLED_APPS = [
   "django.contrib.sessions",
   "django.contrib.messages",
   "django.contrib.staticfiles",
-
+  ## Local apps
+  "base",
   "apps.blog.categories",
   "apps.blog.posts",
   "apps.blog.posttypes",
