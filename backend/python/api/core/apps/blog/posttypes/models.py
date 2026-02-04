@@ -13,7 +13,7 @@ class PostType(models.Model):
   class Meta:
     db_table = "post_types"
     verbose_name = "게시글 유형"
-    verbose_name_plural = "게시글 유형들"
+    verbose_name_plural = "게시글 유형"
 
   def __str__(self):
     return self.name

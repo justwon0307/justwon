@@ -1,0 +1,46 @@
+[
+  {
+    "model": "posttypes.posttype",
+    "pk": 1,
+    "fields": {
+      "name": "ADR",
+      "icon": "decision",
+      "slug": "adr",
+      "section": 1,
+      "description": ""
+    }
+  },
+  {
+    "model": "posttypes.posttype",
+    "pk": 2,
+    "fields": {
+      "name": "Troubleshooting",
+      "icon": "diagnosis",
+      "slug": "troubleshooting",
+      "section": 1,
+      "description": ""
+    }
+  },
+  {
+    "model": "posttypes.posttype",
+    "pk": 3,
+    "fields": {
+      "name": "Tech Note",
+      "icon": "document",
+      "slug": "tech-note",
+      "section": 1,
+      "description": ""
+    }
+  },
+  {
+    "model": "posttypes.posttype",
+    "pk": 4,
+    "fields": {
+      "name": "Retrospective",
+      "icon": "history",
+      "slug": "retrospective",
+      "section": 1,
+      "description": ""
+    }
+  }
+]
