@@ -1,10 +1,13 @@
 from django.db import models
 
+from base.models import SluggedModel
 
-class Tag(models.Model):
+
+class Tag(SluggedModel):
   name = models.CharField(max_length=100, unique=True)
-  slug = models.SlugField(max_length=100, unique=True)
   color = models.CharField(max_length=7, default="#FFFFFF")  # Hex color code
+
+  slug_base_field = "name"
 
   class Meta:
     db_table = "tags"

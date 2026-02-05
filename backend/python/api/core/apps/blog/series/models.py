@@ -1,14 +1,15 @@
 from django.db import models
 
-from base.models import TimeStampedModel
+from base.models import SluggedModel, TimeStampedModel
 
 
-class Series(TimeStampedModel):
+class Series(SluggedModel, TimeStampedModel):
   title = models.CharField(max_length=200, unique=True)
-  slug = models.SlugField(max_length=200, unique=True)
-  description = models.TextField(blank=True)
+  description = models.TextField(blank=True, default="")
 
   is_active = models.BooleanField(default=True)
+
+  slug_base_field = "title"
 
   class Meta:
     db_table = "series"

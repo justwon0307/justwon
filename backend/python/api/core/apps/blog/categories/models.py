@@ -1,14 +1,16 @@
 from django.db import models
 
 from apps.blog.enums import BlogSection
+from base.models import SluggedModel
 
 
-class Category(models.Model):
+class Category(SluggedModel):
   name = models.CharField(max_length=100)
   icon = models.CharField(max_length=20)
-  slug = models.SlugField(unique=True)
   section = models.IntegerField(choices=BlogSection.choices)
-  description = models.TextField(blank=True, default="")
+  description = models.TextField(default="", blank=True)
+
+  slug_base_field = "name"
 
   class Meta:
     db_table = "categories"
