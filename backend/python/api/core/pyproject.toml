@@ -9,7 +9,10 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = []
+dev = [
+    "factory-boy>=3.3.3",
+    "pytest-django>=4.11.1",
+]
 
 [tool.ruff]
 extend = "../../pyproject.toml"
@@ -17,3 +20,8 @@ exclude = ["migrations", "venv", "__pycache__"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["apps", "core", "config"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = "test_*.py"
+addopts = "--reuse-db --nomigrations --cov-config=.coveragerc --cov=apps --cov=base --cov-report=term-missing"
