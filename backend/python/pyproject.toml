@@ -3,7 +3,9 @@ name = "justwon"
 version = "0.1.0"
 description = "JustWon Backend"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "ruff>=0.15.0",
+]
 
 [tool.uv.workspace]
 members = [

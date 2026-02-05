@@ -1,0 +1,28 @@
+name: Setup Project
+description: Setup Python environment and install dependencies
+
+inputs:
+  working-directory:
+    description: "Directory where root pyproject.toml is located"
+    required: false
+    default: "."
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version-file: ${{ inputs.working-directory }}/.python-version
+
+    - name: Setup uv
+      uses: astral-sh/setup-uv@v7
+
+    - name: Setup Just
+      uses: extractions/setup-just@v3
+
+    - name: Install dependencies
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        just setup

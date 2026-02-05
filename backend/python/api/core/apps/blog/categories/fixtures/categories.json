@@ -1,0 +1,35 @@
+[
+  {
+    "model": "categories.category",
+    "pk": 1,
+    "fields": {
+      "name": "Frontend",
+      "icon": "monitor",
+      "slug": "frontend",
+      "section": 1,
+      "description": ""
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 2,
+    "fields": {
+      "name": "Backend",
+      "icon": "brain",
+      "slug": "backend",
+      "section": 1,
+      "description": ""
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 3,
+    "fields": {
+      "name": "DevOps",
+      "icon": "dashboard",
+      "slug": "devops",
+      "section": 1,
+      "description": ""
+    }
+  }
+]

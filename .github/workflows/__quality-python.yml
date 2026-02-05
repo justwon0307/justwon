@@ -30,27 +30,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - name: Setup Project
+        uses: ./.github/actions/setup-python
         with:
-          python-version-file: ${{ inputs.working-directory }}/.python-version
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-        with:
-          version: "0.9.24"
-
-      - name: Install Dependencies
-        run: uv sync --locked --all-packages --dev
+          working-directory: ${{ inputs.working-directory }}
 
       - name: Run Linter
         run: |
-          uv run ruff check --output-format=github . || \
+          just lint --output-format=github || \
           echo "- ❌ Lint Check Failed" >> error_report.txt
 
       - name: Check Formatting
         run: |
-          uv run ruff format --check . || \
+          just format --check --output-format=github || \
           echo "- ❌ Format Check Failed" >> error_report.txt
 
       - name: Check Quality Results
