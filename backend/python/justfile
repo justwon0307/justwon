@@ -1,0 +1,20 @@
+default:
+    just --list
+
+setup:
+    uv sync --all-packages
+    uv lock --check
+
+format *args:
+    uv run ruff format . {{args}}
+
+lint *args:
+    uv run ruff check . {{args}}
+
+outdated:
+    uv pip list --outdated
+
+test-core-api *args:
+    uv run --directory ./api/core pytest {{args}}
+
+test *args: (test-core-api args)
