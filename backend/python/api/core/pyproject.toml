@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.14"
 dependencies = [
-    "django>=6.0.1",
+    "django>=6.0.2",
     "django-environ>=0.12.0",
 ]
 
@@ -24,4 +24,21 @@ known-first-party = ["apps", "core", "config"]
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings"
 python_files = "test_*.py"
-addopts = "--reuse-db --nomigrations --cov-config=.coveragerc --cov=apps --cov=base --cov-report=term-missing"
+addopts = "--reuse-db --nomigrations --cov=. --cov-report=term-missing"
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "*/__init__.py",
+    "manage.py",
+    "*/config/*",
+    "*/migrations/*",
+    "*/fixtures/*",
+    "*/tests/*",
+    "*/admin.py",
+    "*/urls.py"
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
