@@ -24,5 +24,12 @@
     "eslint": "catalog:",
     "typescript": "catalog:",
     "vite": "^7.2.4"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint",
+      "prettier --check"
+    ]
   }
 }
