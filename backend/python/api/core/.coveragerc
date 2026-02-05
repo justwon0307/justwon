@@ -1,0 +1,17 @@
+[run]
+relative_files = True
+source = .
+branch = True
+omit = 
+    */__init__.py
+    manage.py
+    */config/*
+    */migrations/*
+    */fixtures/*
+    */tests/*
+    */admin.py
+    */urls.py
+
+[report]
+show_missing=True
+skip_covered=True
