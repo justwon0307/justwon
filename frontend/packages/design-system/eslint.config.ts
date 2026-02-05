@@ -21,7 +21,7 @@ export default defineConfig([
       "import/no-restricted-paths": [
         "error",
         {
-          basePath: import.meta.dirname,
+          basePath: "./",
           zones: [
             {
               target: "./src/theme",
@@ -38,6 +38,11 @@ export default defineConfig([
           ],
         },
       ],
+    },
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
   },
   {
