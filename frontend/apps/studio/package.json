@@ -10,12 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@justkits/auth": "^0.1.0",
     "@justwon/designs": "workspace:*",
+    "@tanstack/react-query": "^5.90.20",
+    "@tanstack/react-router": "^1.158.1",
+    "@tanstack/react-router-devtools": "^1.158.1",
+    "@vanilla-extract/css": "catalog:",
+    "axios": "^1.13.5",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
   "devDependencies": {
     "@justwon/eslint-config": "workspace:*",
+    "@tanstack/eslint-plugin-query": "^5.91.4",
+    "@tanstack/router-plugin": "^1.158.1",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
