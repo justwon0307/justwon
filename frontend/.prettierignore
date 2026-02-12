@@ -8,4 +8,5 @@ pnpm-lock.yaml
 pnpm-workspace.yaml
 
 *.html
+**/routeTree.gen.ts
 **/routeTree.gen.tsx
