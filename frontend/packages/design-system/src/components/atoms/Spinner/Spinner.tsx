@@ -17,6 +17,7 @@ export function Spinner({ size = 48, width = 4 }: Readonly<Props>) {
           [spinnerWidth]: `${width}px`,
         }),
       }}
+      data-testid="spinner"
     />
   );
 }
