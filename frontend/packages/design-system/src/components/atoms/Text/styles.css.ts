@@ -30,7 +30,7 @@ const text = styleVariants(
     },
   },
   (styleRule) => ({
-    "@layer": { [baseLayer]: styleRule },
+    "@layer": { [baseLayer]: { margin: "8px", padding: 0, ...styleRule } },
   }),
 );
 
