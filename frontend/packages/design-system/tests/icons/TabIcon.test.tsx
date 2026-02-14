@@ -18,9 +18,9 @@ describe("TabIcon", () => {
     const aboutIcon = icons[0];
     const loungeIcon = icons[2];
 
-    // default size is 24
-    expect(aboutIcon.getAttribute("width")).toBe("24");
-    expect(aboutIcon.getAttribute("height")).toBe("24");
+    // default size is 20
+    expect(aboutIcon.getAttribute("width")).toBe("20");
+    expect(aboutIcon.getAttribute("height")).toBe("20");
 
     expect(loungeIcon.getAttribute("width")).toBe("16");
     expect(loungeIcon.getAttribute("height")).toBe("16");
