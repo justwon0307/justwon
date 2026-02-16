@@ -5,6 +5,8 @@ const withVanillaExtract = createVanillaExtractPlugin();
 
 const nextConfig: NextConfig = {
   /* config options here */
+  reactCompiler: true,
+  cacheComponents: true,
 };
 
 export default withVanillaExtract(nextConfig);
