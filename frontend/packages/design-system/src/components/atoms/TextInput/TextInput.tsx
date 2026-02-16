@@ -15,8 +15,10 @@ export function TextInput({
   labelVariant = "md",
   ...props
 }: Readonly<Props>) {
+  const crypto = globalThis.window.crypto;
   const inputId =
-    props.id || `text-input-${Math.random().toString(36).slice(2, 11)}`;
+    props.id ||
+    `text-input-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36)}`;
 
   return (
     <div className={styles.container}>
