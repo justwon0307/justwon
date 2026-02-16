@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import path from "node:path";
+import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
@@ -17,12 +17,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@app": path.resolve(__dirname, "src/01.app"),
-      "@pages": path.resolve(__dirname, "src/02.pages"),
-      "@widgets": path.resolve(__dirname, "src/03.widgets"),
-      "@features": path.resolve(__dirname, "src/04.features"),
-      "@entities": path.resolve(__dirname, "src/05.entities"),
-      "@shared": path.resolve(__dirname, "src/06.shared"),
+      "@app": resolve(__dirname, "src/01.app"),
+      "@pages": resolve(__dirname, "src/02.pages"),
+      "@widgets": resolve(__dirname, "src/03.widgets"),
+      "@features": resolve(__dirname, "src/04.features"),
+      "@entities": resolve(__dirname, "src/05.entities"),
+      "@shared": resolve(__dirname, "src/06.shared"),
     },
   },
 });
