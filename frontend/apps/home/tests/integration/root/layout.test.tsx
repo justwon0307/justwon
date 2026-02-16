@@ -1,4 +1,3 @@
-import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 
 import { RootLayout } from "@app/layouts/root";
