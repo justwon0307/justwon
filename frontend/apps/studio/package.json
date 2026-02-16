@@ -42,7 +42,7 @@
   },
   "lint-staged": {
     "*.{json,md,yml,yaml}": "prettier --check",
-    "*.{ts,tsx,js,jsx}": [
+    "!(**/routeTree.gen).{ts,tsx,js,jsx}": [
       "eslint",
       "prettier --check"
     ]
