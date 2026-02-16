@@ -3,6 +3,7 @@ import { theme } from "@justwon/designs/theme";
 
 const container = style({
   display: "flex",
+  flex: 1,
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
