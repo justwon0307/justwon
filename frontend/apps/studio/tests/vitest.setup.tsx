@@ -1,4 +1,5 @@
 vi.mock("@tanstack/react-router", () => ({
+  Outlet: () => <div>Outlet</div>,
   useNavigate: vi.fn().mockReturnValue(vi.fn()),
 }));
 vi.mock("@justkits/auth", () => ({
@@ -11,6 +12,12 @@ vi.mock("@justkits/auth", () => ({
     clearAuthState: vi.fn(),
     broadcast: vi.fn(),
   }),
+  ProtectedRoute: ({ onUnauthorized }: { onUnauthorized: () => void }) => (
+    <div>
+      Protected Content
+      <button onClick={onUnauthorized}>Unauthorized</button>
+    </div>
+  ),
 }));
 vi.mock("@justwon/designs/components", () => ({
   Form: ({
@@ -45,6 +52,7 @@ vi.mock("@justwon/designs/components", () => ({
       {props.errorMsg && <div>{props.errorMsg}</div>}
     </form>
   ),
+  Spinner: () => <div>Loading...</div>,
   Text: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   TextInput: ({ ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input {...props} />
