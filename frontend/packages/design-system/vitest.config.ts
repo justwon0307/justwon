@@ -1,6 +1,6 @@
 import { defineConfig, mergeConfig } from "vitest/config";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import { reactConfig } from "@justwon/vitest-config/react";
+import { packageConfig } from "@justwon/vitest-config/package";
 
 const additionalConfig = defineConfig({
   plugins: [vanillaExtractPlugin()],
@@ -11,4 +11,4 @@ const additionalConfig = defineConfig({
   },
 });
 
-export default mergeConfig(reactConfig, additionalConfig);
+export default mergeConfig(packageConfig, additionalConfig);
