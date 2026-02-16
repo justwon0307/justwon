@@ -19,5 +19,31 @@ export const config = defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "JSXOpeningElement[name.name='button']",
+          message:
+            "Use the Button component from the design system instead of raw <button> elements.",
+        },
+        {
+          selector: "JSXOpeningElement[name.name='input']",
+          message:
+            "Use the Input component from the design system instead of raw <input> elements.",
+        },
+        {
+          selector: "JSXOpeningElement[name.name='form']",
+          message:
+            "Use the Form component from the design system instead of raw <form> elements.",
+        },
+      ],
+    },
+  },
+  {
+    files: ["**/vitest.setup.tsx"],
+    rules: {
+      "no-restricted-syntax": "off",
+    },
   },
 ]);
