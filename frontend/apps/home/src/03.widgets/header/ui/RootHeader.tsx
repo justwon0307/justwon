@@ -7,7 +7,7 @@ import { styles } from "./styles.css";
 
 export function RootHeader() {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <Link href="/" className={styles.link} data-testid="main-logo">
         <JustwonHorizontalLogo size={32} />
       </Link>
@@ -18,6 +18,6 @@ export function RootHeader() {
       </div>
       <div className={styles.divider} />
       <Settings />
-    </div>
+    </header>
   );
 }
