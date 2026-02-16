@@ -1,5 +1,5 @@
 import { defineConfig, mergeConfig } from "vitest/config";
-import { nextjsConfig } from "@justwon/vitest-config/nextjs";
+import { appConfig } from "@justwon/vitest-config/app";
 
 const mocksConfig = defineConfig({
   test: {
@@ -7,4 +7,4 @@ const mocksConfig = defineConfig({
   },
 });
 
-export default mergeConfig(nextjsConfig, mocksConfig);
+export default mergeConfig(appConfig, mocksConfig);
