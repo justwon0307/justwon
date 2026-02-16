@@ -14,24 +14,25 @@ export class APIError extends Error {
     this.status = status;
   }
 
-  static fromUnknown(e: unknown, fallback = "알 수 없는 에러가 발생했습니다.") {
+  static fromUnknown(e: unknown) {
+    const fallbackMsg = "알 수 없는 에러가 발생했습니다.";
     // AxiosError 케이스 우선 처리
     if (isAxiosError(e)) {
       const data = e.response?.data as
         | { message?: string; status?: APIStatus }
         | undefined;
-      const message = data?.message ?? fallback;
+      const message = data?.message ?? fallbackMsg;
       const status: APIStatus = data?.status ?? "ERROR";
       return new APIError(message, status);
     }
     // 이미 APIError면 그대로
     if (e instanceof APIError) return e;
     // 그 외
-    return new APIError(fallback, "ERROR");
+    return new APIError(fallbackMsg, "ERROR");
   }
 }
 
 // 타입가드 (컴포넌트에서 안전하게 판별)
 export function isAPIError(e: unknown): e is APIError {
-  return typeof e === "object" && e !== null && (e as any).isAPIError === true;
+  return e !== null && (e as any).isAPIError === true;
 }
