@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vitest/config";
 
-export const reactConfig = defineConfig({
+export const packageConfig = defineConfig({
   test: {
     globals: true,
     environment: "jsdom",

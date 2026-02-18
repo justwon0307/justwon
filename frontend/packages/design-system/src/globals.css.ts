@@ -58,6 +58,8 @@ globalStyle("html, body", {
       lineHeight: 1.5,
       background: themeVariables.colors.background.base,
       color: themeVariables.colors.text.default,
+      fontFamily: "system-ui",
+      userSelect: "none",
       transition: "background 0.3s ease, color 0.3s ease",
       scrollbarGutter: "stable",
     },

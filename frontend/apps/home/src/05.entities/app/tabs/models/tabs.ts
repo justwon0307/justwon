@@ -1,3 +1,3 @@
-export type TabOptions = "projects" | "devlog" | "non-dev" | "about";
+export type TabOptions = "projects" | "devlog" | "lounge" | "about";
 
-export const tabs = ["projects", "devlog", "non-dev", "about"] as const;
+export const tabs = ["projects", "devlog", "lounge", "about"] as const;

@@ -1,4 +1,3 @@
-import { describe, expect, it, vi } from "vitest";
 import { act, fireEvent, render, waitFor } from "@testing-library/react";
 
 import { Modal } from "@/components";

@@ -1,4 +1,3 @@
-import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 
 import { ThemeProvider, useTheme } from "@/theme";

@@ -9,7 +9,7 @@ export function useAnimation(
 ) {
   const [mounted, setMounted] = useState<boolean>(isOpen);
   const [exiting, setExiting] = useState<boolean>(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearTimer = () => {
     if (timerRef.current) {

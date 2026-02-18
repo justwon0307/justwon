@@ -1,5 +1,3 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-
 import { loadStoredMode, saveStoredMode } from "@/theme/core/lib/storage";
 import {
   getSystemTheme,

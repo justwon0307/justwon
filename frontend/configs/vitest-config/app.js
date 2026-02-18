@@ -4,9 +4,10 @@ import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
-export const nextjsConfig = defineConfig({
+export const appConfig = defineConfig({
   plugins: [tsconfigPaths(), react(), vanillaExtractPlugin()],
   test: {
+    globals: true,
     environment: "jsdom",
     include: ["tests/**/*.test.{ts,tsx}"],
     coverage: {

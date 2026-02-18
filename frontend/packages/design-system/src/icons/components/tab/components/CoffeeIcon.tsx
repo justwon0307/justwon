@@ -1,5 +1,5 @@
 import type { IconProps } from "../../types";
-export function NonDevIcon({ size = 24 }: Readonly<IconProps>) {
+export function CoffeeIcon({ size = 24 }: Readonly<IconProps>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

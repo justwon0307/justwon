@@ -1,4 +1,3 @@
-import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 
 import { RootLayout } from "@app/layouts/root";
@@ -56,7 +55,7 @@ describe("RootLayout 테스트", () => {
       </RootLayout>,
     );
 
-    const tabs = ["Projects", "Devlog", "Non-dev", "About"];
+    const tabs = ["Projects", "Devlog", "Lounge", "About"];
     expect(tabs.length).toBe(4);
 
     tabs.forEach((tab) => {
