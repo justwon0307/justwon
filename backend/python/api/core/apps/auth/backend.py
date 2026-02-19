@@ -17,9 +17,6 @@ class AuthBackend(ModelBackend):
     if client not in allowed_clients:
       raise AuthenticationError(detail="허용되지 않은 클라이언트입니다.")
 
-    if not username:
-      raise AuthenticationError(detail="아이디가 제공되지 않았습니다.")
-
     try:
       user = User.objects.get(username=username.lower())
     except User.DoesNotExist as e:
