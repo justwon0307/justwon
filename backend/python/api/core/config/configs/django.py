@@ -56,9 +56,15 @@ STATIC_URL = "static/"
 ## Rest Framework settings
 REST_FRAMEWORK = {
   "DEFAULT_AUTHENTICATION_CLASSES": (
-    "rest_framework.authentication.BasicAuthentication",
     "rest_framework_simplejwt.authentication.JWTAuthentication",
-    "rest_framework.authentication.SessionAuthentication",
   ),
   "EXCEPTION_HANDLER": "base.exceptions.justwon_exception_handler",
+  "DEFAULT_THROTTLE_CLASSES": [
+    "rest_framework.throttling.ScopedRateThrottle",
+  ],
+  "DEFAULT_THROTTLE_RATES": {
+    "login": "5/minute",
+    "refresh": "10/minute",
+    "blacklist": "20/minute",
+  },
 }
