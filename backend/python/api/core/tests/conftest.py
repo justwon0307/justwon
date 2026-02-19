@@ -17,6 +17,26 @@ def exception_logs(caplog):
 
 
 @pytest.fixture()
+def warning_logs(caplog):
+  """
+  테스트 중 발생한 경고 로그를 캡처하는 fixture.
+  테스트에서 발생한 경고 로그를 검증할 때 사용한다.
+  """
+  with caplog.at_level(logging.WARNING, logger="base.log"):
+    yield caplog
+
+
+@pytest.fixture()
+def info_logs(caplog):
+  """
+  테스트 중 발생한 정보 로그를 캡처하는 fixture.
+  테스트에서 발생한 정보 로그를 검증할 때 사용한다.
+  """
+  with caplog.at_level(logging.INFO, logger="base.log"):
+    yield caplog
+
+
+@pytest.fixture()
 def api_client():
   return APIClient(HTTP_X_JUSTWON_CLIENT=_AUTH_CLIENT)
 
@@ -29,4 +49,5 @@ def allow_client(settings, monkeypatch):
   ## settings.REST_FRAMEWORK을 변경하는 방식은 APIView.throttle_classes가
   ## 임포트 시점에 이미 설정되어 있어 효과가 없다.
   from rest_framework.views import APIView
+
   monkeypatch.setattr(APIView, "throttle_classes", [])
