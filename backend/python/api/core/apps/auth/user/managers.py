@@ -14,6 +14,3 @@ class UserManager(BaseUserManager):
     extra_fields["is_superuser"] = True
 
     return self.create_user(username, password, **extra_fields)
-
-  def get_by_natural_key(self, username):
-    return self.get(username=username)

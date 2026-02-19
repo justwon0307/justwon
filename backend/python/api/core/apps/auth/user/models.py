@@ -42,7 +42,6 @@ class User(AbstractBaseUser):
 
   def save(self, *args, **kwargs):
     ## username을 lowercase로 저장
-    if self.username:
-      self.username = self.username.lower()
+    self.username = self.username.lower()
 
     super().save(*args, **kwargs)
