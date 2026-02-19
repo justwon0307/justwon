@@ -1,12 +1,10 @@
-import logging
-
 from rest_framework import status
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 
-from .responses import unknown_error_response
+from base.log import log
 
-logger = logging.getLogger(__name__)
+from .responses import unknown_error_response
 
 
 class JustWonException(APIException):
@@ -23,7 +21,7 @@ class JustWonException(APIException):
     try:
       return self.error_response()
     except NotImplementedError:
-      logger.error("error_response 메서드가 구현되지 않았습니다.")
+      log("error_response 메서드가 구현되지 않았습니다.")
       return unknown_error_response()
 
 
@@ -38,9 +36,9 @@ class ServerError(JustWonException):
   def __init__(self, detail=None, code=None):
     # detail을 메시지로 설정하는 것이 아니라, 로그를 남기는 방식으로 변경한다
     if detail is not None:
-      logger.error(f"서버 오류 발생: {detail}")
+      log(f"서버 오류 발생: {detail}")
     else:
-      logger.error("서버 오류 발생: 상세 정보 없음")
+      log("서버 오류 발생: 상세 정보 없음")
 
     super().__init__(detail=self.default_detail)
 
