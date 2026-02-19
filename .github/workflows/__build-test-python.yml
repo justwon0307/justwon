@@ -22,6 +22,8 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
     env:
       SECRET_KEY: "dummy_secret"
+      JWT_SIGNING_KEY: "dummy_jwt_signing_key"
+      JWT_AUTH_COOKIE: "dummy_jwt_auth_cookie"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
