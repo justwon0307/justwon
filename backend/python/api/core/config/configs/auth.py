@@ -23,14 +23,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ## JWT settings
 SIMPLE_JWT = {
-  "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+  "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
   "REFRESH_TOKEN_LIFETIME": timedelta(days=15),
   "ROTATE_REFRESH_TOKENS": True,
   "BLACKLIST_AFTER_ROTATION": True,
   "UPDATE_LAST_LOGIN": False,
   "USER_ID_FIELD": "uuid",
   "ALGORITHM": "HS256",
-  "SIGNING_KEY": env("SECRET_KEY"),
+  "SIGNING_KEY": env("JWT_SIGNING_KEY"),
 }
 
 JWT_AUTH_COOKIE = env("JWT_AUTH_COOKIE")
+JWT_AUTH_COOKIE_DOMAIN = env("JWT_AUTH_COOKIE_DOMAIN", default=None)
+
+ALLOWED_AUTH_CLIENTS = env.list("ALLOWED_AUTH_CLIENTS", default=[])
+
+AUTHENTICATION_BACKENDS = [
+  "apps.auth.backend.AuthBackend",
+]
