@@ -1,11 +1,13 @@
 from django.contrib import admin
 
+from apps.auth.user.models import User
 from apps.blog.categories.models import Category
 from apps.blog.posts.models import Post
 from apps.blog.posttypes.models import PostType
 from apps.blog.series.models import Series
 from apps.blog.tags.models import Tag
 
+admin.site.register(User)
 admin.site.register(Category)
 admin.site.register(PostType)
 admin.site.register(Series)
