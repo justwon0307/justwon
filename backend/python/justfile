@@ -18,3 +18,6 @@ test-core-api *args:
     uv run --directory ./api/core pytest {{args}}
 
 test *args: (test-core-api args)
+
+dev:
+    uv run --directory ./api/core manage.py runserver
