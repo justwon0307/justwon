@@ -10,6 +10,12 @@ _HEADER_NAME = "X-JUSTWON-CLIENT"
 
 class AuthBackend(ModelBackend):
   def authenticate(self, request, username=None, password=None, **kwargs):
+    ## Django admin은 클라이언트 헤더 검증을 건너뜀
+    if request is None or request.path.startswith("/admin/"):
+      return super().authenticate(
+        request, username=username, password=password, **kwargs
+      )
+
     ## 추가적인 클라이언트 검증 로직
     client = request.headers.get(_HEADER_NAME, "")
     allowed_clients = settings.ALLOWED_AUTH_CLIENTS

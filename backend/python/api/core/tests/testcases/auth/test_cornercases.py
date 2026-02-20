@@ -1,8 +1,29 @@
 import pytest
+from django.test import RequestFactory
 
+from apps.auth.backend import AuthBackend
 from tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
+
+
+def test_authenticate_without_request():
+  user = UserFactory(is_superuser=True)
+  backend = AuthBackend()
+
+  result = backend.authenticate(None, username=user.username, password="password")
+
+  assert result == user
+
+
+def test_authenticate_from_admin():
+  user = UserFactory(is_superuser=True)
+  backend = AuthBackend()
+  request = RequestFactory().post("/admin/login/")
+
+  result = backend.authenticate(request, username=user.username, password="password")
+
+  assert result == user
 
 
 def test_auth_api_fail_missing_client_header(api_client):
