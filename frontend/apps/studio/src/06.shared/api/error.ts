@@ -2,13 +2,19 @@
 import { isAxiosError } from "axios";
 
 // 실패 / 에러
-type APIStatus = "ERROR" | "NOT_FOUND" | "UNAUTHORIZED";
+type APIStatus =
+  | "SERVER_ERROR"
+  | "NOT_FOUND"
+  | "FORBIDDEN"
+  | "THROTTLED"
+  | "VALIDATION_ERROR"
+  | "UNAUTHORIZED";
 
 export class APIError extends Error {
   readonly status: APIStatus;
   readonly isAPIError = true; // 런타임 식별자
 
-  constructor(message: string, status: APIStatus = "ERROR") {
+  constructor(message: string, status: APIStatus = "SERVER_ERROR") {
     super(message);
     this.name = "APIError";
     this.status = status;
@@ -22,13 +28,13 @@ export class APIError extends Error {
         | { message?: string; status?: APIStatus }
         | undefined;
       const message = data?.message ?? fallbackMsg;
-      const status: APIStatus = data?.status ?? "ERROR";
+      const status: APIStatus = data?.status ?? "SERVER_ERROR";
       return new APIError(message, status);
     }
     // 이미 APIError면 그대로
     if (e instanceof APIError) return e;
     // 그 외
-    return new APIError(fallbackMsg, "ERROR");
+    return new APIError(fallbackMsg, "SERVER_ERROR");
   }
 }
 

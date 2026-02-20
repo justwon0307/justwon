@@ -96,7 +96,7 @@ describe("API Client", () => {
       if (isAPIError(e)) {
         expect(e).toBeInstanceOf(APIError);
         expect(e.message).toBe("알 수 없는 에러가 발생했습니다.");
-        expect(e.status).toBe("ERROR");
+        expect(e.status).toBe("SERVER_ERROR");
       }
     }
   });
@@ -121,7 +121,7 @@ describe("API Client", () => {
       if (isAPIError(e)) {
         expect(e).toBeInstanceOf(APIError);
         expect(e.message).toBe("알 수 없는 에러가 발생했습니다.");
-        expect(e.status).toBe("ERROR");
+        expect(e.status).toBe("SERVER_ERROR");
       }
     }
   });
