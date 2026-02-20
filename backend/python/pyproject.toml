@@ -37,7 +37,7 @@ select = [
 ignore = []
 
 [tool.ruff.lint.per-file-ignores]
-"**/settings/*.py" = ["F403", "F405"]
+"**/settings.py" = ["E402", "F403", "F405"]
 "**/migrations/*.py" = ["E501"]
 
 [tool.ruff.format]
