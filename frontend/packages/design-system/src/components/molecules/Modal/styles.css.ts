@@ -1,29 +1,11 @@
-import { createVar, keyframes } from "@vanilla-extract/css";
+import { createVar } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 import { theme } from "../../../theme";
+import { fade } from "../../lib/animations/fade.css";
+import { pop } from "../../lib/animations/pop.css";
 
 const animationDuration = createVar();
-
-const fadeIn = keyframes({
-  "0%": { opacity: 0 },
-  "100%": { opacity: 1 },
-});
-
-const fadeOut = keyframes({
-  "0%": { opacity: 1 },
-  "100%": { opacity: 0 },
-});
-
-const popIn = keyframes({
-  "0%": { transform: "scale(0.9)", opacity: 0 },
-  "100%": { transform: "scale(1)", opacity: 1 },
-});
-
-const popOut = keyframes({
-  "0%": { transform: "scale(1)", opacity: 1 },
-  "100%": { transform: "scale(0.9)", opacity: 0 },
-});
 
 const overlay = recipe({
   base: {
@@ -44,16 +26,10 @@ const overlay = recipe({
   variants: {
     exiting: {
       true: {
-        animationName: fadeOut,
-        animationTimingFunction: "ease-out",
-        animationFillMode: "forwards",
-        animationDuration: animationDuration,
+        animation: `${fade.out} ${animationDuration} ease-in forwards`,
       },
       false: {
-        animationName: fadeIn,
-        animationTimingFunction: "ease-in",
-        animationFillMode: "forwards",
-        animationDuration: animationDuration,
+        animation: `${fade.in} ${animationDuration} ease-out forwards`,
       },
     },
     placement: {
@@ -75,16 +51,10 @@ const dialog = recipe({
   variants: {
     exiting: {
       true: {
-        animationName: popOut,
-        animationDuration: animationDuration,
-        animationTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-        animationFillMode: "forwards",
+        animation: `${pop.out} ${animationDuration} cubic-bezier(0.2, 0.8, 0.2, 1) forwards`,
       },
       false: {
-        animationName: popIn,
-        animationDuration: animationDuration,
-        animationTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-        animationFillMode: "forwards",
+        animation: `${pop.in} ${animationDuration} cubic-bezier(0.2, 0.8, 0.2, 1) forwards`,
       },
     },
     placement: {
