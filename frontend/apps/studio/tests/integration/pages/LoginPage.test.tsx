@@ -11,11 +11,11 @@ describe("LoginPage", () => {
 
     const { getByTestId } = renderWithProviders(<LoginPage />);
 
-    const emailInput = getByTestId("email-input");
+    const usernameInput = getByTestId("username-input");
     const passwordInput = getByTestId("password-input");
     const submitButton = getByTestId("form-submit-button");
 
-    fireEvent.change(emailInput, { target: { value: "new@email.com" } });
+    fireEvent.change(usernameInput, { target: { value: "testuser" } });
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
     fireEvent.click(submitButton);
@@ -40,11 +40,11 @@ describe("LoginPage", () => {
       <LoginPage />,
     );
 
-    const emailInput = getByTestId("email-input");
+    const usernameInput = getByTestId("username-input");
     const passwordInput = getByTestId("password-input");
     const submitButton = getByTestId("form-submit-button");
 
-    fireEvent.change(emailInput, { target: { value: "new@email.com" } });
+    fireEvent.change(usernameInput, { target: { value: "testuser" } });
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
     fireEvent.click(submitButton);
@@ -54,7 +54,7 @@ describe("LoginPage", () => {
     });
 
     // 입력값을 변경하면, 에러 메시지가 사라지는지 확인
-    fireEvent.change(emailInput, { target: { value: "another@email.com" } });
+    fireEvent.change(usernameInput, { target: { value: "anotheruser" } });
 
     await waitFor(() => {
       expect(queryByText("Invalid credentials")).toBeFalsy();

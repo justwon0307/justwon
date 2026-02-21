@@ -13,11 +13,11 @@ describe("useform corner cases", () => {
 
     const { getByTestId, getByText } = renderWithProviders(<LoginPage />);
 
-    const emailInput = getByTestId("email-input");
+    const usernameInput = getByTestId("username-input");
     const passwordInput = getByTestId("password-input");
     const submitButton = getByTestId("form-submit-button");
 
-    fireEvent.change(emailInput, { target: { value: "new@email.com" } });
+    fireEvent.change(usernameInput, { target: { value: "testuser" } });
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
     fireEvent.click(submitButton);
@@ -30,24 +30,24 @@ describe("useform corner cases", () => {
   it("handles schema validation errors", async () => {
     const { getByTestId, getByText } = renderWithProviders(<LoginPage />);
 
-    const emailInput = getByTestId("email-input");
+    const usernameInput = getByTestId("username-input");
     const passwordInput = getByTestId("password-input");
     const submitButton = getByTestId("form-submit-button");
 
-    fireEvent.change(emailInput, { target: { value: "not-a-valid-email" } });
+    fireEvent.change(usernameInput, { target: { value: "" } });
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(getByText("유효한 이메일 주소를 입력해주세요.")).toBeTruthy();
+      expect(getByText("사용자명을 입력해주세요.")).toBeTruthy();
     });
 
     // 코너 케이스: error 메시지가 있는 상태에서 버튼 클릭 테스트
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(getByText("유효한 이메일 주소를 입력해주세요.")).toBeTruthy();
+      expect(getByText("사용자명을 입력해주세요.")).toBeTruthy();
     });
   });
 });
