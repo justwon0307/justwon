@@ -28,13 +28,13 @@ createGlobalTheme(":root", themeVariables, {
     shadow: `light-dark(${baseColors.BLACK.dark}20, ${baseColors.WHITE.dark}20)`,
   },
   zIndices: {
-    hide: "-1",
-    sticky: "100",
-    dropdown: "200",
-    popover: "300",
+    //hide: "-1",
+    //sticky: "100",
+    //dropdown: "200",
+    //popover: "300",
     overlay: "400",
     modal: "500",
-    tooltip: "600",
+    //tooltip: "600",
     toast: "700",
   },
 });
