@@ -1,5 +1,6 @@
-import { AuthProvider } from "@app/auth";
 import { fireEvent, render } from "@testing-library/react";
+
+import { AuthProvider } from "@app/auth";
 
 describe("AuthProvider", () => {
   it("handles login success and shows toast notification", () => {
