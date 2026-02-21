@@ -37,6 +37,12 @@ export const config = defineConfig([
           message:
             "Use the Form component from the design system instead of raw <form> elements.",
         },
+        {
+          selector:
+            "JSXOpeningElement[name.name='h1'], JSXOpeningElement[name.name='h2'], JSXOpeningElement[name.name='h3'], JSXOpeningElement[name.name='h4'], JSXOpeningElement[name.name='h5'], JSXOpeningElement[name.name='h6'], JSXOpeningElement[name.name='p']",
+          message:
+            "Use the Text component from the design system instead of raw <h1>-<h6> or <p> elements.",
+        },
       ],
     },
   },
