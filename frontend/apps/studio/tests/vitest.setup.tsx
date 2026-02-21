@@ -3,8 +3,17 @@ vi.mock("@tanstack/react-router", () => ({
   useNavigate: vi.fn().mockReturnValue(vi.fn()),
 }));
 vi.mock("@justkits/auth", () => ({
-  AuthProvider: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
+  AuthProvider: ({
+    children,
+    onLoginSuccess,
+  }: {
+    children: React.ReactNode;
+    onLoginSuccess: () => void;
+  }) => (
+    <div>
+      <button onClick={onLoginSuccess}>Login Success</button>
+      {children}
+    </div>
   ),
   useAuth: vi.fn().mockReturnValue({
     isAuthenticated: true,
@@ -57,4 +66,6 @@ vi.mock("@justwon/designs/components", () => ({
   TextInput: ({ ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input {...props} />
   ),
+  Toaster: () => <div>Toaster</div>,
+  toast: vi.fn(),
 }));
