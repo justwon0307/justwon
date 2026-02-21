@@ -5,3 +5,4 @@ export { TextInput } from "./atoms/TextInput/TextInput";
 
 export { Form } from "./molecules/Form/Form";
 export { Modal } from "./molecules/Modal/Modal";
+export { Toaster, toast } from "./molecules/Toast";
