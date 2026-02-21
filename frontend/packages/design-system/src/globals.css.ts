@@ -17,12 +17,13 @@ createGlobalTheme(":root", themeVariables, {
     },
     text: {
       default: `light-dark(${baseColors.BLACK.dark}, ${baseColors.WHITE.light})`,
-      muted: `light-dark(${baseColors.BLACK.medium}, ${baseColors.WHITE.medium})`,
+      muted: `light-dark(${baseColors.BLACK.light}, ${baseColors.WHITE.dark})`,
       inverted: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
     },
     border: {
       default: `light-dark(${baseColors.BLACK.light}80, ${baseColors.WHITE.light}80)`,
       muted: baseColors.SILVER,
+      divider: `light-dark(${baseColors.BLACK.light}40, ${baseColors.WHITE.light}40)`,
     },
     shadow: `light-dark(${baseColors.BLACK.dark}20, ${baseColors.WHITE.dark}20)`,
   },

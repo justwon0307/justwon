@@ -24,6 +24,7 @@ export const themeVariables = createGlobalThemeContract({
     border: {
       default: "color-border-default",
       muted: "color-border-muted",
+      divider: "color-border-divider",
     },
     shadow: "color-border-shadow",
   },
