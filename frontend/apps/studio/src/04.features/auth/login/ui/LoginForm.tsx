@@ -8,14 +8,14 @@ import { loginSchema } from "../models/schema";
 import { useForm } from "@shared/lib/forms";
 
 export function LoginForm() {
-  const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
   const { broadcast, setAuthState } = useAuth();
   const { errorMsg, submit, canSubmit } = useForm({
     schema: loginSchema,
-    payload: { email, password },
+    payload: { username, password },
     requestFn: loginAPI,
     onSuccess: (data: string) => {
       setAuthState(data);
@@ -32,11 +32,11 @@ export function LoginForm() {
       errorMsg={errorMsg}
     >
       <TextInput
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email Address"
-        data-testid="email-input"
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Username"
+        data-testid="username-input"
       />
       <TextInput
         type="password"
