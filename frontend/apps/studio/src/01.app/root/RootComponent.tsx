@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { Toaster } from "@justwon/designs/components";
 
 export function RootComponent() {
   return (
@@ -10,6 +11,7 @@ export function RootComponent() {
         <Outlet />
       </main>
       <footer></footer>
+      <Toaster />
       <TanStackRouterDevtools />
     </Fragment>
   );

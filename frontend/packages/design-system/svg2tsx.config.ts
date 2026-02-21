@@ -7,6 +7,7 @@ export default defineConfig({
   assetsDir: "./src/icons/svgs/",
   srcDir: "./src/icons/components/",
   options: {
+    expandProps: "end",
     svgProps: {
       width: "{size}",
       height: "{size}",
@@ -27,10 +28,9 @@ export default defineConfig({
     },
     template: (variables, { tpl }) => {
       return tpl`
-        ${variables.imports}
         import type { IconProps } from '../../types';
 
-        export function ${variables.componentName}({ size = 24 }: Readonly<IconProps>) {
+        export function ${variables.componentName}({ size = 24, ...props }: Readonly<IconProps>) {
           return (${variables.jsx});
         }
       `;

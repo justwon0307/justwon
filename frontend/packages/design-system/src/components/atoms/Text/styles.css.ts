@@ -28,9 +28,15 @@ const text = styleVariants(
       lineHeight: "1.125rem",
       color: theme.colors.text.default,
     },
+    description: {
+      fontSize: "0.75rem",
+      fontWeight: 400,
+      lineHeight: "1rem",
+      color: theme.colors.text.muted,
+    },
   },
   (styleRule) => ({
-    "@layer": { [baseLayer]: { margin: "8px", padding: 0, ...styleRule } },
+    "@layer": { [baseLayer]: { margin: 0, padding: 0, ...styleRule } },
   }),
 );
 
