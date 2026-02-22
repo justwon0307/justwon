@@ -1,5 +1,5 @@
 import type { IconProps } from "../../types";
-export function CheckIcon({ size = 24 }: Readonly<IconProps>) {
+export function CheckIcon({ size = 24, ...props }: Readonly<IconProps>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7,6 +7,7 @@ export function CheckIcon({ size = 24 }: Readonly<IconProps>) {
       viewBox="0 0 16 16"
       width={size}
       height={size}
+      {...props}
     >
       <path
         fill="currentColor"

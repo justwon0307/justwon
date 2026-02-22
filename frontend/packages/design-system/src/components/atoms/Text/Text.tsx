@@ -9,6 +9,7 @@ const defaultTagMap: Record<TypographyVariant, keyof TagOptions> = {
   titleSmall: "h2",
   bodyLarge: "p",
   bodySmall: "span",
+  description: "p",
 };
 
 interface Props extends HTMLAttributes<HTMLElement> {

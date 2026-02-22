@@ -12,7 +12,7 @@
     "test:dev": "vitest --watch --coverage"
   },
   "dependencies": {
-    "@justkits/auth": "^0.1.1",
+    "@justkits/auth": "^0.2.1",
     "@justwon/designs": "workspace:*",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-router": "^1.161.3",

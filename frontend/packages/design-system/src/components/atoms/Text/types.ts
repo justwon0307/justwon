@@ -4,7 +4,8 @@ export type TypographyVariant =
   | "titleLarge"
   | "titleSmall"
   | "bodyLarge"
-  | "bodySmall";
+  | "bodySmall"
+  | "description";
 
 export type TagOptions = Pick<
   JSX.IntrinsicElements,
