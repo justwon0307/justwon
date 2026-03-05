@@ -1,55 +1,54 @@
+"use client";
+
 import { createPortal } from "react-dom";
-import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { useRef } from "react";
 import { clsx } from "clsx";
 
-import { useAnimation } from "./useAnimation";
-import { styles, vars } from "./styles.css";
+import { animations, useExitAnimation } from "../../../theme";
+import { useBackgroundScrollLock } from "../../lib/events/useBackgroundScrollLock";
+import { useClickOutside } from "../../lib/events/useClickOutside";
+import { useEventOnKeyboard } from "../../lib/events/useEventOnKeyboard";
+import { styles } from "./styles.css";
 
 interface Props extends React.HTMLAttributes<HTMLDialogElement> {
   isOpen: boolean;
   onClose: () => void;
-  animationDuration?: number;
   placement?: "center" | "top";
 }
 
 export function Modal({
   isOpen,
   onClose,
-  animationDuration = 200,
   placement = "center",
   className,
   children,
   ...rest
 }: Props) {
-  const { mounted, exiting, closeModal, duration } = useAnimation(
-    onClose,
-    isOpen,
-    animationDuration,
-  );
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const { exiting, startClosing } = useExitAnimation(onClose);
+  useEventOnKeyboard("Escape", startClosing, isOpen);
+  useBackgroundScrollLock(isOpen);
+  useClickOutside(dialogRef, startClosing, isOpen);
 
-  if (!mounted) return null;
+  if (!isOpen) return null;
 
   return createPortal(
     <div
       aria-hidden="true"
-      className={styles.overlay({ exiting, placement })}
-      style={{
-        ...assignInlineVars({
-          [vars.animationDuration]: `${duration}ms`,
-        }),
-      }}
-      onMouseDown={closeModal}
+      className={clsx(
+        styles.overlay({ placement }),
+        animations.fade({ exiting }),
+      )}
       data-testid="modal-overlay"
     >
       <dialog
-        open={mounted}
-        onMouseDown={(e) => e.stopPropagation()}
-        className={clsx(styles.dialog({ exiting, placement }), className)}
-        style={{
-          ...assignInlineVars({
-            [vars.animationDuration]: `${duration}ms`,
-          }),
-        }}
+        ref={dialogRef}
+        open={isOpen}
+        className={clsx(
+          styles.dialog({ placement }),
+          animations.pop({ exiting }),
+          className,
+        )}
         data-testid="modal-dialog"
         {...rest}
       >

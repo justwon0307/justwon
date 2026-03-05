@@ -1,11 +1,6 @@
-import { createVar } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 import { theme } from "../../../theme";
-import { fade } from "../../lib/animations/fade.css";
-import { pop } from "../../lib/animations/pop.css";
-
-const animationDuration = createVar();
 
 const overlay = recipe({
   base: {
@@ -24,14 +19,6 @@ const overlay = recipe({
     zIndex: theme.zIndices.overlay,
   },
   variants: {
-    exiting: {
-      true: {
-        animation: `${fade.out} ${animationDuration} ease-in forwards`,
-      },
-      false: {
-        animation: `${fade.in} ${animationDuration} ease-out forwards`,
-      },
-    },
     placement: {
       center: {
         placeItems: "center",
@@ -47,16 +34,9 @@ const dialog = recipe({
   base: {
     borderRadius: "12px",
     backgroundColor: theme.colors.background.surface,
+    zIndex: theme.zIndices.modal,
   },
   variants: {
-    exiting: {
-      true: {
-        animation: `${pop.out} ${animationDuration} cubic-bezier(0.2, 0.8, 0.2, 1) forwards`,
-      },
-      false: {
-        animation: `${pop.in} ${animationDuration} cubic-bezier(0.2, 0.8, 0.2, 1) forwards`,
-      },
-    },
     placement: {
       top: {
         marginTop: "120px",
@@ -69,8 +49,4 @@ const dialog = recipe({
 export const styles = {
   overlay,
   dialog,
-};
-
-export const vars = {
-  animationDuration,
 };
