@@ -13,17 +13,17 @@ createGlobalTheme(":root", themeVariables, {
     background: {
       base: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.dark})`,
       surface: `light-dark(${baseColors.WHITE.medium}, ${baseColors.BLACK.medium})`,
+      subtle: `light-dark(${baseColors.WHITE.dark}80, ${baseColors.BLACK.light}80)`,
       overlay: `${baseColors.BLACK.medium}80`,
     },
     text: {
       default: `light-dark(${baseColors.BLACK.dark}, ${baseColors.WHITE.light})`,
       muted: `light-dark(${baseColors.BLACK.light}, ${baseColors.WHITE.dark})`,
-      inverted: `light-dark(${baseColors.WHITE.dark}, ${baseColors.BLACK.light})`,
+      inverted: `light-dark(${baseColors.WHITE.light}, ${baseColors.BLACK.dark})`,
     },
     border: {
-      default: `light-dark(${baseColors.BLACK.light}80, ${baseColors.WHITE.light}80)`,
+      default: `light-dark(${baseColors.BLACK.light}40, ${baseColors.WHITE.light}40)`,
       muted: baseColors.SILVER,
-      divider: `light-dark(${baseColors.BLACK.light}40, ${baseColors.WHITE.light}40)`,
     },
     shadow: `light-dark(${baseColors.BLACK.dark}20, ${baseColors.WHITE.dark}20)`,
   },
@@ -31,11 +31,12 @@ createGlobalTheme(":root", themeVariables, {
     //hide: "-1",
     //sticky: "100",
     //dropdown: "200",
-    //popover: "300",
-    overlay: "400",
-    modal: "500",
-    //tooltip: "600",
-    toast: "700",
+    popover: "200",
+    tooltip: "200",
+    overlay: "300",
+    modal: "400",
+    toast: "500",
+    alert: "600",
   },
 });
 

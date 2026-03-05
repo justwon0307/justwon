@@ -16,6 +16,6 @@ export const baseColors = {
   GOLD: "#A78C29",
   SILVER: "#6B7280",
   RED: "#B91C1C",
-  YELLOW: "#EBCC6F",
+  YELLOW: "#ebb30b",
   GREEN: "#007200",
 } as const;
