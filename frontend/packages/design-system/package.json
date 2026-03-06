@@ -30,6 +30,7 @@
     "icons": "svg2tsx generate && prettier --write ./src/icons",
     "build": "tsc --project tsconfig.build.json",
     "dev": "tsc --watch --project tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
     "test:dev": "vitest --watch --coverage"
