@@ -1,4 +1,4 @@
-import { render, act, fireEvent } from "@testing-library/react";
+import { act, fireEvent, render } from "@testing-library/react";
 
 import { toast, Toaster } from "@/components";
 
