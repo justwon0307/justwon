@@ -5,7 +5,7 @@
   "private": true,
   "exports": {
     "./nextjs": "./nextjs.js",
-    "./react": "./react.js",
+    "./package": "./pack.js",
     "./vite": "./vite.js"
   },
   "peerDependencies": {
@@ -15,8 +15,8 @@
     "@eslint/js": "^9.39.2",
     "eslint-config-next": "^16.1.4",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.5.0",
-    "globals": "^17.3.0",
-    "typescript-eslint": "^8.54.0"
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.56.1"
   }
 }

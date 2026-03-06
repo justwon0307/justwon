@@ -1,11 +1,11 @@
 import { defineConfig } from "eslint/config";
 import importPlugin from "eslint-plugin-import";
-import { config } from "@justwon/eslint-config/react";
+import { packageConfig } from "@justwon/eslint-config/package";
 
 export default defineConfig([
   {
     extends: [
-      config,
+      packageConfig,
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
     ],
