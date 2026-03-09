@@ -1,13 +1,15 @@
-import { loadStoredMode, saveStoredMode } from "@/theme/core/lib/storage";
 import {
+  getServerSnapshot,
   getSystemTheme,
+  setMode,
+  subscribe,
   subscribeToSystemTheme,
-} from "@/theme/core/lib/system";
+} from "@/theme/core/manager";
 
 // theme/core/lib/ 내 함수들의 globalThis가 null인 코너케이스 테스트
 // 단순 커버리지 채우기 용도
 
-describe("core lib cornercases", () => {
+describe("core manager cornercases", () => {
   const originalGlobal = { ...globalThis };
 
   beforeEach(() => {
@@ -32,12 +34,24 @@ describe("core lib cornercases", () => {
     expect(cleanup).toBe(undefined);
   });
 
-  it("loadStoredMode should return 'system' when window is undefined", () => {
-    const mode = loadStoredMode();
-    expect(mode).toBe("system");
+  it("loadStoredMode should return 'system' when window is undefined", async () => {
+    vi.resetModules();
+    const { getSnapshot } = await import("@/theme/core/manager");
+    expect(getSnapshot()).toBe("system");
   });
 
   it("saveStoredMode should not throw when window is undefined", () => {
-    expect(() => saveStoredMode("dark")).not.toThrow();
+    expect(() => setMode("dark")).not.toThrow();
+  });
+
+  it("getServerSnapshot should always return 'system'", () => {
+    expect(getServerSnapshot()).toBe("system");
+  });
+
+  it("subscribe should not re-read storage when listeners already exist", () => {
+    const unsubscribe1 = subscribe(() => {});
+    const unsubscribe2 = subscribe(() => {});
+    unsubscribe1();
+    unsubscribe2();
   });
 });
