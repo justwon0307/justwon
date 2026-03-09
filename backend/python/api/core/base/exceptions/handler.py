@@ -44,7 +44,7 @@ def justwon_exception_handler(exc, context):
         and exc.detail.get("messages", [{}])[0].get("message") == "Token is expired"
       ):
         return token_expired_response()
-    except (AttributeError, IndexError, TypeError):
+    except AttributeError, IndexError, TypeError:
       pass
     ## 나머지 별도로 처리하지 않은 인증/권한 예외들은 전부 403 FORBIDDEN으로 처리
     return auth_error_response()
