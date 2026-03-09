@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { useAuth } from "@justkits/auth";
+import { useAuth } from "@justkits/react-jwt";
 import { Form, TextInput } from "@justwon/designs/components";
 
-import { loginAPI } from "../api/login";
 import { loginSchema } from "../models/schema";
 import { useForm } from "@shared/lib/forms";
 
@@ -12,14 +11,12 @@ export function LoginForm() {
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
-  const { broadcast, setAuthState } = useAuth();
+  const { login } = useAuth();
   const { errorMsg, submit, canSubmit } = useForm({
     schema: loginSchema,
     payload: { username, password },
-    requestFn: loginAPI,
-    onSuccess: (data: string) => {
-      setAuthState(data);
-      broadcast("LOGIN_SUCCESS");
+    requestFn: login,
+    onSuccess: () => {
       navigate({ to: "/editor", replace: true });
     },
   });
