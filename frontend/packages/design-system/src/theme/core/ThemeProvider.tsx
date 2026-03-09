@@ -1,11 +1,22 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useMemo,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 
-import { loadStoredMode, saveStoredMode } from "./lib/storage";
-import { getSystemTheme, subscribeToSystemTheme } from "./lib/system";
+import {
+  getServerSnapshot,
+  getSnapshot,
+  getSystemTheme,
+  setMode,
+  subscribe,
+  subscribeToSystemTheme,
+} from "./manager";
 import { ThemeContext } from "./useTheme";
-import { ResolvedTheme, ThemeMode } from "./types";
+import { ResolvedTheme } from "./types";
 
 interface Props {
   children: ReactNode;
@@ -22,37 +33,24 @@ function applyTheme(targetResolved: ResolvedTheme) {
 }
 
 export function ThemeProvider({ children }: Readonly<Props>) {
-  const [mode, setMode] = useState<ThemeMode>("system");
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const mode = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    const stored = loadStoredMode();
-    setMode(stored);
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    saveStoredMode(mode);
-
     if (mode === "system") {
       applyTheme(getSystemTheme());
     } else {
       // 그렇지 않다면, 지정한 모드로 고정
       applyTheme(mode);
     }
-  }, [mode, isMounted]);
+  }, [mode]);
 
   useEffect(() => {
-    if (!isMounted) return;
-
     return subscribeToSystemTheme((theme) => {
       if (mode === "system") {
         applyTheme(theme);
       }
     });
-  }, [mode, isMounted]);
+  }, [mode]);
 
   const value = useMemo(() => ({ mode, setThemeMode: setMode }), [mode]);
 
