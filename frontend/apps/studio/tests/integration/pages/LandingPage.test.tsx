@@ -15,7 +15,7 @@ describe("index page", () => {
   describe("beforeLoad", () => {
     it("redirects to /editor if authenticated", () => {
       expect(() =>
-        indexPageLoader({ context: { auth: { isAuthenticated: true } } }),
+        indexPageLoader({ context: { isAuthenticated: true } }),
       ).toThrow();
 
       expect(redirect).toHaveBeenCalledWith({ to: "/editor" });
@@ -23,7 +23,7 @@ describe("index page", () => {
 
     it("redirects to /login if not authenticated", () => {
       expect(() =>
-        indexPageLoader({ context: { auth: { isAuthenticated: false } } }),
+        indexPageLoader({ context: { isAuthenticated: false } }),
       ).toThrow();
 
       expect(redirect).toHaveBeenCalledWith({ to: "/login" });

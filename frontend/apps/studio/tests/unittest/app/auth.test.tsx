@@ -101,7 +101,7 @@ describe("loaders", () => {
   describe("loginRequired", () => {
     it("loginRequired calls toast and redirect when not authenticated", () => {
       expect(() =>
-        loginRequired({ context: { auth: { isAuthenticated: false } } }),
+        loginRequired({ context: { isAuthenticated: false } }),
       ).toThrow();
 
       expect(toast).toHaveBeenCalledWith(
@@ -113,7 +113,7 @@ describe("loaders", () => {
 
     it("loginRequired does nothing when authenticated", () => {
       expect(() =>
-        loginRequired({ context: { auth: { isAuthenticated: true } } }),
+        loginRequired({ context: { isAuthenticated: true } }),
       ).not.toThrow();
     });
   });
@@ -121,7 +121,7 @@ describe("loaders", () => {
   describe("guestsOnly", () => {
     it("guestsOnly calls toast and redirect when authenticated", () => {
       expect(() =>
-        guestsOnly({ context: { auth: { isAuthenticated: true } } }),
+        guestsOnly({ context: { isAuthenticated: true } }),
       ).toThrow();
 
       expect(toast).toHaveBeenCalledWith(
@@ -133,7 +133,7 @@ describe("loaders", () => {
 
     it("guestsOnly does nothing when not authenticated", () => {
       expect(() =>
-        guestsOnly({ context: { auth: { isAuthenticated: false } } }),
+        guestsOnly({ context: { isAuthenticated: false } }),
       ).not.toThrow();
     });
   });

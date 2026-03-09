@@ -11,9 +11,6 @@ declare module "@tanstack/react-router" {
 }
 
 declare module "@justkits/react-jwt" {
-  interface RouterAuthContext {
-    context: { auth: { isAuthenticated: boolean } };
-  }
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface LoginCredentials extends z.infer<typeof loginSchema> {}
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type

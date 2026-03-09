@@ -5,8 +5,6 @@ import { routeTree } from "../routeTree.gen.ts";
 export const router = createRouter({
   routeTree,
   context: {
-    auth: {
-      isAuthenticated: false,
-    },
+    isAuthenticated: false,
   },
 });

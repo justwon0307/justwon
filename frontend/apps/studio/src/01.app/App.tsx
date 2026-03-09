@@ -19,9 +19,7 @@ const queryClient = new QueryClient({
 function Router() {
   const { isAuthenticated } = useAuth();
 
-  return (
-    <RouterProvider router={router} context={{ auth: { isAuthenticated } }} />
-  );
+  return <RouterProvider router={router} context={{ isAuthenticated }} />;
 }
 
 export function App() {
