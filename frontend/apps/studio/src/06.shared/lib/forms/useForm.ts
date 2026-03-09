@@ -21,9 +21,9 @@ export function useForm<TSchema extends z.ZodType, TResponse>({
     mutationFn: requestFn,
   });
 
-  const hasNullValue = Object.values(payload as Record<string, unknown>).some(
-    (v) => v === null,
-  );
+  const hasNullValue = Object.values(
+    payload as Record<string, unknown>,
+  ).includes(null);
   const canSubmit = !hasNullValue && errorMsg === undefined && !isPending;
 
   if (errorMsg && errPayloadKey !== JSON.stringify(payload)) {
