@@ -8,7 +8,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 export const appConfig = defineConfig([
   globalIgnores(["dist", "node_modules", "build", "coverage"]),
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
