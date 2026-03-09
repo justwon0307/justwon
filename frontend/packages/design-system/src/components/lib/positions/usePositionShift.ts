@@ -54,7 +54,16 @@ export function usePositionShift(options: Options = {}) {
   }, [offsetX, offsetY]);
 
   useLayoutEffect(() => {
-    checkPosition();
+    if (!wrapperRef.current) return;
+
+    const element = wrapperRef.current;
+    const observer = new ResizeObserver(() => {
+      checkPosition();
+    });
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
   }, [checkPosition]);
 
   return { placement, shiftX, wrapperRef, checkPosition };
