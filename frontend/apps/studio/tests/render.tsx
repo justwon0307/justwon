@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { AuthProvider } from "@app/auth";
+import { AuthProvider } from "@app/auth/provider";
 
 const testQueryClient = new QueryClient({
   defaultOptions: {

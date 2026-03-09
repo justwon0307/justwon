@@ -1,5 +1,6 @@
 import { fireEvent, waitFor } from "@testing-library/react";
 import * as Router from "@tanstack/react-router";
+import { useAuth } from "@justkits/react-jwt";
 
 import { LoginPage } from "@pages/login";
 import * as API from "@shared/api";
@@ -7,7 +8,7 @@ import { renderWithProviders } from "@tests/render";
 
 describe("LoginPage", () => {
   it("should render the login page and handle login success", async () => {
-    vi.spyOn(API.api, "post").mockResolvedValue({ data: "fake-token" });
+    vi.spyOn(useAuth(), "login").mockResolvedValue();
 
     const { getByTestId } = renderWithProviders(<LoginPage />);
 
@@ -30,7 +31,7 @@ describe("LoginPage", () => {
 
   it("renders error message on login failure", async () => {
     vi.spyOn(console, "error").mockImplementation(() => {}); // console.error 무시
-    vi.spyOn(API.api, "post").mockRejectedValue({
+    vi.spyOn(useAuth(), "login").mockRejectedValue({
       message: "Invalid credentials",
       status: "ERROR",
     });

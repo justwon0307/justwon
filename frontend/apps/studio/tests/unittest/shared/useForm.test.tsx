@@ -1,4 +1,5 @@
 import { fireEvent, waitFor } from "@testing-library/react";
+import { useAuth } from "@justkits/react-jwt";
 
 import { LoginPage } from "@pages/login";
 import * as API from "@shared/api";
@@ -8,7 +9,7 @@ import { renderWithProviders } from "@tests/render";
 describe("useform corner cases", () => {
   it("renders error message on login failure (unknown error)", async () => {
     vi.spyOn(console, "error").mockImplementation(() => {}); // console.error 무시
-    vi.spyOn(API.api, "post").mockRejectedValue({});
+    vi.spyOn(useAuth(), "login").mockRejectedValue({});
     vi.spyOn(API, "isAPIError").mockReturnValue(false);
 
     const { getByTestId, getByText } = renderWithProviders(<LoginPage />);
