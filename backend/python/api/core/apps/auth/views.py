@@ -70,12 +70,11 @@ class LogoutView(TokenBlacklistView):
 
       try:
         serializer.is_valid(raise_exception=True)
-        serializer.save()
-      except Exception:
+      except Exception as e:
         ## 추후 블랙리스트 처리 실패에 대한 대응 방안을 마련할 때까지는
         ## 로그를 통해 모니터링한다.
         ## 옵션은: retry-queue, 유저 모델에 is_revoked 필드 추가 등
-        log(f"블랙리스트 처리 실패: {refresh_token}", level="warning")
+        log(f"블랙리스트 처리 실패: {refresh_token}, 에러: {e}", level="warning")
 
     ## 토큰이 있든 없든, 블랙리스트 처리에 성공했든 실패했든
     ## 최종적으로 클라이언트에 저장된 쿠키는 삭제한다. (Defensive programming)
