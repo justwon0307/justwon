@@ -5,7 +5,7 @@ from tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 
-
+## 본 테스트는 로그인, 로그아웃, 토큰 갱신 API를 테스트한다.
 def test_all_apis_success(api_client):
   admin = UserFactory(is_superuser=True)
   login_res = api_client.post(
