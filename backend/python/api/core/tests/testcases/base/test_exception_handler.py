@@ -80,6 +80,30 @@ def test_auth_exception_handler():
   assert response3.data["message"] == expected_message
 
 
+def test_auth_exception_handler_with_non_expired_dict_detail():
+  ## detail이 dict이지만 token_not_valid가 아닌 경우 — 42->50 브랜치 커버
+  exc = AuthenticationFailed(detail={"code": "invalid_token", "messages": []})
+  response = justwon_exception_handler(exc, None)
+
+  assert response.status_code == 403
+  assert response.data["code"] == "FORBIDDEN"
+  assert response.data["message"] == "접근 권한이 없습니다."
+
+
+def test_token_expired_handler():
+  exc = AuthenticationFailed(
+    detail={
+      "code": "token_not_valid",
+      "messages": [{"message": "Token is expired"}],
+    }
+  )
+  response = justwon_exception_handler(exc, None)
+
+  assert response.status_code == 401
+  assert response.data["code"] == "TOKEN_EXPIRED"
+  assert response.data["message"] == "인증 토큰이 만료되었습니다. 다시 로그인해주세요."
+
+
 def test_validation_error_handler_tuple():
   exc = ValidationError(
     {
