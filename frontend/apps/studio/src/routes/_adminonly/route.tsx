@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { RequireAuth } from "@app/auth";
+import { loginRequired } from "@app/auth";
+import { AdminOnlyLayout } from "@app/layouts/adminonly";
 
 export const Route = createFileRoute("/_adminonly")({
-  component: RequireAuth,
+  beforeLoad: loginRequired,
+  component: AdminOnlyLayout,
 });
