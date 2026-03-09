@@ -14,6 +14,7 @@ export const themeVariables = createGlobalThemeContract({
     background: {
       base: "color-background-base",
       surface: "color-background-surface",
+      subtle: "color-background-subtle",
       overlay: "color-background-overlay",
     },
     text: {
@@ -24,18 +25,18 @@ export const themeVariables = createGlobalThemeContract({
     border: {
       default: "color-border-default",
       muted: "color-border-muted",
-      divider: "color-border-divider",
     },
-    shadow: "color-border-shadow",
+    shadow: "color-shadow",
   },
   zIndices: {
     //hide: "z-index-hide",
     //sticky: "z-index-sticky",
     //dropdown: "z-index-dropdown",
-    //popover: "z-index-popover",
+    popover: "z-index-popover",
+    tooltip: "z-index-tooltip",
     overlay: "z-index-overlay",
     modal: "z-index-modal",
-    //tooltip: "z-index-tooltip",
     toast: "z-index-toast",
+    alert: "z-index-alert",
   },
 });

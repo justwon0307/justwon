@@ -1,81 +1,75 @@
 import { act, fireEvent, render, waitFor } from "@testing-library/react";
 
-import { Modal } from "@/components";
+import { Modal, useModal } from "@/components";
+
+function TestComponent() {
+  const { isOpen, openModal, closeModal } = useModal();
+
+  return (
+    <div>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        <p>This is a test modal content.</p>
+      </Modal>
+    </div>
+  );
+}
 
 describe("Modal", () => {
-  it("should render the modal with title and content", async () => {
-    const { getByText, queryByText, rerender } = render(
-      <Modal isOpen={true} onClose={vi.fn()}>
-        <p>This is a test modal content.</p>
-      </Modal>,
-    );
+  it("should render correctly and handle close on click/taps", async () => {
+    const { getByTestId, getByText, queryByTestId } = render(<TestComponent />);
 
-    expect(getByText("This is a test modal content.")).toBeTruthy();
+    // 초기에는 모달이 닫혀 있어야 함
+    await waitFor(() => expect(queryByTestId("modal-dialog")).not.toBeTruthy());
 
-    // close
-    rerender(
-      <Modal isOpen={false} onClose={vi.fn()}>
-        <p>This is a test modal content.</p>
-      </Modal>,
-    );
+    // Open Modal 버튼 클릭 시 모달이 열려야 함
+    fireEvent.click(getByText("Open Modal"));
+    await waitFor(() => expect(getByTestId("modal-dialog")).toBeTruthy());
 
-    await waitFor(() => {
-      expect(queryByText("This is a test modal content.")).not.toBeTruthy();
-    });
-  });
-
-  it("should handle close on click/taps", async () => {
-    const onClose = vi.fn();
-    const { getByTestId } = render(
-      <Modal isOpen={true} onClose={onClose}>
-        <p>Modal Content</p>
-      </Modal>,
-    );
-
-    // should NOT close when clicking inside the dialog
+    // dialog 내부 클릭 시 모달이 닫히지 않아야 함
     fireEvent.mouseDown(getByTestId("modal-dialog"));
-    await waitFor(() => expect(onClose).not.toHaveBeenCalled());
+    await waitFor(() => expect(getByTestId("modal-dialog")).toBeTruthy());
 
+    // overlay 클릭 시 모달이 닫혀야 함
     fireEvent.mouseDown(getByTestId("modal-overlay"));
-    await waitFor(() => expect(onClose).toHaveBeenCalled());
+    await waitFor(() => expect(queryByTestId("modal-dialog")).not.toBeTruthy());
   });
 
   it("should handle close using keyboard (Esc)", async () => {
-    const onClose = vi.fn();
-    render(
-      <Modal isOpen={true} onClose={onClose}>
-        <p>Modal Content</p>
-      </Modal>,
-    );
+    const { getByTestId, getByText, queryByTestId } = render(<TestComponent />);
 
-    // should NOT close when any other key is pressed
+    // Open Modal 버튼 클릭 시 모달이 열려야 함
+    fireEvent.click(getByText("Open Modal"));
+    await waitFor(() => expect(getByTestId("modal-dialog")).toBeTruthy());
+
+    // 다른 키를 눌러도 모달이 닫히지 않아야 함
     fireEvent.keyDown(globalThis.window, { key: "A" });
-    await waitFor(() => expect(onClose).not.toHaveBeenCalled());
+    await waitFor(() => expect(getByTestId("modal-dialog")).toBeTruthy());
 
-    // should close when Escape key is pressed
+    // Escape 키를 누르면 모달이 닫혀야 함
     fireEvent.keyDown(globalThis.window, { key: "Escape" });
-    await waitFor(() => expect(onClose).toHaveBeenCalled());
+    await waitFor(() => expect(queryByTestId("modal-dialog")).not.toBeTruthy());
   });
 
-  it("should ignore close modal when it is already closing", async () => {
+  it("should ignore close modal when it is already closing", () => {
     vi.useFakeTimers();
-    const onClose = vi.fn();
-    const { getByTestId } = render(
-      <Modal isOpen={true} onClose={onClose} animationDuration={200}>
-        <p>Modal Content</p>
-      </Modal>,
-    );
 
-    // should start closing when overlay is clicked
+    const { getByTestId, getByText, queryByTestId } = render(<TestComponent />);
+
+    // Open Modal 버튼 클릭 시 모달이 열려야 함
+    fireEvent.click(getByText("Open Modal"));
+    expect(getByTestId("modal-dialog")).toBeTruthy();
+
+    // overlay 클릭 시 모달이 닫히기 시작해야 함
     const overlay = getByTestId("modal-overlay");
     fireEvent.mouseDown(overlay);
     act(() => vi.advanceTimersByTime(100));
-    expect(onClose).not.toHaveBeenCalled();
+    expect(getByTestId("modal-dialog")).toBeTruthy();
 
-    // should ignore further close attempts while closing
+    // 닫히는 중에 다시 overlay 클릭 시 모달이 닫히지 않아야 함
     fireEvent.mouseDown(overlay);
-    act(() => vi.advanceTimersByTime(100));
-    expect(onClose).toHaveBeenCalledTimes(1);
+    act(() => vi.advanceTimersByTime(200));
+    expect(queryByTestId("modal-dialog")).not.toBeTruthy();
 
     vi.restoreAllMocks();
   });

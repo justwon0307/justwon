@@ -19,6 +19,14 @@ def not_found_response():
   return Response(data, status=status.HTTP_404_NOT_FOUND)
 
 
+def token_expired_response():
+  data = {
+    "code": "TOKEN_EXPIRED",
+    "message": "인증 토큰이 만료되었습니다. 다시 로그인해주세요.",
+  }
+  return Response(data, status=status.HTTP_401_UNAUTHORIZED)
+
+
 def auth_error_response():
   data = {
     "code": "FORBIDDEN",

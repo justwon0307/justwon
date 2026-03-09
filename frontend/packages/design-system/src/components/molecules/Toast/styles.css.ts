@@ -2,13 +2,57 @@ import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 
 import { theme } from "../../../theme";
-import { slide } from "../../lib/animations/slide.css";
-import { ANIMATION_DURATION } from "./config";
 
 const TOAST_PADDING = "16px";
 
-const ANIMATION_ENTRY = `${ANIMATION_DURATION} ease-out`;
-const ANIMATION_EXIT = `${ANIMATION_DURATION} ease-in forwards`;
+const toasterGroup = recipe({
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    position: "fixed",
+    zIndex: theme.zIndices.toast,
+  },
+  variants: {
+    position: {
+      top: {
+        alignItems: "center",
+        top: TOAST_PADDING,
+        left: "50%",
+        transform: "translateX(-50%)",
+      },
+      bottom: {
+        flexDirection: "column-reverse",
+        alignItems: "center",
+        bottom: TOAST_PADDING,
+        left: "50%",
+        transform: "translateX(-50%)",
+      },
+      "top-left": {
+        alignItems: "flex-start",
+        top: TOAST_PADDING,
+        left: TOAST_PADDING,
+      },
+      "top-right": {
+        alignItems: "flex-end",
+        top: TOAST_PADDING,
+        right: TOAST_PADDING,
+      },
+      "bottom-left": {
+        flexDirection: "column-reverse",
+        alignItems: "flex-start",
+        bottom: TOAST_PADDING,
+        left: TOAST_PADDING,
+      },
+      "bottom-right": {
+        flexDirection: "column-reverse",
+        alignItems: "flex-end",
+        bottom: TOAST_PADDING,
+        right: TOAST_PADDING,
+      },
+    },
+  },
+});
 
 const toast = recipe({
   base: {
@@ -17,89 +61,39 @@ const toast = recipe({
     gap: "8px",
     margin: "0",
     padding: "8px 12px",
-    position: "fixed",
     borderRadius: "8px",
-    border: `0.5px solid ${theme.colors.border.divider}`,
+    border: `0.5px solid ${theme.colors.border.default}`,
     boxShadow: `1px 1px 3px ${theme.colors.shadow}`,
-    zIndex: theme.zIndices.toast,
+    transition: "background-color 0.2s ease",
   },
   variants: {
-    exiting: { true: {}, false: {} },
-    position: {
-      top: {
-        top: TOAST_PADDING,
-        left: "50%",
-        transform: "translateX(-50%)",
-        animation: `${slide.down.center} ${ANIMATION_ENTRY}`,
-      },
-      bottom: {
-        bottom: TOAST_PADDING,
-        left: "50%",
-        transform: "translateX(-50%)",
-        animation: `${slide.up.center} ${ANIMATION_ENTRY}`,
-      },
-      "top-left": {
-        top: TOAST_PADDING,
-        left: TOAST_PADDING,
-        animation: `${slide.down.corner} ${ANIMATION_ENTRY}`,
-      },
-      "top-right": {
-        top: TOAST_PADDING,
-        right: TOAST_PADDING,
-        animation: `${slide.down.corner} ${ANIMATION_ENTRY}`,
-      },
-      "bottom-left": {
-        bottom: TOAST_PADDING,
-        left: TOAST_PADDING,
-        animation: `${slide.up.corner} ${ANIMATION_ENTRY}`,
-      },
-      "bottom-right": {
-        bottom: TOAST_PADDING,
-        right: TOAST_PADDING,
-        animation: `${slide.up.corner} ${ANIMATION_ENTRY}`,
-      },
-    },
     type: {
       default: {
         backgroundColor: `color-mix(in srgb, ${theme.colors.primary} 15%, transparent)`,
+        ":hover": {
+          backgroundColor: `color-mix(in srgb, ${theme.colors.primary} 25%, transparent)`,
+        },
       },
       success: {
         backgroundColor: `color-mix(in srgb, ${theme.colors.success} 15%, transparent)`,
+        ":hover": {
+          backgroundColor: `color-mix(in srgb, ${theme.colors.success} 25%, transparent)`,
+        },
       },
       warning: {
         backgroundColor: `color-mix(in srgb, ${theme.colors.warning} 15%, transparent)`,
+        ":hover": {
+          backgroundColor: `color-mix(in srgb, ${theme.colors.warning} 25%, transparent)`,
+        },
       },
       info: {
         backgroundColor: `color-mix(in srgb, ${theme.colors.text.default} 15%, transparent)`,
+        ":hover": {
+          backgroundColor: `color-mix(in srgb, ${theme.colors.text.default} 25%, transparent)`,
+        },
       },
     },
   },
-  compoundVariants: [
-    {
-      variants: { position: "top", exiting: true },
-      style: { animation: `${slide.down.centerExit} ${ANIMATION_EXIT}` },
-    },
-    {
-      variants: { position: "bottom", exiting: true },
-      style: { animation: `${slide.up.centerExit} ${ANIMATION_EXIT}` },
-    },
-    {
-      variants: { position: "top-left", exiting: true },
-      style: { animation: `${slide.down.cornerExit} ${ANIMATION_EXIT}` },
-    },
-    {
-      variants: { position: "top-right", exiting: true },
-      style: { animation: `${slide.down.cornerExit} ${ANIMATION_EXIT}` },
-    },
-    {
-      variants: { position: "bottom-left", exiting: true },
-      style: { animation: `${slide.up.cornerExit} ${ANIMATION_EXIT}` },
-    },
-    {
-      variants: { position: "bottom-right", exiting: true },
-      style: { animation: `${slide.up.cornerExit} ${ANIMATION_EXIT}` },
-    },
-  ],
 });
 
 const icon = recipe({
@@ -126,11 +120,16 @@ const description = style({
 });
 
 const closeButton = style({
-  padding: "2px 8px",
-  fontSize: "12px",
+  padding: "2px",
   borderRadius: "4px",
-  backgroundColor: theme.colors.primary,
-  color: theme.colors.text.inverted,
+  color: theme.colors.text.default,
 });
 
-export const styles = { toast, icon, textArea, description, closeButton };
+export const styles = {
+  toasterGroup,
+  toast,
+  icon,
+  textArea,
+  description,
+  closeButton,
+};

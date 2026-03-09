@@ -5,6 +5,7 @@ import { packageConfig } from "@justwon/vitest-config/package";
 const additionalConfig = defineConfig({
   plugins: [vanillaExtractPlugin()],
   test: {
+    setupFiles: ["./tests/setup.ts"],
     coverage: {
       exclude: ["**/*/colors.ts"],
     },

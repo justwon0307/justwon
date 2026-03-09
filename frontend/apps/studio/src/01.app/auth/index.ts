@@ -1,2 +1,1 @@
-export { AuthProvider } from "./provider";
-export { RequireAuth, RequireNoAuth } from "./wrappers";
+export { loginRequired, guestsOnly } from "./auth-guards";

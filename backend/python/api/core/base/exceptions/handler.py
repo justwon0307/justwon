@@ -13,6 +13,7 @@ from .responses import (
   auth_error_response,
   not_found_response,
   throttled_response,
+  token_expired_response,
   unknown_error_response,
   validation_error_response,
 )
@@ -36,7 +37,16 @@ def justwon_exception_handler(exc, context):
     return throttled_response(exc.wait)
 
   if isinstance(exc, (AuthenticationFailed, NotAuthenticated, PermissionDenied)):
-    ## 별도로 처리하지 않은 인증/권한 예외들은 전부 403 FORBIDDEN으로 처리
+    ## 토큰 만료 예외는 별도로 예외 처리
+    try:
+      if (
+        exc.detail.get("code") == "token_not_valid"
+        and exc.detail.get("messages", [{}])[0].get("message") == "Token is expired"
+      ):
+        return token_expired_response()
+    except AttributeError, IndexError, TypeError:
+      pass
+    ## 나머지 별도로 처리하지 않은 인증/권한 예외들은 전부 403 FORBIDDEN으로 처리
     return auth_error_response()
 
   if isinstance(exc, ValidationError):

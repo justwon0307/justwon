@@ -6,6 +6,7 @@ from tests.factories import UserFactory
 pytestmark = pytest.mark.django_db
 
 
+## 본 테스트는 로그인, 로그아웃, 토큰 갱신 API를 테스트한다.
 def test_all_apis_success(api_client):
   admin = UserFactory(is_superuser=True)
   login_res = api_client.post(
@@ -106,3 +107,13 @@ def test_logout_missing_cookie(api_client):
   res = api_client.post("/api/logout/")
 
   assert res.status_code == 204
+
+
+def test_logout_invalid_token(api_client, warning_logs):
+  res = api_client.post(
+    "/api/logout/",
+    **{"HTTP_COOKIE": f"{settings.JWT_AUTH_COOKIE}=invalidtoken"},
+  )
+
+  assert res.status_code == 204
+  assert any("블랙리스트 처리 실패" in r.message for r in warning_logs.records)

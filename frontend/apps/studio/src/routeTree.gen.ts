@@ -9,14 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NoauthRouteRouteImport } from './routes/_noauth/route'
+import { Route as GuestsonlyRouteRouteImport } from './routes/_guestsonly/route'
 import { Route as AdminonlyRouteRouteImport } from './routes/_adminonly/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as NoauthLoginRouteImport } from './routes/_noauth/login'
+import { Route as GuestsonlyLoginRouteImport } from './routes/_guestsonly/login'
 import { Route as AdminonlyEditorRouteImport } from './routes/_adminonly/editor'
 
-const NoauthRouteRoute = NoauthRouteRouteImport.update({
-  id: '/_noauth',
+const GuestsonlyRouteRoute = GuestsonlyRouteRouteImport.update({
+  id: '/_guestsonly',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminonlyRouteRoute = AdminonlyRouteRouteImport.update({
@@ -28,10 +28,10 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NoauthLoginRoute = NoauthLoginRouteImport.update({
+const GuestsonlyLoginRoute = GuestsonlyLoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => NoauthRouteRoute,
+  getParentRoute: () => GuestsonlyRouteRoute,
 } as any)
 const AdminonlyEditorRoute = AdminonlyEditorRouteImport.update({
   id: '/editor',
@@ -42,20 +42,20 @@ const AdminonlyEditorRoute = AdminonlyEditorRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/editor': typeof AdminonlyEditorRoute
-  '/login': typeof NoauthLoginRoute
+  '/login': typeof GuestsonlyLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/editor': typeof AdminonlyEditorRoute
-  '/login': typeof NoauthLoginRoute
+  '/login': typeof GuestsonlyLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_adminonly': typeof AdminonlyRouteRouteWithChildren
-  '/_noauth': typeof NoauthRouteRouteWithChildren
+  '/_guestsonly': typeof GuestsonlyRouteRouteWithChildren
   '/_adminonly/editor': typeof AdminonlyEditorRoute
-  '/_noauth/login': typeof NoauthLoginRoute
+  '/_guestsonly/login': typeof GuestsonlyLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -66,24 +66,24 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_adminonly'
-    | '/_noauth'
+    | '/_guestsonly'
     | '/_adminonly/editor'
-    | '/_noauth/login'
+    | '/_guestsonly/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminonlyRouteRoute: typeof AdminonlyRouteRouteWithChildren
-  NoauthRouteRoute: typeof NoauthRouteRouteWithChildren
+  GuestsonlyRouteRoute: typeof GuestsonlyRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_noauth': {
-      id: '/_noauth'
+    '/_guestsonly': {
+      id: '/_guestsonly'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof NoauthRouteRouteImport
+      preLoaderRoute: typeof GuestsonlyRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_adminonly': {
@@ -100,12 +100,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_noauth/login': {
-      id: '/_noauth/login'
+    '/_guestsonly/login': {
+      id: '/_guestsonly/login'
       path: '/login'
       fullPath: '/login'
-      preLoaderRoute: typeof NoauthLoginRouteImport
-      parentRoute: typeof NoauthRouteRoute
+      preLoaderRoute: typeof GuestsonlyLoginRouteImport
+      parentRoute: typeof GuestsonlyRouteRoute
     }
     '/_adminonly/editor': {
       id: '/_adminonly/editor'
@@ -129,22 +129,22 @@ const AdminonlyRouteRouteWithChildren = AdminonlyRouteRoute._addFileChildren(
   AdminonlyRouteRouteChildren,
 )
 
-interface NoauthRouteRouteChildren {
-  NoauthLoginRoute: typeof NoauthLoginRoute
+interface GuestsonlyRouteRouteChildren {
+  GuestsonlyLoginRoute: typeof GuestsonlyLoginRoute
 }
 
-const NoauthRouteRouteChildren: NoauthRouteRouteChildren = {
-  NoauthLoginRoute: NoauthLoginRoute,
+const GuestsonlyRouteRouteChildren: GuestsonlyRouteRouteChildren = {
+  GuestsonlyLoginRoute: GuestsonlyLoginRoute,
 }
 
-const NoauthRouteRouteWithChildren = NoauthRouteRoute._addFileChildren(
-  NoauthRouteRouteChildren,
+const GuestsonlyRouteRouteWithChildren = GuestsonlyRouteRoute._addFileChildren(
+  GuestsonlyRouteRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminonlyRouteRoute: AdminonlyRouteRouteWithChildren,
-  NoauthRouteRoute: NoauthRouteRouteWithChildren,
+  GuestsonlyRouteRoute: GuestsonlyRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
