@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useLayoutEffect, useState } from "react";
 
 const TOAST_EVENT_NAME = "SHOW_TOAST";
