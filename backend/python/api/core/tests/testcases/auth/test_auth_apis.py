@@ -106,3 +106,13 @@ def test_logout_missing_cookie(api_client):
   res = api_client.post("/api/logout/")
 
   assert res.status_code == 204
+
+
+def test_logout_invalid_token(api_client, warning_logs):
+  res = api_client.post(
+    "/api/logout/",
+    **{"HTTP_COOKIE": f"{settings.JWT_AUTH_COOKIE}=invalidtoken"},
+  )
+
+  assert res.status_code == 204
+  assert any("블랙리스트 처리 실패" in r.message for r in warning_logs.records)
