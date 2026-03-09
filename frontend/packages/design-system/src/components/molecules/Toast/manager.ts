@@ -1,5 +1,6 @@
 "use client";
 
+import { randomBytes } from "node:crypto";
 import { useCallback, useLayoutEffect, useState } from "react";
 
 const TOAST_EVENT_NAME = "SHOW_TOAST";
@@ -93,7 +94,7 @@ export function toast(
 ): void {
   const event = new CustomEvent(TOAST_EVENT_NAME, {
     detail: {
-      id: Date.now() + Math.random().toString(36).substring(2),
+      id: randomBytes(16).toString("hex"),
       message,
       options: { ...defaultOptions, ...options },
     },
