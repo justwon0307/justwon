@@ -1,21 +1,6 @@
-import { useEffect } from "react";
-import { useNavigate } from "@tanstack/react-router";
-import { useAuth } from "@justkits/auth";
-
 /**
- * Admin 앱이기 때문에 Landing 페이지를 따로 렌더링하지 않고, 라우팅 기능을 담당한다.
+ * Landing 페이지가 따로 존재하지 않고, beforeLoad기능을 통해 리디렉션을 처리한다.
  */
 export function LandingPage() {
-  const { isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate({ to: "/editor" });
-    } else {
-      navigate({ to: "/login" });
-    }
-  }, [isAuthenticated, navigate]);
-
   return null;
 }
