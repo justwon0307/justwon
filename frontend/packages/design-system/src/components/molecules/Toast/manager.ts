@@ -61,8 +61,13 @@ export function useToaster() {
 
     // flush queued toasts that arrived before the Toaster mounted
     if (toastQueue.length > 0) {
-      setToasts((prev) => [...prev, ...toastQueue]);
+      const queued = [...toastQueue];
       toastQueue = [];
+      queued.forEach((item) => {
+        document.dispatchEvent(
+          new CustomEvent(TOAST_EVENT_NAME, { detail: item }),
+        );
+      });
     }
 
     return () => {
