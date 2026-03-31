@@ -6,9 +6,7 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint .",
-    "test": "vitest run",
-    "test:dev": "vitest --watch --coverage"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@justwon/designs": "workspace:*",
@@ -23,17 +21,13 @@
   "devDependencies": {
     "@justwon/eslint-config": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
-    "@testing-library/react": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vanilla-extract/next-plugin": "^2.4.17",
-    "@vitest/coverage-v8": "catalog:",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "catalog:",
-    "jsdom": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
+    "typescript": "catalog:"
   },
   "lint-staged": {
     "*.{json,md,yml,yaml}": "prettier --check",
