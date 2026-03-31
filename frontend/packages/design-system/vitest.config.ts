@@ -1,15 +1,10 @@
-import { defineConfig, mergeConfig } from "vitest/config";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import { packageConfig } from "@justwon/vitest-config/package";
+import { defineProject, mergeConfig } from "vitest/config";
+import { sharedConfig } from "@justwon/vitest-config/shared";
 
-const additionalConfig = defineConfig({
-  plugins: [vanillaExtractPlugin()],
+const additionalConfig = defineProject({
   test: {
     setupFiles: ["./tests/setup.ts"],
-    coverage: {
-      exclude: ["**/*/colors.ts"],
-    },
   },
 });
 
-export default mergeConfig(packageConfig, additionalConfig);
+export default mergeConfig(sharedConfig, additionalConfig);
