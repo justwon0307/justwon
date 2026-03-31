@@ -28,10 +28,11 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "icons": "svg2tsx generate && prettier --write ./src/icons",
-    "build": "tsc --project tsconfig.build.json",
     "dev": "tsc --watch --project tsconfig.build.json",
+    "build": "tsc --project tsconfig.build.json",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint ."
+    "clean": "rimraf dist node_modules"
   },
   "devDependencies": {
     "@justkits/svg2tsx": "catalog:",
@@ -44,7 +45,6 @@
     "eslint": "catalog:",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
-    "rimraf": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
