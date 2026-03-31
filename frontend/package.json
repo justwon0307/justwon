@@ -29,5 +29,12 @@
   },
   "lint-staged": {
     "*.{json,md,yml,yaml}": "prettier --check"
+  },
+  "pnpm": {
+    "overrides": {
+      "flatted": "3.4.2",
+      "picomatch": "4.0.4",
+      "yaml": "2.8.3"
+    }
   }
 }
