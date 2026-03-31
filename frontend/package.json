@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "turbo run dev",
     "test": "vitest run",
-    "test:ci": "vitest run --coverage --coverage.include='**/src/**/*.{ts,tsx}' --coverage.reporter=clover --coverage.reporter=lcov",
     "test:dev": "vitest run --watch --coverage",
     "lint": "turbo run lint",
     "build": "turbo run build",
