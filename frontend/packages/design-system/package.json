@@ -4,10 +4,6 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./brand": {
-      "types": "./dist/brand/index.d.ts",
-      "import": "./dist/brand/index.js"
-    },
     "./components": {
       "types": "./dist/components/index.d.ts",
       "import": "./dist/components/index.js"
