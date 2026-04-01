@@ -49,8 +49,8 @@ vi.mock("@justkits/react-jwt", () => ({
   }),
 }));
 
-vi.mock("@justwon/designs/brand", () => ({
-  StudioHorizontalLogo: () => <div>StudioHorizontalLogo</div>,
+vi.mock("@justwon/identity", () => ({
+  StudioHorizontal: () => <div>StudioHorizontal</div>,
 }));
 
 vi.mock("@justwon/designs/components", () => ({

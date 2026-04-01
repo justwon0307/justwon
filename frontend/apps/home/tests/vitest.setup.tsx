@@ -19,9 +19,9 @@ vi.mock("next/navigation", () => ({
   usePathname: vi.fn().mockReturnValue("/"),
 }));
 
-vi.mock("@justwon/designs/brand", () => ({
-  JustwonLogo: () => <div>JustwonLogo</div>,
-  JustwonHorizontalLogo: () => <div>JustwonHorizontalLogo</div>,
+vi.mock("@justwon/identity", () => ({
+  Justwon: () => <div>Justwon</div>,
+  JustwonHorizontal: () => <div>JustwonHorizontal</div>,
 }));
 vi.mock("@justwon/designs/components", () => ({
   Button: (props: React.ComponentProps<"button">) => <button {...props} />,

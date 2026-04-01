@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@justwon/designs": "workspace:*",
+    "@justwon/identity": "workspace:*",
     "@vanilla-extract/css": "catalog:",
     "@vanilla-extract/dynamic": "catalog:",
     "@vanilla-extract/recipes": "catalog:",
