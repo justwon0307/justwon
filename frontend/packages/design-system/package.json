@@ -28,20 +28,15 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "icons": "svg2tsx generate && prettier --write ./src/icons",
-    "dev": "tsc --watch --project tsconfig.build.json",
-    "build": "tsc --project tsconfig.build.json",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist node_modules"
   },
   "devDependencies": {
     "@justkits/svg2tsx": "catalog:",
-    "@justwon/tsconfig": "workspace:*",
-    "@justwon/vitest-config": "workspace:*",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "typescript": "catalog:"
+    "@justwon/vitest-config": "workspace:*"
   },
   "peerDependencies": {
     "@vanilla-extract/css": "catalog:",
