@@ -1,0 +1,38 @@
+{
+  "name": "@justwon/blog-models",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./category": {
+      "types": "./dist/category/index.d.ts",
+      "import": "./dist/category/index.js"
+    },
+    "./posttype": {
+      "types": "./dist/posttype/index.d.ts",
+      "import": "./dist/posttype/index.js"
+    }
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "dev": "tsc --watch --project tsconfig.build.json",
+    "build": "tsc --project tsconfig.build.json",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist node_modules",
+    "icons": "svg2tsx generate && prettier --write ./src/icons"
+  },
+  "devDependencies": {
+    "@justkits/svg2tsx": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
+  },
+  "lint-staged": {
+    "*.{json,md,yml,yaml}": "prettier --check",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint",
+      "prettier --check"
+    ]
+  }
+}
