@@ -34,7 +34,7 @@ describe("AdminOnlyLayout", () => {
     const { getByText, getAllByAltText } = render(<AdminOnlyLayout />);
 
     // 먼저 헤더와 메인 요소가 제대로 렌더링 되는지 확인
-    expect(getByText("StudioHorizontalLogo")).toBeTruthy();
+    expect(getByText("StudioHorizontal")).toBeTruthy();
     expect(getByText("Outlet")).toBeTruthy();
     // UserAvatar에 avatar 이미지가 렌더링 되는지 확인 (UserButton, UserProfile 두번 렌더링 되기 때문에, 하나만 확인)
     expect(getAllByAltText("User Avatar")[0]).toHaveProperty(
