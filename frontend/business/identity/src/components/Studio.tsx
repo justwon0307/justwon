@@ -1,6 +1,5 @@
 import type { IconProps } from "../types";
-
-export function StudioLogo({ size = 24, ...props }: Readonly<IconProps>) {
+export function Studio({ size = 48, ...props }: Readonly<IconProps>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
