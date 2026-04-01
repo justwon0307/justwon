@@ -1,4 +1,4 @@
-import { JustwonHorizontalLogo } from "@justwon/designs/brand";
+import { JustwonHorizontal } from "@justwon/identity";
 
 import { Settings } from "./client/Settings";
 import { MainTab, tabs } from "@entities/app/tabs";
@@ -9,7 +9,7 @@ export function RootHeader() {
   return (
     <header className={styles.container}>
       <Link href="/" className={styles.link} data-testid="main-logo">
-        <JustwonHorizontalLogo size={32} />
+        <JustwonHorizontal size={32} />
       </Link>
       <div className={styles.tabs}>
         {tabs.map((tab) => (
