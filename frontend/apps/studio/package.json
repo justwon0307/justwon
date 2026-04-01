@@ -26,12 +26,8 @@
   "devDependencies": {
     "@justwon/vitest-config": "workspace:*",
     "@tanstack/router-plugin": "^1.166.3",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
     "@vanilla-extract/vite-plugin": "catalog:",
     "@vitejs/plugin-react": "catalog:",
-    "typescript": "catalog:",
     "vite": "^8.0.3"
   },
   "lint-staged": {
