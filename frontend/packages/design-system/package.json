@@ -36,15 +36,11 @@
   },
   "devDependencies": {
     "@justkits/svg2tsx": "catalog:",
-    "@justwon/eslint-config": "workspace:*",
     "@justwon/tsconfig": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "eslint": "catalog:",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "^2.32.0",
     "typescript": "catalog:"
   },
   "peerDependencies": {
