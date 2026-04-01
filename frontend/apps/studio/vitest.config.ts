@@ -1,19 +1,10 @@
-import { resolve } from "node:path";
-import { defineConfig, mergeConfig } from "vitest/config";
-import { appConfig } from "@justwon/vitest-config/app";
+import { defineProject, mergeConfig } from "vitest/config";
+import { sharedConfig } from "@justwon/vitest-config/shared";
 
-const mocksConfig = defineConfig({
+const appConfig = defineProject({
   test: {
     setupFiles: ["./tests/vitest.setup.tsx"],
-    coverage: {
-      exclude: ["src/routes/**/*", "src/routeTree.gen.ts", "src/main.tsx"],
-    },
-  },
-  resolve: {
-    alias: {
-      "@tests/*": resolve(process.cwd(), "tests/*"),
-    },
   },
 });
 
-export default mergeConfig(appConfig, mocksConfig);
+export default mergeConfig(sharedConfig, appConfig);

@@ -1,10 +1,10 @@
-import { defineConfig, mergeConfig } from "vitest/config";
-import { appConfig } from "@justwon/vitest-config/app";
+import { defineProject, mergeConfig } from "vitest/config";
+import { sharedConfig } from "@justwon/vitest-config/shared";
 
-const mocksConfig = defineConfig({
+const appConfig = defineProject({
   test: {
     setupFiles: ["./tests/vitest.setup.tsx"],
   },
 });
 
-export default mergeConfig(appConfig, mocksConfig);
+export default mergeConfig(sharedConfig, appConfig);

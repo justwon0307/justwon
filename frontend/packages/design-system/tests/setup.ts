@@ -1,3 +1,5 @@
+import "@vanilla-extract/css/disableRuntimeStyles";
+
 class ResizeObserverMock {
   private readonly callback: ResizeObserverCallback;
 

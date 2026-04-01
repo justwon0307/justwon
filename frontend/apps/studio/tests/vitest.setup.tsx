@@ -1,3 +1,4 @@
+import "@vanilla-extract/css/disableRuntimeStyles";
 import type { AuthConfigInput } from "@justkits/react-jwt";
 
 vi.mock("../src/routeTree.gen.ts", () => ({

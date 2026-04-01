@@ -8,9 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run",
-    "test:dev": "vitest --watch --coverage",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist node_modules"
   },
   "dependencies": {
     "@justkits/react-jwt": "^2.0.4",
@@ -30,17 +29,14 @@
     "@tanstack/eslint-plugin-query": "^5.91.4",
     "@tanstack/eslint-plugin-router": "^1.161.4",
     "@tanstack/router-plugin": "^1.166.3",
-    "@testing-library/react": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vanilla-extract/vite-plugin": "catalog:",
-    "@vitejs/plugin-react": "^5.1.4",
-    "@vitest/coverage-v8": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
     "eslint": "catalog:",
     "typescript": "catalog:",
-    "vite": "^7.3.1",
-    "vitest": "catalog:"
+    "vite": "^8.0.3"
   },
   "lint-staged": {
     "*.{json,md,yml,yaml}": "prettier --check",

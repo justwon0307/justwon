@@ -42,7 +42,7 @@ jobs:
         run: pnpm typecheck
 
       - name: Test
-        run: pnpm test -- --coverage
+        run: pnpm test --coverage --coverage.include="**/src/**/*.{ts,tsx}" --coverage.reporter=clover --coverage.reporter=lcov
 
       - name: Upload Coverage
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de
@@ -51,3 +51,12 @@ jobs:
           files: ${{ inputs.working-directory }}/**/coverage/clover.xml
           fail_ci_if_error: true
           flags: ${{ inputs.app-name }}
+
+      - name: Create JUnit Test Report
+        run: pnpm test --reporter=junit --outputFile=test-report.junit.xml
+
+      - name: Upload Test Report to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

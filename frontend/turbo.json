@@ -5,23 +5,13 @@
       "cache": false,
       "persistent": true
     },
-    "test": {
-      "inputs": [
-        "src/**",
-        "tests/**",
-        "**/*.test.ts",
-        "vitest.config.ts",
-        "package.json"
-      ],
-      "outputs": ["coverage/**"],
-      "dependsOn": ["^build"]
-    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["src/**", "**/tsconfig*.json", "package.json"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {},
-    "typecheck": {}
+    "typecheck": {},
+    "clean": {}
   }
 }

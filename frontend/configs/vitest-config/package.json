@@ -4,17 +4,6 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./app": "./app.js",
-    "./package": "./pack.js"
-  },
-  "peerDependencies": {
-    "@vitest/coverage-v8": "catalog:",
-    "jsdom": "catalog:",
-    "vitest": "catalog:"
-  },
-  "devDependencies": {
-    "@vanilla-extract/vite-plugin": "^5.1.4",
-    "@vitejs/plugin-react": "^5.1.4",
-    "vite-tsconfig-paths": "^6.1.1"
+    "./shared": "./shared.js"
   }
 }
