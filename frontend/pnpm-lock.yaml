@@ -11,7 +11,7 @@ catalogs:
       version: 1.2.2
     '@vanilla-extract/css':
       specifier: ^1.20.1
-      version: 1.18.0
+      version: 1.20.1
     '@vanilla-extract/dynamic':
       specifier: ^2.1.5
       version: 2.1.5
@@ -101,6 +101,9 @@ importers:
       '@justwon/designs':
         specifier: workspace:*
         version: link:../../packages/design-system
+      '@justwon/identity':
+        specifier: workspace:*
+        version: link:../../business/identity
       '@vanilla-extract/css':
         specifier: 'catalog:'
         version: 1.20.1
@@ -138,6 +141,9 @@ importers:
       '@justwon/designs':
         specifier: workspace:*
         version: link:../../packages/design-system
+      '@justwon/identity':
+        specifier: workspace:*
+        version: link:../../business/identity
       '@tanstack/react-query':
         specifier: ^5.90.21
         version: 5.96.0(react@19.2.4)
@@ -177,6 +183,16 @@ importers:
         version: 8.0.3(@emnapi/core@1.8.1)(@emnapi/runtime@1.8.1)(@types/node@25.5.0)(esbuild@0.27.4)(jiti@2.6.1)(terser@5.46.1)(tsx@4.21.0)(yaml@2.8.3)
 
   business/blog:
+    dependencies:
+      react:
+        specifier: 'catalog:'
+        version: 19.2.4
+    devDependencies:
+      '@justkits/svg2tsx':
+        specifier: 'catalog:'
+        version: 1.2.2(typescript@5.9.3)
+
+  business/identity:
     dependencies:
       react:
         specifier: 'catalog:'
