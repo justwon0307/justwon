@@ -15,10 +15,13 @@
     "prepare": "cd .. && husky frontend/.husky"
   },
   "devDependencies": {
+    "@justwon/eslint-config": "workspace:*",
     "@testing-library/react": "^16.3.2",
     "@vanilla-extract/vite-plugin": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "^4.1.2",
+    "eslint": "catalog:",
+    "eslint-plugin-import": "^2.32.0",
     "husky": "^9.1.7",
     "jsdom": "^29.0.1",
     "lint-staged": "^16.4.0",

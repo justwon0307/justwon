@@ -21,14 +21,12 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@justwon/eslint-config": "workspace:*",
     "@justwon/vitest-config": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vanilla-extract/next-plugin": "^2.5.1",
     "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "catalog:",
     "typescript": "catalog:"
   },
   "lint-staged": {
