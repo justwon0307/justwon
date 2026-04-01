@@ -36,12 +36,7 @@
   },
   "devDependencies": {
     "@justkits/svg2tsx": "catalog:",
-    "@justwon/tsconfig": "workspace:*",
-    "@justwon/vitest-config": "workspace:*",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "typescript": "catalog:"
+    "@justwon/vitest-config": "workspace:*"
   },
   "peerDependencies": {
     "@vanilla-extract/css": "catalog:",
