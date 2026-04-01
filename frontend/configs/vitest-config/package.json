@@ -5,5 +5,14 @@
   "private": true,
   "exports": {
     "./shared": "./shared.js"
+  },
+  "peerDependencies": {
+    "vitest": "catalog:"
+  },
+  "devDependencies": {
+    "@vanilla-extract/vite-plugin": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitest/coverage-v8": "^4.1.2",
+    "jsdom": "^29.0.1"
   }
 }

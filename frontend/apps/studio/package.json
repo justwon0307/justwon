@@ -24,7 +24,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@justwon/vitest-config": "workspace:*",
     "@tanstack/router-plugin": "^1.166.3",
     "@vanilla-extract/vite-plugin": "catalog:",
     "@vitejs/plugin-react": "catalog:",
