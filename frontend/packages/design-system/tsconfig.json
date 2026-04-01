@@ -1,6 +1,6 @@
 {
   "extends": "@justwon/tsconfig/base.json",
-  "include": ["src", "tests", "eslint.config.ts", "vitest.config.ts"],
+  "include": ["src", "tests", "eslint.config.ts", "vitest.config.mts"],
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"] // 테스트에서만 사용!!
