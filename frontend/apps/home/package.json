@@ -21,7 +21,6 @@
     "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@justwon/vitest-config": "workspace:*",
     "@vanilla-extract/next-plugin": "^2.5.1",
     "babel-plugin-react-compiler": "^1.0.0"
   },
