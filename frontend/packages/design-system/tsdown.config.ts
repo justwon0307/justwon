@@ -11,6 +11,12 @@ export default defineConfig({
     globals: "src/globals.css.ts",
   },
   deps: {
-    neverBundle: ["react", "react-dom"],
+    neverBundle: [
+      "react",
+      "react-dom",
+      "@vanilla-extract/css",
+      "@vanilla-extract/dynamic",
+      "@vanilla-extract/recipes",
+    ],
   },
 });
