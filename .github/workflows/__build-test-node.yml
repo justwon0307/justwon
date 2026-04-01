@@ -51,3 +51,12 @@ jobs:
           files: ${{ inputs.working-directory }}/**/coverage/clover.xml
           fail_ci_if_error: true
           flags: ${{ inputs.app-name }}
+
+      - name: Create JUnit Test Report
+        run: pnpm test --reporter=junit --outputFile=test-report.junit.xml
+
+      - name: Upload Test Report to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-result-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
